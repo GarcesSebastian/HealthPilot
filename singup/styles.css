@@ -61,12 +61,19 @@ body {
   justify-content: center;
 }
 
-.contentLogin .logoPage {
+.contentView .logoPage {
   position: absolute;
-  top: 15%;
+  top: 8%;
   width:fit-content;
-  font-size: 45px;
-  color: var(--background_1);
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoPage img{
+  width: 35%;
 }
 
 .contentForm{
