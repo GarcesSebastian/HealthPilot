@@ -470,6 +470,39 @@ body {
   color: white;
 }
 
-
-
 /*Spawn Notificaciones*/
+
+/*Spawn Map*/
+
+.contentMap{
+  width: 100%;
+  height: 91.5%;
+  position: absolute;
+  top:0;
+  z-index: 3;
+}
+
+.contentMap #map{
+  width: 100%;
+  height: 85%;
+}
+
+.moreMap{
+  position: absolute;
+  width: 100%;
+  height: 15%;
+  background-color:#3d50e0;
+}
+
+.contentMap .location{
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  text-outline: 0 0 #000;
+  z-index: 100;
+  cursor: pointer;
+  color: rgb(224, 212, 212);
+  font-size: 18px;
+}
+
+/*Spawn Map*/

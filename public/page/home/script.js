@@ -116,24 +116,24 @@ buttonsGeneral.forEach((element) =>{
 //Spawn Notificaciones
 
   
-  let posU;
+let posU;
 
-  navigator.geolocation.getCurrentPosition(getPosition);
+function getPosition(pos) {
+  var lat = pos.coords.latitude;
+  var long = pos.coords.longitude;
 
-  function getPosition(pos){
-    var lat = pos.coords.latitude;
-    var long = pos.coords.longitude;
+  var map = L.map("map").setView([lat, long], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
 
-    var map = L.map("map").setView([lat, long], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+  var marker = L.marker([lat, long]).addTo(map);
+  marker.bindPopup('¡Tu ubicación!').openPopup();
+}
 
-    var marker = L.marker([lat, long]).addTo(map);
-    marker.bindPopup('¡Tu ubicación!').openPopup();
+// Obtener la ubicación del usuario
+navigator.geolocation.getCurrentPosition(getPosition);
 
-    map.setView([lat, long], 13);
-  }
 
 
