@@ -1,0 +1,22 @@
+::-webkit-scrollbar {
+    width: 7px; /* Ancho del scroll */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background:#62a9e1; /* Color de la barra del scroll */
+    border-radius: 5px; /* Radio de las esquinas de la barra del scroll */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #4d8ec0; /* Color de la barra del scroll al pasar el cursor sobre ella */
+}
+
+
+input[type = "number"]::-webkit-inner-spin-button{
+  display: none;
+}
+
+
+input[type = "number"]::-webkit-out-spin-button{
+  display: none;
+}

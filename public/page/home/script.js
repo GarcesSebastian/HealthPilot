@@ -19,7 +19,7 @@ let buttonsContentPage = document.querySelectorAll(".item");
 buttonsContentPage.forEach((element) =>{
     element.addEventListener('click',()=>{
         if(element.getAttribute("data-item") == 1){
-            let circle = element.querySelector(".circle");
+            let circle = element.querySelector(".itemCircle");
             circle.querySelector(".fa-circle").classList.remove("fa-regular");
             circle.querySelector(".fa-circle").classList.add("fa-solid");
             setTimeout(()=>{
@@ -27,7 +27,7 @@ buttonsContentPage.forEach((element) =>{
                 circle.querySelector(".fa-circle").classList.remove("fa-solid");      
             }, 1000)
         }else if(element.getAttribute("data-item") == 2){
-            let circle = element.querySelector(".circle");
+            let circle = element.querySelector(".itemCircle");
             circle.querySelector(".fa-circle").classList.remove("fa-regular");
             circle.querySelector(".fa-circle").classList.add("fa-solid");
             setTimeout(()=>{
@@ -35,7 +35,7 @@ buttonsContentPage.forEach((element) =>{
                 circle.querySelector(".fa-circle").classList.remove("fa-solid");      
             }, 1000)
         }else if(element.getAttribute("data-item") == 3){
-            let circle = element.querySelector(".circle");
+            let circle = element.querySelector(".itemCircle");
             circle.querySelector(".fa-circle").classList.remove("fa-regular");
             circle.querySelector(".fa-circle").classList.add("fa-solid");
             setTimeout(()=>{
@@ -43,7 +43,7 @@ buttonsContentPage.forEach((element) =>{
                 circle.querySelector(".fa-circle").classList.remove("fa-solid");      
             }, 1000)
         }else if(element.getAttribute("data-item") == 4){
-            let circle = element.querySelector(".circle");
+            let circle = element.querySelector(".itemCircle");
             circle.querySelector(".fa-circle").classList.remove("fa-regular");
             circle.querySelector(".fa-circle").classList.add("fa-solid");
             setTimeout(()=>{
@@ -57,12 +57,18 @@ buttonsContentPage.forEach((element) =>{
 let buttonConfig = document.querySelector(".configSpan");
 let buttonNotification = document.querySelector(".notificationSpan");
 
+
 buttonConfig.addEventListener("click", () =>{
-    window.location.href = "../../others/config/index.html";
+    document.querySelector(".spawnConfiguracion").style.left = "0%";
 });
 
 buttonNotification.addEventListener("click", () =>{
-    window.location.href = "#";
+    
 });
 
 
+let buttonBackConfig = document.querySelector(".backContent");
+
+buttonBackConfig.addEventListener("click", () =>{
+    document.querySelector(".spawnConfiguracion").style.left = "-100%";
+});
