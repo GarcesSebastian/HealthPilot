@@ -498,10 +498,9 @@ body {
   position: absolute;
   top: 10%;
   right: 2%;
-  text-outline: 0 0 #000;
   z-index: 100;
   cursor: pointer;
-  color: rgb(224, 212, 212);
+  color: rgb(255, 255, 255);
   font-size: 18px;
 }
 

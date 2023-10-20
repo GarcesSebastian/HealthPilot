@@ -115,25 +115,38 @@ buttonsGeneral.forEach((element) =>{
 
 //Spawn Notificaciones
 
+var map = L.map("map").setView([51.505, -0.09], 13);
+
+// Agregar una capa de mapa base
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
+
+document.addEventListener("DOMContentLoaded", function () {
+  obtenerUbicacion();
+});
   
-let posU;
+function obtenerUbicacion() {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
 
-function getPosition(pos) {
-  var lat = pos.coords.latitude;
-  var long = pos.coords.longitude;
+      // Crear un marcador en la ubicación del usuario
+      var marker = L.marker([lat, lon]).addTo(map);
+      marker.bindPopup("¡Tu ubicación!").openPopup();
 
-  var map = L.map("map").setView([lat, long], 13);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
-
-  var marker = L.marker([lat, long]).addTo(map);
-  marker.bindPopup('¡Tu ubicación!').openPopup();
+      // Centrar el mapa en la ubicación del usuario
+      map.setView([lat, lon], 13);
+    });
+  } else {
+    alert("Tu navegador no admite la geolocalización.");
+  }
 }
 
-// Obtener la ubicación del usuario
-navigator.geolocation.getCurrentPosition(getPosition);
 
-
+let buttonLocation = document.querySelector(".location");
+buttonLocation.addEventListener("click", obtenerUbicacion);
 
