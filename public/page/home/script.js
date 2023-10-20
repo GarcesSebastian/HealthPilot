@@ -101,4 +101,39 @@ buttonsTrayNotifications.forEach((element) => {
     }
 });
 
+let buttonsGeneral = document.querySelector(".configGeneral").querySelectorAll(".itemConfig");
+
+buttonsGeneral.forEach((element) =>{
+  element.addEventListener("click", () =>{
+    if(element.getAttribute("data-general") == "1"){
+      let color = prompt("Digite algo");
+      let root = document.documentElement;
+      root.style.setProperty("--background_1", color);
+    }
+  });
+})
+
 //Spawn Notificaciones
+
+  
+  let posU;
+
+  navigator.geolocation.getCurrentPosition(getPosition);
+
+  function getPosition(pos){
+    var lat = pos.coords.latitude;
+    var long = pos.coords.longitude;
+
+    var map = L.map("map").setView([lat, long], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var marker = L.marker([lat, long]).addTo(map);
+    marker.bindPopup('¡Tu ubicación!').openPopup();
+
+    map.setView([lat, long], 13);
+  }
+
+
