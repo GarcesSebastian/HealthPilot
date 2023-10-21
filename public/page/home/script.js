@@ -124,7 +124,7 @@ buttonsGeneral.forEach((element) => {
 let map = L.map("map").setView([0, 0], 13);
 
 L.tileLayer(
-  "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}?api_key=767b0f97-4822-44d3-afcf-cb7309ff098e'",
+  "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'",
   {
     minZoom: 0,
     maxZoom: 20,
