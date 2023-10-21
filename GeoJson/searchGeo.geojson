@@ -1,0 +1,2716 @@
+{
+    "type": "FeatureCollection",
+    "generator": "overpass-turbo",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+    "timestamp": "2023-10-21T11:17:00Z",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/54926816",
+          "amenity": "clinic",
+          "building": "yes",
+          "emergency": "yes",
+          "name": "Clínica Cartagena del Mar S.A.S"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5330725,
+            10.4204081
+          ]
+        },
+        "id": "node/54926816"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/462964499",
+          "amenity": "clinic",
+          "building": "yes",
+          "building:levels": "2",
+          "healthcare": "clinic",
+          "name": "Viva 1A EPS"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5384485,
+            10.4205401
+          ]
+        },
+        "id": "node/462964499"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/559154551",
+          "addr:street": "Carrera 44",
+          "amenity": "clinic",
+          "building": "yes",
+          "building:levels": "5",
+          "healthcare": "clinic",
+          "name": "Clínica Crecer",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.513951,
+            10.4061169
+          ]
+        },
+        "id": "node/559154551"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/559624529",
+          "addr:street": "Carrera 14",
+          "amenity": "clinic",
+          "building": "yes",
+          "name": "Mision Medica",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5246384,
+            10.4412624
+          ]
+        },
+        "id": "node/559624529"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/560755075",
+          "addr:street": "Avenida Carrera 31",
+          "amenity": "clinic",
+          "building": "yes",
+          "name": "Clínica BARÚ",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4916608,
+            10.39592
+          ]
+        },
+        "id": "node/560755075"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/561136836",
+          "addr:street": "Calle 30",
+          "amenity": "clinic",
+          "building": "yes",
+          "name": "SaludElite",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5198492,
+            10.4162154
+          ]
+        },
+        "id": "node/561136836"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/561393968",
+          "addr:street": "Avenida Carrera 31",
+          "amenity": "clinic",
+          "building": "yes",
+          "name": "Nueva EPS",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5188742,
+            10.4104645
+          ]
+        },
+        "id": "node/561393968"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/596719761",
+          "amenity": "clinic",
+          "building": "hospital",
+          "name": "Cemic Unidad de Salud Mental"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5422095,
+            10.4322915
+          ]
+        },
+        "id": "node/596719761"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1205211356",
+          "amenity": "clinic",
+          "building": "yes",
+          "building:levels": "5",
+          "healthcare": "clinic",
+          "name": "Clínica Higea I.P.S. S.A."
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5149495,
+            10.4063663
+          ]
+        },
+        "id": "node/1205211356"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1206710196",
+          "amenity": "clinic",
+          "building": "yes",
+          "building:levels": "3",
+          "healthcare": "clinic",
+          "name": "Centro Médico Buenos Aires"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4912171,
+            10.390588
+          ]
+        },
+        "id": "node/1206710196"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1207051685",
+          "amenity": "clinic",
+          "healthcare": "clinic",
+          "name": "CAP: Puesto de Salud  ‒ Blas de Lezo"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4862729,
+            10.3873821
+          ]
+        },
+        "id": "node/1207051685"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1207330380",
+          "amenity": "clinic",
+          "building": "house",
+          "building:levels": "1",
+          "healthcare": "clinic",
+          "name": "Trabajemos Juntos IPS S.A.S."
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.488488,
+            10.3919073
+          ]
+        },
+        "id": "node/1207330380"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1211645217",
+          "amenity": "clinic",
+          "building": "yes",
+          "building:levels": "2",
+          "healthcare": "clinic",
+          "name": "Clínica de la Costa"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4877632,
+            10.3866859
+          ]
+        },
+        "id": "node/1211645217"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1809017539",
+          "amenity": "clinic",
+          "name": "Centro de Salud La Boquilla",
+          "source": "local"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4953297,
+            10.4751384
+          ]
+        },
+        "id": "node/1809017539"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/3078326584",
+          "amenity": "clinic",
+          "name": "UBA - Tierra Baja",
+          "source": "Bing"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4743941,
+            10.4920793
+          ]
+        },
+        "id": "node/3078326584"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/4453745674",
+          "amenity": "clinic",
+          "name": "Liga Colombiana Contra el Cancer",
+          "source": "survey"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5531751,
+            10.4248987
+          ]
+        },
+        "id": "node/4453745674"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/4921455428",
+          "addr:street": "calle 30 # 20-71",
+          "amenity": "clinic",
+          "name": "Clínica de Oftalmología de Cartagena"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5325079,
+            10.4200041
+          ]
+        },
+        "id": "node/4921455428"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5393874661",
+          "addr:street": "Carrera 6",
+          "amenity": "clinic",
+          "healthcare": "clinic",
+          "name": "Prisma Centro Medico",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5556487,
+            10.3979242
+          ]
+        },
+        "id": "node/5393874661"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5762630153",
+          "amenity": "clinic",
+          "name": "CASA Doña arsenia"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4587514,
+            10.3825694
+          ]
+        },
+        "id": "node/5762630153"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5794579083",
+          "amenity": "clinic",
+          "name": "Cedimagen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5377704,
+            10.4140891
+          ]
+        },
+        "id": "node/5794579083"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5794579143",
+          "amenity": "clinic",
+          "name": "Laboratorio Clínico Syso"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5325032,
+            10.4106788
+          ]
+        },
+        "id": "node/5794579143"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5809571647",
+          "amenity": "clinic",
+          "email": "gastrocaribesas@gmail.com",
+          "name": "GastroCaribe",
+          "phone": "+57 5 6431665",
+          "phone1": "+57 3164561517",
+          "website": "https://www.gastrocaribesas.com.co/"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5401837,
+            10.4159747
+          ]
+        },
+        "id": "node/5809571647"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/8637779017",
+          "amenity": "clinic",
+          "name": "Laboratorio Ficha Madica"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5344045,
+            10.4182197
+          ]
+        },
+        "id": "node/8637779017"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/9487066918",
+          "amenity": "clinic",
+          "name": "Centro de salud Olaya Herrera"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4849894,
+            10.4058218
+          ]
+        },
+        "id": "node/9487066918"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/9592727617",
+          "amenity": "clinic",
+          "name": "Health Cars - servicio integral de salud"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5164792,
+            10.4474564
+          ]
+        },
+        "id": "node/9592727617"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/94668897",
+          "amenity": "hospital",
+          "healthcare": "hospital",
+          "name": "Clínica Blas de Lezo",
+          "source": "bing"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4872113,
+            10.39214655
+          ]
+        },
+        "id": "node/94668897"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/109808868",
+          "addr:street": "Avenida Calle 26",
+          "amenity": "hospital",
+          "building": "yes",
+          "name": "Clínica Quirúrgica de Manga",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5367024,
+            10.4123184
+          ]
+        },
+        "id": "node/109808868"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/136011725",
+          "amenity": "hospital",
+          "emergency": "yes",
+          "healthcare": "hospital",
+          "healthcare:speciality": "general;emergency;orthodontics",
+          "name": "hospital de el pozon",
+          "source": "bing"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4575471,
+            10.4130067
+          ]
+        },
+        "id": "node/136011725"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/356128869",
+          "addr:city": "Cartagena de indias",
+          "addr:housenumber": "#40-129",
+          "addr:street": "Transversal 54",
+          "amenity": "hospital",
+          "emergency": "yes",
+          "healthcare": "hospital",
+          "name": "Clínica Blas de Lezo - Urgencias",
+          "phone": "+57 5 6632604"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4950213,
+            10.39087771
+          ]
+        },
+        "id": "node/356128869"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/548913636",
+          "addr:street": "Calle 29D",
+          "amenity": "hospital",
+          "building": "yes",
+          "healthcare": "hospital",
+          "name": "Clínica La Ermita de Cartagena",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5331219,
+            10.418841
+          ]
+        },
+        "id": "node/548913636"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/558856839",
+          "addr:street": "Calle Principal de Arroz Barato",
+          "amenity": "hospital",
+          "building": "yes",
+          "emergency": "no",
+          "name": "Hospital de Arroz Barato",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4924786,
+            10.3550103
+          ]
+        },
+        "id": "node/558856839"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/558870022",
+          "addr:street": "Calle 30",
+          "amenity": "hospital",
+          "building": "yes",
+          "name": "Cruz Roja Colombiana",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5099586,
+            10.4063069
+          ]
+        },
+        "id": "node/558870022"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/559964061",
+          "addr:street": "Calle 31D",
+          "amenity": "hospital",
+          "building": "yes",
+          "name": "Coosalud",
+          "source": "KaartGroundSurvery2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4970008,
+            10.40762063
+          ]
+        },
+        "id": "node/559964061"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/560809349",
+          "addr:street": "Avenida Carrera 31",
+          "amenity": "hospital",
+          "building": "yes",
+          "name": "Clínica Crecer",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5174178,
+            10.4091863
+          ]
+        },
+        "id": "node/560809349"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/561142141",
+          "addr:street": "Calle 31B",
+          "amenity": "hospital",
+          "building": "hospital",
+          "name": "Salud Y Bienestar Del Caribe I.P.S. Un Servicio Para Un Mejor Vivir",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4840538,
+            10.39487711
+          ]
+        },
+        "id": "node/561142141"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/954883140",
+          "amenity": "hospital",
+          "emergency": "yes",
+          "healthcare": "hospital",
+          "name": "Hospital Universitario del Caribe"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5034325,
+            10.40004
+          ]
+        },
+        "id": "node/954883140"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/962305208",
+          "amenity": "hospital",
+          "emergency": "yes",
+          "healthcare": "hospital",
+          "name": "Nuevo Hospital de Bocagrande"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5553369,
+            10.39551388
+          ]
+        },
+        "id": "node/962305208"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1093715357",
+          "amenity": "hospital",
+          "name": "Clinica Madre Bernarda"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4779488,
+            10.393648
+          ]
+        },
+        "id": "node/1093715357"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1093731534",
+          "amenity": "hospital",
+          "name": "Hospital Nuevo Bosque"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5056898,
+            10.3893871
+          ]
+        },
+        "id": "node/1093731534"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1095085579",
+          "amenity": "hospital",
+          "healthcare": "hospital",
+          "name": "DADIS"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.546431,
+            10.41891443
+          ]
+        },
+        "id": "node/1095085579"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1204337298",
+          "amenity": "hospital",
+          "healthcare": "hospital",
+          "name": "Hospital Universitario San Juan de Dios"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5026038,
+            10.390009745
+          ]
+        },
+        "id": "node/1204337298"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1206710211",
+          "amenity": "hospital",
+          "healthcare": "hospital",
+          "name": "Centro Médico Buenos Aires"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4911978,
+            10.3912585
+          ]
+        },
+        "id": "node/1206710211"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1206776154",
+          "amenity": "hospital",
+          "healthcare": "hospital",
+          "name": "Hospital Naval de Cartagena: Unidad Funcional de Atención Primaria ‒ Sede Blas de Lezo"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4871347,
+            10.3883215
+          ]
+        },
+        "id": "node/1206776154"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1422539757",
+          "amenity": "hospital",
+          "healthcare": "hospital",
+          "name": "Medihelp"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5563754,
+            10.3974475
+          ]
+        },
+        "id": "node/1422539757"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/2898246153",
+          "amenity": "hospital",
+          "designation": "hospital",
+          "emergency": "yes",
+          "name": "Gestion Salud Ips",
+          "website": "http://gestionsaludips.com"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5180375,
+            10.4091282
+          ]
+        },
+        "id": "node/2898246153"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/4022320101",
+          "amenity": "hospital",
+          "name": "Centro de Diagnostico Salud Social IPS"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4101691,
+            10.3227374
+          ]
+        },
+        "id": "node/4022320101"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/4022342909",
+          "amenity": "hospital",
+          "name": "Centro de Salud de Pumarejo"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4093752,
+            10.3200669
+          ]
+        },
+        "id": "node/4022342909"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/8316658776",
+          "addr:city": "Cartagena",
+          "addr:housenumber": "35-297",
+          "addr:postcode": "130010",
+          "addr:street": "Carrera 71",
+          "amenity": "hospital",
+          "description": "Apoyo diagnóstico y terapéutico en torno a la promoción, prevención e intervención de la salud mental. Utilizamos equipos de neurotecnología de punta en interacción con las diferentes disciplinas del comportamiento y la salud en general.",
+          "email": "neuroinnovacartagena@gmail.com",
+          "healthcare": "hospital",
+          "healthcare:speciality": "Neuropsychology;psychology;psychiatry;neurology;speech_therapy;occupational_therapy;special_education;brain_mapping;neurofeedback;transcranial_stimulation;rehabilitation_cognitive;detoxification_ionic",
+          "healthcare:speciality:de": "mental_health",
+          "name": "NEUROINNOVACOLOMBIA",
+          "name:es": "NEUROINNOVA",
+          "operator": "Neurociencias",
+          "operator:type": "private",
+          "wheelchair": "yes"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4785396,
+            10.394158
+          ]
+        },
+        "id": "node/8316658776"
+      },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1152345388",
+            "amenity": "pharmacy",
+            "dispensing": "yes",
+            "name": "Drogas La Rebaja",
+            "opening_hours": "24/7"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.516117,
+            10.3881351
+            ]
+        },
+        "id": "node/1152345388"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1422539756",
+            "amenity": "pharmacy",
+            "dispensing": "yes",
+            "healthcare": "pharmacy",
+            "name": "Droguería Alemana",
+            "opening_hours": "Mo-Fr 08:30-20:00"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5560136,
+            10.3976457
+            ]
+        },
+        "id": "node/1422539756"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/4456811090",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "name": "Rebaja Plus",
+            "shop": "gift"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5491058,
+            10.4244166
+            ]
+        },
+        "id": "node/4456811090"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/4621553190",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "name": "Drogeria Olimpica"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5461764,
+            10.4243466
+            ]
+        },
+        "id": "node/4621553190"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/4789144123",
+            "amenity": "pharmacy",
+            "name": "Droguería la 14",
+            "name:es": "Droguería la 14"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4245808,
+            10.3290894
+            ]
+        },
+        "id": "node/4789144123"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/4806580421",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "name": "Drogueria Inglesa",
+            "name:es": "English Pharmacy"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5567176,
+            10.4026379
+            ]
+        },
+        "id": "node/4806580421"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5303759050",
+            "addr:housenumber": "20-128",
+            "addr:street": "32",
+            "amenity": "pharmacy",
+            "drive_through": "no",
+            "healthcare": "pharmacy",
+            "name": "Superdrogueria Olimpica",
+            "opening_hours": "Mo-Su 07:00-22:00"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5322202,
+            10.4207971
+            ]
+        },
+        "id": "node/5303759050"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5391611011",
+            "addr:street": "Calle 25",
+            "amenity": "pharmacy",
+            "name": "Drogueria Farma Click",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4821923,
+            10.3869664
+            ]
+        },
+        "id": "node/5391611011"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5397389492",
+            "amenity": "pharmacy",
+            "name": "farmacenter",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4807346,
+            10.3826172
+            ]
+        },
+        "id": "node/5397389492"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5397500053",
+            "addr:street": "Carrera 2",
+            "amenity": "pharmacy",
+            "name": "Drogueria",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5216074,
+            10.4438235
+            ]
+        },
+        "id": "node/5397500053"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5400459144",
+            "addr:street": "Calle 70",
+            "amenity": "pharmacy",
+            "name": "La Botica"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5174661,
+            10.4482866
+            ]
+        },
+        "id": "node/5400459144"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5408968024",
+            "addr:street": "Avenida Carrera 17",
+            "amenity": "pharmacy",
+            "name": "Droguería Yubla",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.532748,
+            10.4309734
+            ]
+        },
+        "id": "node/5408968024"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5408968031",
+            "addr:street": "Calle 70",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "name": "Droguería Inglesa",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.517796,
+            10.4430592
+            ]
+        },
+        "id": "node/5408968031"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5408968041",
+            "addr:street": "Carrera 14",
+            "amenity": "pharmacy",
+            "name": "Drogueria le Rebaja Express",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5319835,
+            10.4339871
+            ]
+        },
+        "id": "node/5408968041"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5409031307",
+            "addr:street": "Avenida Carrera 17",
+            "amenity": "pharmacy",
+            "name": "Droguería Kety",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5334038,
+            10.4303363
+            ]
+        },
+        "id": "node/5409031307"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5411369728",
+            "addr:street": "Calle 41A",
+            "amenity": "pharmacy",
+            "name": "Drogueria Donde Ricky",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5197795,
+            10.4186621
+            ]
+        },
+        "id": "node/5411369728"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5411479816",
+            "addr:street": "Calle 35",
+            "amenity": "pharmacy",
+            "name": "Pharma Life Plus",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.519589,
+            10.4139981
+            ]
+        },
+        "id": "node/5411479816"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5413419921",
+            "addr:street": "Calle 31",
+            "amenity": "pharmacy",
+            "name": "La Rebaja",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5176424,
+            10.4096963
+            ]
+        },
+        "id": "node/5413419921"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5413591993",
+            "addr:street": "Calle 31D",
+            "amenity": "pharmacy",
+            "name": "Drogueria Hermanos Vega",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5078664,
+            10.4096414
+            ]
+        },
+        "id": "node/5413591993"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5413591998",
+            "addr:street": "Calle 31D",
+            "amenity": "pharmacy",
+            "name": "Drogueria Farma Plus",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5119005,
+            10.4099712
+            ]
+        },
+        "id": "node/5413591998"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5413592224",
+            "addr:street": "Carrera 30",
+            "amenity": "pharmacy",
+            "name": "drogueria",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5213083,
+            10.4135312
+            ]
+        },
+        "id": "node/5413592224"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5415633077",
+            "addr:street": "Carrera 30",
+            "amenity": "pharmacy",
+            "name": "Drogueria"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5196422,
+            10.4167549
+            ]
+        },
+        "id": "node/5415633077"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5423743283",
+            "addr:street": "Avenida Carrera 17",
+            "amenity": "pharmacy",
+            "name": "La Economia Drogueria",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5345658,
+            10.4291724
+            ]
+        },
+        "id": "node/5423743283"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5774111417",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "name": "Drogas Mega Express"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5451307,
+            10.4270119
+            ]
+        },
+        "id": "node/5774111417"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5798902362",
+            "amenity": "pharmacy",
+            "name": "Audifarma"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5324274,
+            10.4211115
+            ]
+        },
+        "id": "node/5798902362"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5798902363",
+            "amenity": "pharmacy",
+            "name": "DEMPOS"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5321471,
+            10.4209585
+            ]
+        },
+        "id": "node/5798902363"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5807965293",
+            "amenity": "pharmacy",
+            "name": "Droguería Inglesa",
+            "shop": "chemist"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5384128,
+            10.4147196
+            ]
+        },
+        "id": "node/5807965293"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5809111552",
+            "amenity": "pharmacy",
+            "dispensing": "yes",
+            "name": "Eticos",
+            "operator": "Eticos"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.538687,
+            10.4156396
+            ]
+        },
+        "id": "node/5809111552"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/5809571609",
+            "amenity": "pharmacy",
+            "name": "Droguería del Norte",
+            "shop": "chemist"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5403574,
+            10.4160558
+            ]
+        },
+        "id": "node/5809571609"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6156119086",
+            "addr:housenumber": "30-14",
+            "addr:street": "Calle 30",
+            "amenity": "pharmacy",
+            "name": "La Rebaja",
+            "opening_hours": "24/7",
+            "phone": "+57 5 6666037"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5411562,
+            10.4214573
+            ]
+        },
+        "id": "node/6156119086"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6156618189",
+            "amenity": "pharmacy",
+            "name": "Droguería La Cordial"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5299811,
+            10.4336035
+            ]
+        },
+        "id": "node/6156618189"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6187677688",
+            "amenity": "pharmacy",
+            "name": "Droguería Inglesa"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5300069,
+            10.416395
+            ]
+        },
+        "id": "node/6187677688"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6211045554",
+            "amenity": "pharmacy",
+            "name": "San Roque",
+            "name:es": "San Roque",
+            "name:it": "San Roque",
+            "name:zh": "San Roque"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5304809,
+            10.4152249
+            ]
+        },
+        "id": "node/6211045554"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6237533357",
+            "amenity": "pharmacy",
+            "name": "Drogueria Farmavida"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5457447,
+            10.4180766
+            ]
+        },
+        "id": "node/6237533357"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6237533724",
+            "addr:street": "Calle 21",
+            "amenity": "pharmacy",
+            "name": "Pharma Global"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5490195,
+            10.4202551
+            ]
+        },
+        "id": "node/6237533724"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6237534084",
+            "addr:street": "Avenida Carrera 7",
+            "amenity": "pharmacy",
+            "name": "Farmacias Fybeca"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5444124,
+            10.418195
+            ]
+        },
+        "id": "node/6237534084"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6237534636",
+            "amenity": "pharmacy",
+            "name": "Drogueria Esculapio"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5525864,
+            10.4230946
+            ]
+        },
+        "id": "node/6237534636"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6237535123",
+            "amenity": "pharmacy",
+            "name": "Drogueria"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5439248,
+            10.4190771
+            ]
+        },
+        "id": "node/6237535123"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6245939969",
+            "amenity": "pharmacy",
+            "name": "Drogueria Dimel"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5469887,
+            10.4239356
+            ]
+        },
+        "id": "node/6245939969"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6285422999",
+            "addr:housenumber": "1-33",
+            "addr:street": "Carrera 1",
+            "amenity": "pharmacy",
+            "name": "Cruz Verde"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.547283,
+            10.4231721
+            ]
+        },
+        "id": "node/6285422999"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/6310808436",
+            "addr:street": "Avenida Carrera 9",
+            "amenity": "pharmacy",
+            "name": "Drogueria Merconorte"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5439739,
+            10.4244817
+            ]
+        },
+        "id": "node/6310808436"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/94849976",
+            "amenity": "pharmacy",
+            "name": "Farmatodo",
+            "source": "ESRI"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5430057,
+            10.4168553
+            ]
+        },
+        "id": "node/94849976"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/109808538",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Cruz Verde"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5372417,
+            10.413290
+            ]
+        },
+        "id": "node/109808538"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/176243064",
+            "addr:street": "Avenida Carrera 17",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "La Rebaja Drogueria",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5319404,
+            10.4317849
+            ]
+        },
+        "id": "node/176243064"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/559310167",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Drogueria Litodrogas",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4646795,
+            10.3797243
+            ]
+        },
+        "id": "node/559310167"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/559607622",
+            "addr:street": "Carrera 71",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Drogas Express",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4826081,
+            10.3848165
+            ]
+        },
+        "id": "node/559607622"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/559964044",
+            "addr:street": "Calle 31D",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Drogueria Dromar",
+            "source": "KaartGroundSurvery2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4974206,
+            10.4079821
+            ]
+        },
+        "id": "node/559964044"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/559964050",
+            "addr:street": "Carrera 50A",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Drogueria Farma Nel",
+            "source": "KaartGroundSurvery2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5002449,
+            10.4115012
+            ]
+        },
+        "id": "node/559964050"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/559964060",
+            "addr:street": "Calle 31D",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Farmakosto",
+            "source": "KaartGroundSurvery2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4967929,
+            10.4075929
+            ]
+        },
+        "id": "node/559964060"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/559967127",
+            "addr:street": "Carrera 34",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Farmacenter",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5240991,
+            10.437807
+            ]
+        },
+        "id": "node/559967127"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/559986740",
+            "addr:street": "Calle 31D",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Droguerios",
+            "source": "KaartGroundSurvery2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4897092,
+            10.4062778
+            ]
+        },
+        "id": "node/559986740"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/559986742",
+            "addr:street": "Transversal 69A",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Pharmakon",
+            "source": "KaartGroundSurvery2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.484373,
+            10.4028272
+            ]
+        },
+        "id": "node/559986742"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/559986755",
+            "addr:street": "Calle 31D",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "La Maxi Droguerias",
+            "source": "KaartGroundSurvery2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4932886,
+            10.40728
+            ]
+        },
+        "id": "node/559986755"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/560870944",
+            "addr:street": "Transversal 71B",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "La Rebaja Drogueria",
+            "source": "KaartGroundSurvery2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4813206,
+            10.4003883
+            ]
+        },
+        "id": "node/560870944"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/560870952",
+            "addr:housenumber": "63-119",
+            "addr:street": "Calle 31D",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Drogueria Urriola",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4861473,
+            10.4056421
+            ]
+        },
+        "id": "node/560870952"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/560870953",
+            "addr:street": "Calle 31D",
+            "amenity": "pharmacy",
+            "name": "Inter Drogas",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4860333,
+            10.40547
+            ]
+        },
+        "id": "node/560870953"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/560870958",
+            "addr:street": "Calle 31D",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Drogas Majagual",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4918845,
+            10.4069756
+            ]
+        },
+        "id": "node/560870958"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/560870960",
+            "addr:street": "Calle 31D",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "La Maxi Droguerias",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4928608,
+            10.4071207
+            ]
+        },
+        "id": "node/560870960"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/560870975",
+            "addr:street": "Diagonal 32",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Farmacenter",
+            "source": "KaartGroundSurvery2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4832961,
+            10.4029895
+            ]
+        },
+        "id": "node/560870975"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/560891031",
+            "addr:street": "Transversal 71E",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Drogas",
+            "source": "KaartGroundSurvery2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4843918,
+            10.39521482
+            ]
+        },
+        "id": "node/560891031"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/561136828",
+            "addr:street": "Calle 76",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Drogueria Peter Rebaja",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5154034,
+            10.4356919
+            ]
+        },
+        "id": "node/561136828"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/561136832",
+            "addr:street": "Calle 30",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Drogueria Nueva Esperanza",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5198398,
+            10.4163103
+            ]
+        },
+        "id": "node/561136832"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/561142146",
+            "addr:street": "Diagonal 32",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "drogureria Medic Salud",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4825196,
+            10.40238
+            ]
+        },
+        "id": "node/561142146"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/561150657",
+            "addr:street": "Transversal 74A",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Drogueria Emigery",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4749008,
+            10.3981696
+            ]
+        },
+        "id": "node/561150657"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/561391799",
+            "addr:street": "Transversal 74",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "Drogueria"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4764254,
+            10.39869
+            ]
+        },
+        "id": "node/561391799"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/561667280",
+            "addr:street": "Carrera 30",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "name": "La Rebaja Drogueria",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5197687,
+            10.4205219
+            ]
+        },
+        "id": "node/561667280"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/562625588",
+            "addr:street": "Avenida Carrera 17",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "building:levels": "1",
+            "healthcare": "pharmacy",
+            "name": "Droguería Nacional",
+            "operator": "Nacional de Salud IPS S.A.S",
+            "phone": "(605) 691 0505 - (605) 656 2448",
+            "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5382365,
+            10.4256026
+            ]
+        },
+        "id": "node/562625588"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1198091198",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "building:levels": "2",
+            "healthcare": "pharmacy",
+            "name": "Droguería Michell"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4940705,
+            10.375784
+            ]
+        },
+        "id": "node/1198091198"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1198456311",
+            "amenity": "pharmacy",
+            "building": "house",
+            "building:levels": "2",
+            "healthcare": "pharmacy",
+            "name": "Droguería Hosanna"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.493571,
+            10.3756424
+            ]
+        },
+        "id": "node/1198456311"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1201234863",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería Farmedic Campestre"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4992907,
+            10.3787613
+            ]
+        },
+        "id": "node/1201234863"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1206729564",
+            "amenity": "pharmacy",
+            "building": "house",
+            "building:levels": "2",
+            "healthcare": "pharmacy",
+            "name": "Droguería Farmacosta Plus",
+            "phone:mobile": "+57 301 4563190"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4879495,
+            10.3902707
+            ]
+        },
+        "id": "node/1206729564"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1206759096",
+            "amenity": "pharmacy",
+            "building": "house",
+            "building:levels": "1",
+            "healthcare": "pharmacy",
+            "name": "Droguería Inglesa",
+            "operator": "Droguería Inglesa",
+            "phone": "605 6539474"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4867793,
+            10.3913341
+            ]
+        },
+        "id": "node/1206759096"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1207685848",
+            "amenity": "pharmacy",
+            "building": "yes",
+            "building:levels": "1",
+            "healthcare": "pharmacy",
+            "name": "La Rebaja Plus",
+            "operator": "Drogas La Rebaja"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5031117,
+            10.4013448
+            ]
+        },
+        "id": "node/1207685848"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1207685850",
+            "amenity": "pharmacy",
+            "building": "house",
+            "building:levels": "2",
+            "healthcare": "pharmacy",
+            "name": "Droguería Inglesa",
+            "operator": "Droguería Inglesa"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5032394,
+            10.4011372
+            ]
+        },
+        "id": "node/1207685850"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1207685868",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería Alex Farma"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.5029169,
+            10.4011881
+            ]
+        },
+        "id": "node/1207685868"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1208966820",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería Mega Express"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4971353,
+            10.3793583
+            ]
+        },
+        "id": "node/1208966820"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1209872859",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería Pharma Plus"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4869986,
+            10.3873213
+            ]
+        },
+        "id": "node/1209872859"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1210184363",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería y Minimarket El Mejor Costo"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4858523,
+            10.387060
+            ]
+        },
+        "id": "node/1210184363"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1210450511",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "La Rebaja Plus",
+            "operator": "Drogas La Rebaja"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4960364,
+            10.38147
+            ]
+        },
+        "id": "node/1210450511"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1210450533",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería Farmanorte",
+            "operator": "Droguería Farmanorte"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4968011,
+            10.380820
+            ]
+        },
+        "id": "node/1210450533"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1210646499",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería La Economía"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4959165,
+            10.3814239
+            ]
+        },
+        "id": "node/1210646499"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1210646501",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Drogas Popular"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.495885,
+            10.3818101
+            ]
+        },
+        "id": "node/1210646501"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1210867806",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Market Droguería"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4859131,
+            10.385599
+            ]
+        },
+        "id": "node/1210867806"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1211901722",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería Pan de Vida"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4925863,
+            10.3871778
+            ]
+        },
+        "id": "node/1211901722"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1212053874",
+            "addr:city": "Cartagena de Indias",
+            "amenity": "pharmacy",
+            "brand": "Droguería Inglesa",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería Inglesa"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4928006,
+            10.3869399
+            ]
+        },
+        "id": "node/1212053874"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1212108269",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería Florida Express"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4933227,
+            10.3864864
+            ]
+        },
+        "id": "node/1212108269"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1212410230",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "FamiPharma E.S."
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4976294,
+            10.3802929
+            ]
+        },
+        "id": "node/1212410230"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1212885314",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Drogueria Sanamax"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4968259,
+            10.3810867
+            ]
+        },
+        "id": "node/1212885314"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1213885783",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería y Variedades La Gran Bendición"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4989298,
+            10.3805977
+            ]
+        },
+        "id": "node/1213885783"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1213946687",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería Farmacenter"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4997828,
+            10.3802514
+            ]
+        },
+        "id": "node/1213946687"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1215653024",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "A&M Droguerías"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4958199,
+            10.3813123
+            ]
+        },
+        "id": "node/1215653024"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1215879944",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguerías Farmacenter",
+            "operator": "Droguerías Farmacenter"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4942156,
+            10.3844103
+            ]
+        },
+        "id": "node/1215879944"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1216914336",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería Yaris Sofía"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4953317,
+            10.3759782
+            ]
+        },
+        "id": "node/1216914336"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1216914339",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "indoor": "yes",
+            "level": "1",
+            "name": "Droguería La Fórmula"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.4946239,
+            10.3760318
+            ]
+        },
+        "id": "node/1216914339"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1216914340",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "name": "Drogueria Michellys"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.499125123024,
+            10.408036731143858
+            ]
+        },
+        "id": "node/1216914340"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1216914341",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "name": "Farmaya"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.56040912877509,
+            10.394880906468643
+            ]
+        },
+        "id": "node/1216914341"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1216914342",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "name": "Droguería Inglesa"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.55750429661659,
+            10.395971734227855
+            ]
+        },
+        "id": "node/1216914342"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1216914343",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "name": "Drogueria Del Norte"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.55623471736908 , 10.39578712109809
+            ]
+        },
+        "id": "node/1216914343"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1216914344",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "name": "Farmacia"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.55619716636103 , 10.395882989559073
+            ]
+        },
+        "id": "node/1216914344"
+        },
+        {
+        "type": "Feature",
+        "properties": {
+            "@id": "node/1216914345",
+            "amenity": "pharmacy",
+            "healthcare": "pharmacy",
+            "name": "Droguerías InterDrogas"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+            -75.55619090800974 , 10.396204940634219
+            ]
+        },
+        "id": "node/1216914345"
+        }
+    ]
+    }

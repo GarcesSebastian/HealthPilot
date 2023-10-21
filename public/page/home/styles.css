@@ -1,6 +1,7 @@
 :root {
   --background_1: #3d50e0;
   --background_2: #62a9e1;
+  --background_1_dispose:rgb(224, 224, 224,.2);
 
   /*Text Responsive*/
 }
@@ -494,7 +495,7 @@ body {
   bottom: 6.5%;
   width: 100%;
   height: 10%;
-  background-color:rgb(152, 152, 152, .3);
+  background-color:var(--background_1_dispose);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -538,6 +539,66 @@ body {
   outline: none;
   border: none;
   border-radius: 5px;
+}
+
+.filterMap{
+  position: absolute;
+  top: 3%;
+  right: 0%;
+  width: fit-content;
+  height: fit-content;
+  background-color:var(--background_1_dispose);
+  z-index: 4;
+  padding: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: .4px solid rgb(255, 255, 255, .5);
+  transition: .5s ease-in-out;
+  color: white;
+}
+
+.closeFilterChecks{
+  position: absolute;
+  left: -17%;
+  width: fit-content;
+  height: fit-content;
+  padding: 4% 3%;
+  background-color:var(--background_1_dispose);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: .4px solid rgb(255, 255, 255, .5);
+  cursor: pointer;
+}
+
+.filterChecks{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filterChecks div label{
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+.filterChecks div input[type="checkbox"]{
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid white;
+  width: clamp(1px, 2.6vh, 30px);
+  height: clamp(1px, 2.55vh, 30px);
+  outline: none;
+  cursor: pointer;
+  border-radius: 1px;
+}
+
+.filterChecks div input[type="checkbox"]:checked{
+  background-color: lime;
 }
 
 /*Spawn Map*/

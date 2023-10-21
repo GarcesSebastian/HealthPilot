@@ -455,8 +455,8 @@
       "type": "Feature",
       "properties": {
         "@id": "node/94668897",
-        "amenity": "hospital",
-        "healthcare": "hospital",
+        "amenity": "clinic",
+        "healthcare": "clinic",
         "name": "Clínica Blas de Lezo",
         "source": "bing"
       },
@@ -474,7 +474,7 @@
       "properties": {
         "@id": "node/109808868",
         "addr:street": "Avenida Calle 26",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "building": "yes",
         "name": "Clínica Quirúrgica de Manga",
         "source": "Kaart Ground Survey 2018"
@@ -492,9 +492,9 @@
       "type": "Feature",
       "properties": {
         "@id": "node/136011725",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "emergency": "yes",
-        "healthcare": "hospital",
+        "healthcare": "clinic",
         "healthcare:speciality": "general;emergency;orthodontics",
         "name": "hospital de el pozon",
         "source": "bing"
@@ -515,9 +515,9 @@
         "addr:city": "Cartagena de indias",
         "addr:housenumber": "#40-129",
         "addr:street": "Transversal 54",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "emergency": "yes",
-        "healthcare": "hospital",
+        "healthcare": "clinic",
         "name": "Clínica Blas de Lezo - Urgencias",
         "phone": "+57 5 6632604"
       },
@@ -535,9 +535,9 @@
       "properties": {
         "@id": "node/548913636",
         "addr:street": "Calle 29D",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "building": "yes",
-        "healthcare": "hospital",
+        "healthcare": "clinic",
         "name": "Clínica La Ermita de Cartagena",
         "source": "Kaart Ground Survey 2018"
       },
@@ -555,7 +555,7 @@
       "properties": {
         "@id": "node/558856839",
         "addr:street": "Calle Principal de Arroz Barato",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "building": "yes",
         "emergency": "no",
         "name": "Hospital de Arroz Barato",
@@ -575,7 +575,7 @@
       "properties": {
         "@id": "node/558870022",
         "addr:street": "Calle 30",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "building": "yes",
         "name": "Cruz Roja Colombiana",
         "source": "Kaart Ground Survey 2018"
@@ -594,7 +594,7 @@
       "properties": {
         "@id": "node/559964061",
         "addr:street": "Calle 31D",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "building": "yes",
         "name": "Coosalud",
         "source": "KaartGroundSurvery2018"
@@ -613,7 +613,7 @@
       "properties": {
         "@id": "node/560809349",
         "addr:street": "Avenida Carrera 31",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "building": "yes",
         "name": "Clínica Crecer",
         "source": "Kaart Ground Survey 2018"
@@ -632,7 +632,7 @@
       "properties": {
         "@id": "node/561142141",
         "addr:street": "Calle 31B",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "building": "hospital",
         "name": "Salud Y Bienestar Del Caribe I.P.S. Un Servicio Para Un Mejor Vivir",
         "source": "Kaart Ground Survey 2018"
@@ -650,9 +650,9 @@
       "type": "Feature",
       "properties": {
         "@id": "node/954883140",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "emergency": "yes",
-        "healthcare": "hospital",
+        "healthcare": "clinic",
         "name": "Hospital Universitario del Caribe"
       },
       "geometry": {
@@ -668,9 +668,9 @@
       "type": "Feature",
       "properties": {
         "@id": "node/962305208",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "emergency": "yes",
-        "healthcare": "hospital",
+        "healthcare": "clinic",
         "name": "Nuevo Hospital de Bocagrande"
       },
       "geometry": {
@@ -686,7 +686,7 @@
       "type": "Feature",
       "properties": {
         "@id": "node/1093715357",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "name": "Clinica Madre Bernarda"
       },
       "geometry": {
@@ -702,7 +702,7 @@
       "type": "Feature",
       "properties": {
         "@id": "node/1093731534",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "name": "Hospital Nuevo Bosque"
       },
       "geometry": {
@@ -718,8 +718,8 @@
       "type": "Feature",
       "properties": {
         "@id": "node/1095085579",
-        "amenity": "hospital",
-        "healthcare": "hospital",
+        "amenity": "clinic",
+        "healthcare": "clinic",
         "name": "DADIS"
       },
       "geometry": {
@@ -735,8 +735,8 @@
       "type": "Feature",
       "properties": {
         "@id": "node/1204337298",
-        "amenity": "hospital",
-        "healthcare": "hospital",
+        "amenity": "clinic",
+        "healthcare": "clinic",
         "name": "Hospital Universitario San Juan de Dios"
       },
       "geometry": {
@@ -752,8 +752,8 @@
       "type": "Feature",
       "properties": {
         "@id": "node/1206710211",
-        "amenity": "hospital",
-        "healthcare": "hospital",
+        "amenity": "clinic",
+        "healthcare": "clinic",
         "name": "Centro Médico Buenos Aires"
       },
       "geometry": {
@@ -769,8 +769,8 @@
       "type": "Feature",
       "properties": {
         "@id": "node/1206776154",
-        "amenity": "hospital",
-        "healthcare": "hospital",
+        "amenity": "clinic",
+        "healthcare": "clinic",
         "name": "Hospital Naval de Cartagena: Unidad Funcional de Atención Primaria ‒ Sede Blas de Lezo"
       },
       "geometry": {
@@ -786,8 +786,8 @@
       "type": "Feature",
       "properties": {
         "@id": "node/1422539757",
-        "amenity": "hospital",
-        "healthcare": "hospital",
+        "amenity": "clinic",
+        "healthcare": "clinic",
         "name": "Medihelp"
       },
       "geometry": {
@@ -803,7 +803,7 @@
       "type": "Feature",
       "properties": {
         "@id": "node/2898246153",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "designation": "hospital",
         "emergency": "yes",
         "name": "Gestion Salud Ips",
@@ -822,7 +822,7 @@
       "type": "Feature",
       "properties": {
         "@id": "node/4022320101",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "name": "Centro de Diagnostico Salud Social IPS"
       },
       "geometry": {
@@ -838,7 +838,7 @@
       "type": "Feature",
       "properties": {
         "@id": "node/4022342909",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "name": "Centro de Salud de Pumarejo"
       },
       "geometry": {
@@ -858,10 +858,10 @@
         "addr:housenumber": "35-297",
         "addr:postcode": "130010",
         "addr:street": "Carrera 71",
-        "amenity": "hospital",
+        "amenity": "clinic",
         "description": "Apoyo diagnóstico y terapéutico en torno a la promoción, prevención e intervención de la salud mental. Utilizamos equipos de neurotecnología de punta en interacción con las diferentes disciplinas del comportamiento y la salud en general.",
         "email": "neuroinnovacartagena@gmail.com",
-        "healthcare": "hospital",
+        "healthcare": "clinic",
         "healthcare:speciality": "Neuropsychology;psychology;psychiatry;neurology;speech_therapy;occupational_therapy;special_education;brain_mapping;neurofeedback;transcranial_stimulation;rehabilitation_cognitive;detoxification_ionic",
         "healthcare:speciality:de": "mental_health",
         "name": "NEUROINNOVACOLOMBIA",
