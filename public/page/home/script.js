@@ -152,8 +152,7 @@ fetch("../../../GeoJson/export.geojson")
     L.geoJSON(data, {
       pointToLayer: function (feature, latlng) {
         return L.marker(latlng, { icon: pharmacyIcon }).bindPopup(
-          `<h3>${feature.properties.name}</h3>` + "\n" +
-          `<h3>${feature.properties.opening_hours}</h3>`
+          `<h3>${feature.properties.name}</h3>`
         );
       },
     }).addTo(map);
