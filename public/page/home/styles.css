@@ -484,24 +484,56 @@ body {
 
 .contentMap #map{
   width: 100%;
-  height: 85%;
+  height: 90%;
 }
 
 .moreMap{
   position: absolute;
+  top: 90%;
   width: 100%;
-  height: 15%;
+  height: 10%;
   background-color:#3d50e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .contentMap .location{
-  position: absolute;
-  top: 10%;
-  right: 2%;
   z-index: 100;
   cursor: pointer;
   color: rgb(255, 255, 255);
   font-size: 18px;
 }
+
+.contentSearch{
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .searchLocation{
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  width: 70%;
+  height: 40%;
+  padding-left: 4%;
+  font-size: 14px;
+}
+
+.searchButtonLocation{
+  width: fit-content;
+  padding: 2.5%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: lighter;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+} */
 
 /*Spawn Map*/

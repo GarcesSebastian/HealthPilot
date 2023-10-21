@@ -9,6 +9,8 @@
     <script src="https://kit.fontawesome.com/7a00fb587a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-geosearch@3.10.2/dist/geosearch.min.js"></script>
+    <script src="https://unpkg.com/leaflet-geosearch/dist/geosearch.min.js"></script>
     <title>Inicio-Menu</title>
 </head>
 <body>
@@ -241,6 +243,11 @@
             <div class="contentMap">
                 <div id="map"></div>
                 <div class="moreMap">
+                    <div class="contentSearch">
+                        <input type="number" name="latitud" class="latitud">
+                        <input type="number" name="longitud" class="longitud">
+                    </div>
+                    <input type="submit" value="Buscar" class="searchButtonLocation" id="search-button">
                     <span class="location">
                         <i class="fa-solid fa-location-crosshairs fa-lg"></i>
                     </span>

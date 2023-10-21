@@ -1,3 +1,7 @@
+window.addEventListener("DOMContentLoaded", () => {
+  getLocation();
+});
+
 let buttonsFooter = document.querySelectorAll(".buttonFooter");
 
 buttonsFooter.forEach((element) => {
@@ -81,72 +85,133 @@ let buttonsTrayNotifications = document.querySelectorAll(".itemTray");
 let contClicksTrayNotifications = 0;
 
 buttonsTrayNotifications.forEach((element) => {
-    if(!element.classList.contains("liActive")){
-        element.addEventListener("click", () => {
-            buttonsTrayNotifications.forEach((element) => {
-              element.style.backgroundColor = "rgb(255, 255, 255, .2)";
-            });
-        
-            element.style.backgroundColor = "rgba(69, 69, 69, 0.5)";
-          });
-    }else{
-        element.addEventListener("click", () =>{
-            contClicksTrayNotifications++;
-            if(contClicksTrayNotifications % 2 != 0){
-                element.querySelector(".arrow").style.transform = "rotate(-180deg)";
-            }else{
-                element.querySelector(".arrow").style.transform = "rotate(0deg)";
-            }
-        });
-    }
+  if (!element.classList.contains("liActive")) {
+    element.addEventListener("click", () => {
+      buttonsTrayNotifications.forEach((element) => {
+        element.style.backgroundColor = "rgb(255, 255, 255, .2)";
+      });
+
+      element.style.backgroundColor = "rgba(69, 69, 69, 0.5)";
+    });
+  } else {
+    element.addEventListener("click", () => {
+      contClicksTrayNotifications++;
+      if (contClicksTrayNotifications % 2 != 0) {
+        element.querySelector(".arrow").style.transform = "rotate(-180deg)";
+      } else {
+        element.querySelector(".arrow").style.transform = "rotate(0deg)";
+      }
+    });
+  }
 });
 
-let buttonsGeneral = document.querySelector(".configGeneral").querySelectorAll(".itemConfig");
+let buttonsGeneral = document
+  .querySelector(".configGeneral")
+  .querySelectorAll(".itemConfig");
 
-buttonsGeneral.forEach((element) =>{
-  element.addEventListener("click", () =>{
-    if(element.getAttribute("data-general") == "1"){
+buttonsGeneral.forEach((element) => {
+  element.addEventListener("click", () => {
+    if (element.getAttribute("data-general") == "1") {
       let color = prompt("Digite algo");
       let root = document.documentElement;
       root.style.setProperty("--background_1", color);
     }
   });
-})
+});
 
 //Spawn Notificaciones
 
-var map = L.map("map").setView([51.505, -0.09], 13);
+let map = L.map("map").setView([0, 0], 13);
 
-// Agregar una capa de mapa base
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution:
-    '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);
+L.tileLayer(
+  "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}",
+  {
+    minZoom: 0,
+    maxZoom: 20,
+    attribution:
+      '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    ext: "png",
+  }
+).addTo(map);
 
-document.addEventListener("DOMContentLoaded", function () {
-  obtenerUbicacion();
+var pharmacyIcon = L.icon({
+  iconUrl: "../../../img/markets/marketPharmacy.png",
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
 });
-  
-function obtenerUbicacion() {
+
+var clientIcon = L.icon({
+  iconUrl: "../../../img/markets/player.png",
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+});
+
+fetch("../../../GeoJson/export.geojson")
+  .then((response) => response.json())
+  .then((data) => {
+    L.geoJSON(data, {
+      pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, { icon: pharmacyIcon }).bindPopup(
+          `<h3>${feature.properties.name}</h3>`
+        );
+      },
+    }).addTo(map);
+  });
+
+var marker;
+
+function getLocation() {
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(function (position) {
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
 
-      // Crear un marcador en la ubicación del usuario
-      var marker = L.marker([lat, lon]).addTo(map);
-      marker.bindPopup("¡Tu ubicación!").openPopup();
+      if (marker) {
+        map.removeLayer(marker);
+      }
 
-      // Centrar el mapa en la ubicación del usuario
-      map.setView([lat, lon], 13);
+      marker = L.marker([lat, lon]).addTo(map);
+      marker
+        .bindPopup("<h3 style='font-size:14px;'>¡Tu ubicación!</h3>")
+        .openPopup();
+
+      map.setView([lat, lon], 15);
     });
   } else {
     alert("Tu navegador no admite la geolocalización.");
   }
 }
 
+function findLocation(lat, lon) {
+  marker = L.marker([lat, lon]).addTo(map);
+  marker
+    .bindPopup("<h3 style='font-size:14px;'>¡Tu ubicación!</h3>")
+    .openPopup();
+
+  map.setView([lat, lon], 15);
+}
 
 let buttonLocation = document.querySelector(".location");
-buttonLocation.addEventListener("click", obtenerUbicacion);
+buttonLocation.addEventListener("click", getLocation);
 
+map.on("click", onMapClick);
+
+function onMapClick(e) {
+  if (marker) {
+    map.removeLayer(marker);
+  }
+
+  marker = L.marker(e.latlng).addTo(map);
+  marker
+    .bindPopup("<h3 style='font-size:14px;'>¡Tu ubicación!</h3>")
+    .openPopup();
+    console.log(e.latlng);
+}
+
+let latitudCoord = document.querySelector(".latitud");
+let longitudCoords = document.querySelector(".longitud");
+let btnCoords = document.querySelector(".searchButtonLocation");
+
+btnCoords.addEventListener("click", () => {
+  findLocation(latitudCoord.value, longitudCoords.value);
+});

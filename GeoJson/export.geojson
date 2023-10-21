@@ -1,0 +1,695 @@
+{
+    "type": "FeatureCollection",
+    "generator": "overpass-turbo",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+    "timestamp": "2023-10-21T05:31:05Z",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+              "@id": "node/298299500",
+              "amenity": "pharmacy",
+              "healthcare": "pharmacy",
+              "name": "Droguerías InterDrogas",
+              "opening_hours": "12am - 11:30pm"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -75.5560536,
+                10.3961543
+              ]
+            },
+            "id": "node/298299500"
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "@id": "node/298299506",
+              "amenity": "pharmacy",
+              "name": "Farmaya",
+              "opening_hours": "8am - 8pm"
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -75.56037068367006,        
+                10.394881194068276
+              ]
+            },
+            "id": "node/298299506"
+          },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1152345388",
+          "amenity": "pharmacy",
+          "dispensing": "yes",
+          "name": "Drogas La Rebaja",
+          "opening_hours": "24/7"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.516117,
+            10.3881351
+          ]
+        },
+        "id": "node/1152345388"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1422539756",
+          "amenity": "pharmacy",
+          "dispensing": "yes",
+          "healthcare": "pharmacy",
+          "name": "Droguería Alemana",
+          "opening_hours": "Mo-Fr 08:30-20:00"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5560136,
+            10.3976457
+          ]
+        },
+        "id": "node/1422539756"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/4456811090",
+          "amenity": "pharmacy",
+          "healthcare": "pharmacy",
+          "name": "Rebaja Plus",
+          "shop": "gift"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5491058,
+            10.4244166
+          ]
+        },
+        "id": "node/4456811090"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/4621553190",
+          "amenity": "pharmacy",
+          "healthcare": "pharmacy",
+          "name": "Drogeria Olimpica"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5461764,
+            10.4243466
+          ]
+        },
+        "id": "node/4621553190"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/4806580421",
+          "amenity": "pharmacy",
+          "healthcare": "pharmacy",
+          "name": "Drogueria Inglesa",
+          "name:es": "English Pharmacy"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5567176,
+            10.4026379
+          ]
+        },
+        "id": "node/4806580421"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5303759050",
+          "addr:housenumber": "20-128",
+          "addr:street": "32",
+          "amenity": "pharmacy",
+          "drive_through": "no",
+          "healthcare": "pharmacy",
+          "name": "Superdrogueria Olimpica",
+          "opening_hours": "Mo-Su 07:00-22:00"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5322202,
+            10.4207971
+          ]
+        },
+        "id": "node/5303759050"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5391611011",
+          "addr:street": "Calle 25",
+          "amenity": "pharmacy",
+          "name": "Drogueria Farma Click",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4821923,
+            10.3869664
+          ]
+        },
+        "id": "node/5391611011"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5397389492",
+          "amenity": "pharmacy",
+          "name": "farmacenter",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4807346,
+            10.3826172
+          ]
+        },
+        "id": "node/5397389492"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5397500053",
+          "addr:street": "Carrera 2",
+          "amenity": "pharmacy",
+          "name": "Drogueria",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5216074,
+            10.4438235
+          ]
+        },
+        "id": "node/5397500053"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5400459144",
+          "addr:street": "Calle 70",
+          "amenity": "pharmacy",
+          "name": "La Botica"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5174661,
+            10.4482866
+          ]
+        },
+        "id": "node/5400459144"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5408968024",
+          "addr:street": "Avenida Carrera 17",
+          "amenity": "pharmacy",
+          "name": "Droguería Yubla",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.532748,
+            10.4309734
+          ]
+        },
+        "id": "node/5408968024"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5408968031",
+          "addr:street": "Calle 70",
+          "amenity": "pharmacy",
+          "healthcare": "pharmacy",
+          "name": "Droguería Inglesa",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.517796,
+            10.4430592
+          ]
+        },
+        "id": "node/5408968031"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5408968041",
+          "addr:street": "Carrera 14",
+          "amenity": "pharmacy",
+          "name": "Drogueria le Rebaja Express",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5319835,
+            10.4339871
+          ]
+        },
+        "id": "node/5408968041"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5409031307",
+          "addr:street": "Avenida Carrera 17",
+          "amenity": "pharmacy",
+          "name": "Droguería Kety",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5334038,
+            10.4303363
+          ]
+        },
+        "id": "node/5409031307"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5411369728",
+          "addr:street": "Calle 41A",
+          "amenity": "pharmacy",
+          "name": "Drogueria Donde Ricky",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5197795,
+            10.4186621
+          ]
+        },
+        "id": "node/5411369728"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5411479816",
+          "addr:street": "Calle 35",
+          "amenity": "pharmacy",
+          "name": "Pharma Life Plus",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.519589,
+            10.4139981
+          ]
+        },
+        "id": "node/5411479816"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5413419921",
+          "addr:street": "Calle 31",
+          "amenity": "pharmacy",
+          "name": "La Rebaja",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5176424,
+            10.4096963
+          ]
+        },
+        "id": "node/5413419921"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5413591993",
+          "addr:street": "Calle 31D",
+          "amenity": "pharmacy",
+          "name": "Drogueria Hermanos Vega",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5078664,
+            10.4096414
+          ]
+        },
+        "id": "node/5413591993"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5413591998",
+          "addr:street": "Calle 31D",
+          "amenity": "pharmacy",
+          "name": "Drogueria Farma Plus",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5119005,
+            10.4099712
+          ]
+        },
+        "id": "node/5413591998"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5413592224",
+          "addr:street": "Carrera 30",
+          "amenity": "pharmacy",
+          "name": "drogueria",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5213083,
+            10.4135312
+          ]
+        },
+        "id": "node/5413592224"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5415633077",
+          "addr:street": "Carrera 30",
+          "amenity": "pharmacy",
+          "name": "Drogueria"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5196422,
+            10.4167549
+          ]
+        },
+        "id": "node/5415633077"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5423743283",
+          "addr:street": "Avenida Carrera 17",
+          "amenity": "pharmacy",
+          "name": "La Economia Drogueria",
+          "source": "Kaart Ground Survey 2018"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5345658,
+            10.4291724
+          ]
+        },
+        "id": "node/5423743283"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5774111417",
+          "amenity": "pharmacy",
+          "healthcare": "pharmacy",
+          "name": "Drogas Mega Express"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5451307,
+            10.4270119
+          ]
+        },
+        "id": "node/5774111417"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5798902362",
+          "amenity": "pharmacy",
+          "name": "Audifarma"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5324274,
+            10.4211115
+          ]
+        },
+        "id": "node/5798902362"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5798902363",
+          "amenity": "pharmacy",
+          "name": "DEMPOS"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5321471,
+            10.4209585
+          ]
+        },
+        "id": "node/5798902363"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5807965293",
+          "amenity": "pharmacy",
+          "name": "Droguería Inglesa",
+          "shop": "chemist"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5384128,
+            10.4147196
+          ]
+        },
+        "id": "node/5807965293"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5809111552",
+          "amenity": "pharmacy",
+          "dispensing": "yes",
+          "name": "Eticos",
+          "operator": "Eticos"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.538687,
+            10.4156396
+          ]
+        },
+        "id": "node/5809111552"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/5809571609",
+          "amenity": "pharmacy",
+          "name": "Droguería del Norte",
+          "shop": "chemist"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5403574,
+            10.4160558
+          ]
+        },
+        "id": "node/5809571609"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/6156119086",
+          "addr:housenumber": "30-14",
+          "addr:street": "Calle 30",
+          "amenity": "pharmacy",
+          "name": "La Rebaja",
+          "opening_hours": "24/7",
+          "phone": "+57 5 6666037"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5411562,
+            10.4214573
+          ]
+        },
+        "id": "node/6156119086"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/6156618189",
+          "amenity": "pharmacy",
+          "name": "Droguería La Cordial"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5299811,
+            10.4336035
+          ]
+        },
+        "id": "node/6156618189"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/6187677688",
+          "amenity": "pharmacy",
+          "name": "Droguería Inglesa"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5300069,
+            10.416395
+          ]
+        },
+        "id": "node/6187677688"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/6187677689",
+          "amenity": "pharmacy",
+          "name": "La Rebaja"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5287105,
+            10.4157575
+          ]
+        },
+        "id": "node/6187677689"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/7150034085",
+          "amenity": "pharmacy",
+          "healthcare": "pharmacy",
+          "name": "Droguería del Norte"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5472657,
+            10.4243641
+          ]
+        },
+        "id": "node/7150034085"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/8963753005",
+          "addr:housenumber": "30-238",
+          "addr:street": "Diagonal 21",
+          "amenity": "pharmacy",
+          "name": "Multidrogas"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5220956,
+            10.4099316
+          ]
+        },
+        "id": "node/8963753005"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/10010386317",
+          "amenity": "pharmacy",
+          "name": "La Rabeja Plus",
+          "opening_hours": "Mo-Sa 07:00-21:30; Su 08:00-20:00"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.5278724,
+            10.4406697
+          ]
+        },
+        "id": "node/10010386317"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/10119734429",
+          "amenity": "pharmacy",
+          "name": "Cruz Verde Ronda Real Santa Lucía",
+          "operator": "Cruz Verde"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4813246,
+            10.3932546
+          ]
+        },
+        "id": "node/10119734429"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/10119740017",
+          "amenity": "pharmacy",
+          "name": "Cruz Verde Santa Lucía",
+          "operator": "Cruz Verde"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.4790065,
+            10.3926294
+          ]
+        },
+        "id": "node/10119740017"
+      }
+    ]
+  }
