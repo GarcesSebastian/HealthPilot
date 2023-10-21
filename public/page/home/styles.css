@@ -478,8 +478,9 @@ body {
   width: 100%;
   height: 91.5%;
   position: absolute;
-  top:0;
+  top:100%;
   z-index: 3;
+  transition: .3s ease-out;
 }
 
 .contentMap #map{
@@ -515,25 +516,26 @@ body {
   justify-content: center;
 }
 
-/* .searchLocation{
+.srchLocation{
   outline: none;
   border: none;
   border-radius: 5px;
-  width: 70%;
-  height: 40%;
+  width: fit-content;
+  height: fit-content;
+  padding: 4% 0;
   padding-left: 4%;
   font-size: 14px;
 }
 
 .searchButtonLocation{
   width: fit-content;
-  padding: 2.5%;
+  padding: 2%;
   cursor: pointer;
   font-size: 14px;
   font-weight: lighter;
   outline: none;
   border: none;
   border-radius: 5px;
-} */
+}
 
 /*Spawn Map*/

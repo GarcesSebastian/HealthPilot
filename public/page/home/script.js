@@ -48,6 +48,7 @@ buttonsContentPage.forEach((element) => {
       let circle = element.querySelector(".itemCircle");
       circle.querySelector(".fa-circle").classList.remove("fa-regular");
       circle.querySelector(".fa-circle").classList.add("fa-solid");
+      document.querySelector(".contentMap").style.top = "0%";
       setTimeout(() => {
         circle.querySelector(".fa-circle").classList.add("fa-regular");
         circle.querySelector(".fa-circle").classList.remove("fa-solid");
@@ -115,6 +116,9 @@ buttonsGeneral.forEach((element) => {
       let color = prompt("Digite algo");
       let root = document.documentElement;
       root.style.setProperty("--background_1", color);
+    } else if (element.getAttribute("data-general") == "2") {
+    } else if (element.getAttribute("data-general") == "3") {
+    } else if (element.getAttribute("data-general") == "4") {
     }
   });
 });
@@ -135,18 +139,20 @@ L.tileLayer(
 ).addTo(map);
 
 var pharmacyIcon = L.icon({
-  iconUrl: "../../../img/markets/marketPharmacy.png",
+  iconUrl: "../../../img/markets/marketFarmacia.png",
   iconSize: [32, 32],
   iconAnchor: [16, 32],
 });
 
 var clientIcon = L.icon({
-  iconUrl: "../../../img/markets/player.png",
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/7291/7291700.png ",
   iconSize: [32, 32],
   iconAnchor: [16, 32],
 });
 
-fetch("../../../GeoJson/export.geojson")
+let geoJSONPath = "../../../GeoJson/export.geojson";
+
+fetch(geoJSONPath)
   .then((response) => response.json())
   .then((data) => {
     L.geoJSON(data, {
@@ -170,25 +176,30 @@ function getLocation() {
         map.removeLayer(marker);
       }
 
-      marker = L.marker([lat, lon]).addTo(map);
+      marker = L.marker([lat, lon], { icon: clientIcon }).addTo(map);
+      var popupContent = "<h2>Mi Popup</h2><p>Este es un contenido personalizado.</p>";
+      marker.bindPopup(popupContent);
       marker
-        .bindPopup("<h3 style='font-size:14px;'>¡Tu ubicación!</h3>")
-        .openPopup();
+        .getPopup()
+        .setContent(`<div>${popupContent}</div>`);
+
+      marker
+      .addEventListener("mouseover", () =>{
+        marker.bindPopup(popupContent).openPopup();
+      });
+
+      marker
+      .addEventListener("mouseout", () =>{
+        marker.bindPopup(popupContent).closePopup();
+      });
+
+
 
       map.setView([lat, lon], 15);
     });
   } else {
     alert("Tu navegador no admite la geolocalización.");
   }
-}
-
-function findLocation(lat, lon) {
-  marker = L.marker([lat, lon]).addTo(map);
-  marker
-    .bindPopup("<h3 style='font-size:14px;'>¡Tu ubicación!</h3>")
-    .openPopup();
-
-  map.setView([lat, lon], 15);
 }
 
 let buttonLocation = document.querySelector(".location");
@@ -201,17 +212,50 @@ function onMapClick(e) {
     map.removeLayer(marker);
   }
 
-  marker = L.marker(e.latlng).addTo(map);
+  marker = L.marker(e.latlng, { icon: clientIcon }).addTo(map);
+  var popupContent = `<h3>Ubicacion Actual</h3><p style="font-size:12px;">Lat:${e.latlng.lat} - Lon:${e.latlng.lng}</p>`;
+  marker.bindPopup(popupContent);
   marker
-    .bindPopup("<h3 style='font-size:14px;'>¡Tu ubicación!</h3>")
-    .openPopup();
-    console.log(e.latlng);
+    .getPopup()
+    .setContent(`<div style="width:100%; height:100%; display:flex; flex-direction:colum; aling-items:center; justify-content:center;">${popupContent}</div>`);
+
+  marker
+  .addEventListener("mouseover", () =>{
+    marker.bindPopup(popupContent).openPopup();
+  });
+
+  marker
+  .addEventListener("mouseout", () =>{
+    marker.bindPopup(popupContent).closePopup();
+  });
+  console.log(e.latlng);
 }
 
-let latitudCoord = document.querySelector(".latitud");
-let longitudCoords = document.querySelector(".longitud");
+let srchLocation = document.querySelector(".srchLocation");
 let btnCoords = document.querySelector(".searchButtonLocation");
 
+function findLocation(name) {
+  fetch(geoJSONPath)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error al cargar el archivo GeoJSON");
+      }
+      return response.json();
+    })
+    .then((geojsonData) => {
+      geojsonData.features.forEach((feature) => {
+        if (feature.properties.name == name) {
+          let lat = feature.geometry.coordinates[1];
+          let lon = feature.geometry.coordinates[0];
+          map.setView([lat, lon], 18);
+        }
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 btnCoords.addEventListener("click", () => {
-  findLocation(latitudCoord.value, longitudCoords.value);
+  findLocation(srchLocation.value);
 });
