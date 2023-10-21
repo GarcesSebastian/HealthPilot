@@ -124,7 +124,7 @@ buttonsGeneral.forEach((element) => {
 let map = L.map("map").setView([0, 0], 13);
 
 L.tileLayer(
-  "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}",
+  "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}?api_key=767b0f97-4822-44d3-afcf-cb7309ff098e'",
   {
     minZoom: 0,
     maxZoom: 20,
@@ -152,7 +152,8 @@ fetch("../../../GeoJson/export.geojson")
     L.geoJSON(data, {
       pointToLayer: function (feature, latlng) {
         return L.marker(latlng, { icon: pharmacyIcon }).bindPopup(
-          `<h3>${feature.properties.name}</h3>`
+          `<h3>${feature.properties.name}</h3>` + "\n" +
+          `<h3>${feature.properties.opening_hours}</h3>`
         );
       },
     }).addTo(map);
