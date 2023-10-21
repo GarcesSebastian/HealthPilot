@@ -1,3 +1,14 @@
+let searchGeoJSON = "../../../GeoJson/searchGeo.geojson";
+let geoJSONPath = "../../../GeoJson/pharmacy.geojson";
+let clinicGeoJSONPath = "../../../GeoJson/clinic.geojson";
+let contPharmacy = 0;
+let contDefaultPharmacy = 0;
+let contClinic = 0;
+let contDefaultClinic = 0;
+
+let startPoint = null;
+let endPoint = null;
+
 window.addEventListener("DOMContentLoaded", () => {
   getLocation();
   createMarkerClinic();
@@ -164,38 +175,63 @@ var clientIcon = L.icon({
   iconAnchor: [16, 32],
 });
 
-let searchGeoJSON = "../../../GeoJson/searchGeo.geojson";
-let geoJSONPath = "../../../GeoJson/pharmacy.geojson";
-let clinicGeoJSONPath = "../../../GeoJson/clinic.geojson";
-let contPharmacy = 0;
-let contDefaultPharmacy = 0;
-let contClinic = 0;
-let contDefaultClinic = 0;
-
-
-function createMarkerPharmacy(){
+function createMarkerPharmacy() {
   fetch(geoJSONPath)
-  .then((response) => response.json())
-  .then((data) => {
-    L.geoJSON(data, {
-      pointToLayer: function (feature, latlng) {
-        contPharmacy++;
-        if (feature.properties.name == "default") {
-          contDefaultPharmacy++;
-        }
-        return L.marker(latlng, { icon: pharmacyIcon }).bindPopup(
-          `<h3>${feature.properties.name}</h3>`
-        );
-      },
-    }).addTo(map);
+    .then((response) => response.json())
+    .then((data) => {
+      L.geoJSON(data, {
+        pointToLayer: function (feature, latlng) {
+          contPharmacy++;
+          if (feature.properties.name == "default") {
+            contDefaultPharmacy++;
+          }
+          const marker = L.marker(latlng, { icon: pharmacyIcon }).bindPopup(
+            `<div>
+            <h3>${feature.properties.name}</h3>
+            <input type="button" value="Como llegar" class="buttonRoutePharmacy">
+            </div>
+            `
+          );
+          marker.addTo(map);
 
-    console.log("Número total de farmacias: " + contPharmacy);
-    console.log("Número de farmacias sin nombre: " + contDefaultPharmacy);
-  })
-  .catch((error) => {
-    console.error("Error al cargar datos del GeoJSON: " + error);
-  });
+          marker.addEventListener("popupopen", () => {
+            document.querySelector(".buttonRoutePharmacy").addEventListener("click", () => {
+              L.Routing.control({
+                waypoints: [
+                  L.latLng(startPoint.lat, startPoint.lon),
+                  L.latLng(latlng),
+                ],
+                routeWhileDragging: false,
+                show: false,
+              }).addTo(map);
+          
+              L.Routing.on('routesfound', function (e) {
+                let route = e.routes[0];
+                let distance = route.summary.totalDistance; // Distancia en metros
+                let time = route.summary.totalTime; // Tiempo en segundos
+          
+                let distanceInKm = distance / 1000;
+                let timeInMinutes = time / 60;
+          
+                console.log(`Distancia: ${distanceInKm} km`);
+                console.log(`Tiempo: ${timeInMinutes} minutos`);
+              });
+            });
+          });
+          
+
+          return marker;
+        },
+      });
+
+      console.log("Número total de farmacias: " + contPharmacy);
+      console.log("Número de farmacias sin nombre: " + contDefaultPharmacy);
+    })
+    .catch((error) => {
+      console.error("Error al cargar datos del GeoJSON: " + error);
+    });
 }
+
 
 function deleteMarkerPharmacy() {
   fetch(clinicGeoJSONPath)
@@ -298,6 +334,11 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition(function (position) {
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
+
+      startPoint = {
+        "lat":lat,
+        "lon":lon
+      }
 
       if (marker) {
         map.removeLayer(marker);
@@ -430,3 +471,4 @@ buttonCloseFilter.addEventListener("click", () =>{
   }
 
 });
+

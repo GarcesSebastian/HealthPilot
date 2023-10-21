@@ -2711,6 +2711,38 @@
             ]
         },
         "id": "node/1216914345"
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "@id": "node/4022342910",
+            "amenity": "clinic",
+            "name": "Clínica El Bosque"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -75.50036609227391 , 10.38895476099669
+            ]
+          },
+          "id": "node/4022342910"
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "@id": "node/4022342910",
+            "amenity": "pharmacy",
+            "name": "Droguería La Economía A y G"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -75.50484180444984 , 10.393635208902559
+            ]
+          },
+          "id": "node/4022342910"
         }
+
+        
     ]
     }
