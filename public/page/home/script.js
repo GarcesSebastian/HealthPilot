@@ -1,5 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
   getLocation();
+  // createMarkerClinic();
+  createMarkerPharmacy();
 });
 
 let buttonsFooter = document.querySelectorAll(".buttonFooter");
@@ -144,25 +146,105 @@ var pharmacyIcon = L.icon({
   iconAnchor: [16, 32],
 });
 
+var clinicIcon = L.icon({
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/7987/7987089.png ",
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+});
+
 var clientIcon = L.icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/7291/7291700.png ",
   iconSize: [32, 32],
   iconAnchor: [16, 32],
 });
 
-let geoJSONPath = "../../../GeoJson/export.geojson";
 
-fetch(geoJSONPath)
+let geoJSONPath = "../../../GeoJson/pharmacy.geojson";
+let clinicGeoJSONPath = "../../../GeoJson/clinic.geojson";
+let contPharmacy = 0;
+let contDefaultPharmacy = 0;
+let contClinic = 0;
+let contDefaultClinic = 0;
+
+
+function createMarkerPharmacy(){
+  fetch(geoJSONPath)
   .then((response) => response.json())
   .then((data) => {
     L.geoJSON(data, {
       pointToLayer: function (feature, latlng) {
+        contPharmacy++;
+        if (feature.properties.name == "default") {
+          contDefaultPharmacy++;
+        }
         return L.marker(latlng, { icon: pharmacyIcon }).bindPopup(
           `<h3>${feature.properties.name}</h3>`
         );
       },
     }).addTo(map);
+
+    console.log("Número total de farmacias: " + contPharmacy);
+    console.log("Número de farmacias sin nombre: " + contDefaultPharmacy);
+  })
+  .catch((error) => {
+    console.error("Error al cargar datos del GeoJSON: " + error);
   });
+}
+
+function deleteMarkerPharmacy() {
+  fetch(geoJSONPath)
+    .then((response) => response.json())
+    .then((data) => {
+      // Filtrar las características que no tengan el nombre "default"
+      const filteredData = data.features.filter((feature) => feature.properties.name !== "default");
+
+      // Limpiar todas las capas existentes
+      map.eachLayer(function (layer) {
+        if (layer instanceof L.Marker) {
+          map.removeLayer(layer);
+        }
+      });
+
+    })
+    .catch((error) => {
+      console.error("Error al cargar datos del GeoJSON: " + error);
+    });
+}
+
+function createMarkerClinic(){
+  fetch(clinicGeoJSONPath)
+  .then((response) => response.json())
+  .then((data) => {
+    L.geoJSON(data, {
+      pointToLayer: function (feature, latlng) {
+        contClinic++;
+        if (feature.properties.name == "default") {
+          contDefaultClinic++;
+        }
+        return L.marker(latlng, { icon: clinicIcon }).bindPopup(
+          `<h3>${feature.properties.name}</h3>`
+        );
+      },
+    }).addTo(map);
+
+    console.log("Número total de Hospitales: " + contClinic);
+    console.log("Número de Hospitales sin nombre: " + contDefaultClinic);
+  })
+  .catch((error) => {
+    console.error("Error al cargar datos del GeoJSON: " + error);
+  });
+}
+
+// let contClicksDeleteMarker = 0;
+// let buttonDeleteMarker = document.querySelector(".buttonDeleteMarker");
+// buttonDeleteMarker.addEventListener("click", () =>{
+//   contClicksDeleteMarker++;
+//   if(contClicksDeleteMarker % 2 != 0){
+//     deleteMarkerPharmacy();
+//   }else{
+//     createMarkerPharmacy();
+//   }
+// });
 
 var marker;
 
@@ -177,23 +259,21 @@ function getLocation() {
       }
 
       marker = L.marker([lat, lon], { icon: clientIcon }).addTo(map);
-      var popupContent = "<h2>Mi Popup</h2><p>Este es un contenido personalizado.</p>";
+      var popupContent = `<h3>Ubicacion Actual</h3><p style="font-size:12px;">Lat:${lat} - Lon:${lon}</p>`;
       marker.bindPopup(popupContent);
       marker
         .getPopup()
-        .setContent(`<div>${popupContent}</div>`);
+        .setContent(
+          `<div style="width:100%; height:100%; display:flex; flex-direction:colum; aling-items:center; justify-content:center;">${popupContent}</div>`
+        );
 
-      marker
-      .addEventListener("mouseover", () =>{
+      marker.addEventListener("mouseover", () => {
         marker.bindPopup(popupContent).openPopup();
       });
 
-      marker
-      .addEventListener("mouseout", () =>{
+      marker.addEventListener("mouseout", () => {
         marker.bindPopup(popupContent).closePopup();
       });
-
-
 
       map.setView([lat, lon], 15);
     });
@@ -213,22 +293,24 @@ function onMapClick(e) {
   }
 
   marker = L.marker(e.latlng, { icon: clientIcon }).addTo(map);
-  var popupContent = `<h3>Ubicacion Actual</h3><p style="font-size:12px;">Lat:${e.latlng.lat} - Lon:${e.latlng.lng}</p>`;
+  var popupContent = `<h3>Ubicacion Actual</h3><p style="font-size:12px;">Lat:${e.latlng.lat.toFixed(
+    5
+  )} - Lon:${e.latlng.lng.toFixed(5)}</p>`;
   marker.bindPopup(popupContent);
   marker
     .getPopup()
-    .setContent(`<div style="width:100%; height:100%; display:flex; flex-direction:colum; aling-items:center; justify-content:center;">${popupContent}</div>`);
+    .setContent(
+      `<div style="width:100%; height:100%; display:flex; flex-direction:colum; aling-items:center; justify-content:center;">${popupContent}</div>`
+    );
 
-  marker
-  .addEventListener("mouseover", () =>{
+  marker.addEventListener("mouseover", () => {
     marker.bindPopup(popupContent).openPopup();
   });
 
-  marker
-  .addEventListener("mouseout", () =>{
+  marker.addEventListener("mouseout", () => {
     marker.bindPopup(popupContent).closePopup();
   });
-  console.log(e.latlng);
+  console.log(e.latlng.lng + " , " + e.latlng.lat);
 }
 
 let srchLocation = document.querySelector(".srchLocation");

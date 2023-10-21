@@ -1,0 +1,883 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2023-10-21T11:17:00Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/54926816",
+        "amenity": "clinic",
+        "building": "yes",
+        "emergency": "yes",
+        "name": "Clínica Cartagena del Mar S.A.S"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5330725,
+          10.4204081
+        ]
+      },
+      "id": "node/54926816"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/462964499",
+        "amenity": "clinic",
+        "building": "yes",
+        "building:levels": "2",
+        "healthcare": "clinic",
+        "name": "Viva 1A EPS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5384485,
+          10.4205401
+        ]
+      },
+      "id": "node/462964499"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/559154551",
+        "addr:street": "Carrera 44",
+        "amenity": "clinic",
+        "building": "yes",
+        "building:levels": "5",
+        "healthcare": "clinic",
+        "name": "Clínica Crecer",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.513951,
+          10.4061169
+        ]
+      },
+      "id": "node/559154551"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/559624529",
+        "addr:street": "Carrera 14",
+        "amenity": "clinic",
+        "building": "yes",
+        "name": "Mision Medica",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5246384,
+          10.4412624
+        ]
+      },
+      "id": "node/559624529"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/560755075",
+        "addr:street": "Avenida Carrera 31",
+        "amenity": "clinic",
+        "building": "yes",
+        "name": "Clínica BARÚ",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4916608,
+          10.39592
+        ]
+      },
+      "id": "node/560755075"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/561136836",
+        "addr:street": "Calle 30",
+        "amenity": "clinic",
+        "building": "yes",
+        "name": "SaludElite",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5198492,
+          10.4162154
+        ]
+      },
+      "id": "node/561136836"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/561393968",
+        "addr:street": "Avenida Carrera 31",
+        "amenity": "clinic",
+        "building": "yes",
+        "name": "Nueva EPS",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5188742,
+          10.4104645
+        ]
+      },
+      "id": "node/561393968"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/596719761",
+        "amenity": "clinic",
+        "building": "hospital",
+        "name": "Cemic Unidad de Salud Mental"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5422095,
+          10.4322915
+        ]
+      },
+      "id": "node/596719761"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1205211356",
+        "amenity": "clinic",
+        "building": "yes",
+        "building:levels": "5",
+        "healthcare": "clinic",
+        "name": "Clínica Higea I.P.S. S.A."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5149495,
+          10.4063663
+        ]
+      },
+      "id": "node/1205211356"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1206710196",
+        "amenity": "clinic",
+        "building": "yes",
+        "building:levels": "3",
+        "healthcare": "clinic",
+        "name": "Centro Médico Buenos Aires"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4912171,
+          10.390588
+        ]
+      },
+      "id": "node/1206710196"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1207051685",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "name": "CAP: Puesto de Salud  ‒ Blas de Lezo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4862729,
+          10.3873821
+        ]
+      },
+      "id": "node/1207051685"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1207330380",
+        "amenity": "clinic",
+        "building": "house",
+        "building:levels": "1",
+        "healthcare": "clinic",
+        "name": "Trabajemos Juntos IPS S.A.S."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.488488,
+          10.3919073
+        ]
+      },
+      "id": "node/1207330380"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1211645217",
+        "amenity": "clinic",
+        "building": "yes",
+        "building:levels": "2",
+        "healthcare": "clinic",
+        "name": "Clínica de la Costa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4877632,
+          10.3866859
+        ]
+      },
+      "id": "node/1211645217"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1809017539",
+        "amenity": "clinic",
+        "name": "Centro de Salud La Boquilla",
+        "source": "local"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4953297,
+          10.4751384
+        ]
+      },
+      "id": "node/1809017539"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3078326584",
+        "amenity": "clinic",
+        "name": "UBA - Tierra Baja",
+        "source": "Bing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4743941,
+          10.4920793
+        ]
+      },
+      "id": "node/3078326584"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4453745674",
+        "amenity": "clinic",
+        "name": "Liga Colombiana Contra el Cancer",
+        "source": "survey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5531751,
+          10.4248987
+        ]
+      },
+      "id": "node/4453745674"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4921455428",
+        "addr:street": "calle 30 # 20-71",
+        "amenity": "clinic",
+        "name": "Clínica de Oftalmología de Cartagena"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5325079,
+          10.4200041
+        ]
+      },
+      "id": "node/4921455428"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5393874661",
+        "addr:street": "Carrera 6",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "name": "Prisma Centro Medico",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5556487,
+          10.3979242
+        ]
+      },
+      "id": "node/5393874661"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5762630153",
+        "amenity": "clinic",
+        "name": "CASA Doña arsenia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4587514,
+          10.3825694
+        ]
+      },
+      "id": "node/5762630153"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5794579083",
+        "amenity": "clinic",
+        "name": "Cedimagen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5377704,
+          10.4140891
+        ]
+      },
+      "id": "node/5794579083"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5794579143",
+        "amenity": "clinic",
+        "name": "Laboratorio Clínico Syso"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5325032,
+          10.4106788
+        ]
+      },
+      "id": "node/5794579143"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5809571647",
+        "amenity": "clinic",
+        "email": "gastrocaribesas@gmail.com",
+        "name": "GastroCaribe",
+        "phone": "+57 5 6431665",
+        "phone1": "+57 3164561517",
+        "website": "https://www.gastrocaribesas.com.co/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5401837,
+          10.4159747
+        ]
+      },
+      "id": "node/5809571647"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8637779017",
+        "amenity": "clinic",
+        "name": "Laboratorio Ficha Madica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5344045,
+          10.4182197
+        ]
+      },
+      "id": "node/8637779017"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9487066918",
+        "amenity": "clinic",
+        "name": "Centro de salud Olaya Herrera"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4849894,
+          10.4058218
+        ]
+      },
+      "id": "node/9487066918"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9592727617",
+        "amenity": "clinic",
+        "name": "Health Cars - servicio integral de salud"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5164792,
+          10.4474564
+        ]
+      },
+      "id": "node/9592727617"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/94668897",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Clínica Blas de Lezo",
+        "source": "bing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4872113,
+          10.39214655
+        ]
+      },
+      "id": "node/94668897"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/109808868",
+        "addr:street": "Avenida Calle 26",
+        "amenity": "hospital",
+        "building": "yes",
+        "name": "Clínica Quirúrgica de Manga",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5367024,
+          10.4123184
+        ]
+      },
+      "id": "node/109808868"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/136011725",
+        "amenity": "hospital",
+        "emergency": "yes",
+        "healthcare": "hospital",
+        "healthcare:speciality": "general;emergency;orthodontics",
+        "name": "hospital de el pozon",
+        "source": "bing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4575471,
+          10.4130067
+        ]
+      },
+      "id": "node/136011725"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/356128869",
+        "addr:city": "Cartagena de indias",
+        "addr:housenumber": "#40-129",
+        "addr:street": "Transversal 54",
+        "amenity": "hospital",
+        "emergency": "yes",
+        "healthcare": "hospital",
+        "name": "Clínica Blas de Lezo - Urgencias",
+        "phone": "+57 5 6632604"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4950213,
+          10.39087771
+        ]
+      },
+      "id": "node/356128869"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/548913636",
+        "addr:street": "Calle 29D",
+        "amenity": "hospital",
+        "building": "yes",
+        "healthcare": "hospital",
+        "name": "Clínica La Ermita de Cartagena",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5331219,
+          10.418841
+        ]
+      },
+      "id": "node/548913636"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/558856839",
+        "addr:street": "Calle Principal de Arroz Barato",
+        "amenity": "hospital",
+        "building": "yes",
+        "emergency": "no",
+        "name": "Hospital de Arroz Barato",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4924786,
+          10.3550103
+        ]
+      },
+      "id": "node/558856839"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/558870022",
+        "addr:street": "Calle 30",
+        "amenity": "hospital",
+        "building": "yes",
+        "name": "Cruz Roja Colombiana",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5099586,
+          10.4063069
+        ]
+      },
+      "id": "node/558870022"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/559964061",
+        "addr:street": "Calle 31D",
+        "amenity": "hospital",
+        "building": "yes",
+        "name": "Coosalud",
+        "source": "KaartGroundSurvery2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4970008,
+          10.40762063
+        ]
+      },
+      "id": "node/559964061"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/560809349",
+        "addr:street": "Avenida Carrera 31",
+        "amenity": "hospital",
+        "building": "yes",
+        "name": "Clínica Crecer",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5174178,
+          10.4091863
+        ]
+      },
+      "id": "node/560809349"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/561142141",
+        "addr:street": "Calle 31B",
+        "amenity": "hospital",
+        "building": "hospital",
+        "name": "Salud Y Bienestar Del Caribe I.P.S. Un Servicio Para Un Mejor Vivir",
+        "source": "Kaart Ground Survey 2018"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4840538,
+          10.39487711
+        ]
+      },
+      "id": "node/561142141"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/954883140",
+        "amenity": "hospital",
+        "emergency": "yes",
+        "healthcare": "hospital",
+        "name": "Hospital Universitario del Caribe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5034325,
+          10.40004
+        ]
+      },
+      "id": "node/954883140"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/962305208",
+        "amenity": "hospital",
+        "emergency": "yes",
+        "healthcare": "hospital",
+        "name": "Nuevo Hospital de Bocagrande"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5553369,
+          10.39551388
+        ]
+      },
+      "id": "node/962305208"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1093715357",
+        "amenity": "hospital",
+        "name": "Clinica Madre Bernarda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4779488,
+          10.393648
+        ]
+      },
+      "id": "node/1093715357"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1093731534",
+        "amenity": "hospital",
+        "name": "Hospital Nuevo Bosque"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5056898,
+          10.3893871
+        ]
+      },
+      "id": "node/1093731534"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1095085579",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "DADIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.546431,
+          10.41891443
+        ]
+      },
+      "id": "node/1095085579"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1204337298",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Hospital Universitario San Juan de Dios"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5026038,
+          10.390009745
+        ]
+      },
+      "id": "node/1204337298"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1206710211",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Centro Médico Buenos Aires"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4911978,
+          10.3912585
+        ]
+      },
+      "id": "node/1206710211"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1206776154",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Hospital Naval de Cartagena: Unidad Funcional de Atención Primaria ‒ Sede Blas de Lezo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4871347,
+          10.3883215
+        ]
+      },
+      "id": "node/1206776154"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1422539757",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Medihelp"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5563754,
+          10.3974475
+        ]
+      },
+      "id": "node/1422539757"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2898246153",
+        "amenity": "hospital",
+        "designation": "hospital",
+        "emergency": "yes",
+        "name": "Gestion Salud Ips",
+        "website": "http://gestionsaludips.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.5180375,
+          10.4091282
+        ]
+      },
+      "id": "node/2898246153"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4022320101",
+        "amenity": "hospital",
+        "name": "Centro de Diagnostico Salud Social IPS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4101691,
+          10.3227374
+        ]
+      },
+      "id": "node/4022320101"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4022342909",
+        "amenity": "hospital",
+        "name": "Centro de Salud de Pumarejo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4093752,
+          10.3200669
+        ]
+      },
+      "id": "node/4022342909"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8316658776",
+        "addr:city": "Cartagena",
+        "addr:housenumber": "35-297",
+        "addr:postcode": "130010",
+        "addr:street": "Carrera 71",
+        "amenity": "hospital",
+        "description": "Apoyo diagnóstico y terapéutico en torno a la promoción, prevención e intervención de la salud mental. Utilizamos equipos de neurotecnología de punta en interacción con las diferentes disciplinas del comportamiento y la salud en general.",
+        "email": "neuroinnovacartagena@gmail.com",
+        "healthcare": "hospital",
+        "healthcare:speciality": "Neuropsychology;psychology;psychiatry;neurology;speech_therapy;occupational_therapy;special_education;brain_mapping;neurofeedback;transcranial_stimulation;rehabilitation_cognitive;detoxification_ionic",
+        "healthcare:speciality:de": "mental_health",
+        "name": "NEUROINNOVACOLOMBIA",
+        "name:es": "NEUROINNOVA",
+        "operator": "Neurociencias",
+        "operator:type": "private",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4785396,
+          10.394158
+        ]
+      },
+      "id": "node/8316658776"
+    }
+  ]
+}

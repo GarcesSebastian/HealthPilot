@@ -485,19 +485,21 @@ body {
 
 .contentMap #map{
   width: 100%;
-  height: 90%;
+  height: 100%;
+  z-index: 1;
 }
 
 .moreMap{
   position: absolute;
-  top: 90%;
+  bottom: 6.5%;
   width: 100%;
   height: 10%;
-  background-color:#3d50e0;
+  background-color:rgb(152, 152, 152, .3);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
+  z-index: 6;
 }
 
 .contentMap .location{
