@@ -585,6 +585,30 @@ body {
 .spawnPopupNewReminder div input{
   width: 100%;
   padding: 2%;
+  outline: none;
+  border-radius: 2.5px;
+  border: 1px solid;
+}
+
+@keyframes errInput {
+  0%{
+    transform: translateX(0px);
+  }
+  20%{
+    transform: translateX(+4px);
+  }
+  40%{
+    transform: translateX(0px);
+  }
+  60%{
+    transform: translateX(-4px);
+  }
+  80%{
+    transform: translateX(0px);
+  }
+  100%{
+    transform: translateX(+4px);
+  }
 }
 
 .spawnPopupNewReminder .contentInputFrequency{
@@ -620,7 +644,7 @@ body {
 }
 
 .contentConfirm{
-  margin: 5% 0;
+  margin: 0% 0 5% 0;
   width: 100%;
   height: fit-content;
   display: flex;

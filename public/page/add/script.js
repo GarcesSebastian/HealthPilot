@@ -164,6 +164,20 @@ function createHoursElements(number){
 
 }
 
+function clearInputs() {
+  let spawnPopup = document.querySelector(".spawnPopupNewReminder");
+  let allInputs = spawnPopup.querySelectorAll(".clear");
+
+  for (let i = 0; i < allInputs.length; i++) {
+      allInputs[i].value = "";
+  }
+
+  document.querySelectorAll(".itemTimeDate").forEach(element =>{
+    element.remove();
+  })
+}
+
+
 inputNumberFrequency.addEventListener("keyup", () =>{
   createHoursElements(inputNumberFrequency.value);
 });
@@ -171,22 +185,73 @@ inputNumberFrequency.addEventListener("keyup", () =>{
 let flagContinueAddReminder = true;
 
 sendReminder.addEventListener("click", () => {
+
   let nameReminder = document.querySelector(".inputName").value;
-  if(nameReminder.length <= 18 && nameReminder.length >= 0){
-    flagContinueAddReminder = true;
+  flagContinueAddReminder = true;
+
+  if(nameReminder.length <= 18 && nameReminder.length > 0){
+    document.querySelector(".inputName").style.border = "1px solid";
+    document.querySelector(".inputName").style.animation = "none 0.3s";
   }else{
     flagContinueAddReminder = false;
+    document.querySelector(".inputName").style.border = "2px solid tomato";
+    document.querySelector(".inputName").style.animation = "errInput 0.3s";
   }
+
   let nameMedicine = document.querySelector(".inputDescription").value;
-  if(nameMedicine.length <= 18 && nameMedicine.length >= 0){
-    flagContinueAddReminder = true;
+  if(nameMedicine.length <= 18 && nameMedicine.length > 0){
+    document.querySelector(".inputDescription").style.animation = "none 0.3s";
+    document.querySelector(".inputDescription").style.border = "1px solid";
   }else{
     flagContinueAddReminder = false;
+    document.querySelector(".inputDescription").style.border = "2px solid tomato";
+    document.querySelector(".inputDescription").style.animation = "errInput 0.3s";
   }
+  
   let inputTimeInit = document.querySelector(".inputTimeInit").value;
+  if(inputTimeInit == ""){
+    flagContinueAddReminder = false;
+    document.querySelector(".inputTimeInit").style.border = "2px solid tomato";
+    document.querySelector(".inputTimeInit").style.animation = "errInput 0.3s";
+  }else{
+    document.querySelector(".inputTimeInit").style.animation = "none 0.3s";
+    document.querySelector(".inputTimeInit").style.border = "1px solid";
+  }
+
   let inputTimeEnd = document.querySelector(".inputTimeEnd").value;
+  if(inputTimeEnd == ""){
+    flagContinueAddReminder = false;
+    document.querySelector(".inputTimeEnd").style.border = "2px solid tomato";
+    document.querySelector(".inputTimeEnd").style.animation = "errInput 0.3s";
+  }else{
+    document.querySelector(".inputTimeEnd").style.animation = "none 0.3s";
+    document.querySelector(".inputTimeEnd").style.border = "1px solid";
+  }
+
   let inputNumberFrequency = document.querySelector(".inputNumberFrequency").value;
+  if(inputNumberFrequency <= 0){
+    flagContinueAddReminder = false;
+    document.querySelector(".inputNumberFrequency").style.border = "2px solid tomato";
+    document.querySelector(".inputNumberFrequency").style.animation = "errInput 0.3s";
+  }else{
+    document.querySelector(".inputNumberFrequency").style.animation = "none 0.3s";
+    document.querySelector(".inputNumberFrequency").style.border = "1px solid";
+  }
+
   let inputTimeDate = document.querySelectorAll(".inputTimeDate");
+  
+  if(inputNumberFrequency > 0){
+      inputTimeDate.forEach(element =>{
+        if(element.value <= 0){
+          flagContinueAddReminder = false;
+          element.style.border = "2px solid tomato";
+          element.style.animation = "errInput 0.3s";      
+        }else{
+          element.style.animation = "none 0.3s";
+          element.style.border = "1px solid";      
+        }
+      })
+  }
 
   for(let i = 0; i < inputTimeDate.length; i++){
     hoursReminder[i] = inputTimeDate.item(i).value;
@@ -194,6 +259,8 @@ sendReminder.addEventListener("click", () => {
 
   if(flagContinueAddReminder){
     createReminder(nameReminder, nameMedicine, inputTimeInit, inputTimeEnd, inputNumberFrequency, hoursReminder);
+    document.querySelector(".contentBlockPage").style.top = "100%";
+    clearInputs();
   }else{
     console.log("Llenar bien los campos");
   }
