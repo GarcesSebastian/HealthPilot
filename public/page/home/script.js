@@ -16,10 +16,20 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function quitarTildes(texto) {
-  return texto
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
+
+// function setPushNotification(){
+//   Push.create("Hello world!", {
+//     body: "How's it hangin'?",
+//     icon: '../../../img/logo_small_icon_only_inverted.png',
+//     timeout: 4000,
+//     onClick: function () {
+//         window.focus();
+//         this.close();
+//     }
+// });
+// }
 
 let buttonsFooter = document.querySelectorAll(".buttonFooter");
 
@@ -51,6 +61,9 @@ buttonsContentPage.forEach((element) => {
       let circle = element.querySelector(".itemCircle");
       circle.querySelector(".fa-circle").classList.remove("fa-regular");
       circle.querySelector(".fa-circle").classList.add("fa-solid");
+
+      // setPushNotification();
+
       setTimeout(() => {
         circle.querySelector(".fa-circle").classList.add("fa-regular");
         circle.querySelector(".fa-circle").classList.remove("fa-solid");
@@ -195,30 +208,31 @@ function createMarkerPharmacy() {
           marker.addTo(map);
 
           marker.addEventListener("popupopen", () => {
-            document.querySelector(".buttonRoutePharmacy").addEventListener("click", () => {
-              L.Routing.control({
-                waypoints: [
-                  L.latLng(startPoint.lat, startPoint.lon),
-                  L.latLng(latlng),
-                ],
-                routeWhileDragging: false,
-                show: false,
-              }).addTo(map);
-          
-              L.Routing.on('routesfound', function (e) {
-                let route = e.routes[0];
-                let distance = route.summary.totalDistance; // Distancia en metros
-                let time = route.summary.totalTime; // Tiempo en segundos
-          
-                let distanceInKm = distance / 1000;
-                let timeInMinutes = time / 60;
-          
-                console.log(`Distancia: ${distanceInKm} km`);
-                console.log(`Tiempo: ${timeInMinutes} minutos`);
+            document
+              .querySelector(".buttonRoutePharmacy")
+              .addEventListener("click", () => {
+                L.Routing.control({
+                  waypoints: [
+                    L.latLng(startPoint.lat, startPoint.lon),
+                    L.latLng(latlng),
+                  ],
+                  routeWhileDragging: false,
+                  show: false,
+                })
+                  .addTo(map)
+                  .on("routesfound", function (e) {
+                    let route = e.routes[0];
+                    let distance = route.summary.totalDistance; // Distancia en metros
+                    let time = route.summary.totalTime; // Tiempo en segundos
+
+                    let distanceInKm = distance / 1000;
+                    let timeInMinutes = time / 60;
+
+                    console.log(`Distancia: ${distanceInKm} km`);
+                    console.log(`Tiempo: ${timeInMinutes} minutos`);
+                  });
               });
-            });
           });
-          
 
           return marker;
         },
@@ -232,13 +246,13 @@ function createMarkerPharmacy() {
     });
 }
 
-
 function deleteMarkerPharmacy() {
   fetch(clinicGeoJSONPath)
     .then((response) => response.json())
     .then((data) => {
-
-      const filteredData = data.features.filter((feature) => feature.properties.amenity == "clinic");
+      const filteredData = data.features.filter(
+        (feature) => feature.properties.amenity == "clinic"
+      );
 
       map.eachLayer(function (layer) {
         if (layer instanceof L.Marker) {
@@ -246,7 +260,7 @@ function deleteMarkerPharmacy() {
         }
       });
 
-      if(checkClinic.checked != false){
+      if (checkClinic.checked != false) {
         L.geoJSON(filteredData, {
           pointToLayer: function (feature, latlng) {
             return L.marker(latlng, { icon: clinicIcon }).bindPopup(
@@ -255,35 +269,34 @@ function deleteMarkerPharmacy() {
           },
         }).addTo(map);
       }
-
     })
     .catch((error) => {
       console.error("Error al cargar datos del GeoJSON: " + error);
     });
 }
 
-function createMarkerClinic(){
+function createMarkerClinic() {
   fetch(clinicGeoJSONPath)
-  .then((response) => response.json())
-  .then((data) => {
-    L.geoJSON(data, {
-      pointToLayer: function (feature, latlng) {
-        contClinic++;
-        if (feature.properties.name == "default") {
-          contDefaultClinic++;
-        }
-        return L.marker(latlng, { icon: clinicIcon }).bindPopup(
-          `<h3>${feature.properties.name}</h3>`
-        );
-      },
-    }).addTo(map);
+    .then((response) => response.json())
+    .then((data) => {
+      L.geoJSON(data, {
+        pointToLayer: function (feature, latlng) {
+          contClinic++;
+          if (feature.properties.name == "default") {
+            contDefaultClinic++;
+          }
+          return L.marker(latlng, { icon: clinicIcon }).bindPopup(
+            `<h3>${feature.properties.name}</h3>`
+          );
+        },
+      }).addTo(map);
 
-    console.log("Número total de Hospitales: " + contClinic);
-    console.log("Número de Hospitales sin nombre: " + contDefaultClinic);
-  })
-  .catch((error) => {
-    console.error("Error al cargar datos del GeoJSON: " + error);
-  });
+      console.log("Número total de Hospitales: " + contClinic);
+      console.log("Número de Hospitales sin nombre: " + contDefaultClinic);
+    })
+    .catch((error) => {
+      console.error("Error al cargar datos del GeoJSON: " + error);
+    });
 }
 
 function deleteMarkerClinic() {
@@ -291,7 +304,9 @@ function deleteMarkerClinic() {
     .then((response) => response.json())
     .then((data) => {
       // Filtrar las características que no tengan el nombre "default"
-      const filteredData = data.features.filter((feature) => feature.properties.amenity == "pharmacy");
+      const filteredData = data.features.filter(
+        (feature) => feature.properties.amenity == "pharmacy"
+      );
 
       // Limpiar todas las capas existentes
       map.eachLayer(function (layer) {
@@ -300,7 +315,7 @@ function deleteMarkerClinic() {
         }
       });
 
-      if(checkPharmacy.checked != false){
+      if (checkPharmacy.checked != false) {
         L.geoJSON(filteredData, {
           pointToLayer: function (feature, latlng) {
             return L.marker(latlng, { icon: pharmacyIcon }).bindPopup(
@@ -309,7 +324,6 @@ function deleteMarkerClinic() {
           },
         }).addTo(map);
       }
-
     })
     .catch((error) => {
       console.error("Error al cargar datos del GeoJSON: " + error);
@@ -336,9 +350,9 @@ function getLocation() {
       var lon = position.coords.longitude;
 
       startPoint = {
-        "lat":lat,
-        "lon":lon
-      }
+        lat: lat,
+        lon: lon,
+      };
 
       if (marker) {
         map.removeLayer(marker);
@@ -412,17 +426,17 @@ function findLocation(name) {
     })
     .then((geojsonData) => {
       geojsonData.features.forEach((feature) => {
-        if(feature.properties.amenity == "clinic"){
-          if(checkClinic.checked == true){
-            if (quitarTildes(feature.properties.name).toLowerCase() == name ) {
+        if (feature.properties.amenity == "clinic") {
+          if (checkClinic.checked == true) {
+            if (quitarTildes(feature.properties.name).toLowerCase() == name) {
               let lat = feature.geometry.coordinates[1];
               let lon = feature.geometry.coordinates[0];
               map.setView([lat, lon], 18);
             }
           }
-        }else if(feature.properties.amenity == "pharmacy"){
-          if(checkPharmacy.checked == true){
-            if (quitarTildes(feature.properties.name).toLowerCase() == name ) {
+        } else if (feature.properties.amenity == "pharmacy") {
+          if (checkPharmacy.checked == true) {
+            if (quitarTildes(feature.properties.name).toLowerCase() == name) {
               let lat = feature.geometry.coordinates[1];
               let lon = feature.geometry.coordinates[0];
               map.setView([lat, lon], 18);
@@ -443,18 +457,18 @@ btnCoords.addEventListener("click", () => {
 let checkClinic = document.querySelector(".filterClinic");
 let checkPharmacy = document.querySelector(".filterPharmacy");
 
-checkClinic.addEventListener("change", () =>{
-    if(checkClinic.checked == true){
-      createMarkerClinic();
-    }else{
-      deleteMarkerClinic();
-    }
+checkClinic.addEventListener("change", () => {
+  if (checkClinic.checked == true) {
+    createMarkerClinic();
+  } else {
+    deleteMarkerClinic();
+  }
 });
 
-checkPharmacy.addEventListener("change", () =>{
-  if(checkPharmacy.checked == true){
+checkPharmacy.addEventListener("change", () => {
+  if (checkPharmacy.checked == true) {
     createMarkerPharmacy();
-  }else{
+  } else {
     deleteMarkerPharmacy();
   }
 });
@@ -462,13 +476,13 @@ checkPharmacy.addEventListener("change", () =>{
 let buttonCloseFilter = document.querySelector(".closeFilterChecks");
 let contClicksCloseFilter = 0;
 
-buttonCloseFilter.addEventListener("click", () =>{
+buttonCloseFilter.addEventListener("click", () => {
   contClicksCloseFilter++;
-  if(contClicksCloseFilter % 2 != 0){
+  if (contClicksCloseFilter % 2 != 0) {
     document.querySelector(".filterMap").style.right = "-29%";
-  }else{
+  } else {
     document.querySelector(".filterMap").style.right = "0%";
   }
-
 });
+
 

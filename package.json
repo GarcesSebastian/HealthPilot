@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "leaflet-routing-machine": "^3.2.12"
+    "leaflet-routing-machine": "^3.2.12",
+    "push.js": "^1.0.12"
   }
 }
