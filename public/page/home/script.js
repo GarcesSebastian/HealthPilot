@@ -8,6 +8,12 @@ let contDefaultClinic = 0;
 
 let startPoint = null;
 let endPoint = null;
+let routingControl = null;
+let routingControlClinic = null;
+
+let flagRoutePharmacy = false;
+let flagRouteClinica = false;
+
 
 window.addEventListener("DOMContentLoaded", () => {
   getLocation();
@@ -17,6 +23,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function quitarTildes(texto) {
   return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+function deleteRoute() {
+  if (routingControl) {
+    map.removeControl(routingControl);
+  }
 }
 
 // function setPushNotification(){
@@ -188,6 +200,45 @@ var clientIcon = L.icon({
   iconAnchor: [16, 32],
 });
 
+var transparentIcon = L.divIcon({
+  className: 'transparent-icon', // Clase CSS para el icono
+  iconSize: [0, 0], // Tamaño del icono
+});
+
+
+function createRouteToPlace(latlng) {
+  if (routingControl) {
+    map.removeControl(routingControl);
+  }
+
+  routingControl = L.Routing.control({
+    waypoints: [
+      L.latLng(startPoint.lat, startPoint.lon),
+      L.latLng(latlng),
+    ],
+    routeWhileDragging: false,
+    show: false,
+  }).addTo(map);
+
+  // map.eachLayer(function (layer) {
+  //   if (layer instanceof L.Marker) {
+  //     map.removeLayer(layer);
+  //   }
+  // });
+
+  routingControl.on("routesfound", function (e) {
+    let route = e.routes[0];
+    let distance = route.summary.totalDistance; // Distancia en metros
+    let time = route.summary.totalTime; // Tiempo en segundos
+
+    let distanceInKm = distance / 1000;
+    let timeInMinutes = time / 60;
+
+    console.log(`Distancia: ${distanceInKm} km`);
+    console.log(`Tiempo: ${timeInMinutes} minutos`);
+  });
+}
+
 function createMarkerPharmacy() {
   fetch(geoJSONPath)
     .then((response) => response.json())
@@ -208,31 +259,15 @@ function createMarkerPharmacy() {
           marker.addTo(map);
 
           marker.addEventListener("popupopen", () => {
-            document
-              .querySelector(".buttonRoutePharmacy")
-              .addEventListener("click", () => {
-                L.Routing.control({
-                  waypoints: [
-                    L.latLng(startPoint.lat, startPoint.lon),
-                    L.latLng(latlng),
-                  ],
-                  routeWhileDragging: false,
-                  show: false,
-                })
-                  .addTo(map)
-                  .on("routesfound", function (e) {
-                    let route = e.routes[0];
-                    let distance = route.summary.totalDistance; // Distancia en metros
-                    let time = route.summary.totalTime; // Tiempo en segundos
-
-                    let distanceInKm = distance / 1000;
-                    let timeInMinutes = time / 60;
-
-                    console.log(`Distancia: ${distanceInKm} km`);
-                    console.log(`Tiempo: ${timeInMinutes} minutos`);
-                  });
-              });
+            document.querySelector(".buttonRoutePharmacy").addEventListener("click", () => {
+              flagRoutePharmacy = true;
+              flagRouteClinica = false;
+              map.removeLayer(marker);
+              createRouteToPlace(latlng);
+              map.addLayer(marker);
+            });
           });
+          
 
           return marker;
         },
@@ -261,13 +296,10 @@ function deleteMarkerPharmacy() {
       });
 
       if (checkClinic.checked != false) {
-        L.geoJSON(filteredData, {
-          pointToLayer: function (feature, latlng) {
-            return L.marker(latlng, { icon: clinicIcon }).bindPopup(
-              `<h3>${feature.properties.name}</h3>`
-            );
-          },
-        }).addTo(map);
+          createMarkerClinic();
+          if(!flagRouteClinica){
+            deleteRoute();
+          }
       }
     })
     .catch((error) => {
@@ -285,11 +317,36 @@ function createMarkerClinic() {
           if (feature.properties.name == "default") {
             contDefaultClinic++;
           }
-          return L.marker(latlng, { icon: clinicIcon }).bindPopup(
-            `<h3>${feature.properties.name}</h3>`
+          const marker = L.marker(latlng, { icon: clinicIcon }).bindPopup(
+            `<div>
+            <h3>${feature.properties.name}</h3>
+            <input type="button" value="Como llegar" class="buttonRouteClinic">
+            </div>
+            `
           );
+          marker.addTo(map);
+
+          marker.addEventListener("popupopen", () => {
+            document.querySelector(".buttonRouteClinic").addEventListener("click", () => {
+              flagRoutePharmacy = false;
+              flagRouteClinica = true;
+              map.removeLayer(marker);
+              createRouteToPlace(latlng);
+              map.addLayer(marker);
+            });
+          });
+          
+
+          return marker;
         },
       }).addTo(map);
+
+      marker.addEventListener("popupopen", () => {
+        document.querySelector(".buttonRouteClinic").addEventListener("click", () => {
+          map.removeLayer(marker);
+          createRouteToClinic(latlng);
+        });
+      });
 
       console.log("Número total de Hospitales: " + contClinic);
       console.log("Número de Hospitales sin nombre: " + contDefaultClinic);
@@ -316,13 +373,10 @@ function deleteMarkerClinic() {
       });
 
       if (checkPharmacy.checked != false) {
-        L.geoJSON(filteredData, {
-          pointToLayer: function (feature, latlng) {
-            return L.marker(latlng, { icon: pharmacyIcon }).bindPopup(
-              `<h3>${feature.properties.name}</h3>`
-            );
-          },
-        }).addTo(map);
+          createMarkerPharmacy();
+          if(!flagRoutePharmacy){
+            deleteRoute();
+          }
       }
     })
     .catch((error) => {
@@ -376,11 +430,17 @@ function getLocation() {
       });
 
       map.setView([lat, lon], 15);
+
+      // Luego de obtener la ubicación actual, si tienes una coordenada de destino (endPoint), puedes crear la ruta:
+      if (endPoint) {
+        createRouteToPlace(endPoint);
+      }
     });
   } else {
     alert("Tu navegador no admite la geolocalización.");
   }
 }
+
 
 let buttonLocation = document.querySelector(".location");
 buttonLocation.addEventListener("click", getLocation);
@@ -460,7 +520,10 @@ let checkPharmacy = document.querySelector(".filterPharmacy");
 checkClinic.addEventListener("change", () => {
   if (checkClinic.checked == true) {
     createMarkerClinic();
-  } else {
+  }else if(checkClinic.checked == false && checkPharmacy.checked == false){
+    deleteRoute();
+    deleteMarkerClinic();
+  }else {
     deleteMarkerClinic();
   }
 });
@@ -468,6 +531,9 @@ checkClinic.addEventListener("change", () => {
 checkPharmacy.addEventListener("change", () => {
   if (checkPharmacy.checked == true) {
     createMarkerPharmacy();
+  }else if(checkClinic.checked == false && checkPharmacy.checked == false){
+    deleteRoute();
+    deleteMarkerPharmacy();
   } else {
     deleteMarkerPharmacy();
   }

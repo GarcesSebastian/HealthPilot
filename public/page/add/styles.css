@@ -33,6 +33,7 @@ body {
   justify-content: center;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgb(188, 188, 188, 1);
+  overflow: hidden;
 }
 
 .contentView {
@@ -45,13 +46,15 @@ body {
   gap: 30px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgb(188, 188, 188, 1);
+  position: absolute;
+  overflow: hidden;
 }
 
 .contentNav{
   position: absolute;
   top: 0;
   width: 100%;
-  height: 140px;
+  height: 120px;
   background-color: var(--background_1);
   display: flex;
   flex-direction: column;
@@ -136,58 +139,111 @@ body {
   font-size: 18px;
 }
 
-.itemOptions{
-  width: 100%;
-  height: fit-content;
+
+.contentPage{
   position: absolute;
-  top: 28%;
-  left: 0;
+  top: 22%;
+  width: 100%;
+  height: 73%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+  overflow: scroll;
+  padding: 3%;
+}
+
+.contentAddReminder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: fit-content;
+  gap: 30px;
+  padding: 2%;
+  background-color: var(--background_1);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: .2s ease-in-out;
+}
+
+.contentAddReminder:active{
+  transform: scale(.9);
+}
+
+.contentReminder{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: fit-content;
+  background-color: var(--background_2);
+  padding: 2%;
+  border-radius: 5px;
+}
+
+.listReminder{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 6%;
-  gap: 20px;
-}
-
-.item{
   width: 100%;
   height: fit-content;
+  gap: 20px;
+  padding: 2%;
+}
+
+.listReminder li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  background-color: #62e1bb;
+  border-radius: 5px;
+  transition: .5s ease-in-out;
+  padding: 2%;
+  gap: 5px;
+}
+
+.listReminder li .titleReminder{
+  font-size: 18px;
+}
+
+.listReminder li .description{
+  border-top: .4px solid rgb(50, 50, 50);
+  padding: 4% 2% 2% 2%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.listReminder li .contentTopReminder{
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: #43DDCF;
-  padding: 6%;
-  border-radius: 5px;
-  gap: 10px;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.listReminder li .contentTopReminder span{
   cursor: pointer;
-  color: white;
-  transition: .1s ease-in-out;
 }
 
-.item:active{
-  transform: scale(0.9);
-}
-
-.item:nth-child(2){
-  background-color: #EB54B5;
-}
-
-.item:nth-child(3){
-  background-color: #FDBC29;
-}
-
-.item:nth-child(4){
- background-color: #5CD1E9; 
-}
-
-.item span{
-  font-size: 20px;
-}
-
-.item h5{
+.listReminder li .date{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: lighter;
   font-size: 13px;
-  color: white;
 }
 
 .contentFooter{
@@ -202,6 +258,8 @@ body {
   justify-content: space-around;
   padding: 4% 0;
   border-top: 1px solid #A4A4A4;
+  z-index: 4;
+  background-color: white;
 }
 
 .contentFooter span{
@@ -218,3 +276,265 @@ body {
 .contentFooter span:active{
   transform: scale(0.2);
 }
+
+/*Spawn Configuracion*/
+
+.spawnConfiguracion{
+  position: absolute;
+  top:0;
+  left:-100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background_1);
+  z-index: 5;
+  border-radius: 10px;
+  transition: .3s ease-in-out;
+}
+
+.contentNavConfiguracion{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 15px;
+  padding: 6% 5%;
+  color: white;
+}
+
+.backContent{
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.textBackContent{
+  font-size: 17px;
+}
+
+.contentConfiguracion{
+  width: 100%;
+  height: 90%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 5;
+  overflow-y: auto;
+  padding: 0% 0 4% 0;
+}
+
+.contentConfiguracion div{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(108, 122, 227, 0.3);
+  border-bottom: .5px solid rgb(255, 255, 255, .5);
+  gap: 10px;
+  padding: 4% 4% 3% 4%;
+}
+
+.contentConfiguracion div .nameList{
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+}
+
+.contentConfiguracion div ul li{
+  width: 100%;
+  height: fit-content;
+  padding: 2%;
+  cursor: pointer;
+  transition: .1s ease-in-out;
+  border-radius: 5px;
+}
+
+.contentConfiguracion div ul li:hover{
+  background-color: rgb(255, 255, 255, .2);
+}
+
+.contentConfiguracion div ul li:active{
+  background-color: rgb(255, 255, 255, .17);
+}
+
+.contentConfiguracion div ul li h5{
+  font-size: 14px;
+  color: white;
+  font-weight: lighter;
+  width: 100%;
+  height: fit-content;
+}
+
+/*Spawn Configuracion*/
+
+
+/*Spawn Notificaciones*/
+
+.spawnNotificaciones{
+  position: absolute;
+  top:0;
+  right:-100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background_1);
+  z-index: 5;
+  border-radius: 10px;
+  transition: .3s ease-in-out;
+}
+
+.contentNavNotificaciones{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 15px;
+  padding: 6% 5%;
+  color: white;
+}
+
+.backContentNotificaciones{
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.textBackContentNotificaciones{
+  font-size: 17px;
+}
+
+.contentNotificaciones{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin-top: -4%;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+
+.trayContent{
+  width: 100%;
+  height: fit-content;
+  padding: 4% 4% 2% 4%;
+}
+
+.listTray{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 20px;
+}
+
+.listTray li{
+  padding: 2%;
+  background-color: rgb(255, 255, 255, .2);
+  border-radius: 5px;
+  color: rgb(255, 255, 255, .9);
+  font-weight: lighter;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+}
+
+.listTray li span{
+  font-size: 13px;
+  transform: rotate(0deg);
+  transition: .2s ease-in-out;
+}
+
+.listTray li:first-child{
+  background-color: rgba(69, 69, 69, 0.5);
+}
+
+.notifications{
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+  overflow-y: auto;
+  padding: 0% 0 15% 0;
+  margin-top: 1%;
+}
+
+.listNotifications{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+.listNotifications li{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  padding: 2% 4%;
+  gap: 10px;
+  border-bottom: .4px solid rgb(255, 255, 255, .4);
+}
+
+.listNotifications li .moreNotification{
+  width: fit-content;
+  height: fit-content;
+  margin-top: 2%;
+  font-size: 15px;
+  font-weight: lighter;
+  cursor: pointer;
+  color: white;
+  padding: 1%;
+}
+
+.listNotifications li div{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  padding: 1%;
+  gap: 5px;
+}
+
+.listNotifications li div h4{
+  text-align: left;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 1%;
+  color: white;
+}
+
+.listNotifications li div p{
+  font-size: 13.5px;
+  font-weight: lighter;
+  color: rgb(255, 255, 255, .9);
+}
+
+.listNotifications li div strong{
+  color: tomato;
+}
+
+.listNotifications li div h5{
+  margin-top: 2%;
+  text-align: right;
+  font-size: 12px;
+  font-weight: lighter;
+  color: white;
+}
+
+/*Spawn Notificaciones*/
+
+
+/*Spawn Popup New Reminder*/
+
+.contentBlockPage{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(69, 69, 69, 0.6);
+  z-index: 4;
+}
+
+/*Spawn Popup New Reminder*/

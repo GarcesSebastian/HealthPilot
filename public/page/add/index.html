@@ -1,146 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../project Pagina/font/fontawesome-free-6.4.0-web/css/fontawesome.min.css">
-    <script src="https://kit.fontawesome.com/7a00fb587a.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../../styles/pagination.css" />
+    <link
+      rel="stylesheet"
+      href="../project Pagina/font/fontawesome-free-6.4.0-web/css/fontawesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/7a00fb587a.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Inicio-Menu</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="containerAll">
+      <div class="contentView">
+        <!--Spawn Configuracion-->
 
-        <div class="contentView">
+        <div class="spawnConfiguracion">
+          <div class="contentNavConfiguracion">
+            <span class="backContent">
+              <i class="fa-solid fa-arrow-left fa-lg"></i>
+            </span>
 
-            <div class="contentNav">
+            <h4 class="textBackContent">Configuracion</h4>
+          </div>
 
-                <div class="navTop">
-                    <span class="configSpan">
-                        <i class="fa-solid fa-gear fa-lg"></i>
-                    </span>
-
-                    <span class="notificationSpan">
-                        <i class="fa-solid fa-bell fa-lg"></i>
-                        <span class="numberNotification">1</span>
-                    </span>
-                </div>
-
-                <div class="profile">
-                    <div class="imageProfile">
-                        <img src="../../../img/logo_small_icon_only_inverted.png" class="imgProfile">
-                    </div>
-
-                    <div class="contentProfile">
-                        <h4 class="welcome">
-                            Welcome
-                        </h4>
-
-                        <h3 class="nameProfile">
-                            Sebastian Garces
-                        </h3>
-                    </div>
-                </div>
-
+          <div class="contentConfiguracion">
+            <div class="configNotificacion">
+              <h5 class="nameList">Notificaciones</h5>
+              <ul class="listConfig">
+                <li class="itemConfig">
+                  <h5 class="textConfig">Configurar notificaciones Push</h5>
+                </li>
+              </ul>
             </div>
 
-            <div class="contentPage">
-                
-                <div class="itemOptions">
-                    
-                    <div class="item" data-item="1">
+            <div class="configGeneral">
+              <h5 class="nameList">General</h5>
+              <ul class="listConfig">
+                <li class="itemConfig" data-general="1">
+                  <h5 class="textConfig">Tema</h5>
+                </li>
 
-                        <span class="image">
-                            <i class="fa-solid fa-pen-to-square fa-lg"></i>                        </span>
+                <li class="itemConfig">
+                  <h5 class="textConfig">Idioma</h5>
+                </li>
 
-                        <h5 class="textItem">
-                            Perzonaliza tus recordatorios
-                        </h5>
+                <li class="itemConfig">
+                  <h5 class="textConfig">Recordatorios predeterminados</h5>
+                </li>
 
-                        <span class="circle">
-                            <i class="fa-regular fa-circle fa-lg"></i>
-                        </span>
-
-                    </div>
-
-                    <div class="item" data-item="2">
-
-                        <span class="image">
-                            <i class="fa-regular fa-calendar-check fa-lg"></i>
-                        </span>
-
-                        <h5 class="textItem">
-                            Renovacion de recetas
-                        </h5>
-
-                        <span class="circle">
-                            <i class="fa-regular fa-circle fa-lg"></i>
-                        </span>
-
-                    </div>
-
-                    <div class="item" data-item="3">
-
-                        <span class="image">
-                            <i class="fa-regular fa-calendar-check fa-lg"></i>
-                        </span>
-
-                        <h5 class="textItem">
-                            Consultar datos medicos
-                        </h5>
-
-                        <span class="circle">
-                            <i class="fa-regular fa-circle fa-lg"></i>
-                        </span>
-
-                    </div>
-
-                    <div class="item" data-item="4">
-
-                        <span class="image">
-                            <i class="fa-regular fa-calendar-check fa-lg"></i>
-                        </span>
-
-                        <h5 class="textItem">
-                            Geolocalizacion de farmacias
-                        </h5>
-
-                        <span class="circle">
-                            <i class="fa-regular fa-circle fa-lg"></i>
-                        </span>
-
-                    </div>  
-
-                </div>
-
-
-
+                <li class="itemConfig">
+                  <h5 class="textConfig">Preferencias de notificacion</h5>
+                </li>
+              </ul>
             </div>
 
-            <div class="contentFooter">
+            <div class="configPrivacidad">
+              <h5 class="nameList">Privacidad</h5>
+              <ul class="listConfig">
+                <li class="itemConfig">
+                  <h5 class="textConfig">Informacion de usuario</h5>
+                </li>
 
-                <span class="home buttonFooter" data-id="1">
-                    <i class="fa-solid fa-house fa-lg"></i>
-                </span>
+                <li class="itemConfig">
+                  <h5 class="textConfig">Contraseña</h5>
+                </li>
+              </ul>
+            </div>
 
-                <span class="add buttonFooter" data-id="2">
-                    <i class="fa-solid fa-plus fa-lg"></i>
-                </span>
+            <div class="configDatosMedicos">
+              <h5 class="nameList">Datos Medicos</h5>
+              <ul class="listConfig">
+                <li class="itemConfig">
+                  <h5 class="textConfig">Almacenar informacion medica</h5>
+                </li>
 
-                <span class="calendary buttonFooter" data-id="3">
-                    <i class="fa-solid fa-calendar-days fa-lg"></i>
-                </span>
+                <li class="itemConfig">
+                  <h5 class="textConfig">Consultar informacion medica</h5>
+                </li>
+              </ul>
+            </div>
 
+            <div class="configOthers">
+              <h5 class="nameList">Otras Opciones</h5>
+              <ul class="listConfig">
+                <li class="itemConfig">
+                  <h5 class="textConfig">Versión de la aplicación</h5>
+                </li>
+
+                <li class="itemConfig">
+                  <h5 class="textConfig">Politica de Privacidad</h5>
+                </li>
+
+                <li class="itemConfig">
+                  <h5 class="textConfig">Terminos y Condiciones</h5>
+                </li>
+
+                <li class="itemConfig">
+                  <h5 class="textConfig">Soporte Tecnico</h5>
+                </li>
+
+                <li class="itemConfig">
+                  <h5 class="textConfig">Cerrar Sesion</h5>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!--Spawn Configuracion-->
+
+        <!--Spawn Notificaciones-->
+
+        <div class="spawnNotificaciones">
+          <div class="contentNavNotificaciones">
+            <span class="backContentNotificaciones">
+              <i class="fa-solid fa-arrow-left fa-lg"></i>
+            </span>
+
+            <h4 class="textBackContentNotificaciones">Notificaciones</h4>
+          </div>
+
+          <div class="contentNotificaciones">
+            <div class="trayContent">
+              <ul class="listTray">
+                <li class="itemTray">
+                  <h5 class="textItem">Todos</h5>
+                </li>
+
+                <li class="itemTray">
+                  <h5 class="textItem">Sin leer</h5>
+                </li>
+
+                <li class="itemTray liActive">
+                  <h5 class="textItem">Ordenar por</h5>
+                  <span class="arrow">
+                    <i class="fa-solid fa-chevron-down fa-lg"></i>
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="notifications">
+              <ul class="listNotifications">
+                <li class="itemNotifications">
+                  <div class="infoNotifications">
+                    <h4 class="titleNotification">Actividad</h4>
+                    <p class="descriptionNotification">
+                      Tienes un recordatorio de la medicina
+                      <strong class="addNotification">Diuréticos</strong>
+                      pendiente, por favor confirme si ya la tomo.
+                    </p>
+
+                    <h5 class="fechaNotification">Hace 20 minutos</h5>
+                  </div>
+
+                  <span class="moreNotification">
+                    <i class="fa-solid fa-ellipsis-vertical fa-lg"></i>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!--Spawn Notificaciones-->
+
+
+        <!--Spawn Popup New Reminder-->
+
+        <div class="contentBlockPage">
+
+            <div class="spawnPopupNewReminder">
+
+                <div class="contentInputName">
+                    <label for="inputName">Nombre del recordatorio:</label>
+                    <input type="text" name="inputName" class="inputName" required>
+                </div>
+
+                <div class="contentInputDescription">
+                    <label for="inputDescription">Descripcion del recordatorio (opcional):</label>
+                    <input type="text" name="inputDescription" class="inputDescription">
+                </div>
+
+                <div class="contentTimeInput">
+                    <label for="inputTime">Hora del recordatorio:</label>
+                    <input type="time" name="inputTime" class="inputTime">
+                </div>
+
+                <div class="content"></div>
 
             </div>
 
         </div>
 
+        <!--Spawn Popup New Reminder-->
 
+        <div class="contentNav">
+          <div class="navTop">
+            <span class="configSpan">
+              <i class="fa-solid fa-gear fa-lg"></i>
+            </span>
+
+            <span class="notificationSpan">
+              <i class="fa-solid fa-bell fa-lg"></i>
+              <span class="numberNotification">1</span>
+            </span>
+          </div>
+
+          <div class="profile">
+            <div class="imageProfile">
+              <img
+                src="../../../img/logo_small_icon_only_inverted.png"
+                class="imgProfile"
+              />
+            </div>
+
+            <div class="contentProfile">
+              <h4 class="welcome">Welcome</h4>
+
+              <h3 class="nameProfile">Sebastian Garces</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="contentPage">
+          <div class="contentAddReminder">
+            <span>
+              <i class="fa-solid fa-plus fa-lg"></i>
+            </span>
+
+            <h4 class="textAddReminder">Agregar Recordatorio</h4>
+          </div>
+
+          <div class="contentReminder">
+            <ul class="listReminder">
+              <li class="itemReminderNone">
+                            No hay recordatorios para mostrar
+                        </li>
+              <!-- <li class="itemReminder">
+                <div class="contentTopReminder">
+                  <h3 class="titleReminder">Ibuprofeno</h3>
+
+                  <span class="showReminder">
+                    <i class="fa-solid fa-eye fa-lg"></i>
+                  </span>
+                </div>
+
+                <div class="description">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
+                    eaque libero aperiam sint eum nobis quasi, modi suscipit
+                    sapiente explicabo rem dolorem officia veniam neque, ipsa
+                    illum optio nulla natus.
+                  </p>
+                </div>
+
+                <div class="date">22/10/2023 00:00 PM</div>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+
+        <div class="contentFooter">
+          <span class="home buttonFooter" data-id="1">
+            <i class="fa-solid fa-house fa-lg"></i>
+          </span>
+
+          <span class="add buttonFooter" data-id="2">
+            <i class="fa-solid fa-plus fa-lg"></i>
+          </span>
+
+          <span class="calendary buttonFooter" data-id="3">
+            <i class="fa-solid fa-calendar-days fa-lg"></i>
+          </span>
+        </div>
+      </div>
     </div>
-    
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
