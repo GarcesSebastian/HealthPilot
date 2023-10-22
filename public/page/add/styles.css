@@ -158,7 +158,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  width: 100%;
   height: fit-content;
   gap: 30px;
   padding: 2%;
@@ -178,7 +178,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  width: 100%;
   height: fit-content;
   background-color: var(--background_2);
   padding: 2%;
@@ -216,12 +216,12 @@ body {
 
 .listReminder li .description{
   border-top: .4px solid rgb(50, 50, 50);
-  padding: 4% 2% 2% 2%;
+  padding: 4% 2% 4% 2%;
   display: none;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
+  align-items: none;
+  justify-content: left;
+  gap: 10px;
 }
 
 .listReminder li .contentTopReminder{
@@ -244,6 +244,11 @@ body {
   justify-content: center;
   font-weight: lighter;
   font-size: 13px;
+}
+
+.contentReminder .listReminder .itemReminderNone{
+  display: none;
+  transition: .3s ease-in-out;
 }
 
 .contentFooter{
@@ -531,10 +536,110 @@ body {
 /*Spawn Popup New Reminder*/
 
 .contentBlockPage{
+  position: absolute;
+  top: 100%;
   width: 100%;
   height: 100%;
   background-color: rgba(69, 69, 69, 0.6);
   z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  overflow: scroll;
+  padding: 0% 0% 16% 0;
+  transition: .3s ease-in-out;
 }
+
+.spawnPopupNewReminder{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: fit-content;
+  background-color: white;
+  gap:10px;
+  padding: 2%;
+  margin-top: 5%;
+  border-radius: 3px;
+  box-shadow: 0px 0px 20px rgba(69, 69, 69, 1);
+}
+
+.spawnPopupNewReminder span{
+  text-align: right;
+  color: tomato;
+  cursor: pointer;
+}
+
+.spawnPopupNewReminder div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: fit-content;
+  padding: .5%;
+}
+
+.spawnPopupNewReminder div input{
+  width: 100%;
+  padding: 2%;
+}
+
+.spawnPopupNewReminder .contentInputFrequency{
+  gap: 20px;
+}
+
+.contentInputFrequency div{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentInputFrequency div ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  gap: 10px;
+}
+
+.spawnPopupNewReminder .contentInputFrequency div ul li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+}
+
+.contentConfirm{
+  margin: 5% 0;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentConfirm input{
+  width: 50%;
+  height: 100%;
+  padding: 2%;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  background-color: var(--background_1);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
 
 /*Spawn Popup New Reminder*/

@@ -178,35 +178,52 @@
 
             <div class="spawnPopupNewReminder">
 
+              <span class="closeReminder">
+                <i class="fa-solid fa-rectangle-xmark fa-lg"></i>
+              </span>
+
                 <div class="contentInputName">
                     <label for="inputName">Nombre del recordatorio:</label>
                     <input type="text" name="inputName" class="inputName" required>
                 </div>
 
                 <div class="contentInputDescription">
-                    <label for="inputDescription">Descripcion del recordatorio (opcional):</label>
-                    <input type="text" name="inputDescription" class="inputDescription">
+                    <label for="inputDescription">Nombre de la medicina:</label>
+                    <input type="text" name="inputDescription" class="inputDescription" required>
                 </div>
 
-                <div class="contentTimeInput">
-                    <label for="inputTime">Hora del recordatorio:</label>
-                    <input type="time" name="inputTime" class="inputTime">
+                <div class="contentInputTimeInit">
+                  <label for="inputTimeInit">Fecha de inicio:</label>
+                  <input type="date" name="inputTimeInit" class="inputTimeInit" required>
+                </div>
+
+                <div class="contentInputTimeEnd">
+                  <label for="inputTimeEnd">Fecha de finalizacion:</label>
+                  <input type="date" name="inputTimeEnd" class="inputTimeEnd" required>
                 </div>
 
                 <div class="contentInputFrequency">
-                  <label for="inputFrequency">Frecuencia:</label>
-                  <select name="inputFrequency" class="inputFrequency">
-                      <option>Una vez al dia</option>
-                      <option>Dos veces al dia</option>
-                      <option>Tres veces al dia</option>
-                  </select>
+                  <div class="contentNumber">
+                    <label for="inputNumberFrequency">Numero de veces:</label>
+                    <input type="number" name="inputNumberFrequency" class="inputNumberFrequency" required>  
+                  </div>
+
+                  <div class="contentTimeDate">
+                    <ul class="listTimeDate">
+                      <!-- <li class="itemTimeDate">
+                        <label for="inputTimeDate">Hora del recordatorio </strong class="numberTimeDate">1</strong></label>
+                        <input type="time" name="inputTimeDate" class="inputTimeDate" required>
+                      </li> -->
+                    </ul>
+                  </div>
                 </div>
 
-                <div class="contentConfirmReminder">
-                    
+                <div class="contentConfirm">
+                  <input type="submit" class="inputConfirm">
                 </div>
 
             </div>
+
 
         </div>
 
@@ -252,8 +269,8 @@
           <div class="contentReminder">
             <ul class="listReminder">
               <li class="itemReminderNone">
-                            No hay recordatorios para mostrar
-                        </li>
+                No hay recordatorios para mostrar
+              </li>
               <!-- <li class="itemReminder">
                 <div class="contentTopReminder">
                   <h3 class="titleReminder">Ibuprofeno</h3>
@@ -264,15 +281,27 @@
                 </div>
 
                 <div class="description">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut
-                    eaque libero aperiam sint eum nobis quasi, modi suscipit
-                    sapiente explicabo rem dolorem officia veniam neque, ipsa
-                    illum optio nulla natus.
+                  <p class="pNameMedicine">
+                      Medicina: <strong class="nameMedicine">(nombre)</strong>
+                  </p>
+                
+                  <p class="pTimeInit">
+                    Fecha de inicio: <strong class="timeInit">(Fecha de inicio)</strong>
+                  </p>
+
+                  <p class="pTimeEnd">
+                    Fecha de finalizacion: <strong class="timeEnd">(Fecha de finalizacion)</strong>
+                  </p>
+
+                  <p class="pNumberFrequency">
+                    Frecuencia del recordatorio: <strong class="numberFrequency">(Frecuencia)</strong>
+                  </p>
+
+                  <p class="pTimeDate">
+                    Hora del recordatorio: <strong class="timeDate">(Hora)</strong>
                   </p>
                 </div>
 
-                <div class="date">22/10/2023 00:00 PM</div>
               </li> -->
             </ul>
           </div>
