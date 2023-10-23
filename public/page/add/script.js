@@ -1,4 +1,19 @@
-let numberReminder = 0;
+function getDate(){
+  const fechaActual = new Date();
+  const dia = fechaActual.getDate();
+  const mes = fechaActual.getMonth() + 1;
+  const anio = fechaActual.getFullYear();
+
+  date = {
+    "day": dia,
+    "month": mes,
+    "year": anio
+  }
+
+  return date;
+}
+
+let dateActuality = getDate();
 
 
 let buttonsFooter = document.querySelectorAll(".buttonFooter");
@@ -209,7 +224,14 @@ sendReminder.addEventListener("click", () => {
   }
   
   let inputTimeInit = document.querySelector(".inputTimeInit").value;
-  if(inputTimeInit == ""){
+  
+  let fechaInit = new Date(inputTimeInit);
+
+  if((fechaInit.getMonth() + 1 < dateActuality.month) || (fechaInit.getDate() + 1 < dateActuality.day) || (fechaInit.getFullYear() < dateActuality.year)){
+    flagContinueAddReminder = false;
+    document.querySelector(".inputTimeInit").style.border = "2px solid tomato";
+    document.querySelector(".inputTimeInit").style.animation = "errInput 0.3s";
+  } else if(inputTimeInit == ""){
     flagContinueAddReminder = false;
     document.querySelector(".inputTimeInit").style.border = "2px solid tomato";
     document.querySelector(".inputTimeInit").style.animation = "errInput 0.3s";
@@ -219,7 +241,14 @@ sendReminder.addEventListener("click", () => {
   }
 
   let inputTimeEnd = document.querySelector(".inputTimeEnd").value;
-  if(inputTimeEnd == ""){
+
+  let fechaEnd = new Date(inputTimeEnd);
+
+  if((fechaEnd.getMonth() + 1 < dateActuality.month) || (fechaInit.getDate() + 1 >= fechaEnd.getDate()+1) || (fechaEnd.getFullYear() < dateActuality.year)){
+    flagContinueAddReminder = false;
+    document.querySelector(".inputTimeEnd").style.border = "2px solid tomato";
+    document.querySelector(".inputTimeEnd").style.animation = "errInput 0.3s";
+  } else if(inputTimeEnd == ""){
     flagContinueAddReminder = false;
     document.querySelector(".inputTimeEnd").style.border = "2px solid tomato";
     document.querySelector(".inputTimeEnd").style.animation = "errInput 0.3s";
@@ -287,6 +316,12 @@ function createReminder(nameReminder,nameMedicine ,timeInit ,timeEnd ,numberFreq
   eyeReminder.className = "fa-solid fa-eye fa-lg";
   eyeReminder.id = "eye";
 
+  let clearReminder = document.createElement("span");
+  clearReminder.className = "clearReminder";
+
+  let trashReminder = document.createElement("i");
+  trashReminder.className = "fa-solid fa-trash fa-lg";
+
   let description = document.createElement("div");
   description.className = "description";
 
@@ -320,13 +355,15 @@ function createReminder(nameReminder,nameMedicine ,timeInit ,timeEnd ,numberFreq
 
   // Construir la jerarquía de elementos
   showReminder.appendChild(eyeReminder);
+  clearReminder.appendChild(trashReminder);
   contentTopReminder.appendChild(titleReminder);
   contentTopReminder.appendChild(showReminder);
+  contentTopReminder.appendChild(clearReminder);
   newli.appendChild(contentTopReminder);
   newli.appendChild(description);
   description.appendChild(pNameMedicine);
-  description.appendChild(pTimeEnd);
   description.appendChild(pTimeInit);
+  description.appendChild(pTimeEnd);
   pNameMedicine.appendChild(sNameMedicine);
   pTimeInit.appendChild(sTimeInit);
   pTimeEnd.appendChild(sTimeEnd);
@@ -345,29 +382,34 @@ function createReminder(nameReminder,nameMedicine ,timeInit ,timeEnd ,numberFreq
   // Agregar el nuevo <li> a la lista
   listReminder.appendChild(newli);
 
-let reminders = document.querySelectorAll(".itemReminder");
-let contClicksReminders = 0;
+  let reminders = document.querySelectorAll(".itemReminder");
+  let contClicksReminders = 0;
+  
+  reminders.forEach(element =>{
+      element.querySelector(".showReminder").addEventListener("click", () =>{
+          contClicksReminders++;
+          if(contClicksReminders % 2 != 0){
+              element.querySelector(".description").style.display = "flex";
+              element.querySelector("#eye").classList.add("fa-eye-slash");
+              element.querySelector("#eye").classList.remove("fa-eye");
+          }else{
+              element.querySelector(".description").style.display = "none";
+              element.querySelector("#eye").classList.add("fa-eye");
+              element.querySelector("#eye").classList.remove("fa-eye-slash");
+  
+          }
+      });
+  
+      element.querySelector(".clearReminder").addEventListener("click", () =>{
+        element.remove();
+      });
+  })
 
-reminders.forEach(element =>{
-    element.querySelector(".showReminder").addEventListener("click", () =>{
-        contClicksReminders++;
-        if(contClicksReminders % 2 != 0){
-            element.querySelector(".description").style.display = "flex";
-            element.querySelector("#eye").classList.add("fa-eye-slash");
-            element.querySelector("#eye").classList.remove("fa-eye");
-        }else{
-            element.querySelector(".description").style.display = "none";
-            element.querySelector("#eye").classList.add("fa-eye");
-            element.querySelector("#eye").classList.remove("fa-eye-slash");
-        }
-    });
-})
-
-numberReminder++;
 
 }
 
 setInterval(()=>{
+  let numberReminder = document.querySelectorAll(".itemReminder").length;
   if(numberReminder <= 0){
     document.querySelector(".itemReminderNone").style.display = "block";
   }else{
@@ -392,6 +434,10 @@ setInterval(()=>{
 //             element.querySelector(".fa-eye-slash").classList.remove("fa-eye-slash");
 
 //         }
+//     });
+
+//     element.querySelector(".clearReminder").addEventListener("click", () =>{
+//       element.remove();
 //     });
 // })
 

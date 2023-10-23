@@ -236,6 +236,12 @@ body {
   cursor: pointer;
 }
 
+.listReminder li .contentTopReminder .clearReminder{
+  position: absolute;
+  right: 10%;
+  color: tomato;
+}
+
 .listReminder li .date{
   width: 100%;
   height: 100%;
