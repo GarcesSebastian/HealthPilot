@@ -13,8 +13,8 @@ function getDate() {
   return date;
 }
 
-function setReminderNotification(){
-  window.setPushNotification("Hola mundo", "Esto es una notificacion push", "../../../img/logo_small_icon_only_inverted.png" ,2000);
+function setReminderNotification() {
+  window.setPushNotification("Hola mundo", "Esto es una notificacion push", "../../../img/logo_small_icon_only_inverted.png", 2000);
 }
 
 function getDateTime() {
@@ -38,11 +38,11 @@ setInterval(() => {
   let horas;
   let minutos;
 
-  if(hoursReminder[0] != undefined){
+  if (hoursReminder[0] != undefined) {
     [horas, minutos] = hoursReminder[0].split(':').map(Number);
   }
 
-  if(dateNotification.day == 23 && dateNotification.month == 10 && dateNotification.year == 2023){
+  if (dateNotification.day == 23 && dateNotification.month == 10 && dateNotification.year == 2023) {
     if (timeNotification.hours === horas && timeNotification.minutes === minutos && timeNotification.seconds === 0) {
       setReminderNotification();
     }
@@ -220,9 +220,7 @@ function createHoursElements(number) {
 
 function createHoursElementsEdit(number) {
 
-  if 
-  (document.querySelectorAll(".itemTimeDateEdit")) {
-    
+  if(document.querySelectorAll(".itemTimeDateEdit")) {
     let hoursTimeDate = document.querySelectorAll(".itemTimeDateEdit");
     hoursTimeDate.forEach((element) => {
       element.remove();
@@ -257,9 +255,9 @@ function createHoursElementsEdit(number) {
     // Almacenar la hora de recordatorio en el obje[i] = inputTimeDate;
   }
 
-  
 
-  }
+
+}
 
 
 
@@ -530,57 +528,67 @@ function createReminder(
 
     element.querySelector(".clearReminder").addEventListener("click", () => {
       element.remove();
+
+
     });
 
     let editsReminder = document.querySelectorAll(".editReminder");
     let sendReminderEdit = document.querySelector(".inputConfirmEdit");
 
-    editsReminder.forEach(reminders =>{
+    editsReminder.forEach(reminders => {
 
-      reminders.addEventListener("click", () =>{
+      reminders.addEventListener("click", () => {
 
         let item = reminders.parentNode.parentNode;
 
-          document.querySelector(".inputNameEdit").value = item.querySelector(".titleReminder").textContent;
-          document.querySelector(".inputDescriptionEdit").value = item.querySelector(".nameMedicine").textContent;
-          document.querySelector(".inputTimeInitEdit").value = item.querySelector(".timeInit").textContent;
-          document.querySelector(".inputTimeEndEdit").value = item.querySelector(".timeEnd").textContent;
-          document.querySelector(".inputNumberFrequencyEdit").value = item.querySelector(".numberFrequency").textContent;
+        document.querySelector(".inputNameEdit").value = item.querySelector(".titleReminder").textContent;
+        document.querySelector(".inputDescriptionEdit").value = item.querySelector(".nameMedicine").textContent;
+        document.querySelector(".inputTimeInitEdit").value = item.querySelector(".timeInit").textContent;
+        document.querySelector(".inputTimeEndEdit").value = item.querySelector(".timeEnd").textContent;
+        document.querySelector(".inputNumberFrequencyEdit").value = item.querySelector(".numberFrequency").textContent;
 
-          createHoursElementsEdit(document.querySelector(".inputNumberFrequencyEdit").value);
+        createHoursElementsEdit(document.querySelector(".inputNumberFrequencyEdit").value);
 
-          let inputTimesDate = document.querySelectorAll(".inputTimeDateEdit");
+        let inputTimesDate = document.querySelectorAll(".inputTimeDateEdit");
 
-          for(let i = 0; i < inputTimesDate.length; i++){
-              inputTimesDate.item(i).value = document.querySelectorAll(".pTimeDate").item(i).querySelector(".timeDate").textContent;
+        for (let i = 0; i < inputTimesDate.length; i++) {
+          inputTimesDate.item(i).value = document.querySelectorAll(".pTimeDate").item(i).querySelector(".timeDate").textContent;
+        }
+
+        document.querySelector(".contentBlockPageEdit").style.top = "0%";
+
+        let nameReminder = document.querySelector(".inputNameEdit");
+        let nameMedicine = document.querySelector(".inputDescriptionEdit");
+        let timeInit = document.querySelector(".inputTimeInitEdit");
+        let timeEnd = document.querySelector(".inputTimeEndEdit");
+        let numberFrequency = document.querySelector(".inputNumberFrequencyEdit");
+        let inputsTimeDateEdit = document.querySelectorAll(".inputTimeDateEdit");
+
+        inputsTimeDateEdit.forEach(element => {
+          for (let i = 0; i < inputsTimeDateEdit.length; i++) {
+            hoursReminder[i] = element.value;
           }
+        });
 
-          document.querySelector(".contentBlockPageEdit").style.top = "0%";
+        function clickSendEditReminders(){
+          item.querySelector(".titleReminder").textContent = nameReminder.value;
+          item.querySelector(".nameMedicine").textContent = "Ibuprofeno";
+          item.querySelector(".timeInit").textContent = 20-10-2023;
+          item.querySelector(".timeEnd").textContent = 20-10-2023;
+          item.querySelector(".numberFrequency").textContent = 2;
+        }        
 
-          sendReminderEdit.addEventListener("click", () =>{
-            let nameReminder = document.querySelector(".inputNameEdit");
-            let nameMedicine = document.querySelector("".inputDescriptionEdit);
-            let timeInit = document.querySelector(".inputTimeInitEdit");
-            let timeEnd = document.querySelector(".inputTimeEndEdit");
-            let numberFrequency = document.querySelector(".inputNumberFrequencyEdit");
-            let inputsTimeDateEdit = document.querySelectorAll(".inputTimeDateEdit");
-            
-            inputsTimeDateEdit.forEach(element =>{
-              for(let i = 0; i < inputsTimeDateEdit.length; i++){
-                hoursReminder[i] = element.value;
-              }
-            });            
-            
-          item.remove();
+        sendReminderEdit.addEventListener("click", () => {
+  
+          document.querySelector(".contentBlockPageEdit").style.top = "100%";
 
-
-          });
+        });
 
       });
 
     })
 
-    })
+  })
 }
 
 setInterval(() => {
