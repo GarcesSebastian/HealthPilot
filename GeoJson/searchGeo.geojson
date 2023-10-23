@@ -1619,6 +1619,8 @@
         "type": "Feature",
         "properties": {
             "@id": "node/109808538",
+            "addr:housenumber": "Default",
+            "addr:street": "Default",
             "amenity": "pharmacy",
             "building": "yes",
             "name": "Cruz Verde"

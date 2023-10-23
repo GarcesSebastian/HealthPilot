@@ -40,8 +40,6 @@ setInterval(() => {
 
   if(hoursReminder[0] != undefined){
     [horas, minutos] = hoursReminder[0].split(':').map(Number);
-    console.log(hoursReminder);
-    console.log(timeNotification.hours+":"+timeNotification.minutes);
   }
 
   if(dateNotification.day == 23 && dateNotification.month == 10 && dateNotification.year == 2023){
@@ -220,10 +218,11 @@ function createHoursElements(number) {
   }
 }
 
-function createHoursElementsEdit(number, reminderId) {
-  const hoursReminderEdit = {}; // Usar un objeto para almacenar las horas de recordatorio
+function createHoursElementsEdit(number) {
 
-  if (document.querySelectorAll(".itemTimeDateEdit")) {
+  if 
+  (document.querySelectorAll(".itemTimeDateEdit")) {
+    
     let hoursTimeDate = document.querySelectorAll(".itemTimeDateEdit");
     hoursTimeDate.forEach((element) => {
       element.remove();
@@ -255,14 +254,15 @@ function createHoursElementsEdit(number, reminderId) {
     labelTimeDate.appendChild(sNumberTimeDate);
     liTimeDate.appendChild(inputTimeDate);
 
-    // Almacenar la hora de recordatorio en el objeto hoursReminderEdit
-    hoursReminderEdit[i] = inputTimeDate;
+    // Almacenar la hora de recordatorio en el obje[i] = inputTimeDate;
   }
 
-  // Ahora, hoursReminderEdit contiene las horas de recordatorio para el recordatorio específico
-  // Puedes acceder a estas horas utilizando reminderId como clave
-  // Por ejemplo, hoursReminderEdit[reminderId] contiene un objeto con las horas de recordatorio
-}
+  
+
+  }
+
+
+
 
 function clearInputs() {
   let spawnPopup = document.querySelector(".spawnPopupNewReminder");
@@ -535,10 +535,52 @@ function createReminder(
     let editsReminder = document.querySelectorAll(".editReminder");
     let sendReminderEdit = document.querySelector(".inputConfirmEdit");
 
-    
+    editsReminder.forEach(reminders =>{
 
-    // })
-  });
+      reminders.addEventListener("click", () =>{
+
+        let item = reminders.parentNode.parentNode;
+
+          document.querySelector(".inputNameEdit").value = item.querySelector(".titleReminder").textContent;
+          document.querySelector(".inputDescriptionEdit").value = item.querySelector(".nameMedicine").textContent;
+          document.querySelector(".inputTimeInitEdit").value = item.querySelector(".timeInit").textContent;
+          document.querySelector(".inputTimeEndEdit").value = item.querySelector(".timeEnd").textContent;
+          document.querySelector(".inputNumberFrequencyEdit").value = item.querySelector(".numberFrequency").textContent;
+
+          createHoursElementsEdit(document.querySelector(".inputNumberFrequencyEdit").value);
+
+          let inputTimesDate = document.querySelectorAll(".inputTimeDateEdit");
+
+          for(let i = 0; i < inputTimesDate.length; i++){
+              inputTimesDate.item(i).value = document.querySelectorAll(".pTimeDate").item(i).querySelector(".timeDate").textContent;
+          }
+
+          document.querySelector(".contentBlockPageEdit").style.top = "0%";
+
+          sendReminderEdit.addEventListener("click", () =>{
+            let nameReminder = document.querySelector(".inputNameEdit");
+            let nameMedicine = document.querySelector("".inputDescriptionEdit);
+            let timeInit = document.querySelector(".inputTimeInitEdit");
+            let timeEnd = document.querySelector(".inputTimeEndEdit");
+            let numberFrequency = document.querySelector(".inputNumberFrequencyEdit");
+            let inputsTimeDateEdit = document.querySelectorAll(".inputTimeDateEdit");
+            
+            inputsTimeDateEdit.forEach(element =>{
+              for(let i = 0; i < inputsTimeDateEdit.length; i++){
+                hoursReminder[i] = element.value;
+              }
+            });            
+            
+          item.remove();
+
+
+          });
+
+      });
+
+    })
+
+    })
 }
 
 setInterval(() => {
