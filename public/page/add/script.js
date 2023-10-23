@@ -4,7 +4,7 @@ function getDate() {
   const mes = fechaActual.getMonth() + 1;
   const anio = fechaActual.getFullYear();
 
-  date = {
+  let date = {
     day: dia,
     month: mes,
     year: anio,
@@ -12,6 +12,47 @@ function getDate() {
 
   return date;
 }
+
+function setReminderNotification(){
+  window.setPushNotification("Hola mundo", "Esto es una notificacion push", "../../../img/logo_small_icon_only_inverted.png" ,2000);
+}
+
+function getDateTime() {
+  const fechaActual = new Date();
+  const hour = fechaActual.getHours();
+  const minute = fechaActual.getMinutes();
+  const second = fechaActual.getSeconds();
+
+  let dateTime = {
+    hours: hour,
+    minutes: minute,
+    seconds: second
+  }
+
+  return dateTime;
+}
+
+setInterval(() => {
+  let timeNotification = getDateTime();
+  let dateNotification = getDate();
+  let horas;
+  let minutos;
+
+  if(hoursReminder[0] != undefined){
+    [horas, minutos] = hoursReminder[0].split(':').map(Number);
+    console.log(hoursReminder);
+    console.log(timeNotification.hours+":"+timeNotification.minutes);
+  }
+
+  if(dateNotification.day == 23 && dateNotification.month == 10 && dateNotification.year == 2023){
+    if (timeNotification.hours === horas && timeNotification.minutes === minutos && timeNotification.seconds === 0) {
+      setReminderNotification();
+    }
+  }
+
+}, 1000);
+
+
 
 let dateActuality = getDate();
 
@@ -494,312 +535,7 @@ function createReminder(
     let editsReminder = document.querySelectorAll(".editReminder");
     let sendReminderEdit = document.querySelector(".inputConfirmEdit");
 
-    editsReminder.forEach((element) => {
-      element.addEventListener("click", () => {
-        console.clear();
-        let item = element.parentNode.parentNode;
-        console.log(item);
-
-        item.querySelector(".titleReminder").textContent = "nino";
-
-        document.querySelector(".inputNameEdit").value =
-          item.querySelector(".titleReminder").textContent;
-        document.querySelector(".inputDescriptionEdit").value =
-          item.querySelector(".nameMedicine").textContent;
-        document.querySelector(".inputTimeInitEdit").value =
-          item.querySelector(".timeInit").textContent;
-        document.querySelector(".inputTimeEndEdit").value =
-          item.querySelector(".timeEnd").textContent;
-        document.querySelector(".inputNumberFrequencyEdit").value =
-          item.querySelector(".numberFrequency").textContent;
-
-        createHoursElementsEdit(
-          document.querySelector(".inputNumberFrequencyEdit").value
-        );
-
-        let inputTimesDate = document.querySelectorAll(".inputTimeDateEdit");
-
-        for (let i = 0; i < inputTimesDate.length; i++) {
-          inputTimesDate.item(i).value = document
-            .querySelectorAll(".pTimeDate")
-            .item(i)
-            .querySelector(".timeDate").textContent;
-        }
-
-        document.querySelector(".contentBlockPageEdit").style.top = "0%";
-
-        sendReminderEdit.addEventListener("click", () => {
-          if(flagContinueAddEditReminder){
-            console.log(item);
-            item.querySelector(".titleReminder").textContent = "none";
-
-          }else{
-            console.log("Llenar bien los campos");
-          }
-          // let nameReminder = document.querySelector(".inputNameEdit").value;
-          // flagContinueAddEditReminder = true;
-
-          // if (nameReminder.length <= 18 && nameReminder.length > 0) {
-          //   document.querySelector(".inputNameEdit").style.border = "1px solid";
-          //   document.querySelector(".inputNameEdit").style.animation =
-          //     "none 0.3s";
-          // } else {
-          //   flagContinueAddEditReminder = false;
-          //   document.querySelector(".inputNameEdit").style.border =
-          //     "2px solid tomato";
-          //   document.querySelector(".inputNameEdit").style.animation =
-          //     "errInput 0.3s";
-          // }
-
-          // let nameMedicine = document.querySelector(".inputTimeInitEdit").value;
-          // if (nameMedicine.length <= 18 && nameMedicine.length > 0) {
-          //   document.querySelector(".inputTimeInitEdit").style.animation =
-          //     "none 0.3s";
-          //   document.querySelector(".inputTimeInitEdit").style.border =
-          //     "1px solid";
-          // } else {
-          //   flagContinueAddEditReminder = false;
-          //   document.querySelector(".inputTimeInitEdit").style.border =
-          //     "2px solid tomato";
-          //   document.querySelector(".inputTimeInitEdit").style.animation =
-          //     "errInput 0.3s";
-          // }
-
-          // let inputTimeInit = document.querySelector(".inputTimeInitEdit").value;
-          // let fechaInit = new Date(inputTimeInit);
-
-          // if (
-          //   fechaInit.getMonth() + 1 < dateActuality.month ||
-          //   fechaInit.getDate() + 1 < dateActuality.day ||
-          //   fechaInit.getFullYear() < dateActuality.year
-          // ) {
-          //   flagContinueAddEditReminder = false;
-          //   document.querySelector(".inputTimeInitEdit").style.border =
-          //     "2px solid tomato";
-          //   document.querySelector(".inputTimeInitEdit").style.animation =
-          //     "errInput 0.3s";
-          // } else if (inputTimeInit == "") {
-          //   flagContinueAddEditReminder = false;
-          //   document.querySelector(".inputTimeInitEdit").style.border =
-          //     "2px solid tomato";
-          //   document.querySelector(".inputTimeInitEdit").style.animation =
-          //     "errInput 0.3s";
-          // } else {
-          //   document.querySelector(".inputTimeInitEdit").style.animation =
-          //     "none 0.3s";
-          //   document.querySelector(".inputTimeInitEdit").style.border =
-          //     "1px solid";
-          // }
-
-          // let inputTimeEnd = document.querySelector(".inputTimeEndEdit").value;
-          // let fechaEnd = new Date(inputTimeEnd);
-
-          // if (
-          //   fechaEnd.getMonth() + 1 < dateActuality.month ||
-          //   fechaInit.getDate() + 1 >= fechaEnd.getDate() + 1 ||
-          //   fechaEnd.getFullYear() < dateActuality.year
-          // ) {
-          //   flagContinueAddEditReminder = false;
-          //   document.querySelector(".inputTimeEndEdit").style.border =
-          //     "2px solid tomato";
-          //   document.querySelector(".inputTimeEndEdit").style.animation =
-          //     "errInput 0.3s";
-          // } else if (inputTimeEnd == "") {
-          //   flagContinueAddEditReminder = false;
-          //   document.querySelector(".inputTimeEndEdit").style.border =
-          //     "2px solid tomato";
-          //   document.querySelector(".inputTimeEndEdit").style.animation =
-          //     "errInput 0.3s";
-          // } else {
-          //   document.querySelector(".inputTimeEndEdit").style.animation =
-          //     "none 0.3s";
-          //   document.querySelector(".inputTimeEndEdit").style.border =
-          //     "1px solid";
-          // }
-
-          // let inputNumberFrequency = document.querySelector(".inputNumberFrequencyEdit").value;
-          // if (inputNumberFrequency <= 0) {
-          //   flagContinueAddEditReminder = false;
-          //   document.querySelector(".inputNumberFrequencyEdit").style.border =
-          //     "2px solid tomato";
-          //   document.querySelector(
-          //     ".inputNumberFrequencyEdit"
-          //   ).style.animation = "errInput 0.3s";
-          // } else {
-          //   document.querySelector(
-          //     ".inputNumberFrequencyEdit"
-          //   ).style.animation = "none 0.3s";
-          //   document.querySelector(".inputNumberFrequencyEdit").style.border =
-          //     "1px solid";
-          // }
-
-          // let inputTimeDate = document.querySelectorAll(".inputTimeDateEdit");
-
-          // if (inputNumberFrequency > 0) {
-          //   inputTimeDate.forEach((element) => {
-          //     if (element.value <= 0) {
-          //       flagContinueAddEditReminder = false;
-          //       element.style.border = "2px solid tomato";
-          //       element.style.animation = "errInput 0.3s";
-          //     } else {
-          //       element.style.animation = "none 0.3s";
-          //       element.style.border = "1px solid";
-          //     }
-          //   });
-          // }
-
-          // for (let i = 0; i < inputTimeDate.length; i++) {
-          //   hoursReminder[i] = inputTimeDate.item(i).value;
-          // }
-
-        });
-
-
-      });
-    });
-
-    // editsReminder.forEach(reminders =>{
-
-    //   reminders.addEventListener("click", () =>{
-
-    //     let item = reminders.parentNode.parentNode;
-
-    //       document.querySelector(".inputNameEdit").value = item.querySelector(".titleReminder").textContent;
-    //       document.querySelector(".inputDescriptionEdit").value = item.querySelector(".nameMedicine").textContent;
-    //       document.querySelector(".inputTimeInitEdit").value = item.querySelector(".timeInit").textContent;
-    //       document.querySelector(".inputTimeEndEdit").value = item.querySelector(".timeEnd").textContent;
-    //       document.querySelector(".inputNumberFrequencyEdit").value = item.querySelector(".numberFrequency").textContent;
-
-    //       createHoursElementsEdit(document.querySelector(".inputNumberFrequencyEdit").value);
-
-    //       let inputTimesDate = document.querySelectorAll(".inputTimeDateEdit");
-
-    //       for(let i = 0; i < inputTimesDate.length; i++){
-    //           inputTimesDate.item(i).value = document.querySelectorAll(".pTimeDate").item(i).querySelector(".timeDate").textContent;
-    //       }
-
-    //       document.querySelector(".contentBlockPageEdit").style.top = "0%";
-
-    //       sendReminderEdit.addEventListener("click", () => {
-
-    //         let nameReminder = document.querySelector(".inputNameEdit").value;
-    //         flagContinueAddEditReminder = true;
-
-    //         if(nameReminder.length <= 18 && nameReminder.length > 0){
-    //           document.querySelector(".inputNameEdit").style.border = "1px solid";
-    //           document.querySelector(".inputNameEdit").style.animation = "none 0.3s";
-    //         }else{
-    //           flagContinueAddEditReminder = false;
-    //           document.querySelector(".inputNameEdit").style.border = "2px solid tomato";
-    //           document.querySelector(".inputNameEdit").style.animation = "errInput 0.3s";
-    //         }
-
-    //         let nameMedicine = document.querySelector(".inputTimeInitEdit").value;
-    //         if(nameMedicine.length <= 18 && nameMedicine.length > 0){
-    //           document.querySelector(".inputTimeInitEdit").style.animation = "none 0.3s";
-    //           document.querySelector(".inputTimeInitEdit").style.border = "1px solid";
-    //         }else{
-    //           flagContinueAddEditReminder = false;
-    //           document.querySelector(".inputTimeInitEdit").style.border = "2px solid tomato";
-    //           document.querySelector(".inputTimeInitEdit").style.animation = "errInput 0.3s";
-    //         }
-
-    //         let inputTimeInit = document.querySelector(".inputTimeInitEdit").value;
-
-    //         let fechaInit = new Date(inputTimeInit);
-
-    //         if((fechaInit.getMonth() + 1 < dateActuality.month) || (fechaInit.getDate() + 1 < dateActuality.day) || (fechaInit.getFullYear() < dateActuality.year)){
-    //           flagContinueAddEditReminder = false;
-    //           document.querySelector(".inputTimeInitEdit").style.border = "2px solid tomato";
-    //           document.querySelector(".inputTimeInitEdit").style.animation = "errInput 0.3s";
-    //         } else if(inputTimeInit == ""){
-    //           flagContinueAddEditReminder = false;
-    //           document.querySelector(".inputTimeInitEdit").style.border = "2px solid tomato";
-    //           document.querySelector(".inputTimeInitEdit").style.animation = "errInput 0.3s";
-    //         }else{
-    //           document.querySelector(".inputTimeInitEdit").style.animation = "none 0.3s";
-    //           document.querySelector(".inputTimeInitEdit").style.border = "1px solid";
-    //         }
-
-    //         let inputTimeEnd = document.querySelector(".inputTimeEndEdit").value;
-
-    //         let fechaEnd = new Date(inputTimeEnd);
-
-    //         if((fechaEnd.getMonth() + 1 < dateActuality.month) || (fechaInit.getDate() + 1 >= fechaEnd.getDate()+1) || (fechaEnd.getFullYear() < dateActuality.year)){
-    //           flagContinueAddEditReminder = false;
-    //           document.querySelector(".inputTimeEndEdit").style.border = "2px solid tomato";
-    //           document.querySelector(".inputTimeEndEdit").style.animation = "errInput 0.3s";
-    //         } else if(inputTimeEnd == ""){
-    //           flagContinueAddEditReminder = false;
-    //           document.querySelector(".inputTimeEndEdit").style.border = "2px solid tomato";
-    //           document.querySelector(".inputTimeEndEdit").style.animation = "errInput 0.3s";
-    //         }else{
-    //           document.querySelector(".inputTimeEndEdit").style.animation = "none 0.3s";
-    //           document.querySelector(".inputTimeEndEdit").style.border = "1px solid";
-    //         }
-
-    //         let inputNumberFrequency = document.querySelector(".inputNumberFrequencyEdit").value;
-    //         if(inputNumberFrequency <= 0){
-    //           flagContinueAddEditReminder = false;
-    //           document.querySelector(".inputNumberFrequencyEdit").style.border = "2px solid tomato";
-    //           document.querySelector(".inputNumberFrequencyEdit").style.animation = "errInput 0.3s";
-    //         }else{
-    //           document.querySelector(".inputNumberFrequencyEdit").style.animation = "none 0.3s";
-    //           document.querySelector(".inputNumberFrequencyEdit").style.border = "1px solid";
-    //         }
-
-    //         let inputTimeDate = document.querySelectorAll(".inputTimeDateEdit");
-
-    //         if(inputNumberFrequency > 0){
-    //             inputTimeDate.forEach(element =>{
-    //               if(element.value <= 0){
-    //                 flagContinueAddEditReminder = false;
-    //                 element.style.border = "2px solid tomato";
-    //                 element.style.animation = "errInput 0.3s";
-    //               }else{
-    //                 element.style.animation = "none 0.3s";
-    //                 element.style.border = "1px solid";
-    //               }
-    //             })
-    //         }
-
-    //         for(let i = 0; i < inputTimeDate.length; i++){
-    //           hoursReminder[i] = inputTimeDate.item(i).value;
-    //         }
-
-    //         if(flagContinueAddEditReminder){
-    //           item.querySelector(".titleReminder").textContent = document.querySelector(".inputNameEdit").value;
-    //           item.querySelector(".nameMedicine").textContent = document.querySelector(".inputDescriptionEdit").value;
-    //           item.querySelector(".timeInit").textContent = document.querySelector(".inputTimeInitEdit").value;
-    //           item.querySelector(".timeEnd").textContent = document.querySelector(".inputTimeEndEdit").value;
-    //           item.querySelector(".numberFrequency").textContent = document.querySelector(".inputNumberFrequencyEdit").value;
-
-    //           item.querySelector(".description").querySelectorAll(".pTimeDate").forEach(timeDate =>{
-    //             timeDate.remove();
-    //           });
-
-    //           let inputTimeEdit = document.querySelectorAll(".inputTimeDateEdit");
-
-    //           for(let i = 0; i < document.querySelector(".inputNumberFrequencyEdit").value; i++){
-    //             let pTimeDate = document.createElement("p");
-    //             pTimeDate.className = "pTimeDate";
-    //             pTimeDate.textContent = `Hora del recordatorio ${i+1}: `;
-    //             let sTimeDate = document.createElement("strong");
-    //             sTimeDate.className = "timeDate";
-    //             sTimeDate.textContent = inputTimeEdit.item(i).value;
-    //             item.querySelector(".description").appendChild(pTimeDate);
-    //             pTimeDate.appendChild(sTimeDate);
-    //           }
-
-    //           document.querySelector(".contentBlockPageEdit").style.top = "100%";
-
-    //         }else{
-    //           console.log("Llenar bien los campos");
-    //         }
-
-    //       });
-
-    //   });
+    
 
     // })
   });
@@ -812,7 +548,9 @@ setInterval(() => {
   } else {
     document.querySelector(".itemReminderNone").style.display = "none";
   }
+
 }, 100);
+
 
 // let reminders = document.querySelectorAll(".itemReminder");
 // let contClicksReminders = 0;

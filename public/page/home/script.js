@@ -14,6 +14,35 @@ let routingControlClinic = null;
 let flagRoutePharmacy = false;
 let flagRouteClinica = false;
 
+function setReminderNotification(){
+  window.setPushNotification("Hola mundo", "Esto es una notificacion push", "../../../img/logo_small_icon_only_inverted.png" ,2000);
+}
+
+function getDate() {
+  const fechaActual = new Date();
+  const hour = fechaActual.getHours();
+  const minute = fechaActual.getMinutes();
+  const second = fechaActual.getSeconds();
+
+  let dateTime = {
+    hours: hour,
+    minutes: minute,
+    seconds: second
+  }
+
+  return dateTime;
+}
+
+setInterval(()=>{
+  let timeNotification = getDate();
+
+  if(timeNotification.hours == 5 && timeNotification.minutes == 33 && timeNotification.seconds == 15){
+    setReminderNotification();
+  }
+
+  console.log(timeNotification.seconds);
+},1000)
+
 
 window.addEventListener("DOMContentLoaded", () => {
   getLocation();
@@ -30,6 +59,7 @@ function deleteRoute() {
     map.removeControl(routingControl);
   }
 }
+
 
 // function setPushNotification(){
 //   Push.create("Hello world!", {
