@@ -136,6 +136,11 @@ closeAddReminder.addEventListener("click", () =>{
   document.querySelector(".contentBlockPage").style.top = "100%";
 });
 
+let closeEditReminder = document.querySelector(".closeEditReminder");
+
+closeEditReminder.addEventListener("click", () =>{
+  document.querySelector(".contentBlockPageEdit").style.top = "100%";
+});
 
 let sendReminder = document.querySelector(".inputConfirm");
 let inputNumberFrequency = document.querySelector(".inputNumberFrequency");
@@ -289,6 +294,9 @@ sendReminder.addEventListener("click", () => {
   if(flagContinueAddReminder){
     createReminder(nameReminder, nameMedicine, inputTimeInit, inputTimeEnd, inputNumberFrequency, hoursReminder);
     document.querySelector(".contentBlockPage").style.top = "100%";
+    document.querySelectorAll(".itemReminder").forEach(element =>{
+      console.log(element.querySelector(".editReminder").getAttribute("data-span"));
+    });
     clearInputs();
   }else{
     console.log("Llenar bien los campos");
@@ -311,7 +319,7 @@ function createReminder(nameReminder,nameMedicine ,timeInit ,timeEnd ,numberFreq
 
   let showReminder = document.createElement("span");
   showReminder.className = "showReminder";
-
+  
   let eyeReminder = document.createElement("i");
   eyeReminder.className = "fa-solid fa-eye fa-lg";
   eyeReminder.id = "eye";
@@ -321,6 +329,14 @@ function createReminder(nameReminder,nameMedicine ,timeInit ,timeEnd ,numberFreq
 
   let trashReminder = document.createElement("i");
   trashReminder.className = "fa-solid fa-trash fa-lg";
+
+  let editReminder = document.createElement("span");
+  editReminder.className = "editReminder";
+  let newAttributeValue = (document.querySelectorAll(".itemReminder").length + 1).toString();
+  editReminder.setAttribute("data-span", newAttributeValue);
+
+  let iEditReminder = document.createElement("i");
+  iEditReminder.className = "fa-solid fa-pen-to-square fa-lg";
 
   let description = document.createElement("div");
   description.className = "description";
@@ -354,9 +370,11 @@ function createReminder(nameReminder,nameMedicine ,timeInit ,timeEnd ,numberFreq
   sNumberFrequency.textContent = numberFrequency;
 
   // Construir la jerarquía de elementos
+  editReminder.appendChild(iEditReminder);
   showReminder.appendChild(eyeReminder);
   clearReminder.appendChild(trashReminder);
   contentTopReminder.appendChild(titleReminder);
+  contentTopReminder.appendChild(editReminder);
   contentTopReminder.appendChild(showReminder);
   contentTopReminder.appendChild(clearReminder);
   newli.appendChild(contentTopReminder);
@@ -403,6 +421,10 @@ function createReminder(nameReminder,nameMedicine ,timeInit ,timeEnd ,numberFreq
       element.querySelector(".clearReminder").addEventListener("click", () =>{
         element.remove();
       });
+
+      element.querySelector(".editReminder").addEventListener("click", () =>{
+        document.querySelector(".contentBlockPageEdit").style.top = "0%";
+      });
   })
 
 
@@ -426,13 +448,12 @@ setInterval(()=>{
 //         contClicksReminders++;
 //         if(contClicksReminders % 2 != 0){
 //             element.querySelector(".description").style.display = "flex";
-//             element.querySelector(".fa-eye").classList.add("fa-eye-slash");
-//             element.querySelector(".fa-eye").classList.remove("fa-eye");
+//             element.querySelector("#eye").classList.add("fa-eye-slash");
+//             element.querySelector("#eye").classList.remove("fa-eye");
 //         }else{
 //             element.querySelector(".description").style.display = "none";
-//             element.querySelector(".fa-eye-slash").classList.add("fa-eye");
-//             element.querySelector(".fa-eye-slash").classList.remove("fa-eye-slash");
-
+//             element.querySelector("#eye").classList.add("fa-eye");
+//             element.querySelector("#eye").classList.remove("fa-eye-slash");
 //         }
 //     });
 

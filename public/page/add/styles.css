@@ -180,7 +180,7 @@ body {
   align-items: center;
   width: 100%;
   height: fit-content;
-  background-color: var(--background_2);
+  background-color: var(--background_1);
   padding: 2%;
   border-radius: 5px;
 }
@@ -240,6 +240,11 @@ body {
   position: absolute;
   right: 10%;
   color: tomato;
+}
+
+.listReminder li .contentTopReminder .editReminder{
+  position: absolute;
+  left: 10%;
 }
 
 .listReminder li .date{
@@ -673,3 +678,157 @@ body {
 
 
 /*Spawn Popup New Reminder*/
+
+/*Spawn Popup Edit Reminder*/
+
+.contentBlockPageEdit{
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(69, 69, 69, 0.6);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  overflow: scroll;
+  padding: 0% 0% 16% 0;
+  transition: .3s ease-in-out;
+}
+
+.spawnEditReminder{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  height: fit-content;
+  background-color: white;
+  gap:10px;
+  padding: 2%;
+  margin-top: 5%;
+  border-radius: 3px;
+  box-shadow: 0px 0px 20px rgba(69, 69, 69, 1);
+}
+
+.spawnEditReminder .titleEditReminder{
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  padding: 1%;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 4.5%;
+  left: 0;
+}
+
+.spawnEditReminder .closeEditReminder{
+  text-align: right;
+  color: tomato;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.spawnEditReminder div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: fit-content;
+  padding: .5%;
+}
+
+.spawnEditReminder .contentInputName{
+  margin-top: 3%;
+}
+
+.spawnEditReminder div input{
+  width: 100%;
+  padding: 2%;
+  outline: none;
+  border-radius: 2.5px;
+  border: 1px solid;
+}
+
+@keyframes errInput {
+  0%{
+    transform: translateX(0px);
+  }
+  20%{
+    transform: translateX(+4px);
+  }
+  40%{
+    transform: translateX(0px);
+  }
+  60%{
+    transform: translateX(-4px);
+  }
+  80%{
+    transform: translateX(0px);
+  }
+  100%{
+    transform: translateX(+4px);
+  }
+}
+
+.spawnEditReminder .contentInputFrequency{
+  gap: 20px;
+}
+
+.contentInputFrequency div{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentInputFrequency div ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  gap: 10px;
+}
+
+.spawnEditReminder .contentInputFrequency div ul li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+}
+
+.contentConfirm{
+  margin: 0% 0 5% 0;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentConfirm input{
+  width: 50%;
+  height: 100%;
+  padding: 2%;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  background-color: var(--background_1);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+
+
+/*Spawn Popup Edit Reminder*/

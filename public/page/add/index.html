@@ -229,6 +229,62 @@
 
         <!--Spawn Popup New Reminder-->
 
+        <!--Spawn Popup Edit Reminder-->
+
+        <div class="contentBlockPageEdit">
+
+          <div class="spawnEditReminder">
+
+            <div class="titleEditReminder">
+              <h3>Editar Recordatorio</h3>
+            </div>
+
+            <span class="closeEditReminder">
+              <i class="fa-solid fa-rectangle-xmark fa-lg"></i>
+            </span>
+
+            <div class="contentInputName">
+              <label for="inputNameEdit">Nombre del recordatorio:</label>
+              <input type="text" name="inputNameEdit" class="inputNameEdit clear" required>
+            </div>
+
+            <div class="contentInputDescription">
+              <label for="inputDescriptionEdit">Nombre de la medicina:</label>
+              <input type="text" name="inputDescriptionEdit" class="inputDescriptionEdit clear" required>
+          </div>
+
+          <div class="contentInputTimeInit">
+            <label for="inputTimeInitEdit">Fecha de inicio:</label>
+            <input type="date" name="inputTimeInitEdit" class="inputTimeInitEdit clear" required>
+          </div>
+
+          <div class="contentInputTimeEnd">
+            <label for="inputTimeEndEdit">Fecha de finalizacion:</label>
+            <input type="date" name="inputTimeEndEdit" class="inputTimeEndEdit clear" required>
+          </div>
+
+          <div class="contentInputFrequency">
+            <div class="contentNumber">
+              <label for="inputNumberFrequencyEdit">Numero de veces:</label>
+              <input type="number" name="inputNumberFrequencyEdit" class="inputNumberFrequencyEdit clear" required>  
+            </div>
+
+            <div class="contentTimeDate">
+              <ul class="listTimeDate">
+              </ul>
+            </div>
+          </div>
+
+          <div class="contentConfirm">
+            <input type="submit" class="inputConfirm">
+          </div>
+
+          </div>
+
+        </div>
+
+        <!--Spawn Popup Edit Reminder-->
+
         <div class="contentNav">
           <div class="navTop">
             <span class="configSpan">
@@ -268,11 +324,18 @@
 
           <div class="contentReminder">
             <ul class="listReminder">
+
               <li class="itemReminderNone">
                 No hay recordatorios para mostrar
               </li> 
+
               <!-- <li class="itemReminder">
                 <div class="contentTopReminder">
+
+                  <span class="editReminder">
+                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                  </span>
+
                   <h3 class="titleReminder">Ibuprofeno</h3>
 
                   <span class="showReminder">
