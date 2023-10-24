@@ -49,17 +49,24 @@ function deleteRoute() {
 }
 
 
-// function setPushNotification(){
-//   Push.create("Hello world!", {
-//     body: "How's it hangin'?",
-//     icon: '../../../img/logo_small_icon_only_inverted.png',
-//     timeout: 4000,
-//     onClick: function () {
-//         window.focus();
-//         this.close();
-//     }
-// });
-// }
+function requestNotification(){
+
+  Notification.requestPermission().then(result =>{
+    console.log("Respuesta: "+ result);
+  })
+
+}
+
+
+function setNotification(){
+  if(Notification.permission === "granted"){
+    new Notification("Esta es la notificacion")
+  }else if(Notification.permission === "denied"){
+
+  }else if(Notification.permission === "default"){
+
+  }
+}
 
 let buttonsFooter = document.querySelectorAll(".buttonFooter");
 
@@ -83,6 +90,9 @@ buttonsContentPage.forEach((element) => {
       let circle = element.querySelector(".itemCircle");
       circle.querySelector(".fa-circle").classList.remove("fa-regular");
       circle.querySelector(".fa-circle").classList.add("fa-solid");
+      
+      setNotification();
+      
       setTimeout(() => {
         circle.querySelector(".fa-circle").classList.add("fa-regular");
         circle.querySelector(".fa-circle").classList.remove("fa-solid");
@@ -92,7 +102,7 @@ buttonsContentPage.forEach((element) => {
       circle.querySelector(".fa-circle").classList.remove("fa-regular");
       circle.querySelector(".fa-circle").classList.add("fa-solid");
 
-      // setPushNotification();
+      requestNotification();
 
       setTimeout(() => {
         circle.querySelector(".fa-circle").classList.add("fa-regular");

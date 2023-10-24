@@ -59,15 +59,15 @@ setInterval(() => {
 
 }, 1000);
 
-if ('Notification' in window) {
-  if (Notification.permission === 'granted') {
-    alert('Notificaciones permitidas');
-  } else if (Notification.permission === 'denied') {
-    alert('Notificaciones denegadas');
-  } else if (Notification.permission === 'default') {
-    alert('Esperando decisión del usuario');
-  }
-}
+// if ('Notification' in window) {
+//   if (Notification.permission === 'granted') {
+//     alert('Notificaciones permitidas');
+//   } else if (Notification.permission === 'denied') {
+//     alert('Notificaciones denegadas');
+//   } else if (Notification.permission === 'default') {
+//     alert('Esperando decisión del usuario');
+//   }
+// }
 
 
 let dateActuality = getDate();
