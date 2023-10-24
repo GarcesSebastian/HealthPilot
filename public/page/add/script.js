@@ -96,8 +96,10 @@ setInterval(() => {
 
   for (let i = 0; i < dateReminder.day.length; i++) {
     if (dateNotification.day == dateReminder.day[i] && dateNotification.month == dateReminder.month[i] && dateNotification.year == dateReminder.year[i]) {
-      if (timeNotification.hours === parseInt(timeReminder.hour[i]) && timeNotification.minutes === parseInt(timeReminder.minute[i]) && timeNotification.seconds === 0) {
-        setNotification(i);
+      for(let j = 0; j < timeReminder.dataSpan.length; j++){
+        if (timeNotification.hours === parseInt(timeReminder.hour[j]) && timeNotification.minutes === parseInt(timeReminder.minute[j]) && timeNotification.seconds === 0) {
+          setNotification(j);
+        }
       }
     }
   }
@@ -449,9 +451,6 @@ sendReminder.addEventListener("click", () => {
 
   for (let i = 0; i < inputTimeDate.length; i++) {
     hoursReminder[i] = inputTimeDate.item(i).value;
-    let [hora, minutos] = hoursReminder[i].split(":");
-    timeReminder.hour.push(hora);
-    timeReminder.minute.push(minutos);
   }
 
   if (flagContinueAddReminder) {
@@ -473,6 +472,23 @@ sendReminder.addEventListener("click", () => {
   } else {
     console.log("Llenar bien los campos");
   }
+
+  let attributeItem;
+
+  contentReminder.title.forEach((element, index) =>{
+    if(element == nameReminder){
+      attributeItem = contentReminder.dataSpan[index];
+    }
+  })
+
+  for (let i = 0; i < inputTimeDate.length; i++) {
+    timeReminder.dataSpan[i] = attributeItem;
+    hoursReminder[i] = inputTimeDate.item(i).value;
+    let [hora, minutos] = hoursReminder[i].split(":");
+    timeReminder.hour.push(hora);
+    timeReminder.minute.push(minutos);
+  }
+
 });
 
 let flagContinueAddEditReminder = false;
@@ -743,16 +759,15 @@ function createReminder(
 
           let attributeItem = item.getAttribute("data-span");
 
-
-          for (let i = 0; i < dateReminder.day.length; i++) {
+          for (let i = 0; i < dateReminder.dataSpan.length; i++) {
             if (dateReminder.dataSpan[i] == attributeItem) {
               dateReminder.day[i] = fechaInit.getDate() + 1;
               dateReminder.month[i] = fechaInit.getMonth() + 1;
               dateReminder.year[i] = fechaInit.getFullYear();
               for (let j = 0; j < document.querySelector(".inputNumberFrequencyEdit").value; j++) {
                 let [hora, minutos] = inputTimeEdit.item(j).value.split(":");
-                timeReminder.hour[i] = hora;
-                timeReminder.minute[i] = minutos;
+                timeReminder.hour[j] = hora;
+                timeReminder.minute[j] = minutos;
               }
             }
           }
