@@ -116,6 +116,90 @@
 
         <!--Spawn Configuracion-->
 
+        <!--Spawn Configuracion-->
+
+        <div class="spawn">
+          <div class="contentNavConfig">
+            <span class="backContent">
+              <i class="fa-solid fa-arrow-left fa-lg"></i>
+            </span>
+
+            <h4 class="textBackContent">Notificaciones push</h4>
+          </div>
+
+          <div class="contentConfig">
+
+            <div class="configGeneralNotification">
+              <h5 class="nameList">General</h5>
+              <ul class="listConfig">
+                <li class="itemConfig">
+                  <h5 class="textConfig">Recibir notificaciones</h5>
+                  <h5 class="stateToggleNotificaciones">Activado</h5>
+                </li>
+              </ul>
+            </div>
+
+            <div class="optionsNotifications">
+              <h5 class="nameList">Opciones notificaciones push</h5>
+              <ul class="listNotif">
+                <li class="itemNotif">
+                  <h5 class="textNotif">Recordatorios</h5>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                  </label>
+                </li>
+
+                <li class="itemNotif">
+                  <h5 class="textNotif">Recordatorios (Medicamentos)</h5>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                  </label>
+                </li>
+
+                <li class="itemNotif">
+                  <h5 class="textNotif">Recordatorios (Citas)</h5>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                  </label>
+                </li>
+
+                <li class="itemNotif">
+                  <h5 class="textNotif">Spam (Opcional)</h5>
+                  <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="configSoundNotifications">
+              <h5 class="nameList">Sonido</h5>
+              <ul class="listConfig">
+
+                <li class="itemConfig">
+                  <h5 class="textConfig">Activar sonido</h5>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                  </label>
+                </li>
+
+                <li class="itemConfig">
+                  <h5 class="textConfig">Sonido de notificacion</h5>
+                  <input type="file" accept=".mp3" class="inputSound">
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!--Spawn Configuracion-->
+
         <!--Spawn Notificaciones-->
 
         <div class="spawnNotificaciones">
@@ -202,6 +286,12 @@
                   <label for="inputTimeEnd">Fecha de finalizacion:</label>
                   <input type="date" name="inputTimeEnd" class="inputTimeEnd clear" required>
                 </div>
+
+                <!-- <div class="contentInputSound">
+                  <label for="inputSound">Sonido de alarma:</label>
+                  <input type="file" accept=".mp3" name="inputSound" class="inputSound">
+                </div> -->
+
 
                 <div class="contentInputFrequency">
                   <div class="contentNumber">
@@ -389,6 +479,8 @@
           </span>
         </div>
       </div>
+
+      <audio class="audioPlayer" style="display: none;"></audio>
     </div>
 
     <script type="module" src="script.js"></script>

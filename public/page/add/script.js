@@ -41,7 +41,11 @@ function setNotification(i) {
       icon: "../../../img/logo_small_icon_only_inverted.png",
     };
 
-    playNotificationSound("../../../sound/sound.mp3", i);
+    if(contentReminder.sound[0] == undefined){
+      playNotificationSound("../../../sound/sound.mp3");
+    }else{
+      contentReminder.sound[i].play();      
+    }
 
     const notificacion = new Notification("HealthPilot", options);
 
@@ -304,7 +308,6 @@ function createHoursElementsEdit(number) {
     labelTimeDate.appendChild(sNumberTimeDate);
     liTimeDate.appendChild(inputTimeDate);
 
-    // Almacenar la hora de recordatorio en el obje[i] = inputTimeDate;
   }
 
 }
@@ -331,6 +334,23 @@ inputNumberFrequencyEdit.addEventListener("keyup", () => {
 });
 
 let flagContinueAddReminder = true;
+
+let audioInput = document.querySelector(".inputSound");
+let audioPlayer = document.querySelector(".audioPlayer"); 
+
+audioInput.addEventListener("change", (event) => {
+  let selectedFile = event.target.files[0];
+  if (selectedFile) {
+    let audioURL = URL.createObjectURL(selectedFile);
+    audioPlayer.src = audioURL;
+    contentReminder.sound.push(audioPlayer);
+    audioPlayer.addEventListener("loadedmetadata", () =>{
+      contentReminder.soundDuration.push(audioPlayer.duration);
+    });
+  }
+});
+
+
 
 sendReminder.addEventListener("click", () => {
   let nameReminder = document.querySelector(".inputName").value;
@@ -729,18 +749,23 @@ function createReminder(
               dateReminder.day[i] = fechaInit.getDate() + 1;
               dateReminder.month[i] = fechaInit.getMonth() + 1;
               dateReminder.year[i] = fechaInit.getFullYear();
-            }
-          }
-
-          for (let i = 0; i < timeReminder.hour.length; i++) {
-            if (timeReminder.dataSpan[i] == attributeItem) {
-              for (let i = 0; i < document.querySelector(".inputNumberFrequencyEdit").value; i++) {
-                let [hora, minutos] = inputTimeEdit.item(i).value.split(":");
+              for (let j = 0; j < document.querySelector(".inputNumberFrequencyEdit").value; j++) {
+                let [hora, minutos] = inputTimeEdit.item(j).value.split(":");
                 timeReminder.hour[i] = hora;
                 timeReminder.minute[i] = minutos;
               }
             }
           }
+
+          // for (let i = 0; i < timeReminder.hour.length; i++) {
+          //   if (timeReminder.dataSpan[i] == attributeItem) {
+          //     for (let i = 0; i < document.querySelector(".inputNumberFrequencyEdit").value; i++) {
+          //       let [hora, minutos] = inputTimeEdit.item(i).value.split(":");
+          //       timeReminder.hour[i] = hora;
+          //       timeReminder.minute[i] = minutos;
+          //     }
+          //   }
+          // }
 
 
           // Ocultar la ventana de edición
@@ -773,3 +798,43 @@ setInterval(() => {
 
 
 //Reminder Form
+
+
+//Spawn Config Notifications
+
+let contentConfiguracion = document.querySelector(".contentConfiguracion");
+let spawnConfigNotifications = document.querySelector(".spawn");
+let btnSpawnConfigNotifications = contentConfiguracion.querySelector(".itemConfig");
+
+
+let contentNavConfig = document.querySelector(".contentNavConfig");
+let btnBackSpawnConfigNotifications = contentNavConfig.querySelector(".backContent");
+
+btnSpawnConfigNotifications.addEventListener("click", () =>{
+  spawnConfigNotifications.style.left = "0%";
+});
+
+btnBackSpawnConfigNotifications.addEventListener("click", () =>{
+  spawnConfigNotifications.style.left = "-100%";
+});
+
+
+//Variables
+
+let flagActiveNotificationPush = true;
+
+
+let configGeneral = document.querySelector(".configGeneralNotification");
+let btnActiveNotificationPush = configGeneral.querySelector(".itemConfig");
+
+btnActiveNotificationPush.addEventListener("click", () =>{
+  if (flagActiveNotificationPush) {
+    flagActiveNotificationPush = false;
+    document.querySelector(".stateToggleNotificaciones").textContent = "Desactivado";
+  } else {
+    flagActiveNotificationPush = true;
+    document.querySelector(".stateToggleNotificaciones").textContent = "Activado";
+  }
+});
+
+//Spawn Config Notifications
