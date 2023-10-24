@@ -14,6 +14,30 @@ let routingControlClinic = null;
 let flagRoutePharmacy = false;
 let flagRouteClinica = false;
 
+function requestNotification(){
+
+  Notification.requestPermission().then(result =>{
+    console.log("Respuesta: "+ result);
+  })
+
+}
+
+function setNotification(){
+  if (Notification.permission === "granted") {
+    const notificacion = new Notification("HealthPilot", {
+      icon: "../../../img/logo_small_icon_only_inverted.png",
+      body: "Esto es una notificación push"
+    });  
+
+    notificacion.onclick = function(){
+      window.open("http://google.com");
+    }
+  }else if(Notification.permission === "denied"){
+
+  }else if(Notification.permission === "default"){
+
+  }
+}
 
 function getDate() {
   const fechaActual = new Date();
@@ -36,6 +60,7 @@ window.addEventListener("DOMContentLoaded", () => {
   getLocation();
   createMarkerClinic();
   createMarkerPharmacy();
+  requestNotification();
 });
 
 function quitarTildes(texto) {
@@ -45,26 +70,6 @@ function quitarTildes(texto) {
 function deleteRoute() {
   if (routingControl) {
     map.removeControl(routingControl);
-  }
-}
-
-
-function requestNotification(){
-
-  Notification.requestPermission().then(result =>{
-    console.log("Respuesta: "+ result);
-  })
-
-}
-
-
-function setNotification(){
-  if(Notification.permission === "granted"){
-    new Notification("Esta es la notificacion")
-  }else if(Notification.permission === "denied"){
-
-  }else if(Notification.permission === "default"){
-
   }
 }
 
@@ -101,9 +106,6 @@ buttonsContentPage.forEach((element) => {
       let circle = element.querySelector(".itemCircle");
       circle.querySelector(".fa-circle").classList.remove("fa-regular");
       circle.querySelector(".fa-circle").classList.add("fa-solid");
-
-      requestNotification();
-
       setTimeout(() => {
         circle.querySelector(".fa-circle").classList.add("fa-regular");
         circle.querySelector(".fa-circle").classList.remove("fa-solid");

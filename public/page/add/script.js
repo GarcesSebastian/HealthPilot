@@ -1,15 +1,27 @@
-function setPushNotification(title, body, url ,timeOut){
-  Push.create(title, {
-    body: body,
-    icon: url,
-    timeout: timeOut,
-    onClick: function () {
-        window.focus();
-        this.close();
-    }
-});
+function requestNotification(){
+
+  Notification.requestPermission().then(result =>{
+    console.log("Respuesta: "+ result);
+  })
+
 }
 
+function setNotification(){
+  if (Notification.permission === "granted") {
+    const notificacion = new Notification("HealthPilot", {
+      icon: "../../../img/logo_small_icon_only_inverted.png",
+      body: "Esto es una notificación push"
+    });  
+
+    notificacion.onclick = function(){
+      window.open("http://google.com");
+    }
+  }else if(Notification.permission === "denied"){
+
+  }else if(Notification.permission === "default"){
+
+  }
+}
 function getDate() {
   const fechaActual = new Date();
   const dia = fechaActual.getDate();
@@ -53,7 +65,7 @@ setInterval(() => {
 
   if (dateNotification.day == dateReminder.day && dateNotification.month == dateReminder.month && dateNotification.year == dateReminder.year) {
     if (timeNotification.hours === horas && timeNotification.minutes === minutos && timeNotification.seconds === 0) {
-      setPushNotification("Hola mundo", "Esto es una notificacion push", "../../../img/logo_small_icon_only_inverted.png", 2000);
+        setNotification();
     }
   }
 
