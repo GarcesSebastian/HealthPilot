@@ -25,9 +25,6 @@ function getDate() {
   return date;
 }
 
-function setReminderNotification() {
-  setPushNotification("Hola mundo", "Esto es una notificacion push", "../../../img/logo_small_icon_only_inverted.png", 2000);
-}
 
 function getDateTime() {
   const fechaActual = new Date();
@@ -56,7 +53,7 @@ setInterval(() => {
 
   if (dateNotification.day == dateReminder.day && dateNotification.month == dateReminder.month && dateNotification.year == dateReminder.year) {
     if (timeNotification.hours === horas && timeNotification.minutes === minutos && timeNotification.seconds === 0) {
-      setReminderNotification();
+      setPushNotification("Hola mundo", "Esto es una notificacion push", "../../../img/logo_small_icon_only_inverted.png", 2000);
     }
   }
 
