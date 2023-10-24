@@ -1,7 +1,6 @@
 function requestNotification(){
 
   Notification.requestPermission().then(result =>{
-    console.log("Respuesta: "+ result);
   })
 
 }
@@ -16,6 +15,8 @@ function setNotification(){
     notificacion.onclick = function(){
       window.open("http://google.com");
     }
+
+    console.log("Notificacion");
   }else if(Notification.permission === "denied"){
 
   }else if(Notification.permission === "default"){
@@ -56,18 +57,16 @@ function getDateTime() {
 setInterval(() => {
   let timeNotification = getDateTime();
   let dateNotification = getDate();
-  let horas;
-  let minutos;
 
-  if (hoursReminder[0] != undefined) {
-    [horas, minutos] = hoursReminder[0].split(':').map(Number);
-  }
-
-  if (dateNotification.day == dateReminder.day && dateNotification.month == dateReminder.month && dateNotification.year == dateReminder.year) {
-    if (timeNotification.hours === horas && timeNotification.minutes === minutos && timeNotification.seconds === 0) {
-        setNotification();
+  for(let i = 0; i < dateReminder.day.length; i++){
+    if (dateNotification.day == dateReminder.day[i] && dateNotification.month == dateReminder.month[i] && dateNotification.year == dateReminder.year[i]) {
+      if (timeNotification.hours === parseInt(timeReminder.hour[i]) && timeNotification.minutes === parseInt(timeReminder.minute[i]) && timeNotification.seconds === 0) {
+          setNotification();
+      }
     }
   }
+
+
 
 }, 1000);
 
@@ -210,10 +209,15 @@ let sendReminder = document.querySelector(".inputConfirm");
 let inputNumberFrequency = document.querySelector(".inputNumberFrequency");
 let inputNumberFrequencyEdit = document.querySelector(".inputNumberFrequencyEdit");
 let hoursReminder = {};
+
+let timeReminder = {
+  hour: [],
+  minute: []
+}
 let dateReminder = {
-  day: "",
-  month: "",
-  year: ""
+  day: [],
+  month: [],
+  year: []
 };
 
 function createHoursElements(number) {
@@ -410,6 +414,9 @@ sendReminder.addEventListener("click", () => {
 
   for (let i = 0; i < inputTimeDate.length; i++) {
     hoursReminder[i] = inputTimeDate.item(i).value;
+    let [hora, minutos] = hoursReminder[i].split(":");
+    timeReminder.hour.push(hora);
+    timeReminder.minute.push(minutos);
   }
 
   if (flagContinueAddReminder) {
@@ -422,9 +429,9 @@ sendReminder.addEventListener("click", () => {
       hoursReminder
     );
     document.querySelector(".contentBlockPage").style.top = "100%";
-    dateReminder.day = fechaInit.getDate() + 1;
-    dateReminder.month = fechaInit.getMonth() + 1;
-    dateReminder.year = fechaInit.getFullYear();
+    dateReminder.day.push(fechaInit.getDate() + 1);
+    dateReminder.month.push(fechaInit.getMonth() + 1);
+    dateReminder.year.push(fechaInit.getFullYear());
     clearInputs();
   } else {
     console.log("Llenar bien los campos");
@@ -694,8 +701,15 @@ function createReminder(
             pTimeDate.appendChild(sTimeDate);
           }
 
+          dateReminder.day = fechaInit.getDate() + 1;
+          dateReminder.month = fechaInit.getMonth() + 1;
+          dateReminder.year = fechaInit.getFullYear();
+
+          hoursReminder[0] = inputTimeEdit.item(0).value
+
           // Ocultar la ventana de edición
           document.querySelector(".contentBlockPageEdit").style.top = "100%";
+
 
           item = null;
 
