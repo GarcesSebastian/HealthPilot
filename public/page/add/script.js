@@ -48,9 +48,20 @@ setInterval(() => {
     }
   }
 
-  console.log(dateReminder);
-
 }, 1000);
+
+if ('Notification' in window) {
+  if (Notification.permission === 'granted') {
+    // Las notificaciones están habilitadas.
+    console.log('Notificaciones permitidas');
+  } else if (Notification.permission === 'denied') {
+    // Las notificaciones están deshabilitadas.
+    console.log('Notificaciones denegadas');
+  } else if (Notification.permission === 'default') {
+    // El usuario aún no ha tomado una decisión.
+    console.log('Esperando decisión del usuario');
+  }
+}
 
 
 let dateActuality = getDate();
