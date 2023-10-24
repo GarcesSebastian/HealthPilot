@@ -42,14 +42,15 @@ setInterval(() => {
     [horas, minutos] = hoursReminder[0].split(':').map(Number);
   }
 
-  if (dateNotification.day == 23 && dateNotification.month == 10 && dateNotification.year == 2023) {
+  if (dateNotification.day == dateReminder.day && dateNotification.month == dateReminder.month && dateNotification.year == dateReminder.year) {
     if (timeNotification.hours === horas && timeNotification.minutes === minutos && timeNotification.seconds === 0) {
       setReminderNotification();
     }
   }
 
-}, 1000);
+  console.log(dateReminder);
 
+}, 1000);
 
 
 let dateActuality = getDate();
@@ -178,10 +179,13 @@ closeEditReminder.addEventListener("click", () => {
 
 let sendReminder = document.querySelector(".inputConfirm");
 let inputNumberFrequency = document.querySelector(".inputNumberFrequency");
-let inputNumberFrequencyEdit = document.querySelector(
-  ".inputNumberFrequencyEdit"
-);
+let inputNumberFrequencyEdit = document.querySelector(".inputNumberFrequencyEdit");
 let hoursReminder = {};
+let dateReminder = {
+  day: "",
+  month: "",
+  year: ""
+};
 
 function createHoursElements(number) {
   if (document.querySelectorAll(".itemTimeDate")) {
@@ -220,7 +224,7 @@ function createHoursElements(number) {
 
 function createHoursElementsEdit(number) {
 
-  if(document.querySelectorAll(".itemTimeDateEdit")) {
+  if (document.querySelectorAll(".itemTimeDateEdit")) {
     let hoursTimeDate = document.querySelectorAll(".itemTimeDateEdit");
     hoursTimeDate.forEach((element) => {
       element.remove();
@@ -255,12 +259,7 @@ function createHoursElementsEdit(number) {
     // Almacenar la hora de recordatorio en el obje[i] = inputTimeDate;
   }
 
-
-
 }
-
-
-
 
 function clearInputs() {
   let spawnPopup = document.querySelector(".spawnPopupNewReminder");
@@ -336,9 +335,7 @@ sendReminder.addEventListener("click", () => {
   let fechaEnd = new Date(inputTimeEnd);
 
   if (
-    fechaEnd.getMonth() + 1 < dateActuality.month ||
-    fechaInit.getDate() + 1 >= fechaEnd.getDate() + 1 ||
-    fechaEnd.getFullYear() < dateActuality.year
+    fechaEnd <= fechaInit
   ) {
     flagContinueAddReminder = false;
     document.querySelector(".inputTimeEnd").style.border = "2px solid tomato";
@@ -396,13 +393,16 @@ sendReminder.addEventListener("click", () => {
       hoursReminder
     );
     document.querySelector(".contentBlockPage").style.top = "100%";
+    dateReminder.day = fechaInit.getDate() + 1;
+    dateReminder.month = fechaInit.getMonth() + 1;
+    dateReminder.year = fechaInit.getFullYear();
     clearInputs();
   } else {
     console.log("Llenar bien los campos");
   }
 });
 
-let flagContinueAddEditReminder = true;
+let flagContinueAddEditReminder = false;
 
 function createReminder(
   nameReminder,
@@ -509,86 +509,177 @@ function createReminder(
   // Agregar el nuevo <li> a la lista
   listReminder.appendChild(newli);
 
-  let reminders = document.querySelectorAll(".itemReminder");
-  let contClicksReminders = 0;
 
-  reminders.forEach((element) => {
-    element.querySelector(".showReminder").addEventListener("click", () => {
-      contClicksReminders++;
-      if (contClicksReminders % 2 != 0) {
-        element.querySelector(".description").style.display = "flex";
-        element.querySelector("#eye").classList.add("fa-eye-slash");
-        element.querySelector("#eye").classList.remove("fa-eye");
-      } else {
-        element.querySelector(".description").style.display = "none";
-        element.querySelector("#eye").classList.add("fa-eye");
-        element.querySelector("#eye").classList.remove("fa-eye-slash");
+  showReminder.addEventListener("click", function () {
+    description.style.display = description.style.display === 'block' ? 'none' : 'block';
+    eyeReminder.classList.toggle('fa-eye-slash');
+    eyeReminder.classList.toggle('fa-eye');
+  });
+
+  clearReminder.addEventListener("click", function () {
+    newli.remove();
+  });
+
+  editReminder.addEventListener("click", function () {
+    let item = newli; // El elemento "li" que se va a editar
+
+    if (item != null) {
+
+      // Obtener los valores actuales del recordatorio
+      const currentNameReminder = item.querySelector(".titleReminder").textContent;
+      const currentNameMedicine = item.querySelector(".nameMedicine").textContent;
+      const currentTimeInit = item.querySelector(".timeInit").textContent;
+      const currentTimeEnd = item.querySelector(".timeEnd").textContent;
+      const currentNumberFrequency = item.querySelector(".numberFrequency").textContent;
+
+      // Ventana de edición con campos prellenados
+      const editForm = document.querySelector(".spawnEditReminder");
+      editForm.querySelector(".inputNameEdit").value = currentNameReminder;
+      editForm.querySelector(".inputDescriptionEdit").value = currentNameMedicine;
+      editForm.querySelector(".inputTimeInitEdit").value = currentTimeInit;
+      editForm.querySelector(".inputTimeEndEdit").value = currentTimeEnd;
+      editForm.querySelector(".inputNumberFrequencyEdit").value = currentNumberFrequency;
+
+      createHoursElementsEdit(editForm.querySelector(".inputNumberFrequencyEdit").value);
+
+      let inputTimesDate = editForm.querySelectorAll(".inputTimeDateEdit");
+
+      for (let i = 0; i < inputTimesDate.length; i++) {
+        inputTimesDate.item(i).value = item.querySelectorAll(".pTimeDate").item(i).querySelector(".timeDate").textContent;
       }
-    });
 
-    element.querySelector(".clearReminder").addEventListener("click", () => {
-      element.remove();
+      // Manejar la edición y actualización de los datos
+      const editSubmitButton = editForm.querySelector(".inputConfirmEdit");
+      editSubmitButton.addEventListener("click", function () {
 
+        let nameReminder = document.querySelector(".inputNameEdit").value;
+        flagContinueAddEditReminder = true;
 
-    });
-
-    let editsReminder = document.querySelectorAll(".editReminder");
-    let sendReminderEdit = document.querySelector(".inputConfirmEdit");
-
-    editsReminder.forEach(reminders => {
-
-      reminders.addEventListener("click", () => {
-
-        let item = reminders.parentNode.parentNode;
-
-        document.querySelector(".inputNameEdit").value = item.querySelector(".titleReminder").textContent;
-        document.querySelector(".inputDescriptionEdit").value = item.querySelector(".nameMedicine").textContent;
-        document.querySelector(".inputTimeInitEdit").value = item.querySelector(".timeInit").textContent;
-        document.querySelector(".inputTimeEndEdit").value = item.querySelector(".timeEnd").textContent;
-        document.querySelector(".inputNumberFrequencyEdit").value = item.querySelector(".numberFrequency").textContent;
-
-        createHoursElementsEdit(document.querySelector(".inputNumberFrequencyEdit").value);
-
-        let inputTimesDate = document.querySelectorAll(".inputTimeDateEdit");
-
-        for (let i = 0; i < inputTimesDate.length; i++) {
-          inputTimesDate.item(i).value = document.querySelectorAll(".pTimeDate").item(i).querySelector(".timeDate").textContent;
+        if (nameReminder.length <= 18 && nameReminder.length > 0) {
+          document.querySelector(".inputNameEdit").style.border = "1px solid";
+          document.querySelector(".inputNameEdit").style.animation = "none 0.3s";
+        } else {
+          flagContinueAddEditReminder = false;
+          document.querySelector(".inputNameEdit").style.border = "2px solid tomato";
+          document.querySelector(".inputNameEdit").style.animation = "errInput 0.3s";
         }
 
-        document.querySelector(".contentBlockPageEdit").style.top = "0%";
+        let nameMedicine = document.querySelector(".inputTimeInitEdit").value;
+        if (nameMedicine.length <= 18 && nameMedicine.length > 0) {
+          document.querySelector(".inputTimeInitEdit").style.animation = "none 0.3s";
+          document.querySelector(".inputTimeInitEdit").style.border = "1px solid";
+        } else {
+          flagContinueAddEditReminder = false;
+          document.querySelector(".inputTimeInitEdit").style.border = "2px solid tomato";
+          document.querySelector(".inputTimeInitEdit").style.animation = "errInput 0.3s";
+        }
 
-        let nameReminder = document.querySelector(".inputNameEdit");
-        let nameMedicine = document.querySelector(".inputDescriptionEdit");
-        let timeInit = document.querySelector(".inputTimeInitEdit");
-        let timeEnd = document.querySelector(".inputTimeEndEdit");
-        let numberFrequency = document.querySelector(".inputNumberFrequencyEdit");
-        let inputsTimeDateEdit = document.querySelectorAll(".inputTimeDateEdit");
+        let inputTimeInit = document.querySelector(".inputTimeInitEdit").value;
 
-        inputsTimeDateEdit.forEach(element => {
-          for (let i = 0; i < inputsTimeDateEdit.length; i++) {
-            hoursReminder[i] = element.value;
+        let fechaInit = new Date(inputTimeInit);
+
+        if ((fechaInit.getMonth() + 1 < dateActuality.month) || (fechaInit.getDate() + 1 < dateActuality.day) || (fechaInit.getFullYear() < dateActuality.year)) {
+          flagContinueAddEditReminder = false;
+          document.querySelector(".inputTimeInitEdit").style.border = "2px solid tomato";
+          document.querySelector(".inputTimeInitEdit").style.animation = "errInput 0.3s";
+        } else if (inputTimeInit == "") {
+          flagContinueAddEditReminder = false;
+          document.querySelector(".inputTimeInitEdit").style.border = "2px solid tomato";
+          document.querySelector(".inputTimeInitEdit").style.animation = "errInput 0.3s";
+        } else {
+          document.querySelector(".inputTimeInitEdit").style.animation = "none 0.3s";
+          document.querySelector(".inputTimeInitEdit").style.border = "1px solid";
+        }
+
+        let inputTimeEnd = document.querySelector(".inputTimeEndEdit").value;
+
+        let fechaEnd = new Date(inputTimeEnd);
+
+        if (fechaEnd <= fechaInit) {
+          flagContinueAddEditReminder = false;
+          document.querySelector(".inputTimeEndEdit").style.border = "2px solid tomato";
+          document.querySelector(".inputTimeEndEdit").style.animation = "errInput 0.3s";
+        } else if (inputTimeEnd == "") {
+          flagContinueAddEditReminder = false;
+          document.querySelector(".inputTimeEndEdit").style.border = "2px solid tomato";
+          document.querySelector(".inputTimeEndEdit").style.animation = "errInput 0.3s";
+        } else {
+          document.querySelector(".inputTimeEndEdit").style.animation = "none 0.3s";
+          document.querySelector(".inputTimeEndEdit").style.border = "1px solid";
+        }
+
+        let inputNumberFrequency = document.querySelector(".inputNumberFrequencyEdit").value;
+        if (inputNumberFrequency <= 0) {
+          flagContinueAddEditReminder = false;
+          document.querySelector(".inputNumberFrequencyEdit").style.border = "2px solid tomato";
+          document.querySelector(".inputNumberFrequencyEdit").style.animation = "errInput 0.3s";
+        } else {
+          document.querySelector(".inputNumberFrequencyEdit").style.animation = "none 0.3s";
+          document.querySelector(".inputNumberFrequencyEdit").style.border = "1px solid";
+        }
+
+        let inputTimeDate = document.querySelectorAll(".inputTimeDateEdit");
+
+        if (inputNumberFrequency > 0) {
+          inputTimeDate.forEach(element => {
+            if (element.value <= 0) {
+              flagContinueAddEditReminder = false;
+              element.style.border = "2px solid tomato";
+              element.style.animation = "errInput 0.3s";
+            } else {
+              element.style.animation = "none 0.3s";
+              element.style.border = "1px solid";
+            }
+          })
+        }
+
+        if (flagContinueAddEditReminder && item != null) {
+          // Obtener los nuevos valores de edición
+          const newNameReminder = editForm.querySelector(".inputNameEdit").value;
+          const newNameMedicine = editForm.querySelector(".inputDescriptionEdit").value;
+          const newTimeInit = editForm.querySelector(".inputTimeInitEdit").value;
+          const newTimeEnd = editForm.querySelector(".inputTimeEndEdit").value;
+          const newNumberFrequency = editForm.querySelector(".inputNumberFrequencyEdit").value;
+
+          // Actualizar los valores en el elemento del recordatorio
+          item.querySelector(".titleReminder").textContent = newNameReminder;
+          item.querySelector(".nameMedicine").textContent = newNameMedicine;
+          item.querySelector(".timeInit").textContent = newTimeInit;
+          item.querySelector(".timeEnd").textContent = newTimeEnd;
+          item.querySelector(".numberFrequency").textContent = newNumberFrequency;
+
+          item.querySelector(".description").querySelectorAll(".pTimeDate").forEach(timeDate => {
+            timeDate.remove();
+          });
+
+          let inputTimeEdit = document.querySelectorAll(".inputTimeDateEdit");
+
+          for (let i = 0; i < document.querySelector(".inputNumberFrequencyEdit").value; i++) {
+            let pTimeDate = document.createElement("p");
+            pTimeDate.className = "pTimeDate";
+            pTimeDate.textContent = `Hora del recordatorio ${i + 1}: `;
+            let sTimeDate = document.createElement("strong");
+            sTimeDate.className = "timeDate";
+            sTimeDate.textContent = inputTimeEdit.item(i).value;
+            item.querySelector(".description").appendChild(pTimeDate);
+            pTimeDate.appendChild(sTimeDate);
           }
-        });
 
-        function clickSendEditReminders(){
-          item.querySelector(".titleReminder").textContent = nameReminder.value;
-          item.querySelector(".nameMedicine").textContent = "Ibuprofeno";
-          item.querySelector(".timeInit").textContent = 20-10-2023;
-          item.querySelector(".timeEnd").textContent = 20-10-2023;
-          item.querySelector(".numberFrequency").textContent = 2;
-        }        
-
-        sendReminderEdit.addEventListener("click", () => {
-  
+          // Ocultar la ventana de edición
           document.querySelector(".contentBlockPageEdit").style.top = "100%";
 
-        });
+          item = null;
+
+        }
 
       });
 
-    })
+      // Mostrar la ventana de edición
+      document.querySelector(".contentBlockPageEdit").style.top = "0%";
 
-  })
+    }
+  });
+
 }
 
 setInterval(() => {
@@ -601,27 +692,5 @@ setInterval(() => {
 
 }, 100);
 
-
-// let reminders = document.querySelectorAll(".itemReminder");
-// let contClicksReminders = 0;
-
-// reminders.forEach(element =>{
-//     element.querySelector(".showReminder").addEventListener("click", () =>{
-//         contClicksReminders++;
-//         if(contClicksReminders % 2 != 0){
-//             element.querySelector(".description").style.display = "flex";
-//             element.querySelector("#eye").classList.add("fa-eye-slash");
-//             element.querySelector("#eye").classList.remove("fa-eye");
-//         }else{
-//             element.querySelector(".description").style.display = "none";
-//             element.querySelector("#eye").classList.add("fa-eye");
-//             element.querySelector("#eye").classList.remove("fa-eye-slash");
-//         }
-//     });
-
-//     element.querySelector(".clearReminder").addEventListener("click", () =>{
-//       element.remove();
-//     });
-// })
 
 //Reminder Form
