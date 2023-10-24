@@ -1,3 +1,15 @@
+function setPushNotification(title, body, url ,timeOut){
+  Push.create(title, {
+    body: body,
+    icon: url,
+    timeout: timeOut,
+    onClick: function () {
+        window.focus();
+        this.close();
+    }
+});
+}
+
 function getDate() {
   const fechaActual = new Date();
   const dia = fechaActual.getDate();
@@ -14,7 +26,7 @@ function getDate() {
 }
 
 function setReminderNotification() {
-  window.setPushNotification("Hola mundo", "Esto es una notificacion push", "../../../img/logo_small_icon_only_inverted.png", 2000);
+  setPushNotification("Hola mundo", "Esto es una notificacion push", "../../../img/logo_small_icon_only_inverted.png", 2000);
 }
 
 function getDateTime() {
