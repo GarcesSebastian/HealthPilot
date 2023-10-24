@@ -1,0 +1,25 @@
+:root {
+    --background_1: #3d50e0;
+    --background_2: #62a9e1;
+  
+    /*Text Responsive*/
+    --font_25px:clamp(15px, 1.5vw, 60px);
+    --font_15px:clamp(10px, 1.2vw, 30px);
+    --font_14px:clamp(10px, 1.4vw, 30px);
+}
+
+.containerAll {
+    width: 33%;
+}
+
+@media (max-width:1280px) {
+    .containerAll{
+      width: 28%;
+    }
+  }
+  
+  @media (max-width:780px) {
+    .containerAll{
+      width: 240px;
+    }
+  }

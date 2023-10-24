@@ -3,6 +3,12 @@
   --background_2: #62a9e1;
 
   /*Text Responsive*/
+  --font_25px:clamp(15px, 1.5vw, 60px);
+  --font_15px:clamp(10px, 1.2vw, 30px);
+  --font_14px:clamp(10px, 1.4vw, 30px);
+  --font_13px:clamp(10px, 1vw, 20px);
+  --font_12px:clamp(10px, 1vw, 18px);
+
 }
 
 * {
@@ -100,7 +106,7 @@ body {
 
 
 .contentForm div span{
-  font-size: 15px;
+  font-size: var(--font_14px);
   color: var(--background_2);
 }
 
@@ -109,7 +115,7 @@ body {
   background-color: transparent;
   border: none;
   padding: 2% 5%;
-  font-size: 16px;
+  font-size: var(--font_15px);
   border-bottom: 2px solid rgb(114, 111, 111);
   transition: .5s;
 }
@@ -139,7 +145,7 @@ body {
   padding: 2.3% 0;
   border-radius: 10px;
   color: white;
-  font-size: 15px;
+  font-size: var(--font_15px);
   font-weight: lighter;
   cursor: pointer;
   transition: .5s;
@@ -161,12 +167,12 @@ body {
 }
 
 .contentSendForm h4{
-  font-size: 13px;
+  font-size: var(--font_13px);
   color: rgb(160, 160, 160);
 }
 
 .contentSendForm h3{
-  font-size: 14px;
+  font-size: var(--font_13px);
   color: var(--background_1);
   cursor: pointer;
 }

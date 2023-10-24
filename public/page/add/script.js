@@ -1,3 +1,27 @@
+let timeReminder = {
+  dataSpan: [],
+  hour: [],
+  minute: []
+}
+let dateReminder = {
+  dataSpan: [],
+  day: [],
+  month: [],
+  year: []
+};
+
+let contentReminder = {
+  dataSpan: [],
+  title: [],
+  medicine: [],
+  sound: []
+}
+
+function playNotificationSound(ruta) {
+  const audio = new Audio(ruta);
+  audio.play();
+}
+
 function requestNotification(){
 
   Notification.requestPermission().then(result =>{
@@ -7,16 +31,15 @@ function requestNotification(){
 
 function setNotification(){
   if (Notification.permission === "granted") {
-    const notificacion = new Notification("HealthPilot", {
+    const options = {
+      body: contentReminder.title + "\n" + "Recordatorio para dosis de la medicina " + contentReminder.medicine,
       icon: "../../../img/logo_small_icon_only_inverted.png",
-      body: "Esto es una notificación push"
-    });  
+    };
 
-    notificacion.onclick = function(){
-      window.open("http://google.com");
-    }
+    const notificacion = new Notification("HealthPilot", options);
 
-    console.log("Notificacion");
+    playNotificationSound("../../../sound/Chocarse.mp3");
+
   }else if(Notification.permission === "denied"){
 
   }else if(Notification.permission === "default"){
@@ -64,21 +87,12 @@ setInterval(() => {
           setNotification();
       }
     }
+    console.log(dateReminder);
   }
 
 
 
 }, 1000);
-
-// if ('Notification' in window) {
-//   if (Notification.permission === 'granted') {
-//     alert('Notificaciones permitidas');
-//   } else if (Notification.permission === 'denied') {
-//     alert('Notificaciones denegadas');
-//   } else if (Notification.permission === 'default') {
-//     alert('Esperando decisión del usuario');
-//   }
-// }
 
 
 let dateActuality = getDate();
@@ -209,16 +223,6 @@ let sendReminder = document.querySelector(".inputConfirm");
 let inputNumberFrequency = document.querySelector(".inputNumberFrequency");
 let inputNumberFrequencyEdit = document.querySelector(".inputNumberFrequencyEdit");
 let hoursReminder = {};
-
-let timeReminder = {
-  hour: [],
-  minute: []
-}
-let dateReminder = {
-  day: [],
-  month: [],
-  year: []
-};
 
 function createHoursElements(number) {
   if (document.querySelectorAll(".itemTimeDate")) {
@@ -432,6 +436,8 @@ sendReminder.addEventListener("click", () => {
     dateReminder.day.push(fechaInit.getDate() + 1);
     dateReminder.month.push(fechaInit.getMonth() + 1);
     dateReminder.year.push(fechaInit.getFullYear());
+    contentReminder.title.push(nameReminder);
+    contentReminder.medicine.push(nameMedicine);
     clearInputs();
   } else {
     console.log("Llenar bien los campos");
@@ -697,15 +703,17 @@ function createReminder(
             let sTimeDate = document.createElement("strong");
             sTimeDate.className = "timeDate";
             sTimeDate.textContent = inputTimeEdit.item(i).value;
+            let [hora, minutos] = inputTimeEdit.item(i).value.split(":");
+            timeReminder.hour[i] = hora;
+            timeReminder.minute[i] = minutos;
             item.querySelector(".description").appendChild(pTimeDate);
             pTimeDate.appendChild(sTimeDate);
           }
 
-          dateReminder.day = fechaInit.getDate() + 1;
-          dateReminder.month = fechaInit.getMonth() + 1;
-          dateReminder.year = fechaInit.getFullYear();
+          dateReminder.day.push(fechaInit.getDate() + 1);
+          dateReminder.month.push(fechaInit.getMonth() + 1);
+          dateReminder.year.push(fechaInit.getFullYear());
 
-          hoursReminder[0] = inputTimeEdit.item(0).value
 
           // Ocultar la ventana de edición
           document.querySelector(".contentBlockPageEdit").style.top = "100%";
