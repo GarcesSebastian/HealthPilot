@@ -14,35 +14,44 @@ let contentReminder = {
   dataSpan: [],
   title: [],
   medicine: [],
-  sound: []
+  sound: [],
+  soundDuration: []
 }
 
-function playNotificationSound(ruta) {
+
+function playNotificationSound(ruta, i) {
   const audio = new Audio(ruta);
+  audio.addEventListener("loadedmetadata", () => {
+    contentReminder.soundDuration[i] = audio.duration;
+  });
   audio.play();
 }
 
-function requestNotification(){
+function requestNotification() {
 
-  Notification.requestPermission().then(result =>{
+  Notification.requestPermission().then(result => {
   })
 
 }
 
-function setNotification(){
+function setNotification(i) {
   if (Notification.permission === "granted") {
     const options = {
-      body: contentReminder.title + "\n" + "Recordatorio para dosis de la medicina " + contentReminder.medicine,
+      body: contentReminder.title[i] + "\n" + "Recordatorio para dosis de la medicina " + contentReminder.medicine[i],
       icon: "../../../img/logo_small_icon_only_inverted.png",
     };
 
+    playNotificationSound("../../../sound/sound.mp3", i);
+
     const notificacion = new Notification("HealthPilot", options);
 
-    playNotificationSound("../../../sound/Chocarse.mp3");
+    setTimeout(() => {
+      notificacion.close();
+    }, contentReminder.soundDuration[i] * 1000)
 
-  }else if(Notification.permission === "denied"){
+  } else if (Notification.permission === "denied") {
 
-  }else if(Notification.permission === "default"){
+  } else if (Notification.permission === "default") {
 
   }
 }
@@ -81,18 +90,20 @@ setInterval(() => {
   let timeNotification = getDateTime();
   let dateNotification = getDate();
 
-  for(let i = 0; i < dateReminder.day.length; i++){
+  for (let i = 0; i < dateReminder.day.length; i++) {
     if (dateNotification.day == dateReminder.day[i] && dateNotification.month == dateReminder.month[i] && dateNotification.year == dateReminder.year[i]) {
       if (timeNotification.hours === parseInt(timeReminder.hour[i]) && timeNotification.minutes === parseInt(timeReminder.minute[i]) && timeNotification.seconds === 0) {
-          setNotification();
+        setNotification(i);
       }
     }
-    console.log(dateReminder);
   }
 
-
-
 }, 1000);
+
+
+setInterval(()=>{
+  console.log(timeReminder);
+},3000)
 
 
 let dateActuality = getDate();
@@ -485,6 +496,9 @@ function createReminder(
     document.querySelectorAll(".itemReminder").length + 1
   ).toString();
   newli.setAttribute("data-span", newAttributeValue);
+  timeReminder.dataSpan.push(newAttributeValue);
+  dateReminder.dataSpan.push(newAttributeValue);
+  contentReminder.dataSpan.push(newAttributeValue);
 
   let iEditReminder = document.createElement("i");
   iEditReminder.className = "fa-solid fa-pen-to-square fa-lg";
@@ -703,16 +717,30 @@ function createReminder(
             let sTimeDate = document.createElement("strong");
             sTimeDate.className = "timeDate";
             sTimeDate.textContent = inputTimeEdit.item(i).value;
-            let [hora, minutos] = inputTimeEdit.item(i).value.split(":");
-            timeReminder.hour[i] = hora;
-            timeReminder.minute[i] = minutos;
             item.querySelector(".description").appendChild(pTimeDate);
             pTimeDate.appendChild(sTimeDate);
           }
 
-          dateReminder.day.push(fechaInit.getDate() + 1);
-          dateReminder.month.push(fechaInit.getMonth() + 1);
-          dateReminder.year.push(fechaInit.getFullYear());
+          let attributeItem = item.getAttribute("data-span");
+
+
+          for (let i = 0; i < dateReminder.day.length; i++) {
+            if (dateReminder.dataSpan[i] == attributeItem) {
+              dateReminder.day[i] = fechaInit.getDate() + 1;
+              dateReminder.month[i] = fechaInit.getMonth() + 1;
+              dateReminder.year[i] = fechaInit.getFullYear();
+            }
+          }
+
+          for (let i = 0; i < timeReminder.hour.length; i++) {
+            if (timeReminder.dataSpan[i] == attributeItem) {
+              for (let i = 0; i < document.querySelector(".inputNumberFrequencyEdit").value; i++) {
+                let [hora, minutos] = inputTimeEdit.item(i).value.split(":");
+                timeReminder.hour[i] = hora;
+                timeReminder.minute[i] = minutos;
+              }
+            }
+          }
 
 
           // Ocultar la ventana de edición
