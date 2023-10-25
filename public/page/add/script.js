@@ -50,11 +50,16 @@ function requestNotification() {
 }
 
 function detenerAudio() {
-  if (contentReminder.sound[0]) {
+  if (contentReminder.sound[0] && flagGetNotificationSound == true) {
     contentReminder.sound[0].pause();
     contentReminder.sound[0].currentTime = 0;
   }
 }
+
+let flagGetNotification = true;
+let flagGetNotificationSound = true;
+let flagGetNotificationReminder = true;
+let flagGetNotificationSpam = false;
 
 function setNotification(x) {
   if (Notification.permission === "granted") {
@@ -69,7 +74,9 @@ function setNotification(x) {
       icon: "../../../img/logo_small_icon_only_inverted.png",
     };
 
-    contentReminder.sound[0].play();
+    if(flagGetNotificationSound == true){
+      contentReminder.sound[0].play();
+    }
 
     const notificacion = new Notification("HealthPilot", options);
 
@@ -136,8 +143,14 @@ setInterval(() => {
           timeNotification.minutes === parseInt(timeReminder.minute[j]) &&
           timeNotification.seconds === 0
         ) {
-          document.querySelector(".spawnPauseNotification").style.right = "4%";
-          setNotification(timeReminder.dataSpan[j]);
+          if(flagGetNotificationReminder == true){
+            if(flagGetNotificationSound == true){
+              document.querySelector(".spawnPauseNotification").style.right = "4%";
+            }
+            setNotification(timeReminder.dataSpan[j]);
+          }else{
+            console.log("Notificacion");
+          }
         }
       }
     }
@@ -160,8 +173,7 @@ setInterval(() => {
 }, 1000);
 
 // setInterval(() => {
-//   console.log(reminder);
-//   console.log(dateReminder);
+//   console.log(flagGetNotificationSound);
 // }, 5000);
 
 let dateActuality = getDate();
@@ -991,21 +1003,95 @@ btnBackSpawnConfigNotifications.addEventListener("click", () => {
 
 //Variables
 
-let flagActiveNotificationPush = true;
 
 let configGeneral = document.querySelector(".configGeneralNotification");
 let btnActiveNotificationPush = configGeneral.querySelector(".itemConfig");
 
 btnActiveNotificationPush.addEventListener("click", () => {
-  if (flagActiveNotificationPush) {
-    flagActiveNotificationPush = false;
+  if (flagGetNotification) {
+    flagGetNotification = false;
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    flagGetNotificationSpam = false;
     document.querySelector(".stateToggleNotificaciones").textContent =
       "Desactivado";
-  } else {
-    flagActiveNotificationPush = true;
+      document.querySelectorAll(".itemNotif").forEach(element =>{
+        element.querySelector(".checkNotification").checked = false;
+      });
+    } else {
+    flagGetNotification = true;
+    flagGetNotificationReminder = true;
+    flagGetNotificationSound = true;
+    flagGetNotificationSpam = false;
     document.querySelector(".stateToggleNotificaciones").textContent =
       "Activado";
+      document.querySelectorAll(".itemNotif").forEach(element =>{
+        element.querySelector(".checkNotification").checked = true;
+      });
   }
+});
+
+document.querySelector(".reminderNotification").addEventListener("change", () =>{
+  if(document.querySelector(".reminderNotification").checked == false && document.querySelector(".soundNotification").checked == false && document.querySelector(".spamNotification").checked == false){
+    flagGetNotification = false;
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    flagGetNotificationSpam = false;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Desactivado";
+  }
+
+  if(document.querySelector(".reminderNotification").checked == true){
+    flagGetNotificationReminder = true;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+    "Activado";
+  }else{
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    document.querySelector(".soundNotification").checked = false;
+  }
+
+});
+
+document.querySelector(".soundNotification").addEventListener("change", () =>{
+  if(document.querySelector(".reminderNotification").checked == false && document.querySelector(".soundNotification").checked == false && document.querySelector(".spamNotification").checked == false){
+    flagGetNotification = false;
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    flagGetNotificationSpam = false;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Desactivado";
+  }
+
+  if(document.querySelector(".soundNotification").checked == true){
+    flagGetNotificationSound = true;
+    flagGetNotificationReminder = true;
+    document.querySelector(".reminderNotification").checked = true;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+    "Activado";
+  }else{
+    flagGetNotificationSound = false;
+  }
+});
+
+document.querySelector(".spamNotification").addEventListener("change", () =>{
+  if(document.querySelector(".reminderNotification").checked == false && document.querySelector(".soundNotification").checked == false && document.querySelector(".spamNotification").checked == false){
+    flagGetNotification = false;
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    flagGetNotificationSpam = false;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Desactivado";
+  }
+
+  if(document.querySelector(".spamNotification").checked == true){
+    flagGetNotificationSpam = true;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+    "Activado";
+  }else{
+    flagGetNotificationSpam = false;
+  }
+
 });
 
 //Spawn Config Notifications
