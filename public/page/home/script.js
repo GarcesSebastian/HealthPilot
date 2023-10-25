@@ -22,23 +22,6 @@ function requestNotification(){
 
 }
 
-function setNotification(){
-  if (Notification.permission === "granted") {
-    const notificacion = new Notification("HealthPilot", {
-      icon: "../../../img/logo_small_icon_only_inverted.png",
-      body: "Esto es una notificación push"
-    });  
-
-    notificacion.onclick = function(){
-      window.open("http://google.com");
-    }
-  }else if(Notification.permission === "denied"){
-
-  }else if(Notification.permission === "default"){
-
-  }
-}
-
 function getDate() {
   const fechaActual = new Date();
   const hour = fechaActual.getHours();
@@ -53,7 +36,6 @@ function getDate() {
 
   return dateTime;
 }
-
 
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -199,7 +181,16 @@ buttonsGeneral.forEach((element) => {
 
 //Spawn Notificaciones
 
-let map = L.map("map").setView([0, 0], 13);
+let map = L.map("map", {
+  zoomControl: false
+}).setView([0, 0], 13);
+
+const customZoomControl = L.control.zoom({
+  position: 'bottomright', // Cambiar la posición del control de zoom (también puedes usar 'topleft', 'bottomright', 'bottomleft', etc.)
+});
+
+
+customZoomControl.addTo(map);
 
 L.tileLayer(
   "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}",
@@ -247,25 +238,25 @@ function createRouteToPlace(latlng) {
       L.latLng(latlng),
     ],
     routeWhileDragging: false,
-    show: false,
+    show: false
   }).addTo(map);
 
-  // map.eachLayer(function (layer) {
-  //   if (layer instanceof L.Marker) {
-  //     map.removeLayer(layer);
-  //   }
-  // });
+  const routingContainer = document.querySelector(".leaflet-routing-container");
+  if (routingContainer) {
+    routingContainer.style.display = "none";
+  }
+  
 
   routingControl.on("routesfound", function (e) {
     let route = e.routes[0];
-    let distance = route.summary.totalDistance; // Distancia en metros
-    let time = route.summary.totalTime; // Tiempo en segundos
+    let distance = route.summary.totalDistance;
+    let time = route.summary.totalTime;
 
     let distanceInKm = distance / 1000;
-    let timeInMinutes = time / 60;
+    let timeInMinutes = (time / 60) * 2;
 
-    console.log(`Distancia: ${distanceInKm} km`);
-    console.log(`Tiempo: ${timeInMinutes} minutos`);
+    document.querySelector(".distanceLabel").textContent ="Distancia: "+ distanceInKm.toFixed(1) + "km";
+    document.querySelector(".timeLabel").textContent ="Tiempo estimado: "+ timeInMinutes.toFixed(1) + " minutos";
   });
 }
 
@@ -280,24 +271,24 @@ function createMarkerPharmacy() {
             contDefaultPharmacy++;
           }
           const marker = L.marker(latlng, { icon: pharmacyIcon }).bindPopup(
-            `<div>
-            <h3>${feature.properties.name}</h3>
-            <input type="button" value="Como llegar" class="buttonRoutePharmacy">
-            </div>
-            `
+            `<div class="contentRoutePharmacy">
+              <h3>${feature.properties.name}</h3>
+              <button class="buttonRoutePharmacy">Como llegar</button>
+            </div>`
           );
           marker.addTo(map);
 
           marker.addEventListener("popupopen", () => {
-            document.querySelector(".buttonRoutePharmacy").addEventListener("click", () => {
-              flagRoutePharmacy = true;
-              flagRouteClinica = false;
-              map.removeLayer(marker);
-              createRouteToPlace(latlng);
-              map.addLayer(marker);
-            });
+            if(document.querySelector(".buttonRoutePharmacy")){
+              document.querySelector(".buttonRoutePharmacy").addEventListener("click", () => {
+                flagRoutePharmacy = true;
+                flagRouteClinica = false;
+                map.removeLayer(marker);
+                createRouteToPlace(latlng);
+                map.addLayer(marker);
+              });
+            }
           });
-          
 
           return marker;
         },
@@ -310,6 +301,7 @@ function createMarkerPharmacy() {
       console.error("Error al cargar datos del GeoJSON: " + error);
     });
 }
+
 
 function deleteMarkerPharmacy() {
   fetch(clinicGeoJSONPath)
@@ -348,22 +340,24 @@ function createMarkerClinic() {
             contDefaultClinic++;
           }
           const marker = L.marker(latlng, { icon: clinicIcon }).bindPopup(
-            `<div>
+            `<div class="contentRouteClinic">
             <h3>${feature.properties.name}</h3>
-            <input type="button" value="Como llegar" class="buttonRouteClinic">
+            <button class="buttonRouteClinic">Como llegar</button>
             </div>
             `
           );
           marker.addTo(map);
 
           marker.addEventListener("popupopen", () => {
-            document.querySelector(".buttonRouteClinic").addEventListener("click", () => {
-              flagRoutePharmacy = false;
-              flagRouteClinica = true;
-              map.removeLayer(marker);
-              createRouteToPlace(latlng);
-              map.addLayer(marker);
-            });
+            if(document.querySelector(".buttonRouteClinic")){
+              document.querySelector(".buttonRouteClinic").addEventListener("click", () => {
+                flagRoutePharmacy = false;
+                flagRouteClinica = true;
+                map.removeLayer(marker);
+                createRouteToPlace(latlng);
+                map.addLayer(marker);
+              });
+            }
           });
           
 
@@ -516,7 +510,7 @@ function findLocation(name) {
     })
     .then((geojsonData) => {
       geojsonData.features.forEach((feature) => {
-        if (feature.properties.amenity == "clinic") {
+        if (feature.properties.amenity == "hospital") {
           if (checkClinic.checked == true) {
             if (quitarTildes(feature.properties.name).toLowerCase() == name) {
               let lat = feature.geometry.coordinates[1];
@@ -543,6 +537,139 @@ function findLocation(name) {
 btnCoords.addEventListener("click", () => {
   findLocation(quitarTildes(srchLocation.value).toLowerCase());
 });
+
+let inputSearchLocation = document.querySelector(".srchLocation");
+let contentSearchJSON = document.querySelector(".contentSearchJSON");
+
+inputSearchLocation.addEventListener("mouseenter", () => {
+  contentSearchJSON.style.display = "block";
+  inputSearchLocation.style.borderRadius = "initial";
+  inputSearchLocation.style.borderTopLeftRadius = "5px"
+  inputSearchLocation.style.borderTopRightRadius = "5px"
+});
+
+contentSearchJSON.addEventListener("mouseleave", () => {
+  contentSearchJSON.style.display = "none";
+  inputSearchLocation.style.borderRadius = "5px";
+});
+
+
+// Función para obtener los datos limitados a 3 elementos
+function fetchData(inputValue) {
+
+  inputValue = quitarTildes(inputValue).toLowerCase();
+
+  let splitInputValue = inputValue.split('');
+  let placeContent = {
+    amenity: [],
+    name: [],
+    coordsLat: [],
+    coordsLon: [],
+    id: []
+  };
+  let count = 0; // Variable de conteo
+
+  return fetch(searchGeoJSON)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error al cargar el archivo GeoJSON");
+      }
+      return response.json();
+    })
+    .then((geojsonData) => {
+      geojsonData.features.forEach((feature) => {
+        if(count < 4){
+          let flagSearch = true;
+          let name = quitarTildes(feature.properties.name).toLowerCase();
+          let splitName = name.split('');
+
+          for(let i = 0; i < splitInputValue.length; i++){
+            if(splitInputValue[i] != splitName[i]){
+              flagSearch = false;
+              break;
+            }
+          }
+
+          if(flagSearch == true){
+            placeContent.amenity.push(feature.properties.amenity);
+            placeContent.name.push(feature.properties.name);
+            placeContent.coordsLat.push(feature.geometry.coordinates[0]);
+            placeContent.coordsLon.push(feature.geometry.coordinates[1]);
+            placeContent.id.push(feature.id);
+            count++;
+          }
+        }
+
+      });
+
+      return placeContent;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+// Evento cuando se escribe en el input
+inputSearchLocation.addEventListener("input", (event) => {
+  contentSearchJSON.style.display = "block";
+  inputSearchLocation.style.borderRadius = "initial";
+  inputSearchLocation.style.borderTopLeftRadius = "5px"
+  inputSearchLocation.style.borderTopRightRadius = "5px"
+  
+  let inputValue = event.target.value;
+
+  fetchData(inputValue).then((placeContent) => {
+
+    let length = placeContent.amenity.length;
+
+    if(document.querySelector(".itemSearch")){
+      document.querySelectorAll(".itemSearch").forEach(element =>{
+        element.remove();
+      });
+    }
+    for(let i = 0; i < length; i++){
+      let listSearch = document.querySelector(".listSearch");
+
+      let itemSearch = document.createElement("li");
+      itemSearch.className = "itemSearch"
+      itemSearch.setAttribute("data-search", placeContent.id[i].toString());
+    
+      let iconSearch = document.createElement("span");
+      iconSearch.className = "iconSearch";
+
+      let iconSearchi = document.createElement("i");
+      iconSearch.className = "fa-solid fa-hospital fa-lg";
+
+      let labelSearch = document.createElement("label");
+      labelSearch.className = "labelSearch";
+      labelSearch.textContent = placeContent.name[i];
+
+      listSearch.appendChild(itemSearch);
+      itemSearch.appendChild(iconSearch);
+      itemSearch.appendChild(labelSearch);
+      iconSearch.appendChild(iconSearchi);
+
+      let itemsSearch = document.querySelectorAll(".itemSearch");
+
+      itemsSearch.forEach(element =>{
+        element.addEventListener("click", () =>{
+          for(let i = 0; i < placeContent.id.length; i++){
+            if(placeContent.id[i] == element.getAttribute("data-search")){
+              map.setView([placeContent.coordsLon[i], placeContent.coordsLat[i]], 18);
+              contentSearchJSON.style.display = "none";
+              inputSearchLocation.style.borderRadius = "5px";
+              inputSearchLocation.value = placeContent.name[i];
+            }
+          }
+        });
+      })
+    }
+
+  });
+});
+
+
+
 
 let checkClinic = document.querySelector(".filterClinic");
 let checkPharmacy = document.querySelector(".filterPharmacy");
