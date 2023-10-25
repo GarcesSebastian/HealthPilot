@@ -466,7 +466,8 @@ sendReminder.addEventListener("click", () => {
       inputTimeInit,
       inputTimeEnd,
       inputNumberFrequency,
-      hoursReminder
+      hoursReminder,
+      false
     );
     document.querySelector(".contentBlockPage").style.top = "100%";
     dateReminder.day.push(fechaInit.getDate() + 1);
@@ -479,21 +480,12 @@ sendReminder.addEventListener("click", () => {
     console.log("Llenar bien los campos");
   }
 
-  let attributeItem;
-
-  contentReminder.title.forEach((element, index) =>{
-    if(element == nameReminder){
-      attributeItem = contentReminder.dataSpan[index];
-    }
-  })
+  let attributeItem = createReminder("","","","","","",true);
 
   for (let i = 0; i < inputTimeDate.length; i++) {
-    // if(timeReminder.dataSpan[i] == undefined){
-    //   timeReminder.dataSpan.push(attributeItem);
-    // }else{
-    //   timeReminder.dataSpan[i] = attributeItem;
-    // }
-    console.log(timeReminder.dataSpan[i]);
+    timeReminder.dataSpan.push(attributeItem);
+    dateReminder.dataSpan.push(attributeItem);
+    contentReminder.dataSpan.push(attributeItem);
     hoursReminder[i] = inputTimeDate.item(i).value;
     let [hora, minutos] = hoursReminder[i].split(":");
     timeReminder.hour.push(hora);
@@ -510,9 +502,19 @@ function createReminder(
   timeInit,
   timeEnd,
   numberFrequency,
-  hoursReminder
+  hoursReminder,
+  flagReturn
 ) {
+
+  if(flagReturn == true){
+    let newAttributeValue = (
+      document.querySelectorAll(".itemReminder").length
+    ).toString();
+    return newAttributeValue;
+  }
+
   let listReminder = document.querySelector(".listReminder");
+
 
   let newli = document.createElement("li");
   newli.className = "itemReminder";
@@ -543,9 +545,6 @@ function createReminder(
     document.querySelectorAll(".itemReminder").length + 1
   ).toString();
   newli.setAttribute("data-span", newAttributeValue);
-  timeReminder.dataSpan.push(newAttributeValue);
-  dateReminder.dataSpan.push(newAttributeValue);
-  contentReminder.dataSpan.push(newAttributeValue);
 
   let iEditReminder = document.createElement("i");
   iEditReminder.className = "fa-solid fa-pen-to-square fa-lg";
@@ -770,20 +769,29 @@ function createReminder(
 
           let attributeItem = item.getAttribute("data-span");
 
-          console.log(attributeItem);
-
           for (let i = 0; i < dateReminder.dataSpan.length; i++) {
             if (dateReminder.dataSpan[i] == attributeItem) {
               dateReminder.day[i] = fechaInit.getDate() + 1;
               dateReminder.month[i] = fechaInit.getMonth() + 1;
               dateReminder.year[i] = fechaInit.getFullYear();
-              for (let j = 0; j < document.querySelector(".inputNumberFrequencyEdit").value; j++) {
-                let [hora, minutos] = inputTimeEdit.item(j).value.split(":");
-                timeReminder.hour[j] = hora;
-                timeReminder.minute[j] = minutos;
-              }
             }
           }
+
+
+          for(let i = 0; i < document.querySelector(".inputNumberFrequencyEdit").value; i++){
+
+            if(timeReminder.dataSpan[i] == attributeItem || (timeReminder.dataSpan[i] == null && typeof timeReminder.dataSpan[i] == "undefined")){
+              for(let j = 0; j < document.querySelector(".inputNumberFrequencyEdit").value; j++){
+                let [hora, minutos] = inputTimeEdit.item(j).value.split(":");
+                timeReminder.hour[i] =  hora;
+                timeReminder.minute[i] = minutos;
+                timeReminder.dataSpan[i] = attributeItem;
+              }
+            }
+
+
+          }
+
 
           // Ocultar la ventana de edición
           document.querySelector(".contentBlockPageEdit").style.top = "100%";
@@ -799,6 +807,7 @@ function createReminder(
 
     }
   });
+  
 
 }
 
