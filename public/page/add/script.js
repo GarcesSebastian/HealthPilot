@@ -1,3 +1,7 @@
+window.addEventListener("DOMContentLoaded", () =>{
+  requestNotification();
+});
+
 let timeReminder = {
   dataSpan: [],
   hour: [],
@@ -29,7 +33,8 @@ function playNotificationSound(ruta, i) {
 
 function requestNotification() {
 
-  Notification.requestPermission().then(result => {
+  Notification.requestPermission().then(result =>{
+    console.log("Respuesta: "+ result);
   })
 
 }
@@ -44,7 +49,7 @@ function setNotification(i) {
     if(contentReminder.sound[0] == undefined){
       playNotificationSound("../../../sound/sound.mp3");
     }else{
-      contentReminder.sound[i].play();      
+      contentReminder.sound[0].play();      
     }
 
     const notificacion = new Notification("HealthPilot", options);
@@ -99,6 +104,7 @@ setInterval(() => {
       for(let j = 0; j < timeReminder.dataSpan.length; j++){
         if (timeNotification.hours === parseInt(timeReminder.hour[j]) && timeNotification.minutes === parseInt(timeReminder.minute[j]) && timeNotification.seconds === 0) {
           setNotification(j);
+          console.log(timeNotification.hours === parseInt(timeReminder.hour[j]) && timeNotification.minutes === parseInt(timeReminder.minute[j]) && timeNotification.seconds === 0);
         }
       }
     }
@@ -482,7 +488,12 @@ sendReminder.addEventListener("click", () => {
   })
 
   for (let i = 0; i < inputTimeDate.length; i++) {
-    timeReminder.dataSpan[i] = attributeItem;
+    // if(timeReminder.dataSpan[i] == undefined){
+    //   timeReminder.dataSpan.push(attributeItem);
+    // }else{
+    //   timeReminder.dataSpan[i] = attributeItem;
+    // }
+    console.log(timeReminder.dataSpan[i]);
     hoursReminder[i] = inputTimeDate.item(i).value;
     let [hora, minutos] = hoursReminder[i].split(":");
     timeReminder.hour.push(hora);
@@ -759,6 +770,8 @@ function createReminder(
 
           let attributeItem = item.getAttribute("data-span");
 
+          console.log(attributeItem);
+
           for (let i = 0; i < dateReminder.dataSpan.length; i++) {
             if (dateReminder.dataSpan[i] == attributeItem) {
               dateReminder.day[i] = fechaInit.getDate() + 1;
@@ -772,20 +785,8 @@ function createReminder(
             }
           }
 
-          // for (let i = 0; i < timeReminder.hour.length; i++) {
-          //   if (timeReminder.dataSpan[i] == attributeItem) {
-          //     for (let i = 0; i < document.querySelector(".inputNumberFrequencyEdit").value; i++) {
-          //       let [hora, minutos] = inputTimeEdit.item(i).value.split(":");
-          //       timeReminder.hour[i] = hora;
-          //       timeReminder.minute[i] = minutos;
-          //     }
-          //   }
-          // }
-
-
           // Ocultar la ventana de edición
           document.querySelector(".contentBlockPageEdit").style.top = "100%";
-
 
           item = null;
 
