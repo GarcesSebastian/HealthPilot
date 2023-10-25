@@ -1,17 +1,25 @@
-window.addEventListener("DOMContentLoaded", () =>{
+window.addEventListener("DOMContentLoaded", () => {
   requestNotification();
 });
 
 let timeReminder = {
   dataSpan: [],
   hour: [],
-  minute: []
-}
+  minute: [],
+};
+
 let dateReminder = {
   dataSpan: [],
   day: [],
   month: [],
-  year: []
+  year: [],
+};
+
+let dateReminderEnd = {
+  dataSpan: [],
+  day: [],
+  month: [],
+  year: [],
 };
 
 let contentReminder = {
@@ -19,51 +27,69 @@ let contentReminder = {
   title: [],
   medicine: [],
   sound: [],
-  soundDuration: []
-}
+  soundDuration: [],
+};
 
+let reminder = {
+  contentReminder: contentReminder,
+  timeReminder: timeReminder,
+  dateReminder: dateReminder,
+  dateReminderEnd: dateReminderEnd,
+};
 
-function playNotificationSound(ruta, i) {
-  const audio = new Audio(ruta);
-  audio.addEventListener("loadedmetadata", () => {
-    contentReminder.soundDuration[i] = audio.duration;
-  });
-  audio.play();
-}
+const audio = new Audio("../../../sound/sound.mp3");
+audio.addEventListener("loadedmetadata", () => {
+  contentReminder.soundDuration[0] = audio.duration;
+  contentReminder.sound[0] = audio;
+});
 
 function requestNotification() {
-
-  Notification.requestPermission().then(result =>{
-    console.log("Respuesta: "+ result);
-  })
-
+  Notification.requestPermission().then((result) => {
+    console.log("Respuesta: " + result);
+  });
 }
 
-function setNotification(i) {
+function detenerAudio() {
+  if (contentReminder.sound[0]) {
+    contentReminder.sound[0].pause();
+    contentReminder.sound[0].currentTime = 0;
+  }
+}
+
+function setNotification(x) {
   if (Notification.permission === "granted") {
+    let indexSpan = contentReminder.dataSpan.indexOf(x);
+
     const options = {
-      body: contentReminder.title[i] + "\n" + "Recordatorio para dosis de la medicina " + contentReminder.medicine[i],
+      body:
+        contentReminder.title[indexSpan] +
+        "\n" +
+        "Recordatorio para dosis de la medicina " +
+        contentReminder.medicine[indexSpan],
       icon: "../../../img/logo_small_icon_only_inverted.png",
     };
 
-    if(contentReminder.sound[0] == undefined){
-      playNotificationSound("../../../sound/sound.mp3");
-    }else{
-      contentReminder.sound[0].play();      
-    }
+    contentReminder.sound[0].play();
 
     const notificacion = new Notification("HealthPilot", options);
 
-    setTimeout(() => {
+    document.querySelector(".btnPauseNotification").addEventListener("click", () =>{
+      detenerAudio();
       notificacion.close();
-    }, contentReminder.soundDuration[i] * 1000)
+      clearTimeout(waitNotification);
+      document.querySelector(".spawnPauseNotification").style.right = "-20%";
+    });
 
+    let waitNotification = setTimeout(() => {
+      detenerAudio();
+      notificacion.close();
+    }, contentReminder.soundDuration[0] * 1000);
   } else if (Notification.permission === "denied") {
-
   } else if (Notification.permission === "default") {
-
   }
 }
+
+
 function getDate() {
   const fechaActual = new Date();
   const dia = fechaActual.getDate();
@@ -79,7 +105,6 @@ function getDate() {
   return date;
 }
 
-
 function getDateTime() {
   const fechaActual = new Date();
   const hour = fechaActual.getHours();
@@ -89,8 +114,8 @@ function getDateTime() {
   let dateTime = {
     hours: hour,
     minutes: minute,
-    seconds: second
-  }
+    seconds: second,
+  };
 
   return dateTime;
 }
@@ -100,23 +125,44 @@ setInterval(() => {
   let dateNotification = getDate();
 
   for (let i = 0; i < dateReminder.day.length; i++) {
-    if (dateNotification.day == dateReminder.day[i] && dateNotification.month == dateReminder.month[i] && dateNotification.year == dateReminder.year[i]) {
-      for(let j = 0; j < timeReminder.dataSpan.length; j++){
-        if (timeNotification.hours === parseInt(timeReminder.hour[j]) && timeNotification.minutes === parseInt(timeReminder.minute[j]) && timeNotification.seconds === 0) {
-          setNotification(j);
-          console.log(timeNotification.hours === parseInt(timeReminder.hour[j]) && timeNotification.minutes === parseInt(timeReminder.minute[j]) && timeNotification.seconds === 0);
+    if (
+      dateNotification.day == dateReminder.day[i] &&
+      dateNotification.month == dateReminder.month[i] &&
+      dateNotification.year == dateReminder.year[i]
+    ) {
+      for (let j = 0; j < timeReminder.dataSpan.length; j++) {
+        if (
+          timeNotification.hours === parseInt(timeReminder.hour[j]) &&
+          timeNotification.minutes === parseInt(timeReminder.minute[j]) &&
+          timeNotification.seconds === 0
+        ) {
+          document.querySelector(".spawnPauseNotification").style.right = "4%";
+          setNotification(timeReminder.dataSpan[j]);
         }
       }
     }
   }
 
+  for (let i = 0; i < dateReminderEnd.day.length; i++) {
+    if (
+      dateNotification.day == dateReminderEnd.day[i] &&
+      dateNotification.month == dateReminderEnd.month[i] &&
+      dateNotification.year == dateReminderEnd.year[i]
+    ) {
+      document.querySelectorAll(".itemReminder").forEach((element) => {
+        if (element.getAttribute("data-span") == dateReminderEnd.dataSpan[i]) {
+          element.remove();
+        }
+      });
+    clearReminderFunc(dateReminderEnd.dataSpan[i]);
+    }
+  }
 }, 1000);
 
-
-setInterval(()=>{
-  console.log(timeReminder);
-},3000)
-
+// setInterval(() => {
+//   console.log(reminder);
+//   console.log(dateReminder);
+// }, 5000);
 
 let dateActuality = getDate();
 
@@ -244,7 +290,9 @@ closeEditReminder.addEventListener("click", () => {
 
 let sendReminder = document.querySelector(".inputConfirm");
 let inputNumberFrequency = document.querySelector(".inputNumberFrequency");
-let inputNumberFrequencyEdit = document.querySelector(".inputNumberFrequencyEdit");
+let inputNumberFrequencyEdit = document.querySelector(
+  ".inputNumberFrequencyEdit"
+);
 let hoursReminder = {};
 
 function createHoursElements(number) {
@@ -283,7 +331,6 @@ function createHoursElements(number) {
 }
 
 function createHoursElementsEdit(number) {
-
   if (document.querySelectorAll(".itemTimeDateEdit")) {
     let hoursTimeDate = document.querySelectorAll(".itemTimeDateEdit");
     hoursTimeDate.forEach((element) => {
@@ -315,9 +362,7 @@ function createHoursElementsEdit(number) {
     liTimeDate.appendChild(labelTimeDate);
     labelTimeDate.appendChild(sNumberTimeDate);
     liTimeDate.appendChild(inputTimeDate);
-
   }
-
 }
 
 function clearInputs() {
@@ -344,21 +389,19 @@ inputNumberFrequencyEdit.addEventListener("keyup", () => {
 let flagContinueAddReminder = true;
 
 let audioInput = document.querySelector(".inputSound");
-let audioPlayer = document.querySelector(".audioPlayer"); 
+let audioPlayer = document.querySelector(".audioPlayer");
 
 audioInput.addEventListener("change", (event) => {
   let selectedFile = event.target.files[0];
   if (selectedFile) {
     let audioURL = URL.createObjectURL(selectedFile);
     audioPlayer.src = audioURL;
-    contentReminder.sound.push(audioPlayer);
-    audioPlayer.addEventListener("loadedmetadata", () =>{
-      contentReminder.soundDuration.push(audioPlayer.duration);
+    contentReminder.sound[0] = audioPlayer;
+    audioPlayer.addEventListener("loadedmetadata", () => {
+      contentReminder.soundDuration[0] = audioPlayer.duration;
     });
   }
 });
-
-
 
 sendReminder.addEventListener("click", () => {
   let nameReminder = document.querySelector(".inputName").value;
@@ -410,9 +453,7 @@ sendReminder.addEventListener("click", () => {
 
   let fechaEnd = new Date(inputTimeEnd);
 
-  if (
-    fechaEnd <= fechaInit
-  ) {
+  if (fechaEnd <= fechaInit) {
     flagContinueAddReminder = false;
     document.querySelector(".inputTimeEnd").style.border = "2px solid tomato";
     document.querySelector(".inputTimeEnd").style.animation = "errInput 0.3s";
@@ -473,28 +514,67 @@ sendReminder.addEventListener("click", () => {
     dateReminder.day.push(fechaInit.getDate() + 1);
     dateReminder.month.push(fechaInit.getMonth() + 1);
     dateReminder.year.push(fechaInit.getFullYear());
+    dateReminderEnd.day.push(fechaEnd.getDate() + 1);
+    dateReminderEnd.month.push(fechaEnd.getMonth() + 1);
+    dateReminderEnd.year.push(fechaEnd.getFullYear());
     contentReminder.title.push(nameReminder);
     contentReminder.medicine.push(nameMedicine);
     clearInputs();
-  } else {
-    console.log("Llenar bien los campos");
   }
 
-  let attributeItem = createReminder("","","","","","",true);
+  let attributeItem = createReminder("", "", "", "", "", "", true);
+  contentReminder.dataSpan.push(attributeItem);
+  dateReminder.dataSpan.push(attributeItem);
+  dateReminderEnd.dataSpan.push(attributeItem);
 
   for (let i = 0; i < inputTimeDate.length; i++) {
     timeReminder.dataSpan.push(attributeItem);
-    dateReminder.dataSpan.push(attributeItem);
-    contentReminder.dataSpan.push(attributeItem);
     hoursReminder[i] = inputTimeDate.item(i).value;
     let [hora, minutos] = hoursReminder[i].split(":");
     timeReminder.hour.push(hora);
     timeReminder.minute.push(minutos);
   }
-
 });
 
+
 let flagContinueAddEditReminder = false;
+
+function clearReminderFunc(attributeItemNewLi) {
+  for (let i = timeReminder.dataSpan.length - 1; i >= 0; i--) {
+    if (timeReminder.dataSpan[i] === attributeItemNewLi) {
+      timeReminder.dataSpan.splice(i, 1);
+      timeReminder.hour.splice(i, 1);
+      timeReminder.minute.splice(i, 1);
+    }
+  }
+
+  for (let i = dateReminder.dataSpan.length - 1; i >= 0; i--) {
+    if (dateReminder.dataSpan[i] === attributeItemNewLi) {
+      dateReminder.dataSpan.splice(i, 1);
+      dateReminder.day.splice(i, 1);
+      dateReminder.month.splice(i, 1);
+      dateReminder.year.splice(i, 1);
+    }
+  }
+
+  for (let i = dateReminderEnd.dataSpan.length - 1; i >= 0; i--) {
+    if (dateReminderEnd.dataSpan[i] === attributeItemNewLi) {
+      dateReminderEnd.dataSpan.splice(i, 1);
+      dateReminderEnd.day.splice(i, 1);
+      dateReminderEnd.month.splice(i, 1);
+      dateReminderEnd.year.splice(i, 1);
+    }
+  }
+
+  for (let i = contentReminder.dataSpan.length - 1; i >= 0; i--) {
+    if (contentReminder.dataSpan[i] === attributeItemNewLi) {
+      contentReminder.dataSpan.splice(i, 1);
+      contentReminder.medicine.splice(i, 1);
+      contentReminder.title.splice(i, 1);
+    }
+  }
+}
+
 
 function createReminder(
   nameReminder,
@@ -505,16 +585,14 @@ function createReminder(
   hoursReminder,
   flagReturn
 ) {
-
-  if(flagReturn == true){
-    let newAttributeValue = (
-      document.querySelectorAll(".itemReminder").length
-    ).toString();
+  if (flagReturn == true) {
+    let newAttributeValue = document
+      .querySelectorAll(".itemReminder")
+      .length.toString();
     return newAttributeValue;
   }
 
   let listReminder = document.querySelector(".listReminder");
-
 
   let newli = document.createElement("li");
   newli.className = "itemReminder";
@@ -611,14 +689,16 @@ function createReminder(
   // Agregar el nuevo <li> a la lista
   listReminder.appendChild(newli);
 
-
   showReminder.addEventListener("click", function () {
-    description.style.display = description.style.display === 'block' ? 'none' : 'block';
-    eyeReminder.classList.toggle('fa-eye-slash');
-    eyeReminder.classList.toggle('fa-eye');
+    description.style.display =
+      description.style.display === "block" ? "none" : "block";
+    eyeReminder.classList.toggle("fa-eye-slash");
+    eyeReminder.classList.toggle("fa-eye");
   });
 
   clearReminder.addEventListener("click", function () {
+    let attributeItemNewLi = newli.getAttribute("data-span");
+    clearReminderFunc(attributeItemNewLi);
     newli.remove();
   });
 
@@ -626,71 +706,96 @@ function createReminder(
     let item = newli; // El elemento "li" que se va a editar
 
     if (item != null) {
-
       // Obtener los valores actuales del recordatorio
-      const currentNameReminder = item.querySelector(".titleReminder").textContent;
-      const currentNameMedicine = item.querySelector(".nameMedicine").textContent;
+      const currentNameReminder =
+        item.querySelector(".titleReminder").textContent;
+      const currentNameMedicine =
+        item.querySelector(".nameMedicine").textContent;
       const currentTimeInit = item.querySelector(".timeInit").textContent;
       const currentTimeEnd = item.querySelector(".timeEnd").textContent;
-      const currentNumberFrequency = item.querySelector(".numberFrequency").textContent;
+      const currentNumberFrequency =
+        item.querySelector(".numberFrequency").textContent;
 
       // Ventana de edición con campos prellenados
       const editForm = document.querySelector(".spawnEditReminder");
       editForm.querySelector(".inputNameEdit").value = currentNameReminder;
-      editForm.querySelector(".inputDescriptionEdit").value = currentNameMedicine;
+      editForm.querySelector(".inputDescriptionEdit").value =
+        currentNameMedicine;
       editForm.querySelector(".inputTimeInitEdit").value = currentTimeInit;
       editForm.querySelector(".inputTimeEndEdit").value = currentTimeEnd;
-      editForm.querySelector(".inputNumberFrequencyEdit").value = currentNumberFrequency;
+      editForm.querySelector(".inputNumberFrequencyEdit").value =
+        currentNumberFrequency;
 
-      createHoursElementsEdit(editForm.querySelector(".inputNumberFrequencyEdit").value);
+      createHoursElementsEdit(
+        editForm.querySelector(".inputNumberFrequencyEdit").value
+      );
 
       let inputTimesDate = editForm.querySelectorAll(".inputTimeDateEdit");
 
       for (let i = 0; i < inputTimesDate.length; i++) {
-        inputTimesDate.item(i).value = item.querySelectorAll(".pTimeDate").item(i).querySelector(".timeDate").textContent;
+        inputTimesDate.item(i).value = item
+          .querySelectorAll(".pTimeDate")
+          .item(i)
+          .querySelector(".timeDate").textContent;
       }
 
       // Manejar la edición y actualización de los datos
       const editSubmitButton = editForm.querySelector(".inputConfirmEdit");
       editSubmitButton.addEventListener("click", function () {
-
         let nameReminder = document.querySelector(".inputNameEdit").value;
         flagContinueAddEditReminder = true;
 
         if (nameReminder.length <= 18 && nameReminder.length > 0) {
           document.querySelector(".inputNameEdit").style.border = "1px solid";
-          document.querySelector(".inputNameEdit").style.animation = "none 0.3s";
+          document.querySelector(".inputNameEdit").style.animation =
+            "none 0.3s";
         } else {
           flagContinueAddEditReminder = false;
-          document.querySelector(".inputNameEdit").style.border = "2px solid tomato";
-          document.querySelector(".inputNameEdit").style.animation = "errInput 0.3s";
+          document.querySelector(".inputNameEdit").style.border =
+            "2px solid tomato";
+          document.querySelector(".inputNameEdit").style.animation =
+            "errInput 0.3s";
         }
 
         let nameMedicine = document.querySelector(".inputTimeInitEdit").value;
         if (nameMedicine.length <= 18 && nameMedicine.length > 0) {
-          document.querySelector(".inputTimeInitEdit").style.animation = "none 0.3s";
-          document.querySelector(".inputTimeInitEdit").style.border = "1px solid";
+          document.querySelector(".inputTimeInitEdit").style.animation =
+            "none 0.3s";
+          document.querySelector(".inputTimeInitEdit").style.border =
+            "1px solid";
         } else {
           flagContinueAddEditReminder = false;
-          document.querySelector(".inputTimeInitEdit").style.border = "2px solid tomato";
-          document.querySelector(".inputTimeInitEdit").style.animation = "errInput 0.3s";
+          document.querySelector(".inputTimeInitEdit").style.border =
+            "2px solid tomato";
+          document.querySelector(".inputTimeInitEdit").style.animation =
+            "errInput 0.3s";
         }
 
         let inputTimeInit = document.querySelector(".inputTimeInitEdit").value;
 
         let fechaInit = new Date(inputTimeInit);
 
-        if ((fechaInit.getMonth() + 1 < dateActuality.month) || (fechaInit.getDate() + 1 < dateActuality.day) || (fechaInit.getFullYear() < dateActuality.year)) {
+        if (
+          fechaInit.getMonth() + 1 < dateActuality.month ||
+          fechaInit.getDate() + 1 < dateActuality.day ||
+          fechaInit.getFullYear() < dateActuality.year
+        ) {
           flagContinueAddEditReminder = false;
-          document.querySelector(".inputTimeInitEdit").style.border = "2px solid tomato";
-          document.querySelector(".inputTimeInitEdit").style.animation = "errInput 0.3s";
+          document.querySelector(".inputTimeInitEdit").style.border =
+            "2px solid tomato";
+          document.querySelector(".inputTimeInitEdit").style.animation =
+            "errInput 0.3s";
         } else if (inputTimeInit == "") {
           flagContinueAddEditReminder = false;
-          document.querySelector(".inputTimeInitEdit").style.border = "2px solid tomato";
-          document.querySelector(".inputTimeInitEdit").style.animation = "errInput 0.3s";
+          document.querySelector(".inputTimeInitEdit").style.border =
+            "2px solid tomato";
+          document.querySelector(".inputTimeInitEdit").style.animation =
+            "errInput 0.3s";
         } else {
-          document.querySelector(".inputTimeInitEdit").style.animation = "none 0.3s";
-          document.querySelector(".inputTimeInitEdit").style.border = "1px solid";
+          document.querySelector(".inputTimeInitEdit").style.animation =
+            "none 0.3s";
+          document.querySelector(".inputTimeInitEdit").style.border =
+            "1px solid";
         }
 
         let inputTimeEnd = document.querySelector(".inputTimeEndEdit").value;
@@ -699,31 +804,43 @@ function createReminder(
 
         if (fechaEnd <= fechaInit) {
           flagContinueAddEditReminder = false;
-          document.querySelector(".inputTimeEndEdit").style.border = "2px solid tomato";
-          document.querySelector(".inputTimeEndEdit").style.animation = "errInput 0.3s";
+          document.querySelector(".inputTimeEndEdit").style.border =
+            "2px solid tomato";
+          document.querySelector(".inputTimeEndEdit").style.animation =
+            "errInput 0.3s";
         } else if (inputTimeEnd == "") {
           flagContinueAddEditReminder = false;
-          document.querySelector(".inputTimeEndEdit").style.border = "2px solid tomato";
-          document.querySelector(".inputTimeEndEdit").style.animation = "errInput 0.3s";
+          document.querySelector(".inputTimeEndEdit").style.border =
+            "2px solid tomato";
+          document.querySelector(".inputTimeEndEdit").style.animation =
+            "errInput 0.3s";
         } else {
-          document.querySelector(".inputTimeEndEdit").style.animation = "none 0.3s";
-          document.querySelector(".inputTimeEndEdit").style.border = "1px solid";
+          document.querySelector(".inputTimeEndEdit").style.animation =
+            "none 0.3s";
+          document.querySelector(".inputTimeEndEdit").style.border =
+            "1px solid";
         }
 
-        let inputNumberFrequency = document.querySelector(".inputNumberFrequencyEdit").value;
+        let inputNumberFrequency = document.querySelector(
+          ".inputNumberFrequencyEdit"
+        ).value;
         if (inputNumberFrequency <= 0) {
           flagContinueAddEditReminder = false;
-          document.querySelector(".inputNumberFrequencyEdit").style.border = "2px solid tomato";
-          document.querySelector(".inputNumberFrequencyEdit").style.animation = "errInput 0.3s";
+          document.querySelector(".inputNumberFrequencyEdit").style.border =
+            "2px solid tomato";
+          document.querySelector(".inputNumberFrequencyEdit").style.animation =
+            "errInput 0.3s";
         } else {
-          document.querySelector(".inputNumberFrequencyEdit").style.animation = "none 0.3s";
-          document.querySelector(".inputNumberFrequencyEdit").style.border = "1px solid";
+          document.querySelector(".inputNumberFrequencyEdit").style.animation =
+            "none 0.3s";
+          document.querySelector(".inputNumberFrequencyEdit").style.border =
+            "1px solid";
         }
 
         let inputTimeDate = document.querySelectorAll(".inputTimeDateEdit");
 
         if (inputNumberFrequency > 0) {
-          inputTimeDate.forEach(element => {
+          inputTimeDate.forEach((element) => {
             if (element.value <= 0) {
               flagContinueAddEditReminder = false;
               element.style.border = "2px solid tomato";
@@ -732,31 +849,45 @@ function createReminder(
               element.style.animation = "none 0.3s";
               element.style.border = "1px solid";
             }
-          })
+          });
         }
 
         if (flagContinueAddEditReminder && item != null) {
           // Obtener los nuevos valores de edición
-          const newNameReminder = editForm.querySelector(".inputNameEdit").value;
-          const newNameMedicine = editForm.querySelector(".inputDescriptionEdit").value;
-          const newTimeInit = editForm.querySelector(".inputTimeInitEdit").value;
+          const newNameReminder =
+            editForm.querySelector(".inputNameEdit").value;
+          const newNameMedicine = editForm.querySelector(
+            ".inputDescriptionEdit"
+          ).value;
+          const newTimeInit =
+            editForm.querySelector(".inputTimeInitEdit").value;
           const newTimeEnd = editForm.querySelector(".inputTimeEndEdit").value;
-          const newNumberFrequency = editForm.querySelector(".inputNumberFrequencyEdit").value;
+          const newNumberFrequency = editForm.querySelector(
+            ".inputNumberFrequencyEdit"
+          ).value;
 
           // Actualizar los valores en el elemento del recordatorio
           item.querySelector(".titleReminder").textContent = newNameReminder;
           item.querySelector(".nameMedicine").textContent = newNameMedicine;
           item.querySelector(".timeInit").textContent = newTimeInit;
           item.querySelector(".timeEnd").textContent = newTimeEnd;
-          item.querySelector(".numberFrequency").textContent = newNumberFrequency;
+          item.querySelector(".numberFrequency").textContent =
+            newNumberFrequency;
 
-          item.querySelector(".description").querySelectorAll(".pTimeDate").forEach(timeDate => {
-            timeDate.remove();
-          });
+          item
+            .querySelector(".description")
+            .querySelectorAll(".pTimeDate")
+            .forEach((timeDate) => {
+              timeDate.remove();
+            });
 
           let inputTimeEdit = document.querySelectorAll(".inputTimeDateEdit");
 
-          for (let i = 0; i < document.querySelector(".inputNumberFrequencyEdit").value; i++) {
+          for (
+            let i = 0;
+            i < document.querySelector(".inputNumberFrequencyEdit").value;
+            i++
+          ) {
             let pTimeDate = document.createElement("p");
             pTimeDate.className = "pTimeDate";
             pTimeDate.textContent = `Hora del recordatorio ${i + 1}: `;
@@ -769,46 +900,63 @@ function createReminder(
 
           let attributeItem = item.getAttribute("data-span");
 
-          for (let i = 0; i < dateReminder.dataSpan.length; i++) {
-            if (dateReminder.dataSpan[i] == attributeItem) {
-              dateReminder.day[i] = fechaInit.getDate() + 1;
-              dateReminder.month[i] = fechaInit.getMonth() + 1;
-              dateReminder.year[i] = fechaInit.getFullYear();
+          for (let i = dateReminder.dataSpan.length - 1; i >= 0; i--) {
+            if (dateReminder.dataSpan[i] === attributeItem) {
+              dateReminder.dataSpan.splice(i, 1);
+              dateReminder.day.splice(i, 1);
+              dateReminder.month.splice(i, 1);
+              dateReminder.year.splice(i, 1);
+            }
+          }
+          dateReminder.dataSpan.push(attributeItem);
+          dateReminder.day.push(fechaInit.getDate() + 1);
+          dateReminder.month.push(fechaInit.getMonth() + 1);
+          dateReminder.year.push(fechaInit.getFullYear());
+
+          for (let i = dateReminderEnd.dataSpan.length - 1; i >= 0; i--) {
+            if (dateReminderEnd.dataSpan[i] === attributeItem) {
+              dateReminderEnd.dataSpan.splice(i, 1);
+              dateReminderEnd.day.splice(i, 1);
+              dateReminderEnd.month.splice(i, 1);
+              dateReminderEnd.year.splice(i, 1);
+            }
+          }
+          dateReminderEnd.dataSpan.push(attributeItem);
+          dateReminderEnd.day.push(fechaEnd.getDate() + 1);
+          dateReminderEnd.month.push(fechaEnd.getMonth() + 1);
+          dateReminderEnd.year.push(fechaEnd.getFullYear());
+
+          for (let i = timeReminder.dataSpan.length - 1; i >= 0; i--) {
+            if (timeReminder.dataSpan[i] === attributeItem) {
+              timeReminder.dataSpan.splice(i, 1);
+              timeReminder.hour.splice(i, 1);
+              timeReminder.minute.splice(i, 1);
             }
           }
 
-
-          for(let i = 0; i < document.querySelector(".inputNumberFrequencyEdit").value; i++){
-
-            if(timeReminder.dataSpan[i] == attributeItem || (timeReminder.dataSpan[i] == null && typeof timeReminder.dataSpan[i] == "undefined")){
-              for(let j = 0; j < document.querySelector(".inputNumberFrequencyEdit").value; j++){
-                let [hora, minutos] = inputTimeEdit.item(j).value.split(":");
-                timeReminder.hour[i] =  hora;
-                timeReminder.minute[i] = minutos;
-                timeReminder.dataSpan[i] = attributeItem;
-              }
-            }
-
-
+          for (
+            let i = 0;
+            i < document.querySelector(".inputNumberFrequencyEdit").value;
+            i++
+          ) {
+            timeReminder.dataSpan.push(attributeItem);
+            // contentReminder.dataSpan.push(attributeItem);
+            let [hora, minutos] = inputTimeEdit.item(i).value.split(":");
+            timeReminder.hour.push(hora);
+            timeReminder.minute.push(minutos);
           }
-
 
           // Ocultar la ventana de edición
           document.querySelector(".contentBlockPageEdit").style.top = "100%";
 
           item = null;
-
         }
-
       });
 
       // Mostrar la ventana de edición
       document.querySelector(".contentBlockPageEdit").style.top = "0%";
-
     }
   });
-  
-
 }
 
 setInterval(() => {
@@ -818,47 +966,45 @@ setInterval(() => {
   } else {
     document.querySelector(".itemReminderNone").style.display = "none";
   }
-
 }, 100);
 
-
 //Reminder Form
-
 
 //Spawn Config Notifications
 
 let contentConfiguracion = document.querySelector(".contentConfiguracion");
 let spawnConfigNotifications = document.querySelector(".spawn");
-let btnSpawnConfigNotifications = contentConfiguracion.querySelector(".itemConfig");
-
+let btnSpawnConfigNotifications =
+  contentConfiguracion.querySelector(".itemConfig");
 
 let contentNavConfig = document.querySelector(".contentNavConfig");
-let btnBackSpawnConfigNotifications = contentNavConfig.querySelector(".backContent");
+let btnBackSpawnConfigNotifications =
+  contentNavConfig.querySelector(".backContent");
 
-btnSpawnConfigNotifications.addEventListener("click", () =>{
+btnSpawnConfigNotifications.addEventListener("click", () => {
   spawnConfigNotifications.style.left = "0%";
 });
 
-btnBackSpawnConfigNotifications.addEventListener("click", () =>{
+btnBackSpawnConfigNotifications.addEventListener("click", () => {
   spawnConfigNotifications.style.left = "-100%";
 });
-
 
 //Variables
 
 let flagActiveNotificationPush = true;
 
-
 let configGeneral = document.querySelector(".configGeneralNotification");
 let btnActiveNotificationPush = configGeneral.querySelector(".itemConfig");
 
-btnActiveNotificationPush.addEventListener("click", () =>{
+btnActiveNotificationPush.addEventListener("click", () => {
   if (flagActiveNotificationPush) {
     flagActiveNotificationPush = false;
-    document.querySelector(".stateToggleNotificaciones").textContent = "Desactivado";
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Desactivado";
   } else {
     flagActiveNotificationPush = true;
-    document.querySelector(".stateToggleNotificaciones").textContent = "Activado";
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Activado";
   }
 });
 
