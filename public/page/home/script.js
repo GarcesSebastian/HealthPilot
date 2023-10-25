@@ -541,12 +541,12 @@ btnCoords.addEventListener("click", () => {
 let inputSearchLocation = document.querySelector(".srchLocation");
 let contentSearchJSON = document.querySelector(".contentSearchJSON");
 
-inputSearchLocation.addEventListener("mouseenter", () => {
-  contentSearchJSON.style.display = "block";
-  inputSearchLocation.style.borderRadius = "initial";
-  inputSearchLocation.style.borderTopLeftRadius = "5px"
-  inputSearchLocation.style.borderTopRightRadius = "5px"
-});
+// inputSearchLocation.addEventListener("mouseenter", () => {
+//   contentSearchJSON.style.display = "block";
+//   inputSearchLocation.style.borderRadius = "initial";
+//   inputSearchLocation.style.borderTopLeftRadius = "5px"
+//   inputSearchLocation.style.borderTopRightRadius = "5px"
+// });
 
 contentSearchJSON.addEventListener("mouseleave", () => {
   contentSearchJSON.style.display = "none";
@@ -638,7 +638,11 @@ inputSearchLocation.addEventListener("input", (event) => {
       iconSearch.className = "iconSearch";
 
       let iconSearchi = document.createElement("i");
-      iconSearch.className = "fa-solid fa-hospital fa-lg";
+      if(placeContent.amenity[i] == "hospital"){
+        iconSearch.className = "fa-solid fa-hospital fa-lg";
+      }else if(placeContent.amenity[i] == "pharmacy"){
+        iconSearch.className = "fa-solid fa-prescription-bottle-medical fa-lg";
+      }
 
       let labelSearch = document.createElement("label");
       labelSearch.className = "labelSearch";
