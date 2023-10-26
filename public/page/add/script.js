@@ -1,5 +1,45 @@
 window.addEventListener("DOMContentLoaded", () => {
   requestNotification();
+
+  let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
+
+  if(contentFlagConfigNotificationGet){
+    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
+    flagGetNotification = arrayBooleanNotification[0];
+    flagGetNotificationReminder = arrayBooleanNotification[1];
+    flagGetNotificationSound = arrayBooleanNotification[2];
+    flagGetNotificationSpam = arrayBooleanNotification[3];
+
+    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
+    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
+    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
+
+    console.log(arrayBooleanNotification);
+
+  }else{
+    let contentFlagConfigNotification = [true, true, true, true];
+    localStorage.setItem("notifConfig", JSON.stringify(contentFlagConfigNotification));
+  
+    let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
+    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
+    flagGetNotification = arrayBooleanNotification[0];
+    flagGetNotificationReminder = arrayBooleanNotification[1];
+    flagGetNotificationSound = arrayBooleanNotification[2];
+    flagGetNotificationSpam = arrayBooleanNotification[3];
+
+    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
+    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
+    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
+
+    console.log(arrayBooleanNotification);
+
+    if(flagGetNotification){
+      document.querySelector(".stateToggleNotificaciones").textContent = "Activado";
+    }else{
+      document.querySelector(".stateToggleNotificaciones").textContent = "Desactivado";
+    }
+  }
+
 });
 
 let timeReminder = {
@@ -56,10 +96,11 @@ function detenerAudio() {
   }
 }
 
+let contentFlagConfigNotification = []; 
 let flagGetNotification = true;
-let flagGetNotificationSound = true;
 let flagGetNotificationReminder = true;
-let flagGetNotificationSpam = false;
+let flagGetNotificationSound = true;
+let flagGetNotificationSpam = true;
 
 function setNotification(x) {
   if (Notification.permission === "granted") {
@@ -984,6 +1025,10 @@ setInterval(() => {
 
 //Spawn Config Notifications
 
+function setKeyLocalStorage(){
+  contentFlagConfigNotification = [flagGetNotification, flagGetNotificationReminder, flagGetNotificationSound, flagGetNotificationSpam];
+  localStorage.setItem("notifConfig", JSON.stringify(contentFlagConfigNotification));  
+}
 let contentConfiguracion = document.querySelector(".contentConfiguracion");
 let spawnConfigNotifications = document.querySelector(".spawn");
 let btnSpawnConfigNotifications =
@@ -1003,7 +1048,6 @@ btnBackSpawnConfigNotifications.addEventListener("click", () => {
 
 //Variables
 
-
 let configGeneral = document.querySelector(".configGeneralNotification");
 let btnActiveNotificationPush = configGeneral.querySelector(".itemConfig");
 
@@ -1022,13 +1066,14 @@ btnActiveNotificationPush.addEventListener("click", () => {
     flagGetNotification = true;
     flagGetNotificationReminder = true;
     flagGetNotificationSound = true;
-    flagGetNotificationSpam = false;
+    flagGetNotificationSpam = true;
     document.querySelector(".stateToggleNotificaciones").textContent =
       "Activado";
       document.querySelectorAll(".itemNotif").forEach(element =>{
         element.querySelector(".checkNotification").checked = true;
       });
   }
+  setKeyLocalStorage();
 });
 
 document.querySelector(".reminderNotification").addEventListener("change", () =>{
@@ -1050,7 +1095,7 @@ document.querySelector(".reminderNotification").addEventListener("change", () =>
     flagGetNotificationSound = false;
     document.querySelector(".soundNotification").checked = false;
   }
-
+  setKeyLocalStorage();
 });
 
 document.querySelector(".soundNotification").addEventListener("change", () =>{
@@ -1072,6 +1117,7 @@ document.querySelector(".soundNotification").addEventListener("change", () =>{
   }else{
     flagGetNotificationSound = false;
   }
+  setKeyLocalStorage();
 });
 
 document.querySelector(".spamNotification").addEventListener("change", () =>{
@@ -1091,7 +1137,7 @@ document.querySelector(".spamNotification").addEventListener("change", () =>{
   }else{
     flagGetNotificationSpam = false;
   }
-
+  setKeyLocalStorage();
 });
 
 //Spawn Config Notifications

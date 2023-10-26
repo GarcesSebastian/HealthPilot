@@ -59,28 +59,24 @@
                         </h5>
                         <ul class="listConfig">
                             <li class="itemConfig" data-general="1">
-                                <h5 class="textConfig">
+                                <h5 class="textConfig" style="display: flex; flex-direction:column; justify-content:center; gap:10px;">
                                     Tema
+                                    <input type="color" id="colorPicker" class="color-input" value="#3d50e0">
                                 </h5>
                             </li>
 
-                            <li class="itemConfig">
+                            <li class="itemConfig" data-general="2">
                                 <h5 class="textConfig">
                                     Idioma
                                 </h5>
                             </li>
 
-                            <li class="itemConfig">
+                            <li class="itemConfig" data-general="3">
                                 <h5 class="textConfig">
-                                    Recordatorios predeterminados
+                                    Cuenta
                                 </h5>
                             </li>
 
-                            <li class="itemConfig">
-                                <h5 class="textConfig">
-                                    Preferencias de notificacion
-                                </h5>
-                            </li>
                         </ul>
                     </div>
 
@@ -164,6 +160,77 @@
             </div>
 
             <!--Spawn Configuracion-->
+
+            
+        <!--Spawn Configuracion-->
+
+        <div class="spawn">
+            <div class="contentNavConfig">
+              <span class="backContent">
+                <i class="fa-solid fa-arrow-left fa-lg"></i>
+              </span>
+  
+              <h4 class="textBackContent">Notificaciones push</h4>
+            </div>
+  
+            <div class="contentConfig">
+  
+              <div class="configGeneralNotification">
+                <h5 class="nameList">General</h5>
+                <ul class="listConfig">
+                  <li class="itemConfig">
+                    <h5 class="textConfig">Recibir notificaciones</h5>
+                    <h5 class="stateToggleNotificaciones">Activado</h5>
+                  </li>
+                </ul>
+              </div>
+  
+              <div class="optionsNotifications">
+                <h5 class="nameList">Opciones notificaciones push</h5>
+                <ul class="listNotif">
+  
+                  <li class="itemNotif" data-notification="1">
+                    <h5 class="textNotif">Recordatorios</h5>
+                    <label class="switch">
+                      <input type="checkbox" class="checkNotification reminderNotification" checked>
+                      <span class="slider round"></span>
+                    </label>
+                  </li>
+  
+                  <li class="itemNotif" data-notification="2">
+                    <h5 class="textNotif">Activar sonido</h5>
+                    <label class="switch">
+                      <input type="checkbox" class="checkNotification soundNotification" checked>
+                      <span class="slider round"></span>
+                    </label>
+                  </li>
+  
+                  <li class="itemNotif" data-notification="3">
+                    <h5 class="textNotif">Spam (Opcional)</h5>
+                    <label class="switch">
+                      <input type="checkbox" class="checkNotification spamNotification" checked>
+                      <span class="slider round"></span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+  
+              <div class="configSoundNotifications">
+                <h5 class="nameList">Sonido</h5>
+                <ul class="listConfig">
+  
+                  <li class="itemConfig">
+                    <h5 class="textConfig">Sonido de notificacion</h5>
+                    <input type="file" accept=".mp3" class="inputSound">
+                  </li>
+                </ul>
+              </div>
+  
+            </div>
+          </div>
+  
+          <!--Spawn Configuracion-->
+  
 
             <!--Spawn Notificaciones-->
 
@@ -385,11 +452,11 @@
                     <div class="item" data-item="4">
 
                         <span class="image">
-                            <i class="fa-solid fa-hand-holding-medical fa-lg"></i>
+                            <i class="fa-solid fa-map-location-dot fa-lg"></i>
                         </span>
 
                         <h5 class="textItem">
-                            Geolocalizacion de farmacias
+                            Geolocalizacion
                         </h5>
 
                         <span class="itemCircle">

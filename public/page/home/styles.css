@@ -356,6 +356,201 @@ body {
 
 /*Spawn Configuracion*/
 
+/*Spawn Configuracion Notificaciones*/
+
+.spawn{
+  position: absolute;
+  top:0;
+  left:-100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background_1);
+  z-index: 5;
+  border-radius: 10px;
+  transition: .3s ease-in-out;
+}
+
+.contentNavConfig{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 15px;
+  padding: 6% 5%;
+  color: white;
+}
+
+.contentConfig{
+  width: 100%;
+  height: 90%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 5;
+  overflow-y: auto;
+  padding: 0% 0 4% 0;
+}
+
+.contentConfig .configGeneralNotification, .contentConfig .optionsNotifications, .contentConfig .configSoundNotifications{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(108, 122, 227, 0.3);
+  border-bottom: .5px solid rgb(255, 255, 255, .5);
+  gap: 10px;
+  padding: 4% 4% 3% 4%;
+}
+
+.contentConfig .configSoundNotifications ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.contentConfig div .nameList{
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+}
+
+.contentConfig div ul li{
+  width: 100%;
+  height: fit-content;
+  padding: 2%;
+  cursor: pointer;
+  transition: .1s ease-in-out;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.contentConfig div ul li{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.configGeneralNotification ul li:hover{
+  background-color: rgb(255, 255, 255, .2);
+}
+
+.configGeneralNotification ul li:active{
+  background-color: rgb(255, 255, 255, .17);
+}
+
+.configGeneralNotification ul li h5{
+  font-size: 14px;
+  color: white;
+  font-weight: lighter;
+  width: 100%;
+  height: fit-content;
+}
+
+.configSoundNotifications ul li h5{
+  font-size: 14px;
+  color: white;
+  font-weight: lighter;
+  width: 100%;
+  height: fit-content;
+}
+
+.configGeneralNotification ul li .stateToggleNotificaciones{
+  font-weight: lighter;
+  color: rgb(255, 255, 255, .9);
+}
+
+.contentConfig .optionsNotifications ul{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contentConfig .optionsNotifications ul li{
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contentConfig .optionsNotifications ul li h5{
+  font-size: 14px;
+  color: white;
+  font-weight: lighter;
+  width: fit-content;
+  height: fit-content;
+}
+
+.switch {
+  position: absolute;
+  right: 5%;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: tomato;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px tomato;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+/*Spawn Configuracion Notificaciones*/
+
+
 
 /*Spawn Notificaciones*/
 
@@ -601,6 +796,10 @@ body {
   z-index: 5;
 }
 
+.contentSearchJSON ul li *{
+  cursor: pointer;
+}
+
 .contentSearchJSON ul li:hover{
   background-color: rgba(169, 169, 169, 0.3);
 }
@@ -755,3 +954,22 @@ body {
 
 
 /*Spawn Map*/
+
+.color-input {
+  width: 40px; /* Ancho del campo de entrada */
+  height: 40px; /* Altura del campo de entrada */
+  padding: 0; /* Elimina el relleno interno */
+  border: none; /* Elimina el borde predeterminado */
+  border-radius: 50%; /* Hace que el campo de entrada sea circular */
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); /* Agrega una ligera sombra */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+
+.color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-input::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}

@@ -14,6 +14,12 @@ let routingControlClinic = null;
 let flagRoutePharmacy = false;
 let flagRouteClinica = false;
 
+let contentFlagConfigNotification = []; 
+let flagGetNotification = true;
+let flagGetNotificationReminder = true;
+let flagGetNotificationSound = true;
+let flagGetNotificationSpam = true;
+
 function requestNotification(){
 
   Notification.requestPermission().then(result =>{
@@ -43,11 +49,57 @@ window.addEventListener("DOMContentLoaded", () => {
   createMarkerClinic();
   createMarkerPharmacy();
   requestNotification();
+  let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
+
+  if(contentFlagConfigNotificationGet){
+    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
+    flagGetNotification = arrayBooleanNotification[0];
+    flagGetNotificationReminder = arrayBooleanNotification[1];
+    flagGetNotificationSound = arrayBooleanNotification[2];
+    flagGetNotificationSpam = arrayBooleanNotification[3];
+
+    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
+    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
+    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
+
+    console.log(arrayBooleanNotification);
+
+    if(flagGetNotification){
+      document.querySelector(".stateToggleNotificaciones").textContent = "Activado";
+    }else{
+      document.querySelector(".stateToggleNotificaciones").textContent = "Desactivado";
+    }
+
+  }else{
+    let contentFlagConfigNotification = [true, true, true, true];
+    localStorage.setItem("notifConfig", JSON.stringify(contentFlagConfigNotification));
+  
+    let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
+    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
+    flagGetNotification = arrayBooleanNotification[0];
+    flagGetNotificationReminder = arrayBooleanNotification[1];
+    flagGetNotificationSound = arrayBooleanNotification[2];
+    flagGetNotificationSpam = arrayBooleanNotification[3];
+
+    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
+    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
+    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
+
+    console.log(arrayBooleanNotification);
+
+    if(flagGetNotification){
+      document.querySelector(".stateToggleNotificaciones").textContent = "Activado";
+    }else{
+      document.querySelector(".stateToggleNotificaciones").textContent = "Desactivado";
+    }
+  }
+
 });
 
-function quitarTildes(texto) {
-  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+function quitarTildesYEspacios(texto) {
+  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s/g, "");
 }
+
 
 function deleteRoute() {
   if (routingControl) {
@@ -162,6 +214,7 @@ buttonsTrayNotifications.forEach((element) => {
   }
 });
 
+let root = document.documentElement;
 let buttonsGeneral = document
   .querySelector(".configGeneral")
   .querySelectorAll(".itemConfig");
@@ -169,12 +222,13 @@ let buttonsGeneral = document
 buttonsGeneral.forEach((element) => {
   element.addEventListener("click", () => {
     if (element.getAttribute("data-general") == "1") {
-      let color = prompt("Digite algo");
-      let root = document.documentElement;
-      root.style.setProperty("--background_1", color);
+      document.querySelector('.color-input').click();
+      document.querySelector(".color-input").addEventListener("change", () =>{
+        let colorInput = document.querySelector('.color-input').value;
+        root.style.setProperty("--background_1", colorInput);
+      });
     } else if (element.getAttribute("data-general") == "2") {
     } else if (element.getAttribute("data-general") == "3") {
-    } else if (element.getAttribute("data-general") == "4") {
     }
   });
 });
@@ -512,7 +566,7 @@ function findLocation(name) {
       geojsonData.features.forEach((feature) => {
         if (feature.properties.amenity == "hospital") {
           if (checkClinic.checked == true) {
-            if (quitarTildes(feature.properties.name).toLowerCase() == name) {
+            if (quitarTildesYEspacios(feature.properties.name).toLowerCase() == name) {
               let lat = feature.geometry.coordinates[1];
               let lon = feature.geometry.coordinates[0];
               map.setView([lat, lon], 18);
@@ -520,7 +574,7 @@ function findLocation(name) {
           }
         } else if (feature.properties.amenity == "pharmacy") {
           if (checkPharmacy.checked == true) {
-            if (quitarTildes(feature.properties.name).toLowerCase() == name) {
+            if (quitarTildesYEspacios(feature.properties.name).toLowerCase() == name) {
               let lat = feature.geometry.coordinates[1];
               let lon = feature.geometry.coordinates[0];
               map.setView([lat, lon], 18);
@@ -535,7 +589,7 @@ function findLocation(name) {
 }
 
 btnCoords.addEventListener("click", () => {
-  findLocation(quitarTildes(srchLocation.value).toLowerCase());
+  findLocation(quitarTildesYEspacios(srchLocation.value).toLowerCase());
 });
 
 let inputSearchLocation = document.querySelector(".srchLocation");
@@ -557,7 +611,7 @@ contentSearchJSON.addEventListener("mouseleave", () => {
 // Función para obtener los datos limitados a 3 elementos
 function fetchData(inputValue) {
 
-  inputValue = quitarTildes(inputValue).toLowerCase();
+  inputValue = quitarTildesYEspacios(inputValue).toLowerCase();
 
   let splitInputValue = inputValue.split('');
   let placeContent = {
@@ -578,9 +632,9 @@ function fetchData(inputValue) {
     })
     .then((geojsonData) => {
       geojsonData.features.forEach((feature) => {
-        if(count < 4){
+        if(count < 5){
           let flagSearch = true;
-          let name = quitarTildes(feature.properties.name).toLowerCase();
+          let name = quitarTildesYEspacios(feature.properties.name).toLowerCase();
           let splitName = name.split('');
 
           for(let i = 0; i < splitInputValue.length; i++){
@@ -616,7 +670,7 @@ inputSearchLocation.addEventListener("input", (event) => {
   inputSearchLocation.style.borderTopLeftRadius = "5px"
   inputSearchLocation.style.borderTopRightRadius = "5px"
   
-  let inputValue = event.target.value;
+  let inputValue = quitarTildesYEspacios(event.target.value);
 
   fetchData(inputValue).then((placeContent) => {
 
@@ -713,3 +767,121 @@ buttonCloseFilter.addEventListener("click", () => {
 });
 
 
+//Spawn Config Notifications
+
+function setKeyLocalStorage(){
+  contentFlagConfigNotification = [flagGetNotification, flagGetNotificationReminder, flagGetNotificationSound, flagGetNotificationSpam];
+  localStorage.setItem("notifConfig", JSON.stringify(contentFlagConfigNotification));  
+}
+let contentConfiguracion = document.querySelector(".contentConfiguracion");
+let spawnConfigNotifications = document.querySelector(".spawn");
+let btnSpawnConfigNotifications =
+  contentConfiguracion.querySelector(".itemConfig");
+
+let contentNavConfig = document.querySelector(".contentNavConfig");
+let btnBackSpawnConfigNotifications =
+  contentNavConfig.querySelector(".backContent");
+
+btnSpawnConfigNotifications.addEventListener("click", () => {
+  spawnConfigNotifications.style.left = "0%";
+});
+
+btnBackSpawnConfigNotifications.addEventListener("click", () => {
+  spawnConfigNotifications.style.left = "-100%";
+});
+
+//Variables
+
+let configGeneral = document.querySelector(".configGeneralNotification");
+let btnActiveNotificationPush = configGeneral.querySelector(".itemConfig");
+
+btnActiveNotificationPush.addEventListener("click", () => {
+  if (flagGetNotification) {
+    flagGetNotification = false;
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    flagGetNotificationSpam = false;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Desactivado";
+      document.querySelectorAll(".itemNotif").forEach(element =>{
+        element.querySelector(".checkNotification").checked = false;
+      });
+    } else {
+    flagGetNotification = true;
+    flagGetNotificationReminder = true;
+    flagGetNotificationSound = true;
+    flagGetNotificationSpam = true;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Activado";
+      document.querySelectorAll(".itemNotif").forEach(element =>{
+        element.querySelector(".checkNotification").checked = true;
+      });
+  }
+  setKeyLocalStorage();
+});
+
+document.querySelector(".reminderNotification").addEventListener("change", () =>{
+  if(document.querySelector(".reminderNotification").checked == false && document.querySelector(".soundNotification").checked == false && document.querySelector(".spamNotification").checked == false){
+    flagGetNotification = false;
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    flagGetNotificationSpam = false;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Desactivado";
+  }
+
+  if(document.querySelector(".reminderNotification").checked == true){
+    flagGetNotificationReminder = true;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+    "Activado";
+  }else{
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    document.querySelector(".soundNotification").checked = false;
+  }
+  setKeyLocalStorage();
+});
+
+document.querySelector(".soundNotification").addEventListener("change", () =>{
+  if(document.querySelector(".reminderNotification").checked == false && document.querySelector(".soundNotification").checked == false && document.querySelector(".spamNotification").checked == false){
+    flagGetNotification = false;
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    flagGetNotificationSpam = false;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Desactivado";
+  }
+
+  if(document.querySelector(".soundNotification").checked == true){
+    flagGetNotificationSound = true;
+    flagGetNotificationReminder = true;
+    document.querySelector(".reminderNotification").checked = true;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+    "Activado";
+  }else{
+    flagGetNotificationSound = false;
+  }
+  setKeyLocalStorage();
+});
+
+document.querySelector(".spamNotification").addEventListener("change", () =>{
+  if(document.querySelector(".reminderNotification").checked == false && document.querySelector(".soundNotification").checked == false && document.querySelector(".spamNotification").checked == false){
+    flagGetNotification = false;
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    flagGetNotificationSpam = false;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Desactivado";
+  }
+
+  if(document.querySelector(".spamNotification").checked == true){
+    flagGetNotificationSpam = true;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+    "Activado";
+  }else{
+    flagGetNotificationSpam = false;
+  }
+  setKeyLocalStorage();
+});
+
+//Spawn Config Notifications
