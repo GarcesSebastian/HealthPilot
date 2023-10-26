@@ -140,16 +140,23 @@ body {
   transform: scale(1.1);
 }
 
+.notificationSpan{
+  position: absolute;
+  right: 5%;
+}
+
 .notificationSpan span{
   width: fit-content;
   height: fit-content;
   position: absolute;
-  top: -40%;
-  font-size: 15px;
+  top:-10%;
+  right: 0%;
+  font-size: 9px;
   font-weight: bolder;
+  color: tomato;
 }
 
-.notificationSpan span{
+.notificationSpan .numberNotification{
   display: none; /*Ocultar numero*/
 }
 

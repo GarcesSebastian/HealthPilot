@@ -33,6 +33,14 @@ let reminder = {
   dateReminderEnd: dateReminderEnd,
 };
 
+let notifications = {
+  dataNotification: [],
+  type: [],
+  name: [],
+  hour: [],
+  minute: []
+};
+
 function getReminderLocalStorage(){
   if(localStorage.getItem('reminders') !== null){
     reminder = JSON.parse(localStorage.getItem('reminders'));
@@ -78,6 +86,15 @@ function getReminderLocalStorage(){
   }
 }
 
+function getNotificationsLocalStorage(){
+  if(localStorage.getItem('notifications') !== null){
+    let getNotifications = JSON.parse(localStorage.getItem("notifications"));
+    notifications = getNotifications;
+    for(let i = 0; i < notifications.type.length; i++){
+      createNotificationAppNew(notifications.name[i], notifications.type[i], notifications.hour[i], notifications.minute[i]);
+    }
+  }
+}
 
 window.addEventListener("DOMContentLoaded", () => {
   requestNotification();
@@ -120,6 +137,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   getReminderLocalStorage();
+  getNotificationsLocalStorage();
 
   if(document.querySelector(".reminderNotification").checked == false && document.querySelector(".soundNotification").checked == false && document.querySelector(".spamNotification").checked == false){
     flagGetNotification = false;
@@ -150,6 +168,10 @@ function setReminderLocalStorage(){
     dateReminderEnd: dateReminderEnd,
   };
   localStorage.setItem("reminders", JSON.stringify(reminder2));
+}
+
+function setNotificationsLocalStorage(){
+  localStorage.setItem("notifications", JSON.stringify(notifications));
 }
 
 let audioInput = document.querySelector(".inputSound");
@@ -276,6 +298,159 @@ function getDateTime() {
   return dateTime;
 }
 
+setInterval(()=>{
+  console.log(document.querySelectorAll(".itemNotifications").length);
+  if(document.querySelectorAll(".itemNotifications").length > 0){
+    document.querySelector(".numberNotification").style.display = "block";
+  }else{
+    document.querySelector(".numberNotification").style.display = "none";
+  }
+},100);
+
+function createNotificationApp(name) {
+
+  if(name !== null || type !== null || hour !== null || minute !== null){
+
+  let timeActuality = new Date();
+  let hourActuality = timeActuality.getHours();
+  let minuteActuality = timeActuality.getMinutes();
+  let amPm = hourActuality >= 12 ? "p.m" : "a.m";
+
+  if (hourActuality > 12) {
+    hourActuality -= 12;
+  }
+
+  let listNotifications = document.querySelector(".listNotifications");
+
+  let itemNotifications = document.createElement("li");
+  itemNotifications.className = "itemNotifications";
+  let newAttributeValue = (document.querySelectorAll(".itemNotifications").length + 1).toString();
+  itemNotifications.setAttribute("data-notificacion", `${newAttributeValue}`);
+
+  let infoNotifications = document.createElement("div");
+  infoNotifications.className = "infoNotifications";
+
+  let titleNotification = document.createElement("h4");
+  titleNotification.className = "titleNotification";
+  titleNotification.textContent = "Recordatorio";
+
+  let descriptionNotification = document.createElement("p");
+  descriptionNotification.className = "descriptionNotification";
+  descriptionNotification.innerHTML = `Tienes un recordatorio de <strong class="addNotification"> ${name} </strong> pendiente, por favor confirme si ya lo recibio.`;
+  
+  let fechaNotification = document.createElement("h5");
+  fechaNotification.className = "fechaNotification";
+  fechaNotification.textContent = `${hourActuality}:${minuteActuality} ${amPm}`;
+
+  let moreNotification = document.createElement("span");
+  moreNotification.className = "moreNotification";
+
+  let iMoreNotification = document.createElement("i");
+  iMoreNotification.className = "fa-solid fa-check fa-lg";
+
+  listNotifications.appendChild(itemNotifications);
+  itemNotifications.appendChild(infoNotifications);
+  itemNotifications.appendChild(moreNotification);
+  moreNotification.appendChild(iMoreNotification  );
+  infoNotifications.appendChild(titleNotification);
+  infoNotifications.appendChild(descriptionNotification);
+  infoNotifications.appendChild(fechaNotification);
+
+  notifications.dataNotification.push(newAttributeValue);
+  notifications.type.push("Recordatorio");
+  notifications.name.push(name);
+  notifications.hour.push(hourActuality);
+  notifications.minute.push(minuteActuality);
+
+  moreNotification.addEventListener("click", () => {
+    itemNotifications.remove();
+  
+    for (let i = 0; i < notifications.dataNotification.length; i++) {
+      if (notifications.dataNotification[i] === newAttributeValue) {
+        notifications.dataNotification.splice(i, 1);
+        notifications.type.splice(i, 1);
+        notifications.name.splice(i, 1);
+        notifications.hour.splice(i, 1);
+        notifications.minute.splice(i, 1);
+      }
+    }
+
+    setNotificationsLocalStorage();
+
+  });
+
+  }
+}
+
+function createNotificationAppNew(name, type, hour, minute) {
+  if(name !== null || type !== null || hour !== null || minute !== null){
+    let hourActuality = hour;
+    let minuteActuality = minute;
+    let amPm = hourActuality >= 12 ? "p.m" : "a.m";
+  
+    if (hourActuality > 12) {
+      hourActuality -= 12;
+    }
+  
+    let listNotifications = document.querySelector(".listNotifications");
+  
+    let itemNotifications = document.createElement("li");
+    itemNotifications.className = "itemNotifications";
+    let newAttributeValue = (document.querySelectorAll(".itemNotifications").length + 1).toString();
+    itemNotifications.setAttribute("data-notificacion", `${newAttributeValue}`);
+  
+    let infoNotifications = document.createElement("div");
+    infoNotifications.className = "infoNotifications";
+  
+    let titleNotification = document.createElement("h4");
+    titleNotification.className = "titleNotification";
+    titleNotification.textContent = type;
+  
+    let descriptionNotification = document.createElement("p");
+    descriptionNotification.className = "descriptionNotification";
+    descriptionNotification.innerHTML = `Tienes un recordatorio de <strong class="addNotification"> ${name} </strong> pendiente, por favor confirme si ya lo recibio.`;
+    
+    let fechaNotification = document.createElement("h5");
+    fechaNotification.className = "fechaNotification";
+    fechaNotification.textContent = `${hourActuality}:${minuteActuality} ${amPm}`;
+  
+    let moreNotification = document.createElement("span");
+    moreNotification.className = "moreNotification";
+  
+    let iMoreNotification = document.createElement("i");
+    iMoreNotification.className = "fa-solid fa-check fa-lg";
+  
+    listNotifications.appendChild(itemNotifications);
+    itemNotifications.appendChild(infoNotifications);
+    itemNotifications.appendChild(moreNotification);
+    moreNotification.appendChild(iMoreNotification  );
+    infoNotifications.appendChild(titleNotification);
+    infoNotifications.appendChild(descriptionNotification);
+    infoNotifications.appendChild(fechaNotification);
+  
+    
+    moreNotification.addEventListener("click", () => {
+      itemNotifications.remove();
+    
+      for (let i = 0; i < notifications.dataNotification.length; i++) {
+        if (notifications.dataNotification[i] === newAttributeValue) {
+          notifications.dataNotification.splice(i, 1);
+          notifications.type.splice(i, 1);
+          notifications.name.splice(i, 1);
+          notifications.hour.splice(i, 1);
+          notifications.minute.splice(i, 1);
+        }
+      }
+  
+      setNotificationsLocalStorage();
+  
+    });
+  
+  }  
+
+}
+
+
 setInterval(() => {
   let timeNotification = getDateTime();
   let dateNotification = getDate();
@@ -296,9 +471,12 @@ setInterval(() => {
             if(flagGetNotificationSound == true){
               document.querySelector(".spawnPauseNotification").style.right = "4%";
             }
+            createNotificationApp(contentReminder.title[j]);
+            setNotificationsLocalStorage();
             setNotification(timeReminder.dataSpan[j]);
           }else{
-            console.log("Notificacion");
+            createNotificationApp(contentReminder.title[j]);
+            setNotificationsLocalStorage();
           }
         }
       }
@@ -909,17 +1087,17 @@ function createReminder(
             "errInput 0.3s";
         }
 
-        let nameMedicine = document.querySelector(".inputTimeInitEdit").value;
+        let nameMedicine = document.querySelector(".inputDescriptionEdit").value;
         if (nameMedicine.length <= 18 && nameMedicine.length > 0) {
-          document.querySelector(".inputTimeInitEdit").style.animation =
+          document.querySelector(".inputDescriptionEdit").style.animation =
             "none 0.3s";
-          document.querySelector(".inputTimeInitEdit").style.border =
+          document.querySelector(".inputDescriptionEdit").style.border =
             "1px solid";
         } else {
           flagContinueAddEditReminder = false;
-          document.querySelector(".inputTimeInitEdit").style.border =
+          document.querySelector(".inputDescriptionEdit").style.border =
             "2px solid tomato";
-          document.querySelector(".inputTimeInitEdit").style.animation =
+          document.querySelector(".inputDescriptionEdit").style.animation =
             "errInput 0.3s";
         }
 
@@ -1098,14 +1276,24 @@ function createReminder(
             timeReminder.minute.push(minutos);
           }
 
+          for (let i = contentReminder.dataSpan.length - 1; i >= 0; i--) {
+            if (contentReminder.dataSpan[i] === attributeItem) {
+              contentReminder.dataSpan.splice(i, 1);
+              contentReminder.title.splice(i, 1);
+              contentReminder.medicine.splice(i, 1);
+            }
+          }
+          contentReminder.dataSpan.push(attributeItem);
+          contentReminder.title.push(nameReminder);
+          contentReminder.medicine.push(nameMedicine);
+          
           // Ocultar la ventana de edición
           document.querySelector(".contentBlockPageEdit").style.top = "100%";
 
           item = null;
 
-          if(flagContinueAddReminder){
-            setReminderLocalStorage();
-          }
+          setReminderLocalStorage();
+
         }
       });
 

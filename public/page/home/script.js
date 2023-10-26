@@ -33,6 +33,13 @@ let reminder = {
   dateReminderEnd: dateReminderEnd,
 };
 
+let notifications = {
+  type: [],
+  name: [],
+  hour: [],
+  minute: []
+};
+
 function separatorURL(URL){
   let URLnone = URL.replace("blob:http://127.0.0.1:5500/", "");
   console.log(URLnone);
@@ -318,9 +325,14 @@ function getDateTime() {
   return dateTime;
 }
 
-// setInterval(() => {
-//   console.log(reminder);
-// }, 5000);
+setInterval(()=>{
+  console.log(document.querySelectorAll(".itemNotifications").length);
+  if(document.querySelectorAll(".itemNotifications").length > 0){
+    document.querySelector(".numberNotification").style.display = "block";
+  }else{
+    document.querySelector(".numberNotification").style.display = "none";
+  }
+},100);
 
 function quitarTildesYEspacios(texto) {
   return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s/g, "");
