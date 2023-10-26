@@ -1,47 +1,3 @@
-window.addEventListener("DOMContentLoaded", () => {
-  requestNotification();
-
-  let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
-
-  if(contentFlagConfigNotificationGet){
-    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
-    flagGetNotification = arrayBooleanNotification[0];
-    flagGetNotificationReminder = arrayBooleanNotification[1];
-    flagGetNotificationSound = arrayBooleanNotification[2];
-    flagGetNotificationSpam = arrayBooleanNotification[3];
-
-    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
-    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
-    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
-
-    console.log(arrayBooleanNotification);
-
-  }else{
-    let contentFlagConfigNotification = [true, true, true, true];
-    localStorage.setItem("notifConfig", JSON.stringify(contentFlagConfigNotification));
-  
-    let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
-    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
-    flagGetNotification = arrayBooleanNotification[0];
-    flagGetNotificationReminder = arrayBooleanNotification[1];
-    flagGetNotificationSound = arrayBooleanNotification[2];
-    flagGetNotificationSpam = arrayBooleanNotification[3];
-
-    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
-    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
-    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
-
-    console.log(arrayBooleanNotification);
-
-    if(flagGetNotification){
-      document.querySelector(".stateToggleNotificaciones").textContent = "Activado";
-    }else{
-      document.querySelector(".stateToggleNotificaciones").textContent = "Desactivado";
-    }
-  }
-
-});
-
 let timeReminder = {
   dataSpan: [],
   hour: [],
@@ -77,25 +33,161 @@ let reminder = {
   dateReminderEnd: dateReminderEnd,
 };
 
-const audio = new Audio("../../../sound/sound.mp3");
-audio.addEventListener("loadedmetadata", () => {
-  contentReminder.soundDuration[0] = audio.duration;
-  contentReminder.sound[0] = audio;
+function getReminderLocalStorage(){
+  if(localStorage.getItem('reminders') !== null){
+    reminder = JSON.parse(localStorage.getItem('reminders'));
+    timeReminder = reminder.timeReminder;
+    dateReminder = reminder.dateReminder;
+    dateReminderEnd = reminder.dateReminderEnd;
+    contentReminder = reminder.contentReminder;
+
+    if(document.querySelectorAll(".itemReminder")){
+      document.querySelectorAll(".itemReminder").forEach(element =>{
+        element.remove();
+      })
+    }
+
+    if(document.querySelectorAll(".input")){
+      document.querySelectorAll(".input").forEach(element =>{
+        element.remove();
+      })
+    }
+
+    for(let i = 0; i < contentReminder.dataSpan.length; i++){
+      let contDataSpan = 0;
+      let dateInit = dateReminder.year[i]+"-"+dateReminder.month[i]+"-"+dateReminder.day[i];
+      let dateEnd = dateReminderEnd.year[i]+"-"+dateReminderEnd.month[i]+"-"+dateReminderEnd.day[i];
+      let inputsDateTime;
+
+      for(let k = 0; k < timeReminder.dataSpan.length; k++){
+        let inputHour = document.createElement("input");
+        inputHour.type = "time";
+        inputHour.className = "input";
+        inputHour.value = timeReminder.hour[k]+":"+timeReminder.minute[k];
+        inputHour.style.display = "none";
+        document.querySelector(".contentView").appendChild(inputHour);
+        inputsDateTime = document.querySelectorAll(".input");
+      }
+      for(let j = 0; j < timeReminder.dataSpan.length;j++){
+        if(timeReminder.dataSpan[i] == timeReminder.dataSpan[j]){
+          contDataSpan++;
+        }
+      }
+      createReminder(contentReminder.title[i], contentReminder.medicine[i], dateInit, dateEnd, contDataSpan, inputsDateTime, false);
+    }
+  }
+}
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  requestNotification();
+
+  let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
+
+  if(contentFlagConfigNotificationGet){
+    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
+    flagGetNotification = arrayBooleanNotification[0];
+    flagGetNotificationReminder = arrayBooleanNotification[1];
+    flagGetNotificationSound = arrayBooleanNotification[2];
+    flagGetNotificationSpam = arrayBooleanNotification[3];
+
+    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
+    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
+    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
+
+
+  }else{
+    let contentFlagConfigNotification = [true, true, true, true];
+    localStorage.setItem("notifConfig", JSON.stringify(contentFlagConfigNotification));
+  
+    let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
+    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
+    flagGetNotification = arrayBooleanNotification[0];
+    flagGetNotificationReminder = arrayBooleanNotification[1];
+    flagGetNotificationSound = arrayBooleanNotification[2];
+    flagGetNotificationSpam = arrayBooleanNotification[3];
+
+    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
+    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
+    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
+
+
+    if(flagGetNotification){
+      document.querySelector(".stateToggleNotificaciones").textContent = "Activado";
+    }else{
+      document.querySelector(".stateToggleNotificaciones").textContent = "Desactivado";
+    }
+  }
+
+  getReminderLocalStorage();
+
+  if(document.querySelector(".reminderNotification").checked == false && document.querySelector(".soundNotification").checked == false && document.querySelector(".spamNotification").checked == false){
+    flagGetNotification = false;
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    flagGetNotificationSpam = false;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Desactivado";
+  }
+
+  if(document.querySelector(".reminderNotification").checked == true){
+    flagGetNotificationReminder = true;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+    "Activado";
+  }else{
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    document.querySelector(".soundNotification").checked = false;
+  }
+
 });
 
+function setReminderLocalStorage(){
+  let reminder2 = {
+    contentReminder: contentReminder,
+    timeReminder: timeReminder,
+    dateReminder: dateReminder,
+    dateReminderEnd: dateReminderEnd,
+  };
+  localStorage.setItem("reminders", JSON.stringify(reminder2));
+}
+
+let audioInput = document.querySelector(".inputSound");
+let audioPlayer = document.querySelector(".audioPlayer");
+
+audioInput.addEventListener("change", (event) => {
+  let selectedFile = event.target.files[0];
+  if (selectedFile) {
+    let audioURL = URL.createObjectURL(selectedFile);
+    audioPlayer.src = audioURL;
+    contentReminder.sound[0] = audioPlayer.src;
+    audioPlayer.addEventListener("loadedmetadata", () => {
+      contentReminder.soundDuration[0] = audioPlayer.duration;
+      setReminderLocalStorage();
+    });
+  }
+
+});
 function requestNotification() {
   Notification.requestPermission().then((result) => {
     console.log("Respuesta: " + result);
   });
 }
 
+let audio = new Audio("../../../sound/sound.mp3");
+
 function detenerAudio() {
-  if (contentReminder.sound[0] && flagGetNotificationSound == true) {
-    contentReminder.sound[0].pause();
-    contentReminder.sound[0].currentTime = 0;
+  if(flagGetNotificationSound == true){
+    if(contentReminder.sound[0] == undefined || contentReminder.sound[0] == null){
+      audio.pause();
+      audio.currentTime = 0;
+    }else{
+      audioPlayer.src = contentReminder.sound[0];
+      audioPlayer.pause();
+      audioPlayer.currentTime = 0;
+    }
   }
 }
-
 let contentFlagConfigNotification = []; 
 let flagGetNotification = true;
 let flagGetNotificationReminder = true;
@@ -105,6 +197,7 @@ let flagGetNotificationSpam = true;
 function setNotification(x) {
   if (Notification.permission === "granted") {
     let indexSpan = contentReminder.dataSpan.indexOf(x);
+    let waitNotification;
 
     const options = {
       body:
@@ -116,8 +209,14 @@ function setNotification(x) {
     };
 
     if(flagGetNotificationSound == true){
-      contentReminder.sound[0].play();
+      if(contentReminder.sound[0] == undefined || contentReminder.sound[0] == null){
+        audio.play();
+      }else{
+        audioPlayer.src = contentReminder.sound[0];
+        audioPlayer.play();
+      }
     }
+
 
     const notificacion = new Notification("HealthPilot", options);
 
@@ -128,10 +227,20 @@ function setNotification(x) {
       document.querySelector(".spawnPauseNotification").style.right = "-20%";
     });
 
-    let waitNotification = setTimeout(() => {
-      detenerAudio();
-      notificacion.close();
-    }, contentReminder.soundDuration[0] * 1000);
+    if(contentReminder.soundDuration[0] != null || contentReminder.soundDuration[0] != undefined){
+      waitNotification = setTimeout(() => {
+        detenerAudio();
+        notificacion.close();
+        document.querySelector(".spawnPauseNotification").style.right = "-20%";
+      }, contentReminder.soundDuration[0] * 1000);
+    }else{
+      audio.addEventListener("canplaythrough", function () {
+        detenerAudio();
+        notificacion.close();
+        document.querySelector(".spawnPauseNotification").style.right = "-20%";
+      });
+    }
+
   } else if (Notification.permission === "denied") {
   } else if (Notification.permission === "default") {
   }
@@ -214,7 +323,7 @@ setInterval(() => {
 }, 1000);
 
 // setInterval(() => {
-//   console.log(flagGetNotificationSound);
+//   console.log(reminder);
 // }, 5000);
 
 let dateActuality = getDate();
@@ -441,21 +550,6 @@ inputNumberFrequencyEdit.addEventListener("keyup", () => {
 
 let flagContinueAddReminder = true;
 
-let audioInput = document.querySelector(".inputSound");
-let audioPlayer = document.querySelector(".audioPlayer");
-
-audioInput.addEventListener("change", (event) => {
-  let selectedFile = event.target.files[0];
-  if (selectedFile) {
-    let audioURL = URL.createObjectURL(selectedFile);
-    audioPlayer.src = audioURL;
-    contentReminder.sound[0] = audioPlayer;
-    audioPlayer.addEventListener("loadedmetadata", () => {
-      contentReminder.soundDuration[0] = audioPlayer.duration;
-    });
-  }
-});
-
 sendReminder.addEventListener("click", () => {
   let nameReminder = document.querySelector(".inputName").value;
   flagContinueAddReminder = true;
@@ -560,7 +654,7 @@ sendReminder.addEventListener("click", () => {
       inputTimeInit,
       inputTimeEnd,
       inputNumberFrequency,
-      hoursReminder,
+      inputTimeDate,
       false
     );
     document.querySelector(".contentBlockPage").style.top = "100%";
@@ -586,6 +680,10 @@ sendReminder.addEventListener("click", () => {
     let [hora, minutos] = hoursReminder[i].split(":");
     timeReminder.hour.push(hora);
     timeReminder.minute.push(minutos);
+  }
+
+  if(flagContinueAddReminder){
+    setReminderLocalStorage();
   }
 });
 
@@ -626,6 +724,8 @@ function clearReminderFunc(attributeItemNewLi) {
       contentReminder.title.splice(i, 1);
     }
   }
+
+  setReminderLocalStorage();
 }
 
 
@@ -735,7 +835,7 @@ function createReminder(
     pTimeDate.textContent = `Hora del recordatorio ${i + 1}: `;
     let sTimeDate = document.createElement("strong");
     sTimeDate.className = "timeDate";
-    sTimeDate.textContent = hoursReminder[i];
+      sTimeDate.textContent = hoursReminder.item(i).value;
     description.appendChild(pTimeDate);
     pTimeDate.appendChild(sTimeDate);
   }
@@ -1003,6 +1103,10 @@ function createReminder(
           document.querySelector(".contentBlockPageEdit").style.top = "100%";
 
           item = null;
+
+          if(flagContinueAddReminder){
+            setReminderLocalStorage();
+          }
         }
       });
 
@@ -1139,5 +1243,6 @@ document.querySelector(".spamNotification").addEventListener("change", () =>{
   }
   setKeyLocalStorage();
 });
+
 
 //Spawn Config Notifications

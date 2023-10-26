@@ -1,3 +1,152 @@
+let timeReminder = {
+  dataSpan: [],
+  hour: [],
+  minute: [],
+};
+
+let dateReminder = {
+  dataSpan: [],
+  day: [],
+  month: [],
+  year: [],
+};
+
+let dateReminderEnd = {
+  dataSpan: [],
+  day: [],
+  month: [],
+  year: [],
+};
+
+let contentReminder = {
+  dataSpan: [],
+  title: [],
+  medicine: [],
+  sound: [],
+  soundDuration: [],
+};
+
+let reminder = {
+  contentReminder: contentReminder,
+  timeReminder: timeReminder,
+  dateReminder: dateReminder,
+  dateReminderEnd: dateReminderEnd,
+};
+
+function separatorURL(URL){
+  let URLnone = URL.replace("blob:http://127.0.0.1:5500/", "");
+  console.log(URLnone);
+}
+
+function getReminderLocalStorage(){
+  if(localStorage.getItem('reminders') !== null){
+    reminder = JSON.parse(localStorage.getItem('reminders'));
+    timeReminder = reminder.timeReminder;
+    dateReminder = reminder.dateReminder;
+    dateReminderEnd = reminder.dateReminderEnd;
+    contentReminder = reminder.contentReminder;
+  }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  getLocation();
+  createMarkerClinic();
+  createMarkerPharmacy();
+  requestNotification();
+  let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
+
+  if(contentFlagConfigNotificationGet){
+    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
+    flagGetNotification = arrayBooleanNotification[0];
+    flagGetNotificationReminder = arrayBooleanNotification[1];
+    flagGetNotificationSound = arrayBooleanNotification[2];
+    flagGetNotificationSpam = arrayBooleanNotification[3];
+
+    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
+    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
+    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
+
+
+    if(flagGetNotification){
+      document.querySelector(".stateToggleNotificaciones").textContent = "Activado";
+    }else{
+      document.querySelector(".stateToggleNotificaciones").textContent = "Desactivado";
+    }
+
+  }else{
+    let contentFlagConfigNotification = [true, true, true, true];
+    localStorage.setItem("notifConfig", JSON.stringify(contentFlagConfigNotification));
+  
+    let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
+    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
+    flagGetNotification = arrayBooleanNotification[0];
+    flagGetNotificationReminder = arrayBooleanNotification[1];
+    flagGetNotificationSound = arrayBooleanNotification[2];
+    flagGetNotificationSpam = arrayBooleanNotification[3];
+
+    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
+    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
+    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
+
+
+    if(flagGetNotification){
+      document.querySelector(".stateToggleNotificaciones").textContent = "Activado";
+    }else{
+      document.querySelector(".stateToggleNotificaciones").textContent = "Desactivado";
+    }
+  }
+
+  getReminderLocalStorage();
+  setReminderLocalStorage();
+
+  if(document.querySelector(".reminderNotification").checked == false && document.querySelector(".soundNotification").checked == false && document.querySelector(".spamNotification").checked == false){
+    flagGetNotification = false;
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    flagGetNotificationSpam = false;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Desactivado";
+  }
+
+  if(document.querySelector(".reminderNotification").checked == true){
+    flagGetNotificationReminder = true;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+    "Activado";
+  }else{
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    document.querySelector(".soundNotification").checked = false;
+  }
+
+});
+
+function setReminderLocalStorage(){
+  let reminder2 = {
+    contentReminder: contentReminder,
+    timeReminder: timeReminder,
+    dateReminder: dateReminder,
+    dateReminderEnd: dateReminderEnd,
+  };
+  localStorage.setItem("reminders", JSON.stringify(reminder2));
+}
+
+let audioInput = document.querySelector(".inputSound");
+let audioPlayer = document.querySelector(".audioPlayer");
+
+audioInput.addEventListener("change", (event) => {
+  let selectedFile = event.target.files[0];
+  if (selectedFile) {
+    let audioURL = URL.createObjectURL(selectedFile);
+    audioPlayer.src = audioURL;
+    contentReminder.sound[0] = audioPlayer.src;
+    audioPlayer.addEventListener("loadedmetadata", () => {
+      contentReminder.soundDuration[0] = audioPlayer.duration;
+      setReminderLocalStorage();
+    });
+  }
+});
+
+
 let searchGeoJSON = "../../../GeoJson/searchGeo.geojson";
 let geoJSONPath = "../../../GeoJson/pharmacy.geojson";
 let clinicGeoJSONPath = "../../../GeoJson/clinic.geojson";
@@ -21,14 +170,140 @@ let flagGetNotificationSound = true;
 let flagGetNotificationSpam = true;
 
 function requestNotification(){
-
   Notification.requestPermission().then(result =>{
     console.log("Respuesta: "+ result);
   })
-
 }
 
+let audio = new Audio("../../../sound/sound.mp3");
+
+function detenerAudio() {
+  if(flagGetNotificationSound == true){
+    if(contentReminder.sound[0] == undefined || contentReminder.sound[0] == null){
+      audio.pause();
+      audio.currentTime = 0;
+    }else{
+      audioPlayer.src = contentReminder.sound[0];
+      audioPlayer.pause();
+      audioPlayer.currentTime = 0;
+    }
+  }
+}
+
+function setNotification(x) {
+  if (Notification.permission === "granted") {
+    let indexSpan = contentReminder.dataSpan.indexOf(x);
+    let waitNotification;
+
+    const options = {
+      body:
+        contentReminder.title[indexSpan] +
+        "\n" +
+        "Recordatorio para dosis de la medicina " +
+        contentReminder.medicine[indexSpan],
+      icon: "../../../img/logo_small_icon_only_inverted.png",
+    };
+
+    if(flagGetNotificationSound == true){
+      if(contentReminder.sound[0] == undefined || contentReminder.sound[0] == null){
+        audio.play();
+      }else{
+        audioPlayer.src = contentReminder.sound[0];
+        audioPlayer.play();
+      }
+    }
+
+    const notificacion = new Notification("HealthPilot", options);
+
+    document.querySelector(".btnPauseNotification").addEventListener("click", () =>{
+      detenerAudio();
+      notificacion.close();
+      clearTimeout(waitNotification);
+      document.querySelector(".spawnPauseNotification").style.right = "-20%";
+    });
+
+    if(contentReminder.soundDuration[0] != null || contentReminder.soundDuration[0] != undefined){
+      waitNotification = setTimeout(() => {
+        detenerAudio();
+        notificacion.close();
+        document.querySelector(".spawnPauseNotification").style.right = "-20%";
+      }, contentReminder.soundDuration[0] * 1000);
+    }else{
+      audio.addEventListener("canplaythrough", function () {
+        detenerAudio();
+        notificacion.close();
+        document.querySelector(".spawnPauseNotification").style.right = "-20%";
+      });
+    }
+
+  } else if (Notification.permission === "denied") {
+  } else if (Notification.permission === "default") {
+  }
+}
+
+setInterval(() => {
+  let timeNotification = getDateTime();
+  let dateNotification = getDate();
+
+  for (let i = 0; i < dateReminder.day.length; i++) {
+    if (
+      dateNotification.day == dateReminder.day[i] &&
+      dateNotification.month == dateReminder.month[i] &&
+      dateNotification.year == dateReminder.year[i]
+    ) {
+      for (let j = 0; j < timeReminder.dataSpan.length; j++) {
+        if (
+          timeNotification.hours === parseInt(timeReminder.hour[j]) &&
+          timeNotification.minutes === parseInt(timeReminder.minute[j]) &&
+          timeNotification.seconds === 0
+        ) {
+          if(flagGetNotificationReminder == true){
+            if(flagGetNotificationSound == true){
+              document.querySelector(".spawnPauseNotification").style.right = "4%";
+            }
+            setNotification(timeReminder.dataSpan[j]);
+          }else{
+            console.log("Notificacion");
+          }
+        }
+      }
+    }
+  }
+
+  for (let i = 0; i < dateReminderEnd.day.length; i++) {
+    if (
+      dateNotification.day == dateReminderEnd.day[i] &&
+      dateNotification.month == dateReminderEnd.month[i] &&
+      dateNotification.year == dateReminderEnd.year[i]
+    ) {
+      document.querySelectorAll(".itemReminder").forEach((element) => {
+        if (element.getAttribute("data-span") == dateReminderEnd.dataSpan[i]) {
+          element.remove();
+        }
+      });
+    clearReminderFunc(dateReminderEnd.dataSpan[i]);
+    }
+  }
+}, 1000);
+
+
+
 function getDate() {
+  const fechaActual = new Date();
+  const dia = fechaActual.getDate();
+  const mes = fechaActual.getMonth() + 1;
+  const anio = fechaActual.getFullYear();
+
+  let date = {
+    day: dia,
+    month: mes,
+    year: anio,
+  };
+
+  return date;
+}
+
+function getDateTime() {
   const fechaActual = new Date();
   const hour = fechaActual.getHours();
   const minute = fechaActual.getMinutes();
@@ -37,64 +312,15 @@ function getDate() {
   let dateTime = {
     hours: hour,
     minutes: minute,
-    seconds: second
-  }
+    seconds: second,
+  };
 
   return dateTime;
 }
 
-
-window.addEventListener("DOMContentLoaded", () => {
-  getLocation();
-  createMarkerClinic();
-  createMarkerPharmacy();
-  requestNotification();
-  let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
-
-  if(contentFlagConfigNotificationGet){
-    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
-    flagGetNotification = arrayBooleanNotification[0];
-    flagGetNotificationReminder = arrayBooleanNotification[1];
-    flagGetNotificationSound = arrayBooleanNotification[2];
-    flagGetNotificationSpam = arrayBooleanNotification[3];
-
-    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
-    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
-    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
-
-    console.log(arrayBooleanNotification);
-
-    if(flagGetNotification){
-      document.querySelector(".stateToggleNotificaciones").textContent = "Activado";
-    }else{
-      document.querySelector(".stateToggleNotificaciones").textContent = "Desactivado";
-    }
-
-  }else{
-    let contentFlagConfigNotification = [true, true, true, true];
-    localStorage.setItem("notifConfig", JSON.stringify(contentFlagConfigNotification));
-  
-    let contentFlagConfigNotificationGet = localStorage.getItem("notifConfig");
-    let arrayBooleanNotification = JSON.parse(contentFlagConfigNotificationGet);
-    flagGetNotification = arrayBooleanNotification[0];
-    flagGetNotificationReminder = arrayBooleanNotification[1];
-    flagGetNotificationSound = arrayBooleanNotification[2];
-    flagGetNotificationSpam = arrayBooleanNotification[3];
-
-    document.querySelector(".reminderNotification").checked = flagGetNotificationReminder;
-    document.querySelector(".soundNotification").checked = flagGetNotificationSound;
-    document.querySelector(".spamNotification").checked = flagGetNotificationSpam;
-
-    console.log(arrayBooleanNotification);
-
-    if(flagGetNotification){
-      document.querySelector(".stateToggleNotificaciones").textContent = "Activado";
-    }else{
-      document.querySelector(".stateToggleNotificaciones").textContent = "Desactivado";
-    }
-  }
-
-});
+// setInterval(() => {
+//   console.log(reminder);
+// }, 5000);
 
 function quitarTildesYEspacios(texto) {
   return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s/g, "");
@@ -884,4 +1110,7 @@ document.querySelector(".spamNotification").addEventListener("change", () =>{
   setKeyLocalStorage();
 });
 
+
+
 //Spawn Config Notifications
+

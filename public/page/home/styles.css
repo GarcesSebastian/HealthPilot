@@ -973,3 +973,33 @@ input:checked + .slider:before {
   border: none;
   border-radius: 50%;
 }
+
+/*-Spawn Pause Notification*/
+
+.spawnPauseNotification{
+  position: absolute;
+  top: 10%;
+  right: -20%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  transition: .5s ease-in-out;
+}
+
+.spawnPauseNotification input{
+  background-color: tomato;
+  border: none;
+  outline: none;
+  width: fit-content;
+  height: fit-content;
+  font-size: 14px;
+  padding: 10% 15%;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+}
+
+/*-Spawn Pause Notification*/
