@@ -217,7 +217,6 @@ function setNotification(x) {
       }
     }
 
-
     const notificacion = new Notification("HealthPilot", options);
 
     document.querySelector(".btnPauseNotification").addEventListener("click", () =>{
