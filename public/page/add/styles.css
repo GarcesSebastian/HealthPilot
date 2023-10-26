@@ -170,7 +170,7 @@ body {
   gap: 30px;
   padding: 2%;
   background-color: var(--background_1);
-  border-radius: 5px;
+  border-radius: 3px;
   color: white;
   cursor: pointer;
   transition: .2s ease-in-out;
@@ -189,7 +189,7 @@ body {
   height: fit-content;
   background-color: var(--background_1);
   padding: 2%;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .listReminder{
@@ -211,7 +211,7 @@ body {
   width: 100%;
   height: fit-content;
   background-color: #62e1bb;
-  border-radius: 5px;
+  border-radius: 3px;
   transition: .5s ease-in-out;
   padding: 2%;
   gap: 5px;

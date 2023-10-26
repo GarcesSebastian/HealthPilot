@@ -1021,7 +1021,7 @@ function createReminder(
 
   showReminder.addEventListener("click", function () {
     description.style.display =
-      description.style.display === "block" ? "none" : "block";
+      description.style.display === "flex" ? "none" : "flex";
     eyeReminder.classList.toggle("fa-eye-slash");
     eyeReminder.classList.toggle("fa-eye");
   });
