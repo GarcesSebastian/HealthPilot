@@ -458,14 +458,6 @@ body {
   height: fit-content;
 }
 
-.configSoundNotifications ul li h5{
-  font-size: 14px;
-  color: white;
-  font-weight: lighter;
-  width: 100%;
-  height: fit-content;
-}
-
 .configGeneralNotification ul li .stateToggleNotificaciones{
   font-weight: lighter;
   color: rgb(255, 255, 255, .9);
@@ -482,7 +474,6 @@ body {
   height: fit-content;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -554,6 +545,49 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.contentConfig .configSoundNotifications ul li{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: fit-content;
+  border: 1px solid rgb(255, 255, 255, .4);
+}
+
+.configSoundNotifications ul li div{
+  display: flex;
+  gap: 20px;
+  font-size: 16px;
+  color: white;
+  width: fit-content;
+  height: fit-content;
+  padding: .5%;
+}
+
+.configSoundNotifications ul li div label{
+  font-weight: bolder;
+}
+
+.configSoundNotifications ul li div span{
+  color: rgb(255, 255, 255, 1);
+}
+
+.configSoundNotifications ul li div input{
+  appearance: none;
+  border: 1px solid;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  border: 1px solid rgb(255, 255, 255, .5);
+  border-radius: 2px;
+  transition: background .2s ease-in-out;
+}
+
+.checkSound:checked{
+  border: 1px solid tomato;
+  background-color: tomato;
+}
 
 /*Spawn Configuracion Notificaciones*/
 

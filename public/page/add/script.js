@@ -1,5 +1,12 @@
 const checkAudio = new Audio();
 
+const soundFiles = [
+  "../../../sound/sound.mp3",
+  "../../../sound/sound2.mp3",
+  "../../../sound/sound3.mp3",
+  "../../../sound/sound4.mp3"
+];
+
 let timeReminder = {
   dataSpan: [],
   hour: [],
@@ -99,6 +106,22 @@ function getReminderLocalStorage(){
       element.remove();
     })
   }
+
+  let indexSoundsFiles = soundFiles.indexOf(contentReminder.sound[0]);
+
+  let checkSounds = document.querySelectorAll(".checkSound");
+
+  checkSounds.forEach(element =>{
+    if(element.getAttribute("data-check") == (indexSoundsFiles + 1).toString()){
+      element.checked = true;
+      checkSounds.forEach(elementRemove =>{
+        if(elementRemove.getAttribute("data-check") != element.getAttribute("data-check")){
+          elementRemove.checked = false;
+        }
+      });
+    }
+    
+  });
 }
 
 function getNotificationsLocalStorage(){
@@ -185,9 +208,11 @@ function setReminderLocalStorage(){
   localStorage.setItem("reminders", JSON.stringify(reminder2));
 }
 
+
 function setNotificationsLocalStorage(){
   localStorage.setItem("notifications", JSON.stringify(notifications));
 }
+
 
 function requestNotification() {
   Notification.requestPermission().then((result) => {
@@ -203,12 +228,13 @@ function detenerAudio() {
       audio.pause();
       audio.currentTime = 0;
     }else{
-      checkAudio                                                                                                                                                                                                                                  .src = contentReminder.sound[0];
-      checkAudio                                                                                                                                                                                                                                  .pause();
-      checkAudio                                                                                                                                                                                                                                  .currentTime = 0;
+      checkAudio.src = contentReminder.sound[0];
+      checkAudio.pause();
+      checkAudio.currentTime = 0;
     }
   }
 }
+
 let contentFlagConfigNotification = []; 
 let flagGetNotification = true;
 let flagGetNotificationReminder = true;
@@ -233,8 +259,8 @@ function setNotification(x) {
       if(contentReminder.sound[0] == undefined || contentReminder.sound[0] == null){
         audio.play();
       }else{
-        checkAudio                                                                                                                                                                                                                                  .src = contentReminder.sound[0];
-        checkAudio                                                                                                                                                                                                                                  .play();
+        checkAudio.src = contentReminder.sound[0];
+        checkAudio.play();
       }
     }
 
@@ -248,7 +274,9 @@ function setNotification(x) {
     });
 
     if(contentReminder.soundDuration[0] != null || contentReminder.soundDuration[0] != undefined){
+      console.log("entro");
       waitNotification = setTimeout(() => {
+        console.log("entro2");
         detenerAudio();
         notificacion.close();
         document.querySelector(".spawnPauseNotification").style.right = "-20%";
@@ -1437,13 +1465,6 @@ document.querySelector(".spamNotification").addEventListener("change", () =>{
 
 let allItemConfig = document.querySelectorAll(".itemConfig");
 
-const soundFiles = [
-  "../../../sound/sound.mp3",
-  "../../../sound/sound2.mp3",
-  "../../../sound/sound3.mp3",
-  "../../../sound/sound4.mp3"
-];
-
 let sounds = Array.from(allItemConfig).filter(element => {
   const soundNumber = element.getAttribute("data-sound");
   return soundNumber === "1" || soundNumber === "2" || soundNumber === "3" || soundNumber === "4";
@@ -1491,25 +1512,49 @@ let flagActiveCheckSounds = true;
 
 checkSounds.forEach(element =>{
   element.addEventListener('change',function(){
+
     if(element.checked == false){
       element.checked = true;
       let routeSound = soundFiles[parseFloat(element.getAttribute("data-check")) - 1];
       contentReminder.sound[0] = routeSound.toString();
+      checkAudio.src = contentReminder.sound[0];
+      checkAudio.addEventListener("loadedmetadata", () =>{
+        contentReminder.soundDuration[0] = checkAudio.duration;    
+      });
+      
     }else{
+
       let dataCheck = element.getAttribute("data-check");
-      let routeSound = soundFiles[parseFloat(element.getAttribute("data-check")) - 1];
+      let routeSound = soundFiles[parseFloat(dataCheck) - 1];
       contentReminder.sound[0] = routeSound.toString();
+      checkAudio.src = contentReminder.sound[0];
+      checkAudio.addEventListener("loadedmetadata", () =>{
+        contentReminder.soundDuration[0] = checkAudio.duration;  
+        setReminderLocalStorage(); 
+      });
+
       checkSounds.forEach(checkSound =>{
         if(checkSound.getAttribute("data-check") != dataCheck){
           checkSound.checked = false;
         }
       });
     }
-    
-    setReminderLocalStorage();
+    setReminderLocalStorage(); 
   });
 });
 
 //Sound
 
 //Spawn Config Notifications
+
+if(contentReminder.sound[0] == null || contentReminder.sound[0] == undefined){
+  
+  checkAudio.src = "../../../sound/sound.mp3";
+  contentReminder.sound[0] = checkAudio.src;
+  checkAudio.addEventListener("loadedmetadata", () =>{
+    if(contentReminder.soundDuration[0] == null || contentReminder.soundDuration[0] == undefined){
+      contentReminder.soundDuration[0] = checkAudio.duration;
+      setReminderLocalStorage();
+    }
+  });
+}

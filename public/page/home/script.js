@@ -1,3 +1,5 @@
+const checkAudio = new Audio();
+
 let timeReminder = {
   dataSpan: [],
   hour: [],
@@ -53,6 +55,22 @@ function getReminderLocalStorage(){
     dateReminderEnd = reminder.dateReminderEnd;
     contentReminder = reminder.contentReminder;
   }
+
+  let indexSoundsFiles = soundFiles.indexOf(contentReminder.sound[0]);
+
+  let checkSounds = document.querySelectorAll(".checkSound");
+
+  checkSounds.forEach(element =>{
+    if(element.getAttribute("data-check") == (indexSoundsFiles + 1).toString()){
+      element.checked = true;
+      checkSounds.forEach(elementRemove =>{
+        if(elementRemove.getAttribute("data-check") != element.getAttribute("data-check")){
+          elementRemove.checked = false;
+        }
+      });
+    }
+    
+  });
 }
 
 function getNotificationsLocalStorage(){
@@ -152,21 +170,21 @@ function setNotificationsLocalStorage(){
   localStorage.setItem("notifications", JSON.stringify(notifications));
 }
 
-let audioInput = document.querySelector(".inputSound");
-let audioPlayer = document.querySelector(".audioPlayer");
+// let audioInput = document.querySelector(".inputSound");
+// let audioPlayer = document.querySelector(".audioPlayer");
 
-audioInput.addEventListener("change", (event) => {
-  let selectedFile = event.target.files[0];
-  if (selectedFile) {
-    let audioURL = URL.createObjectURL(selectedFile);
-    audioPlayer.src = audioURL;
-    contentReminder.sound[0] = audioPlayer.src;
-    audioPlayer.addEventListener("loadedmetadata", () => {
-      contentReminder.soundDuration[0] = audioPlayer.duration;
-      setReminderLocalStorage();
-    });
-  }
-});
+// audioInput.addEventListener("change", (event) => {
+//   let selectedFile = event.target.files[0];
+//   if (selectedFile) {
+//     let audioURL = URL.createObjectURL(selectedFile);
+//     audioPlayer.src = audioURL;
+//     contentReminder.sound[0] = audioPlayer.src;
+//     audioPlayer.addEventListener("loadedmetadata", () => {
+//       contentReminder.soundDuration[0] = audioPlayer.duration;
+//       setReminderLocalStorage();
+//     });
+//   }
+// });
 
 
 let searchGeoJSON = "../../../GeoJson/searchGeo.geojson";
@@ -205,9 +223,9 @@ function detenerAudio() {
       audio.pause();
       audio.currentTime = 0;
     }else{
-      audioPlayer.src = contentReminder.sound[0];
-      audioPlayer.pause();
-      audioPlayer.currentTime = 0;
+      checkAudio.src = contentReminder.sound[0];
+      checkAudio.pause();
+      checkAudio.currentTime = 0;
     }
   }
 }
@@ -230,8 +248,8 @@ function setNotification(x) {
       if(contentReminder.sound[0] == undefined || contentReminder.sound[0] == null){
         audio.play();
       }else{
-        audioPlayer.src = contentReminder.sound[0];
-        audioPlayer.play();
+        checkAudio.src = contentReminder.sound[0];
+        checkAudio.play();
       }
     }
 
@@ -1283,6 +1301,85 @@ document.querySelector(".spamNotification").addEventListener("change", () =>{
   setKeyLocalStorage();
 });
 
+
+//Sound
+
+let allItemConfig = document.querySelectorAll(".itemConfig");
+
+const soundFiles = [
+  "../../../sound/sound.mp3",
+  "../../../sound/sound2.mp3",
+  "../../../sound/sound3.mp3",
+  "../../../sound/sound4.mp3"
+];
+
+let sounds = Array.from(allItemConfig).filter(element => {
+  const soundNumber = element.getAttribute("data-sound");
+  return soundNumber === "1" || soundNumber === "2" || soundNumber === "3" || soundNumber === "4";
+});
+
+let audioSounds = [null, null, null, null];
+
+sounds.forEach(element => {
+  let iconPlaySound = element.querySelector(".iconPlaySound");
+  let soundNumber = parseInt(element.getAttribute("data-sound"));
+
+  iconPlaySound.addEventListener("click", () => {
+    if (audioSounds[soundNumber - 1] === null) {
+      for (let i = 0; i < audioSounds.length; i++) {
+        if (audioSounds[i]) {
+          const previousIcon = sounds[i].querySelector(".iconPlaySound").getElementsByTagName("i").item(0);
+          previousIcon.className = "fa-regular fa-circle-play fa-lg"; // Cambiar el icono de sonido activo previo
+          audioSounds[i].pause();
+          audioSounds[i].removeEventListener("ended", endedHandler);
+          audioSounds[i] = null;
+        }
+      }
+      audioSounds[soundNumber - 1] = new Audio(soundFiles[soundNumber - 1]); // Asignar el sonido correcto
+      audioSounds[soundNumber - 1].addEventListener("ended", endedHandler);
+      const currentIcon = iconPlaySound.getElementsByTagName("i").item(0);
+      currentIcon.className = "fa-regular fa-circle-pause fa-lg"; // Cambiar el icono
+      audioSounds[soundNumber - 1].play();
+    } else {
+      const currentIcon = iconPlaySound.getElementsByTagName("i").item(0);
+      currentIcon.className = "fa-regular fa-circle-play fa-lg";
+      audioSounds[soundNumber - 1].pause();
+      audioSounds[soundNumber - 1].removeEventListener("ended", endedHandler);
+      audioSounds[soundNumber - 1] = null;
+    }
+  });
+
+  function endedHandler() {
+    const currentIcon = iconPlaySound.getElementsByTagName("i").item(0);
+    currentIcon.className = "fa-regular fa-circle-play fa-lg";
+  }
+});
+
+let checkSounds = document.querySelectorAll(".checkSound");
+let flagActiveCheckSounds = true;
+
+checkSounds.forEach(element =>{
+  element.addEventListener('change',function(){
+    if(element.checked == false){
+      element.checked = true;
+      let routeSound = soundFiles[parseFloat(element.getAttribute("data-check")) - 1];
+      contentReminder.sound[0] = routeSound.toString();
+    }else{
+      let dataCheck = element.getAttribute("data-check");
+      let routeSound = soundFiles[parseFloat(element.getAttribute("data-check")) - 1];
+      contentReminder.sound[0] = routeSound.toString();
+      checkSounds.forEach(checkSound =>{
+        if(checkSound.getAttribute("data-check") != dataCheck){
+          checkSound.checked = false;
+        }
+      });
+    }
+    
+    setReminderLocalStorage();
+  });
+});
+
+//Sound
 
 
 //Spawn Config Notifications
