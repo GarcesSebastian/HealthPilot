@@ -62,27 +62,40 @@ function getReminderLocalStorage(){
     }
 
     for(let i = 0; i < contentReminder.dataSpan.length; i++){
+
+      if(document.querySelectorAll(".input")){
+        document.querySelectorAll(".input").forEach(element =>{
+          element.remove();
+        })
+      }
       let contDataSpan = 0;
       let dateInit = dateReminder.year[i]+"-"+dateReminder.month[i]+"-"+dateReminder.day[i];
       let dateEnd = dateReminderEnd.year[i]+"-"+dateReminderEnd.month[i]+"-"+dateReminderEnd.day[i];
       let inputsDateTime;
 
       for(let k = 0; k < timeReminder.dataSpan.length; k++){
-        let inputHour = document.createElement("input");
-        inputHour.type = "time";
-        inputHour.className = "input";
-        inputHour.value = timeReminder.hour[k]+":"+timeReminder.minute[k];
-        inputHour.style.display = "none";
-        document.querySelector(".contentView").appendChild(inputHour);
-        inputsDateTime = document.querySelectorAll(".input");
+        if(contentReminder.dataSpan[i] == timeReminder.dataSpan[k]){
+          let inputHour = document.createElement("input");
+          inputHour.type = "time";
+          inputHour.className = "input";
+          inputHour.value = timeReminder.hour[k]+":"+timeReminder.minute[k];
+          inputHour.style.display = "none";
+          document.querySelector(".contentView").appendChild(inputHour);
+          inputsDateTime = document.querySelectorAll(".input");
+        }
       }
       for(let j = 0; j < timeReminder.dataSpan.length;j++){
-        if(timeReminder.dataSpan[i] == timeReminder.dataSpan[j]){
+        if(contentReminder.dataSpan[i] == timeReminder.dataSpan[j]){
           contDataSpan++;
         }
       }
       createReminder(contentReminder.title[i], contentReminder.medicine[i], dateInit, dateEnd, contDataSpan, inputsDateTime, false);
     }
+  }
+  if(document.querySelectorAll(".input")){
+    document.querySelectorAll(".input").forEach(element =>{
+      element.remove();
+    })
   }
 }
 
@@ -174,22 +187,22 @@ function setNotificationsLocalStorage(){
   localStorage.setItem("notifications", JSON.stringify(notifications));
 }
 
-let audioInput = document.querySelector(".inputSound");
-let audioPlayer = document.querySelector(".audioPlayer");
+// let audioInput = document.querySelector(".inputSound");
+// let audioPlayer = document.querySelector(".audioPlayer");
 
-audioInput.addEventListener("change", (event) => {
-  let selectedFile = event.target.files[0];
-  if (selectedFile) {
-    let audioURL = URL.createObjectURL(selectedFile);
-    audioPlayer.src = audioURL;
-    contentReminder.sound[0] = audioPlayer.src;
-    audioPlayer.addEventListener("loadedmetadata", () => {
-      contentReminder.soundDuration[0] = audioPlayer.duration;
-      setReminderLocalStorage();
-    });
-  }
+// audioInput.addEventListener("change", (event) => {
+//   let selectedFile = event.target.files[0];
+//   if (selectedFile) {
+//     let audioURL = URL.createObjectURL(selectedFile);
+//     audioPlayer.src = audioURL;
+//     contentReminder.sound[0] = audioPlayer.src;
+//     audioPlayer.addEventListener("loadedmetadata", () => {
+//       contentReminder.soundDuration[0] = audioPlayer.duration;
+//       setReminderLocalStorage();
+//     });
+//   }
 
-});
+// });
 function requestNotification() {
   Notification.requestPermission().then((result) => {
     console.log("Respuesta: " + result);
@@ -454,6 +467,7 @@ function createNotificationAppNew(name, type, hour, minute) {
 setInterval(() => {
   let timeNotification = getDateTime();
   let dateNotification = getDate();
+  let inputSpan;
 
   for (let i = 0; i < dateReminder.day.length; i++) {
     if (
@@ -461,21 +475,22 @@ setInterval(() => {
       dateNotification.month == dateReminder.month[i] &&
       dateNotification.year == dateReminder.year[i]
     ) {
+      inputSpan = dateReminder.dataSpan[i];
       for (let j = 0; j < timeReminder.dataSpan.length; j++) {
         if (
           timeNotification.hours === parseInt(timeReminder.hour[j]) &&
           timeNotification.minutes === parseInt(timeReminder.minute[j]) &&
-          timeNotification.seconds === 0
+          timeNotification.seconds === 0 && inputSpan === timeReminder.dataSpan[j]
         ) {
           if(flagGetNotificationReminder == true){
             if(flagGetNotificationSound == true){
               document.querySelector(".spawnPauseNotification").style.right = "4%";
             }
-            createNotificationApp(contentReminder.title[j]);
+            createNotificationApp(contentReminder.title[i]);
             setNotificationsLocalStorage();
             setNotification(timeReminder.dataSpan[j]);
           }else{
-            createNotificationApp(contentReminder.title[j]);
+            createNotificationApp(contentReminder.title[i]);
             setNotificationsLocalStorage();
           }
         }
@@ -1431,5 +1446,64 @@ document.querySelector(".spamNotification").addEventListener("change", () =>{
   setKeyLocalStorage();
 });
 
+
+//Sound
+
+let allItemConfig = document.querySelectorAll(".itemConfig");
+
+const soundFiles = [
+  "../../../sound/sound.mp3",
+  "../../../sound/sound2.mp3",
+  "../../../sound/sound3.mp3",
+  "../../../sound/sound4.mp3"
+];
+
+let sounds = Array.from(allItemConfig).filter(element => {
+  const soundNumber = element.getAttribute("data-sound");
+  return soundNumber === "1" || soundNumber === "2" || soundNumber === "3" || soundNumber === "4";
+});
+
+let audioSounds = [null, null, null, null];
+
+sounds.forEach(element => {
+  let iconPlaySound = element.querySelector(".iconPlaySound");
+  let soundNumber = parseInt(element.getAttribute("data-sound"));
+
+  iconPlaySound.addEventListener("click", () => {
+    if (audioSounds[soundNumber - 1] === null) {
+      for (let i = 0; i < audioSounds.length; i++) {
+        if (audioSounds[i]) {
+          const previousIcon = sounds[i].querySelector(".iconPlaySound").getElementsByTagName("i").item(0);
+          previousIcon.className = "fa-regular fa-circle-play fa-lg"; // Cambiar el icono de sonido activo previo
+          audioSounds[i].pause();
+          audioSounds[i].removeEventListener("ended", endedHandler);
+          audioSounds[i] = null;
+        }
+      }
+      audioSounds[soundNumber - 1] = new Audio(soundFiles[soundNumber - 1]); // Asignar el sonido correcto
+      audioSounds[soundNumber - 1].addEventListener("ended", endedHandler);
+      const currentIcon = iconPlaySound.getElementsByTagName("i").item(0);
+      currentIcon.className = "fa-regular fa-circle-pause fa-lg"; // Cambiar el icono
+      audioSounds[soundNumber - 1].play();
+    } else {
+      const currentIcon = iconPlaySound.getElementsByTagName("i").item(0);
+      currentIcon.className = "fa-regular fa-circle-play fa-lg";
+      audioSounds[soundNumber - 1].pause();
+      audioSounds[soundNumber - 1].removeEventListener("ended", endedHandler);
+      audioSounds[soundNumber - 1] = null;
+    }
+  });
+
+  function endedHandler() {
+    const currentIcon = iconPlaySound.getElementsByTagName("i").item(0);
+    currentIcon.className = "fa-regular fa-circle-play fa-lg";
+  }
+});
+
+
+
+
+
+//Sound
 
 //Spawn Config Notifications
