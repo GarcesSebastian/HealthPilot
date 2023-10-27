@@ -1,3 +1,5 @@
+const checkAudio = new Audio();
+
 let timeReminder = {
   dataSpan: [],
   hour: [],
@@ -187,22 +189,6 @@ function setNotificationsLocalStorage(){
   localStorage.setItem("notifications", JSON.stringify(notifications));
 }
 
-// let audioInput = document.querySelector(".inputSound");
-// let audioPlayer = document.querySelector(".audioPlayer");
-
-// audioInput.addEventListener("change", (event) => {
-//   let selectedFile = event.target.files[0];
-//   if (selectedFile) {
-//     let audioURL = URL.createObjectURL(selectedFile);
-//     audioPlayer.src = audioURL;
-//     contentReminder.sound[0] = audioPlayer.src;
-//     audioPlayer.addEventListener("loadedmetadata", () => {
-//       contentReminder.soundDuration[0] = audioPlayer.duration;
-//       setReminderLocalStorage();
-//     });
-//   }
-
-// });
 function requestNotification() {
   Notification.requestPermission().then((result) => {
     console.log("Respuesta: " + result);
@@ -217,9 +203,9 @@ function detenerAudio() {
       audio.pause();
       audio.currentTime = 0;
     }else{
-      audioPlayer.src = contentReminder.sound[0];
-      audioPlayer.pause();
-      audioPlayer.currentTime = 0;
+      checkAudio                                                                                                                                                                                                                                  .src = contentReminder.sound[0];
+      checkAudio                                                                                                                                                                                                                                  .pause();
+      checkAudio                                                                                                                                                                                                                                  .currentTime = 0;
     }
   }
 }
@@ -247,8 +233,8 @@ function setNotification(x) {
       if(contentReminder.sound[0] == undefined || contentReminder.sound[0] == null){
         audio.play();
       }else{
-        audioPlayer.src = contentReminder.sound[0];
-        audioPlayer.play();
+        checkAudio                                                                                                                                                                                                                                  .src = contentReminder.sound[0];
+        checkAudio                                                                                                                                                                                                                                  .play();
       }
     }
 
@@ -1503,21 +1489,24 @@ sounds.forEach(element => {
 let checkSounds = document.querySelectorAll(".checkSound");
 let flagActiveCheckSounds = true;
 
-const checkAudio = new Audio();
-
 checkSounds.forEach(element =>{
   element.addEventListener('change',function(){
     if(element.checked == false){
       element.checked = true;
-      checkAudio.src = soundFiles
+      let routeSound = soundFiles[parseFloat(element.getAttribute("data-check")) - 1];
+      contentReminder.sound[0] = routeSound.toString();
     }else{
       let dataCheck = element.getAttribute("data-check");
+      let routeSound = soundFiles[parseFloat(element.getAttribute("data-check")) - 1];
+      contentReminder.sound[0] = routeSound.toString();
       checkSounds.forEach(checkSound =>{
         if(checkSound.getAttribute("data-check") != dataCheck){
           checkSound.checked = false;
         }
       });
     }
+    
+    setReminderLocalStorage();
   });
 });
 
