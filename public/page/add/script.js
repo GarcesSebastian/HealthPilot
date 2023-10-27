@@ -1500,9 +1500,26 @@ sounds.forEach(element => {
   }
 });
 
+let checkSounds = document.querySelectorAll(".checkSound");
+let flagActiveCheckSounds = true;
 
+const checkAudio = new Audio();
 
-
+checkSounds.forEach(element =>{
+  element.addEventListener('change',function(){
+    if(element.checked == false){
+      element.checked = true;
+      checkAudio.src = soundFiles
+    }else{
+      let dataCheck = element.getAttribute("data-check");
+      checkSounds.forEach(checkSound =>{
+        if(checkSound.getAttribute("data-check") != dataCheck){
+          checkSound.checked = false;
+        }
+      });
+    }
+  });
+});
 
 //Sound
 
