@@ -42,6 +42,129 @@ let notifications = {
   minute: []
 };
 
+let messageMotivational = [
+  "Tu salud es tu mayor riqueza. Cuida de tu corazón y mantenlo fuerte para disfrutar de una vida plena y activa.",
+  "Cada paso que das hacia una vida más saludable es un paso hacia un futuro más brillante y lleno de energía.",
+  "Tu corazón es un tesoro invaluable. Protégelo con buenos hábitos y una actitud positiva.",
+  "No permitas que la hipertensión te defina. Tú tienes el poder de controlarla y vivir una vida plena.",
+  "Cada elección saludable que haces te acerca a un mañana más lleno de vitalidad y menos preocupaciones.",
+  "Recuerda que cada día es una nueva oportunidad para cuidar de tu salud. ¡Aprovecha cada momento!",
+  "La hipertensión no tiene por qué ser un obstáculo insuperable. Con determinación y cuidado, puedes mantenerla bajo control.",
+  "Tú eres fuerte y capaz de superar cualquier desafío, incluso la hipertensión. Cree en ti mismo y en tu capacidad para manejarla.",
+  "La vida es un regalo precioso. Aprovecha cada día para cuidar de tu salud y vivir plenamente.",
+  "Nunca subestimes el poder de tu actitud positiva. Con pensamientos optimistas y hábitos saludables, puedes superar cualquier adversidad.",
+  "Cada latido de tu corazón es una oportunidad para amar la vida. Cuídalo y permite que te lleve a nuevos horizontes.",
+  "El viaje hacia una vida más saludable comienza con un solo paso. Hoy es el día perfecto para dar ese paso.",
+  "La determinación es tu mejor aliada en la lucha contra la hipertensión. Nunca te rindas, y verás resultados sorprendentes.",
+  "Tus sueños y metas merecen un corazón fuerte y saludable. Mantén tu visión clara y trabaja hacia un futuro vibrante.",
+  "Cada pequeño cambio en tus hábitos suma. Celebra cada victoria, por más pequeña que sea.",
+  "Tú tienes el poder de escribir tu propia historia de salud. Asegúrate de que sea una historia de superación y éxito.",
+  "La hipertensión puede ser un obstáculo, pero también puede ser un trampolín hacia una vida mejor. Elige la segunda opción.",
+  "Recuerda que el autocuidado es un acto de amor propio. Mereces vivir con bienestar y alegría.",
+  "La fuerza interior que necesitas para enfrentar la hipertensión está dentro de ti. Confía en ti mismo y en tu capacidad para superar desafíos.",
+  "Tu salud es un regalo que debes valorar todos los días. Aprovecha este regalo y vive con gratitud y determinación.",
+  "Cada día que eliges cuidar de tu salud, estás escribiendo un capítulo de resistencia y determinación en tu historia.",
+  "La hipertensión es solo un obstáculo en tu camino hacia una vida más saludable. Supérala con confianza y perseverancia.",
+  "Tu bienestar es tu responsabilidad. Toma el control de tu salud y construye un futuro lleno de vitalidad.",
+  "El amor propio es la base de la salud. Trátate con cariño y haz elecciones que nutran tu cuerpo y mente.",
+  "Cada esfuerzo que haces por mantener tu presión arterial bajo control te acerca a una vida más equilibrada y activa.",
+  "La vida es un regalo, y mereces disfrutarla al máximo. No dejes que la hipertensión te impida hacerlo.",
+  "La paciencia es tu aliada en esta batalla. Los resultados positivos pueden llevar tiempo, pero valen la pena.",
+  "La adversidad puede revelar tu verdadera fortaleza. Aprovecha el desafío de la hipertensión para crecer y mejorar.",
+  "Nunca subestimes el impacto de las pequeñas mejoras en tu estilo de vida. Cada cambio cuenta en tu viaje hacia la salud.",
+  "El autocuidado es un acto de amor hacia ti mismo. Practica el autocuidado diariamente para sentirte mejor.",
+  "Cada latido de tu corazón es un recordatorio de la vida que fluye a través de ti. Cuídalo y vívela plenamente.",
+  "No importa cuán lejos estés de tus metas de salud; cada paso te acerca más a ellas. Mantén la determinación.",
+  "La resiliencia es tu superpoder. Supera los obstáculos con la fuerza de tu espíritu y el cuidado de tu salud.",
+  "Tus sueños merecen un corazón fuerte para convertirse en realidad. Trabaja en tu salud y persigue tus aspiraciones con pasión.",
+  "Cada día es una oportunidad para tomar decisiones saludables. Aprovecha cada día como un nuevo comienzo.",
+  "La positividad es la luz que ilumina tu camino hacia la salud. Mantén una actitud optimista en tu viaje.",
+  "No estás solo en esto. Busca apoyo y comparte tu lucha con seres queridos o grupos de apoyo.",
+  "La consistencia es la clave del éxito. Mantén tus hábitos saludables de manera constante y verás resultados positivos.",
+  "El amor y el apoyo de quienes te rodean son tu mayor fortaleza. Permite que te impulsen hacia un futuro saludable.",
+  "Tú eres capaz de superar la hipertensión y vivir una vida plena. Cree en ti mismo y en tu capacidad para triunfar.",
+  "La adversidad puede revelar tu verdadera fortaleza. Aprovecha el desafío de la hipertensión para crecer y mejorar.",
+  "Nunca subestimes el impacto de las pequeñas mejoras en tu estilo de vida. Cada cambio cuenta en tu viaje hacia la salud.",
+  "El autocuidado es un acto de amor hacia ti mismo. Practica el autocuidado diariamente para sentirte mejor.",
+  "Cada latido de tu corazón es un recordatorio de la vida que fluye a través de ti. Cuídalo y vívela plenamente.",
+  "No importa cuán lejos estés de tus metas de salud; cada paso te acerca más a ellas. Mantén la determinación.",
+  "La resiliencia es tu superpoder. Supera los obstáculos con la fuerza de tu espíritu y el cuidado de tu salud.",
+  "Tus sueños merecen un corazón fuerte para convertirse en realidad. Trabaja en tu salud y persigue tus aspiraciones con pasión.",
+  "Cada día es una oportunidad para tomar decisiones saludables. Aprovecha cada día como un nuevo comienzo.",
+  "La positividad es la luz que ilumina tu camino hacia la salud. Mantén una actitud optimista en tu viaje.",
+  "No estás solo en esto. Busca apoyo y comparte tu lucha con seres queridos o grupos de apoyo.",
+  "La consistencia es la clave del éxito. Mantén tus hábitos saludables de manera constante y verás resultados positivos.",
+  "El amor y el apoyo de quienes te rodean son tu mayor fortaleza. Permite que te impulsen hacia un futuro saludable.",
+  "Tú eres capaz de superar la hipertensión y vivir una vida plena. Cree en ti mismo y en tu capacidad para triunfar.",
+  "Cada día que eliges cuidar de tu salud, estás escribiendo un capítulo de resistencia y determinación en tu historia.",
+  "La hipertensión es solo un obstáculo en tu camino hacia una vida más saludable. Supérala con confianza y perseverancia.",
+  "Tu bienestar es tu responsabilidad. Toma el control de tu salud y construye un futuro lleno de vitalidad.",
+  "El amor propio es la base de la salud. Trátate con cariño y haz elecciones que nutran tu cuerpo y mente.",
+  "Cada esfuerzo que haces por mantener tu presión arterial bajo control te acerca a una vida más equilibrada y activa.",
+];
+
+let messageDataRandom = [
+  "La hipertensión arterial es una afección crónica en la que la fuerza de la sangre contra las paredes de las arterias es alta.",
+  "Puede ser una enfermedad silenciosa, ya que a menudo no presenta síntomas visibles.",
+  "La hipertensión no controlada puede aumentar el riesgo de enfermedades cardíacas, accidentes cerebrovasculares y problemas renales.",
+  "Cambios en la dieta, como reducir la sal y aumentar la ingesta de frutas y verduras, pueden ayudar a controlar la presión arterial.",
+  "El ejercicio regular es una forma efectiva de mantener la presión arterial bajo control.",
+  "El estrés crónico puede contribuir a la hipertensión. La gestión del estrés es importante en el control de la enfermedad.",
+  "Las mediciones de la presión arterial se expresan en dos números: sistólica (la presión en las arterias cuando el corazón late) y diastólica (la presión cuando el corazón está en reposo).",
+  "La hipertensión es más común en adultos mayores, pero puede afectar a personas de todas las edades.",
+  "El consumo excesivo de alcohol puede aumentar la presión arterial.",
+  "El tabaquismo también es un factor de riesgo para la hipertensión.",
+  "La genética desempeña un papel en la predisposición a la hipertensión.",
+  "Las complicaciones de la hipertensión pueden incluir daño a los vasos sanguíneos, insuficiencia cardíaca, ataque al corazón y accidente cerebrovascular.",
+  "El monitoreo regular de la presión arterial es esencial para controlar la hipertensión.",
+  "Los medicamentos recetados a menudo se utilizan para tratar la hipertensión cuando los cambios en el estilo de vida no son suficientes.",
+  "La hipertensión es una de las principales causas de muerte en todo el mundo.",
+  "La pérdida de peso puede ayudar a reducir la presión arterial en personas con sobrepeso u obesidad.",
+  "La hipertensión puede afectar negativamente la función renal.",
+  "El consumo excesivo de sal es un factor de riesgo importante para la hipertensión.",
+  "El seguimiento constante de la presión arterial en el hogar puede ser útil para el control de la enfermedad.",
+  "La meditación y la relajación pueden ser efectivas en la reducción del estrés y la presión arterial.",
+  "La hipertensión no controlada puede dañar los vasos sanguíneos y órganos vitales.",
+  "La presión arterial alta a menudo no causa síntomas hasta que haya daño significativo.",
+  "La hipertensión es una enfermedad tratable, y muchas personas pueden llevar vidas saludables con el tratamiento adecuado.",
+  "La presión arterial puede fluctuar a lo largo del día debido a la actividad y el estrés.",
+  "El control de la hipertensión a menudo implica una combinación de cambios en el estilo de vida y medicamentos.",
+  "Las complicaciones graves de la hipertensión pueden incluir insuficiencia cardíaca congestiva y daño a los riñones.",
+  "La hipertensión no controlada puede aumentar el riesgo de aneurismas arteriales.",
+  "La enfermedad cardíaca es una de las principales complicaciones de la hipertensión no controlada.",
+  "La hipertensión es un factor de riesgo importante para el accidente cerebrovascular.",
+  "La educación y la conciencia son fundamentales para prevenir y controlar la hipertensión.",
+  "El tratamiento de la hipertensión generalmente es un compromiso a largo plazo.",
+  "El diagnóstico temprano y el tratamiento adecuado pueden prevenir complicaciones graves.",
+  "El estrés crónico puede aumentar la presión arterial y empeorar la hipertensión.",
+  "La presión arterial se puede medir en casa con dispositivos de monitoreo de la presión arterial.",
+  "Las complicaciones de la hipertensión pueden incluir daño a los ojos y la visión.",
+  "La hipertensión es una de las principales causas de enfermedad renal crónica.",
+  "Los niños y los adolescentes también pueden desarrollar hipertensión, especialmente si tienen sobrepeso o antecedentes familiares.",
+  "El control de la hipertensión puede ayudar a prevenir problemas de salud graves en el futuro.",
+  "La hipertensión es a menudo llamada 'el asesino silencioso' debido a su falta de síntomas evidentes.",
+  "La hipertensión arterial puede ser hereditaria, lo que significa que puede transmitirse de padres a hijos.",
+  "La obesidad es un factor de riesgo importante para la hipertensión, ya que el exceso de peso puede aumentar la presión arterial.",
+  "Las personas con diabetes tienen un mayor riesgo de desarrollar hipertensión.",
+  "El consumo excesivo de cafeína puede temporariamente elevar la presión arterial.",
+  "El apoyo social y emocional puede desempeñar un papel importante en la gestión de la hipertensión.",
+  "Las complicaciones cerebrovasculares, como los accidentes cerebrovasculares, son más comunes en personas con hipertensión no controlada.",
+  "Las personas con hipertensión deben limitar la ingesta de alcohol y seguir las recomendaciones de su médico.",
+  "El tratamiento de la hipertensión puede incluir una combinación de medicamentos, cambios en la dieta y ejercicio.",
+  "El estrés laboral crónico puede contribuir al desarrollo de la hipertensión.",
+  "El ejercicio regular, como caminar o nadar, puede ayudar a reducir la presión arterial.",
+  "El control adecuado de la hipertensión puede reducir el riesgo de daño a los órganos vitales.",
+  "El seguimiento regular con un médico es esencial para el manejo efectivo de la hipertensión.",
+  "La hipertensión es más común en personas de ascendencia africana.",
+  "Las complicaciones de la hipertensión pueden incluir daño a los vasos sanguíneos en el cerebro.",
+  "La hipertensión gestacional puede afectar a las mujeres durante el embarazo y generalmente se resuelve después del parto.",
+  "La hipertensión pulmonar es una forma específica de hipertensión que afecta las arterias pulmonares.",
+  "El control del peso y la actividad física son componentes clave en el manejo de la hipertensión.",
+  "Las personas con hipertensión deben limitar la ingesta de alimentos ricos en sodio, como alimentos procesados y enlatados.",
+  "La presión arterial puede variar en función de la hora del día y las actividades diarias.",
+  "El tratamiento de la hipertensión a menudo implica un enfoque individualizado para cada paciente."
+];
+
 function separatorURL(URL){
   let URLnone = URL.replace("blob:http://127.0.0.1:5500/", "");
   console.log(URLnone);
@@ -313,7 +436,6 @@ function getDateTime() {
 }
 
 setInterval(()=>{
-  console.log(document.querySelectorAll(".itemNotifications").length);
   if(document.querySelectorAll(".itemNotifications").length > 0){
     document.querySelector(".numberNotification").style.display = "block";
   }else{
@@ -547,7 +669,7 @@ buttonsContentPage.forEach((element) => {
       circle.querySelector(".fa-circle").classList.remove("fa-regular");
       circle.querySelector(".fa-circle").classList.add("fa-solid");
       
-      setNotification();
+      document.querySelector(".spawnContentPet").style.top = "0%";
       
       setTimeout(() => {
         circle.querySelector(".fa-circle").classList.add("fa-regular");
@@ -646,6 +768,9 @@ buttonsGeneral.forEach((element) => {
       });
     } else if (element.getAttribute("data-general") == "2") {
     } else if (element.getAttribute("data-general") == "3") {
+
+      document.querySelector(".spawnConfigCuenta").style.left = "0%";
+    
     }
   });
 });
@@ -1384,3 +1509,120 @@ checkSounds.forEach(element =>{
 
 //Spawn Config Notifications
 
+
+//Spawn content pet
+
+let backContentPet = document.querySelector(".backContentPet");
+
+backContentPet.addEventListener("click", () =>{
+  document.querySelector(".spawnContentPet").style.top = "100%";
+});
+
+let allItem = document.querySelectorAll(".item");
+let itemPets = Array.from(allItem).filter(element =>{
+  return element.getAttribute("data-pet") === "1" || element.getAttribute("data-pet") === "2" || element.getAttribute("data-pet") === "3"; 
+})
+
+let shownMessagesIndices = [];
+let shownMessagesIndicesData = [];
+
+itemPets.forEach(element => {
+  element.addEventListener("click", () => {
+    if (element.getAttribute("data-pet") === "1") {
+
+      let random;
+      do {
+        random = Math.floor(Math.random() * messageMotivational.length);
+      } while (shownMessagesIndices.includes(random));
+
+      shownMessagesIndices.push(random);
+
+      if (shownMessagesIndices.length === messageMotivational.length) {
+        shownMessagesIndices = [];
+        console.log("restart");
+      }
+      
+      document.querySelector(".contentPetBlock").style.display = "flex";
+      document.querySelector(".spawnPopupMessageMotivational").style.display = "flex";
+      document.querySelector(".motivationalMessage").textContent = messageMotivational[random];
+    } else if (element.getAttribute("data-pet") === "2") {
+
+      document.querySelector(".contentPetBlock").style.display = "flex";
+      document.querySelector(".spawnPopupQuest").style.display = "flex";
+      document.querySelector(".popup-contentQuest").style.display = "flex";
+
+    } else if (element.getAttribute("data-pet") === "3") {
+
+      let random;
+      do {
+        random = Math.floor(Math.random() * messageDataRandom.length);
+      } while (shownMessagesIndicesData.includes(random));
+
+      shownMessagesIndicesData.push(random);
+
+      if (shownMessagesIndicesData.length === messageDataRandom.length) {
+        shownMessagesIndicesData = [];
+        console.log("restart");
+      }
+      
+      document.querySelector(".contentPetBlock").style.display = "flex";
+      document.querySelector(".spawnPopupMessageMotivational").style.display = "flex";
+      document.querySelector(".motivationalMessage").textContent = messageDataRandom[random];
+    }
+  });
+});
+
+let closePopupPet = document.querySelector(".closePopupPet");
+
+closePopupPet.addEventListener("click", () =>{
+    document.querySelector(".spawnPopupMessageMotivational").style.display = "none";
+    document.querySelector(".contentPetBlock").style.display = "none";
+});
+
+let closePopupPetQuest = document.querySelector(".closePopupPetQuest");
+
+closePopupPetQuest.addEventListener("click", () =>{
+  document.querySelector(".contentPetBlock").style.display = "none";
+  document.querySelector(".spawnPopupQuest").style.display = "none";
+  document.querySelector(".popup-contentQuest").style.display = "none";
+});
+
+//Spawn content pet
+
+
+//Spawn config cuenta
+
+document.querySelector(".backContentCuenta").addEventListener("click", ()=>{
+  document.querySelector(".spawnConfigCuenta").style.left = "-100%";
+});
+
+//Spawn config cuenta
+
+//Spawn almacenar info medica
+
+let btnItemConfigDataMedical = document.querySelector(".configDatosMedicos").querySelectorAll(".itemConfig");
+
+btnItemConfigDataMedical.forEach(element =>{
+  element.addEventListener("click", () =>{
+    if(element.getAttribute("data-dataMedical") == "1"){
+
+      document.querySelector(".spawnAlmacenar").style.left = "0%";
+    
+    }else if(element.getAttribute("data-dataMedical") == "2"){
+  
+      document.querySelector(".spawnConsultar").style.left = "0%";
+
+    }
+  })
+});
+
+document.querySelector(".backContentAlmacenar").addEventListener("click", ()=>{
+  document.querySelector(".spawnAlmacenar").style.left = "-100%";
+});
+
+document.querySelector(".backContentConsultar").addEventListener("click", ()=>{
+  document.querySelector(".spawnConsultar").style.left = "-100%";
+});
+
+
+//Spawn almacenar info medica

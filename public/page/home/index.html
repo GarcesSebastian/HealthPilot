@@ -61,7 +61,7 @@
                             <li class="itemConfig" data-general="1">
                                 <h5 class="textConfig" style="display: flex; flex-direction:column; justify-content:center; gap:10px;">
                                     Tema
-                                    <input type="color" id="colorPicker" class="color-input" value="#3d50e0">
+                                    <input type="color" id="colorPicker" class="color-input" value="#3d50e0" style="display: none;">
                                 </h5>
                             </li>
 
@@ -80,37 +80,18 @@
                         </ul>
                     </div>
 
-                    <div class="configPrivacidad">
-                        <h5 class="nameList">
-                            Privacidad
-                        </h5>
-                        <ul class="listConfig">
-                            <li class="itemConfig">
-                                <h5 class="textConfig">
-                                    Informacion de usuario
-                                </h5>
-                            </li>
-
-                            <li class="itemConfig">
-                                <h5 class="textConfig">
-                                    Contraseña
-                                </h5>
-                            </li>
-                        </ul>
-                    </div>
-
                     <div class="configDatosMedicos">
                         <h5 class="nameList">
                             Datos Medicos
                         </h5>
                         <ul class="listConfig">
-                            <li class="itemConfig">
+                            <li class="itemConfig" data-dataMedical="1">
                                 <h5 class="textConfig">
                                     Almacenar informacion medica
                                 </h5>
                             </li>
 
-                            <li class="itemConfig">
+                            <li class="itemConfig" data-dataMedical="2">
                                 <h5 class="textConfig">
                                     Consultar informacion medica
                                 </h5>
@@ -408,6 +389,266 @@
             </div>
 
             <!--Spawn Map-->
+
+            <!--Spawn content pet-->
+
+            <div class="spawnContentPet">
+
+              <div class="contentBackPet">
+                <span class="backContentPet">
+                  <i class="fa-solid fa-arrow-left fa-lg"></i>
+                </span>
+                <h5 class="textBackContentPet">
+                  Mascota
+                </h5>
+              </div>
+
+              <div class="contentImagePet">
+                <img src="../../../img/pet.png">
+              </div>
+
+              <div class="contentInteract">
+
+                <div class="item" data-pet="1">
+
+                  <span class="image">
+                      <i class="fa-solid fa-shield-cat fa-lg"></i>
+                  </span>
+
+                  <h5 class="textItem">
+                      Recibe un mensaje motivacional
+                  </h5>
+
+                  <span class="itemCircle">
+                      <i class="fa-regular fa-circle fa-lg"></i>
+                  </span>
+                </div>
+
+                <div class="item" data-pet="2">
+
+                  <span class="image">
+                      <i class="fa-solid fa-shield-cat fa-lg"></i>
+                  </span>
+
+                  <h5 class="textItem">
+                      Preguntas frecuentes
+                  </h5>
+
+                  <span class="itemCircle">
+                      <i class="fa-regular fa-circle fa-lg"></i>
+                  </span>
+                </div>
+
+                <div class="item" data-pet="3">
+
+                  <span class="image">
+                      <i class="fa-solid fa-shield-cat fa-lg"></i>
+                  </span>
+
+                  <h5 class="textItem">
+                      Datos aleatorios
+                  </h5>
+
+                  <span class="itemCircle">
+                      <i class="fa-regular fa-circle fa-lg"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="contentPetBlock">
+                <div class="spawnPopupMessageMotivational">
+                  <div class="popup-content">
+                    <div class="contentClosePopupPet">
+                      <span class="closePopupPet">
+                        <i class="fa-solid fa-xmark fa-lg"></i>
+                      </span>
+                    </div>
+                    <p id="motivationalMessage" class="motivationalMessage"></p>
+                  </div>
+                </div>
+
+                <div class="spawnPopupQuest">
+
+                  <div class="popup-contentQuest">
+                    
+                    <div class="contentClosePopupPet">
+                      <span class="closePopupPetQuest">
+                        <i class="fa-solid fa-xmark fa-lg"></i>
+                      </span>
+                    </div>
+
+                    <div class="contentQuest">
+                      <ul>
+                        <li>
+                          <strong>¿Qué es la hipertensión arterial?</strong>
+                          <p>La hipertensión arterial es una afección en la que la fuerza de la sangre contra las paredes de las arterias es alta, lo que puede aumentar el riesgo de enfermedades cardíacas y accidentes cerebrovasculares.</p>
+                        </li>
+                    
+                        <li>
+                          <strong>¿Cuáles son los síntomas comunes de la hipertensión?</strong>
+                          <p>La hipertensión a menudo es llamada "el asesino silencioso" porque generalmente no presenta síntomas visibles. Algunas personas pueden experimentar dolores de cabeza, fatiga o visión borrosa, pero estos síntomas no son específicos de la hipertensión.</p>
+                        </li>
+                    
+                        <li>
+                          <strong>¿Cuáles son las causas de la hipertensión?</strong>
+                          <p>Las causas de la hipertensión pueden incluir factores genéticos, dieta alta en sal, falta de actividad física, tabaquismo, consumo excesivo de alcohol y estrés.</p>
+                        </li>
+                    
+                        <li>
+                          <strong>¿Cómo se diagnostica la hipertensión?</strong>
+                          <p>La hipertensión se diagnostica mediante la medición de la presión arterial con un esfigmomanómetro. Se considera hipertensión cuando la presión arterial sistólica es igual o superior a 130 mm Hg o la presión diastólica es igual o superior a 80 mm Hg en múltiples lecturas.</p>
+                        </li>
+                    
+                        <li>
+                          <strong>¿Cuál es la importancia de medir regularmente la presión arterial?</strong>
+                          <p>La medición regular de la presión arterial es esencial para detectar la hipertensión en sus etapas tempranas y tomar medidas para controlarla antes de que cause complicaciones graves.</p>
+                        </li>
+                    
+                        <li>
+                          <strong>¿Cuáles son los factores de riesgo para desarrollar hipertensión?</strong>
+                          <p>Los factores de riesgo incluyen antecedentes familiares de hipertensión, obesidad, consumo excesivo de sal, falta de actividad física y estrés crónico.</p>
+                        </li>
+                    
+                        <li>
+                          <strong>¿Puede la hipertensión ser hereditaria?</strong>
+                          <p>Sí, la predisposición genética puede aumentar el riesgo de desarrollar hipertensión. Si tienes antecedentes familiares de hipertensión, es importante controlar regularmente tu presión arterial.</p>
+                        </li>
+                    
+                        <li>
+                          <strong>¿Cuáles son las complicaciones de la hipertensión no controlada?</strong>
+                          <p>Las complicaciones pueden incluir daño a los vasos sanguíneos, enfermedades cardíacas, accidentes cerebrovasculares, enfermedad renal crónica y problemas oculares.</p>
+                        </li>
+                    
+                        <li>
+                          <strong>¿Cuál es el tratamiento recomendado para la hipertensión?</strong>
+                          <p>El tratamiento puede incluir cambios en el estilo de vida (dieta, ejercicio, reducción de sal) y medicamentos recetados. El enfoque varía según la gravedad de la hipertensión.</p>
+                        </li>
+                    
+                        <li>
+                          <strong>¿Qué cambios en el estilo de vida pueden ayudar a controlar la presión arterial?</strong>
+                          <p>Los cambios en el estilo de vida incluyen mantener un peso saludable, reducir la sal en la dieta, hacer ejercicio regularmente, limitar el alcohol y dejar de fumar, así como gestionar el estrés.</p>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!--Spawn content pet-->
+
+            <!--Spawn config cuenta-->
+
+            <div class="spawnConfigCuenta">
+              <div class="contentNavConfigCuenta">
+                <span class="backContent backContentCuenta">
+                  <i class="fa-solid fa-arrow-left fa-lg"></i>
+                </span>
+                <h4 class="textBackContent textBackContentCuenta">Cuenta</h4>
+              </div>
+
+              <div class="contentConfigCuenta">
+
+                <div class="configCuenta">
+                  <h5 class="nameList">Configuracion de cuenta</h5>
+                  <ul class="listConfig">
+
+                    <li class="itemConfig">
+                      <span class="iconConfigCuenta">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                      <h5 class="textConfigCuenta">Contraseña y Seguridad</h5>
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconConfigCuenta">
+                        <i class="fa-regular fa-address-book fa-lg"></i>
+                      </span>
+                      <h5 class="textConfigCuenta">Datos personales</h5>
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconConfigCuenta">
+                        <i class="fa-solid fa-stethoscope fa-lg"></i>
+                      </span>
+                      <h5 class="textConfigCuenta">Datos medicos</h5>
+                    </li>
+
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+            <!--Spawn config cuenta-->
+
+            <!--Spawn almacenar info medica-->
+
+            <div class="spawnAlmacenar">
+              <div class="contentNavAlmacenar">
+                <span class="backContent backContentAlmacenar">
+                  <i class="fa-solid fa-arrow-left fa-lg"></i>
+                </span>
+                <h4 class="textBackContent textBackContentAlmacenar">Almacenar informacion medica</h4>
+              </div>
+
+              <div class="contentAlmacenar">
+
+                <div class="Almacenar">
+                  <h5 class="nameList">Informacion Personal</h5>
+                  <ul class="listConfig">
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                      <h5 class="textAlmacenar">Contraseña y Seguridad</h5>
+                    </li>
+
+
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+            <!--Spawn almacenar info medica-->
+
+            <!--Spawn consultar info medica-->
+
+            <div class="spawnConsultar">
+              <div class="contentNavConsultar">
+                <span class="backContent backContentConsultar">
+                  <i class="fa-solid fa-arrow-left fa-lg"></i>
+                </span>
+                <h4 class="textBackContent textBackContentConsultar">Consultar informacion medica</h4>
+              </div>
+
+              <div class="contentConsultar">
+
+                <div class="Consultar">
+                  <h5 class="nameList">Informacion Personal</h5>
+                  <ul class="listConfig">
+
+                    <li class="itemConfig">
+                      <span class="iconConsultar">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                      <h5 class="textConsultar">Contraseña y Seguridad</h5>
+                    </li>
+
+
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+            <!--Spawn consultar info medica-->
 
             <div class="contentNav">
 
