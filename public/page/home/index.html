@@ -606,9 +606,174 @@
                       <span class="iconAlmacenar">
                         <i class="fa-solid fa-shield-halved fa-lg"></i>
                       </span>
-                      <h5 class="textAlmacenar">Contraseña y Seguridad</h5>
+                      
+                      <input type="text" name="nameComplete" class="nameComplete" placeholder="Nombre Completo">
                     </li>
 
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                      <label for="fechaNacimiento">Fecha de nacimiento:</label>
+                      <input type="date" name="fechaNacimiento" class="fechaNacimiento">
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                      
+                      <select class="genero" name="genero" required>
+                        <option value="" disabled selected>Selecciona un género</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="otro">Otro</option>
+                    </select>
+
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                      
+                      <input type="number" name="telephone" class="telephone" placeholder="Numero de telefono">
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                      
+                      <input type="email" name="email" class="email" placeholder="Correo Electronico">
+                    </li>
+
+
+                  </ul>
+                </div>
+
+                <div class="Almacenar">
+                  <h5 class="nameList">Antecedentes Medicos</h5>
+                  <ul class="listConfig">
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                      <label for="fechaDiagnostico">Fecha de diagnostico:</label>
+                      <input type="date" name="fechaDiagnostico" class="fechaDiagnostico">
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                      
+                      <input type="text" name="alergias" class="alergias" placeholder="Alergias a medicamentos o alimentos">
+                    </li>
+
+                  </ul>
+                </div>
+
+                <div class="Almacenar medicineActuality">
+                  <h5 class="nameList">Medicamentos Actuales</h5>
+                  <ul class="listConfig">
+
+                    <li class="itemConfig">
+                      <input type="number" name="listMedicine" class="listMedicine" placeholder="Numero de medicamentos recetados">
+                    </li>
+<!-- 
+                    <li class="itemConfigAntecedentes">
+                      <h5 class="textMedicine">
+                        Medicina 1:
+                      </h5>
+                      <input type="text" name="nameMedicine" class="nameMedicine" placeholder="Nombre del medicamento">
+                      <input type="number" name="numberDosis" class="numberDosis" placeholder="Numero de dosis por semana">
+                    </li> -->
+
+                  </ul>
+                </div>
+
+                <div class="Almacenar">
+                  <h5 class="nameList">Habitos de estilo de vida</h5>
+                  <ul class="listConfig">
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                      
+                      <select class="activity" name="activity" required>
+                        <option value="" disabled selected>Nivel de actividad física</option>
+                        <option value="sedentario">Sedentario (poco o ningún ejercicio)</option>
+                        <option value="ligero">Ligero (actividad física ligera)</option>
+                        <option value="moderado">Moderado (ejercicio regular)</option>
+                        <option value="intenso">Intenso (actividad física intensa)</option>
+                        <option value="muy-intenso">Muy Intenso (entrenamiento riguroso)</option>
+                      </select>
+                      
+                      </li>
+
+                      <li class="itemConfig">
+                        <span class="iconAlmacenar">
+                          <i class="fa-solid fa-shield-halved fa-lg"></i>
+                        </span>
+                        
+                        <select class="alcohol-tobacco" name="alcohol-tobacco" required>
+                          <option value="" disabled selected>Selecciona tu consumo de alcohol y tabaco</option>
+                          <option value="no-consumo">No consumo alcohol ni tabaco</option>
+                          <option value="consumo-alcohol">Consumo alcohol ocasionalmente</option>
+                          <option value="consumo-tabaco">Consumo tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-tabaco">Consumo alcohol y tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-regular">Consumo alcohol regularmente</option>
+                          <option value="consumo-tabaco-regular">Consumo tabaco regularmente</option>
+                          <option value="consumo-alcohol-tabaco-regular">Consumo alcohol y tabaco regularmente</option>
+                        </select>
+                        </li>
+
+                        <li class="itemConfig">
+                          <span class="iconAlmacenar">
+                            <i class="fa-solid fa-shield-halved fa-lg"></i>
+                          </span>
+                          
+                          <select class="alimentacion" name="alimentacion" required>
+                            <option value="" disabled selected>Selecciona tus hábitos alimenticios</option>
+                            <option value="saludable">Alimentación saludable</option>
+                            <option value="balanceada">Alimentación balanceada</option>
+                            <option value="poco-saludable">Alimentación poco saludable</option>
+                          </select>
+                          </li>
+
+                          <li class="itemConfig">
+                            <span class="iconAlmacenar">
+                              <i class="fa-solid fa-shield-halved fa-lg"></i>
+                            </span>
+                            
+                            <select class="estres" name="estres" required>
+                              <option value="" disabled selected>Selecciona tu nivel de estrés</option>
+                              <option value="bajo">Nivel de estrés bajo</option>
+                              <option value="moderado">Nivel de estrés moderado</option>
+                              <option value="alto">Nivel de estrés alto</option>
+                            </select>
+                            
+                            </li>
+
+                  </ul>
+                </div>
+
+                
+                <div class="Almacenar">
+                  <h5 class="nameList">Notas Personales</h5>
+                  <ul class="listConfig">
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                    
+                      <textarea id="notas-personales" name="notas-personales" rows="4" cols="50" placeholder="Información adicional: "></textarea>
+                      
+                    </li>
 
                   </ul>
                 </div>

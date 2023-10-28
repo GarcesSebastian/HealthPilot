@@ -1625,4 +1625,53 @@ document.querySelector(".backContentConsultar").addEventListener("click", ()=>{
 });
 
 
+let contentMedicineActuality = document.querySelector(".medicineActuality");
+
+let numbersMedicine = contentMedicineActuality.querySelector(".listMedicine");
+
+numbersMedicine.addEventListener("input", (event) =>{
+  
+  let number = event.target.value;
+
+  if(document.querySelector(".itemConfigAntecedentes")){
+    document.querySelectorAll(".itemConfigAntecedentes").forEach(element =>{
+      element.remove();
+    });
+  }
+
+  if((number != null || number != undefined) && parseFloat(number) <= 20){
+    for(let i = 0; i < number; i++){
+
+      let listConfig = contentMedicineActuality.querySelector(".listConfig");
+
+      let newLi = document.createElement("li");
+      newLi.className = "itemConfigAntecedentes";
+
+      let textMedicine = document.createElement("h5");
+      textMedicine.className = "textMedicine";
+      textMedicine.textContent = "Medicina "+(i+1)+"";
+
+      let nameMedicine = document.createElement("input");
+      nameMedicine.type = "text";
+      nameMedicine.className = "nameMedicine";
+      nameMedicine.name = "nameMedicine";
+      nameMedicine.placeholder = "Nombre del medicamento";
+
+      let numberDosis = document.createElement("input");
+      numberDosis.type = "number";
+      numberDosis.className = "numberDosis";
+      numberDosis.name = "numberDosis";
+      numberDosis.placeholder = "Numero de dosis por semana";
+
+      listConfig.appendChild(newLi);
+      newLi.appendChild(textMedicine);
+      newLi.appendChild(nameMedicine);
+      newLi.appendChild(numberDosis);
+      
+
+    }
+  }
+
+});
+
 //Spawn almacenar info medica

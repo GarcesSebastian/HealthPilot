@@ -1428,7 +1428,7 @@ input:checked + .slider:before {
 .contentAlmacenar div ul li{
   width: 100%;
   height: fit-content;
-  padding: 2.5%;
+  padding: 1%;
   cursor: pointer;
   transition: .1s ease-in-out;
   border-radius: 5px;
@@ -1438,12 +1438,118 @@ input:checked + .slider:before {
   color: white;
 }
 
-.contentAlmacenar div ul li:hover{
-  background-color: rgb(255, 255, 255, .2);
+.contentAlmacenar div ul li input[type="text"]{
+  outline: none;
+  text-align: left;
+  padding: 2% 0;
+  width: 100%;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid white;
+  color: white;
 }
 
-.contentAlmacenar div ul li:active{
-  background-color: rgb(255, 255, 255, .17);
+.contentAlmacenar div ul li input[type="text"]::placeholder{
+  color: white;
+}
+
+.contentAlmacenar div ul li input[type="date"]{
+  outline: none;
+  text-align: left;
+  padding: 2% 0;
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.contentAlmacenar div ul li label{
+  font-size: 13px;
+  width: fit-content;
+  height: fit-content;
+  text-align: left;
+}
+
+.contentAlmacenar div ul li input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  color: red;
+}
+
+.contentAlmacenar div ul li select{
+  background-color: white;
+  outline: none;
+  width: 90%;
+  height: fit-content;
+  padding: 2%;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.contentAlmacenar div ul li input[type="email"]{
+  outline: none;
+  text-align: left;
+  padding: 2% 0;
+  width: 100%;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.contentAlmacenar div ul li input[type="email"]::placeholder{
+  color: white;
+}
+
+.contentAlmacenar div ul li input[type="number"]{
+  outline: none;
+  text-align: left;
+  padding: 2% 0;
+  width: 100%;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.contentAlmacenar div ul li input[type="number"]::placeholder{
+  color: white;
+}
+
+.medicineActuality ul li:first-child{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+.Almacenar ul .itemConfigAntecedentes{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: normal;
+  gap: 5px;
+  margin-bottom: 3%;
+}
+
+.Almacenar ul li textarea{
+  outline: none;
+  text-align: left;
+  padding: 2% 0;
+  width: 90%;
+  height: fit-content;
+  border: none;
+  border-bottom: 1px solid white;
+  color: black;
+}
+
+.Almacenar ul li textarea::placeholder{
+  color: blakc;
 }
 
 /*Spawn almacenar info medica*/
