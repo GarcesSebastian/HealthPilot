@@ -1099,9 +1099,15 @@ if(isset($_SESSION['id'])){
                   <h5 class="nameList">Generar datos medicos</h5>
                   <ul class="listConfig">
 
-                    <li class="itemConfig" style="padding: 0;">
+                  <li class="itemConfig" style="padding: 0;">
                       <form action="../../../database/generarPdf.php" method="post" class="formSubmit">
                         <input type="submit" value="Generar por pdf" name="btnGenerarPDF" class="btnSubmit">
+                      </form>
+                    </li>
+
+                    <li class="itemConfig" style="padding: 0;">
+                      <form action="../../../database/generarJPG.php" method="post" class="formSubmit">
+                        <input type="submit" value="Generar por JPG" name="btnGenerarJPG" class="btnSubmit">
                       </form>
                     </li>
 

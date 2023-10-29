@@ -123,7 +123,7 @@ if(isset($_POST['btnGenerarPDF'])){
             
             $pdf->writeHTML($html, true, false, true, false, '');
 
-            $pdf->Output('InformeMedico.pdf', 'I');
+            $pdf->Output('../InformeMedico.pdf', 'I');
 
         }
 
