@@ -670,6 +670,10 @@ buttonsContentPage.forEach((element) => {
       let circle = element.querySelector(".itemCircle");
       circle.querySelector(".fa-circle").classList.remove("fa-regular");
       circle.querySelector(".fa-circle").classList.add("fa-solid");
+      document.querySelector(".spawnConfiguracion").style.left = "0%";
+      setTimeout(()=>{
+        document.querySelector(".spawnConsultar").style.left = "0%";
+      },100);
       setTimeout(() => {
         circle.querySelector(".fa-circle").classList.add("fa-regular");
         circle.querySelector(".fa-circle").classList.remove("fa-solid");

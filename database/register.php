@@ -15,8 +15,9 @@ if (isset($_POST['buttonSingUp'])) {
             if (mysqli_num_rows($result) > 0) {
                 echo "El nombre de usuario ya está en uso. Por favor, elige otro.";
             } else {
+
                 $confirmEmail = "SELECT * FROM registros WHERE email = '$email'";
-                $resultConfirmEmail = mysqli_query($conex, $resultConfirmEmail);
+                $resultConfirmEmail = mysqli_query($conex, $confirmEmail);
                 
                 if(mysqli_num_rows($resultConfirmEmail)>0){
                     echo "Este correo electrónico ya se encuentra registrado. Inicia sesión o utiliza uno diferente.";
