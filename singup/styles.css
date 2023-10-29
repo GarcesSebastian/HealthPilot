@@ -3,12 +3,6 @@
   --background_2: #62a9e1;
 
   /*Text Responsive*/
-  --font_25px:clamp(15px, 1.5vw, 60px);
-  --font_15px:clamp(10px, 1.2vw, 30px);
-  --font_14px:clamp(10px, 1.4vw, 30px);
-  --font_13px:clamp(10px, 1vw, 20px);
-  --font_12px:clamp(10px, 1vw, 18px);
-
 }
 
 * {
@@ -41,7 +35,7 @@ body {
   background: linear-gradient(90deg, var(--background_1), var(--background_2));
 }
 
-.contentView, form {
+.contentView {
   position: absolute;
   top: 10%;
   width: 100%;
@@ -69,7 +63,7 @@ body {
 
 .contentView .logoPage {
   position: absolute;
-  top: 8%;
+  top: -12%;
   width:fit-content;
   width: 100%;
   height: fit-content;
@@ -83,7 +77,7 @@ body {
 }
 
 .contentForm{
-  margin-top: 30%;
+  margin-top: 15%;
   width: 100%;
   height: 100%;
   display: flex;
@@ -106,7 +100,7 @@ body {
 
 
 .contentForm div span{
-  font-size: var(--font_14px);
+  font-size: 15px;
   color: var(--background_2);
 }
 
@@ -115,7 +109,7 @@ body {
   background-color: transparent;
   border: none;
   padding: 2% 5%;
-  font-size: var(--font_15px);
+  font-size: 16px;
   border-bottom: 2px solid rgb(114, 111, 111);
   transition: .5s;
 }
@@ -145,7 +139,7 @@ body {
   padding: 2.3% 0;
   border-radius: 10px;
   color: white;
-  font-size: var(--font_15px);
+  font-size: 15px;
   font-weight: lighter;
   cursor: pointer;
   transition: .5s;
@@ -167,13 +161,12 @@ body {
 }
 
 .contentSendForm h4{
-  font-size: var(--font_13px);
+  font-size: 13px;
   color: rgb(160, 160, 160);
 }
 
 .contentSendForm h3{
-  font-size: var(--font_13px);
+  font-size: 14px;
   color: var(--background_1);
   cursor: pointer;
 }
-

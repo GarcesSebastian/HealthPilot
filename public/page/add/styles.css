@@ -81,7 +81,7 @@ body {
 }
 
 .profile{
-  top: 50%;
+  top: 70%;
 }
 
 .navTop span{
@@ -130,6 +130,8 @@ body {
 }
 
 .contentProfile{
+  position: absolute;
+  left: 27%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1482,3 +1484,49 @@ input:checked + .slider:before {
 }
 
 /*Spawn consultar info medica*/
+
+/*Botones submit*/
+
+.btnSubmit{
+  width: 100%;
+  height: fit-content;
+  padding: 2.5%;
+  cursor: pointer;
+  transition: .1s ease-in-out;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 14px;
+}
+
+.btnSubmit:hover{
+  background-color: rgb(255, 255, 255, .2);
+}
+
+.btnSubmit:active{
+  background-color: rgb(255, 255, 255, .17);
+}
+
+.formSubmit{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.medicineActuality ul li{
+  margin-bottom: 0%;
+}
+
+.buttonSendInfoMedica{
+  justify-content: center;
+  background-color: rgb(255, 255, 255, .2);
+}
+
+/*Botones submit*/

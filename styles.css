@@ -3,9 +3,6 @@
   --background_2: #62a9e1;
 
   /*Text Responsive*/
-  --font_25px:clamp(15px, 1.5vw, 60px);
-  --font_15px:clamp(10px, 1.2vw, 30px);
-  --font_14px:clamp(10px, 1.4vw, 30px);
 }
 
 * {
@@ -28,7 +25,7 @@ body {
 
 .containerAll {
   position: absolute;
-  width: 28%;
+  width: 360px;
   height: 94%;
   display: flex;
   align-items: center;
@@ -65,7 +62,7 @@ body {
 
 .namePage {
   color: white;
-  font-size: var(--font_25px);
+  font-size: 25px;
   font-weight: bolder;
   margin: 16% 0 5% 0;
 }
@@ -77,27 +74,22 @@ body {
   text-align: center;
   padding: 3%;
   color: rgb(255, 255, 255, 0.7);
-  font-size: var(--font_14px);
 }
 
 .buttonStart {
   background-color: white;
   border: none;
   outline: none;
-  border-radius: 5px;
-  width: fit-content;
+  border-radius: 50px;
+  width: 40%;
   box-shadow: 3px 3px 4px rgb(33, 43, 120, 0.5);
-  height:fit-content;
-  font-size: var(--font_15px);
+  height: 7%;
+  font-size: 15px;
   font-weight: bolder;
   color: var(--background_2);
   cursor: pointer;
   margin-top: 10%;
   transition: .5s;
-  padding: 2.5%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .buttonStart:hover{
@@ -108,8 +100,8 @@ body {
   position: absolute;
   bottom: 25%;
   left: 8%;
-  width: clamp(15px, 40vw, 35px);
-  height: clamp(15px, 40vw, 35px);
+  width: 35px;
+  height: 35px;
   border: 3px solid white;
   border-radius: 3px;
   transform: rotate(45deg);

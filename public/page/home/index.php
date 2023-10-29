@@ -20,6 +20,18 @@ $info_extra;
 if(isset($_SESSION['id'])){
   $id = $_SESSION['id'];
   
+  $getStateUser = "SELECT estado FROM estados WHERE id = '$id'";
+  $resultGetStateUser = mysqli_query($conex, $getStateUser);
+
+  if(mysqli_num_rows($resultGetStateUser) > 0){
+      $row = mysqli_fetch_assoc($resultGetStateUser);
+      $state = $row['estado'];
+
+      if($state == false){
+          header("Location: ../../../index.php");
+      }
+  }
+
   $getDataUser = "SELECT * FROM registros WHERE id = '$id'";
   $resultGetDataUser = mysqli_query($conex, $getDataUser);
 
@@ -186,9 +198,9 @@ if(isset($_SESSION['id'])){
                                 </h5>
                             </li>
 
-                            <li class="itemConfig">
+                            <li class="itemConfig" style="padding: 0;">
                                 <form action="../../../database/logOut.php" method="post">
-                                  <input type="submit" class="textConfig" value="Cerrar sesion" name="buttonLogOut">
+                                  <input type="submit" class="textConfig btnSubmit" value="Cerrar sesion" name="buttonLogOut">
                                     
                                 </form>
                             </li>
@@ -1059,8 +1071,8 @@ if(isset($_SESSION['id'])){
 
                 <div class="Almacenar medicineActuality">
                   <ul class="listConfig">
-                    <li class="itemConfig">
-                      <input type="submit" name="buttonSendInfoMedica" class="buttonSendInfoMedica">
+                    <li class="itemConfig" style="padding: 0;">
+                      <input type="submit" name="buttonSendInfoMedica" class="buttonSendInfoMedica btnSubmit">
                     </li>
                   </ul>
                 </div>
@@ -1087,11 +1099,10 @@ if(isset($_SESSION['id'])){
                   <h5 class="nameList">Generar datos medicos</h5>
                   <ul class="listConfig">
 
-                    <li class="itemConfig">
-                      <span class="iconConsultar">
-                        <i class="fa-regular fa-file-pdf fa-lg"></i>
-                      </span>
-                      <h5 class="textConsultar">Generar por pdf</h5>
+                    <li class="itemConfig" style="padding: 0;">
+                      <form action="../../../database/generarPdf.php" method="post" class="formSubmit">
+                        <input type="submit" value="Generar por pdf" name="btnGenerarPDF" class="btnSubmit">
+                      </form>
                     </li>
 
 
