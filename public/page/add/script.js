@@ -539,9 +539,9 @@ let buttonsFooter = document.querySelectorAll(".buttonFooter");
 buttonsFooter.forEach((element) => {
   element.addEventListener("click", () => {
     if (element.getAttribute("data-id") == "1") {
-      window.location.href = "../home/index.html";
+      window.location.href = "../home/index.php";
     } else if (element.getAttribute("data-id") == "2") {
-      window.location.href = "../add/index.html";
+      window.location.href = "../add/index.php";
     } else if (element.getAttribute("data-id") == "3") {
       window.location.href = "../calendary/index.html";
     }
@@ -636,6 +636,29 @@ buttonsTrayNotifications.forEach((element) => {
     });
   }
 });
+
+let root = document.documentElement;
+let buttonsGeneral = document
+  .querySelector(".configGeneral")
+  .querySelectorAll(".itemConfig");
+
+buttonsGeneral.forEach((element) => {
+  element.addEventListener("click", () => {
+    if (element.getAttribute("data-general") == "1") {
+      document.querySelector('.color-input').click();
+      document.querySelector(".color-input").addEventListener("change", () =>{
+        let colorInput = document.querySelector('.color-input').value;
+        root.style.setProperty("--background_1", colorInput);
+      });
+    } else if (element.getAttribute("data-general") == "2") {
+    } else if (element.getAttribute("data-general") == "3") {
+
+      document.querySelector(".spawnConfigCuenta").style.left = "0%";
+    
+    }
+  });
+});
+
 
 //Reminder Form
 
@@ -1558,3 +1581,89 @@ if(contentReminder.sound[0] == null || contentReminder.sound[0] == undefined){
     }
   });
 }
+
+//Spawn config cuenta
+
+document.querySelector(".backContentCuenta").addEventListener("click", ()=>{
+  document.querySelector(".spawnConfigCuenta").style.left = "-100%";
+});
+
+//Spawn config cuenta
+
+//Spawn almacenar info medica
+
+let btnItemConfigDataMedical = document.querySelector(".configDatosMedicos").querySelectorAll(".itemConfig");
+
+btnItemConfigDataMedical.forEach(element =>{
+  element.addEventListener("click", () =>{
+    if(element.getAttribute("data-dataMedical") == "1"){
+
+      document.querySelector(".spawnAlmacenar").style.left = "0%";
+    
+    }else if(element.getAttribute("data-dataMedical") == "2"){
+  
+      document.querySelector(".spawnConsultar").style.left = "0%";
+
+    }
+  })
+});
+
+document.querySelector(".backContentAlmacenar").addEventListener("click", ()=>{
+  document.querySelector(".spawnAlmacenar").style.left = "-100%";
+});
+
+document.querySelector(".backContentConsultar").addEventListener("click", ()=>{
+  document.querySelector(".spawnConsultar").style.left = "-100%";
+});
+
+
+let contentMedicineActuality = document.querySelector(".medicineActuality");
+
+let numbersMedicine = contentMedicineActuality.querySelector(".listMedicine");
+
+numbersMedicine.addEventListener("input", (event) =>{
+  
+  let number = event.target.value;
+
+  if(document.querySelector(".itemConfigAntecedentes")){
+    document.querySelectorAll(".itemConfigAntecedentes").forEach(element =>{
+      element.remove();
+    });
+  }
+
+  if((number != null || number != undefined) && parseFloat(number) <= 20){
+    for(let i = 0; i < number; i++){
+
+      let listConfig = contentMedicineActuality.querySelector(".listConfig");
+
+      let newLi = document.createElement("li");
+      newLi.className = "itemConfigAntecedentes";
+
+      let textMedicine = document.createElement("h5");
+      textMedicine.className = "textMedicine";
+      textMedicine.textContent = "Medicina "+(i+1)+"";
+
+      let nameMedicine = document.createElement("input");
+      nameMedicine.type = "text";
+      nameMedicine.className = "nameMedicine";
+      nameMedicine.name = "nameMedicine";
+      nameMedicine.placeholder = "Nombre del medicamento";
+
+      let numberDosis = document.createElement("input");
+      numberDosis.type = "number";
+      numberDosis.className = "numberDosis";
+      numberDosis.name = "numberDosis";
+      numberDosis.placeholder = "Numero de dosis por semana";
+
+      listConfig.appendChild(newLi);
+      newLi.appendChild(textMedicine);
+      newLi.appendChild(nameMedicine);
+      newLi.appendChild(numberDosis);
+      
+
+    }
+  }
+
+});
+
+//Spawn almacenar info medica

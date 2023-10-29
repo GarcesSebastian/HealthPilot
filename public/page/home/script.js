@@ -293,23 +293,6 @@ function setNotificationsLocalStorage(){
   localStorage.setItem("notifications", JSON.stringify(notifications));
 }
 
-// let audioInput = document.querySelector(".inputSound");
-// let audioPlayer = document.querySelector(".audioPlayer");
-
-// audioInput.addEventListener("change", (event) => {
-//   let selectedFile = event.target.files[0];
-//   if (selectedFile) {
-//     let audioURL = URL.createObjectURL(selectedFile);
-//     audioPlayer.src = audioURL;
-//     contentReminder.sound[0] = audioPlayer.src;
-//     audioPlayer.addEventListener("loadedmetadata", () => {
-//       contentReminder.soundDuration[0] = audioPlayer.duration;
-//       setReminderLocalStorage();
-//     });
-//   }
-// });
-
-
 let searchGeoJSON = "../../../GeoJson/searchGeo.geojson";
 let geoJSONPath = "../../../GeoJson/pharmacy.geojson";
 let clinicGeoJSONPath = "../../../GeoJson/clinic.geojson";
@@ -651,9 +634,9 @@ let buttonsFooter = document.querySelectorAll(".buttonFooter");
 buttonsFooter.forEach((element) => {
   element.addEventListener("click", () => {
     if (element.getAttribute("data-id") == "1") {
-      window.location.href = "../home/index.html";
+      window.location.href = "../home/index.php";
     } else if (element.getAttribute("data-id") == "2") {
-      window.location.href = "../add/index.html";
+      window.location.href = "../add/index.php";
     } else if (element.getAttribute("data-id") == "3") {
       window.location.href = "../calendary/index.html";
     }

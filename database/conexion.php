@@ -1,11 +1,11 @@
 <?php
 
-    $hostname = "localhost";
+    $servername = "localhost";
     $password = "";
     $username = "root";
     $database = "dsi";
 
-    $conex = mysqli_connect($hostname, $username, $password, $database);
+    $conex = mysqli_connect($servername, $username, $password, $database);
 
     if($conex->connect_error){
         echo "Conexion fallida " . $conex->connect_error;

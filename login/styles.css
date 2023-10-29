@@ -41,7 +41,7 @@ body {
   background: linear-gradient(90deg, var(--background_1), var(--background_2));
 }
 
-.contentView {
+.contentView, form {
   position: absolute;
   top: 10%;
   width: 100%;

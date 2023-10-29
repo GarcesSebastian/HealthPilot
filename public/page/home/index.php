@@ -1,3 +1,61 @@
+<?php
+
+session_start();
+include("../../../database/iniciar.php");
+
+$username;
+$nombre_completo;
+$fecha_nacimiento;
+$genero;
+$telefono;
+$email;
+$fecha_diagnostico;
+$alergias;
+$actividad_fisica;
+$consumo_alcohol_tabaco;
+$habitos_alimenticios;
+$nivel_estres;
+$info_extra;
+
+if(isset($_SESSION['id'])){
+  $id = $_SESSION['id'];
+  
+  $getDataUser = "SELECT * FROM registros WHERE id = '$id'";
+  $resultGetDataUser = mysqli_query($conex, $getDataUser);
+
+  if(mysqli_num_rows($resultGetDataUser) > 0){
+      $row = mysqli_fetch_assoc($resultGetDataUser);
+      $username = $row['usuario'];
+  }
+
+  $getDataInfoMedica = "SELECT * FROM informacion_medica WHERE id = '$id'";
+  $resultGetDataInfoMedica = mysqli_query($conex, $getDataInfoMedica);
+
+  if(mysqli_num_rows($resultGetDataInfoMedica) > 0){
+    $row = mysqli_fetch_assoc($resultGetDataInfoMedica);
+    $nombre_completo = $row['nombre_completo'];
+    $fecha_nacimiento = $row['fecha_nacimiento'];
+    $genero = $row['genero'];
+    $telefono = $row['telefono'];
+    $telefono = intval($telefono);
+    $email = $row['email'];
+    $fecha_diagnostico = $row['fecha_diagnostico'];
+    $alergias = $row['alergias'];
+    $actividad_fisica = $row['actividad_fisica'];
+    $consumo_alcohol_tabaco = $row['consumo_alcohol_tabaco'];
+    $habitos_alimenticios = $row['habitos_alimenticios'];
+    $nivel_estres = $row['nivel_estres'];
+    $info_extra = $row['extra'];
+  }
+
+}else{
+  header("Location: ../../../index.php");
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,9 +187,10 @@
                             </li>
 
                             <li class="itemConfig">
-                                <h5 class="textConfig">
-                                    Cerrar Sesion
-                                </h5>
+                                <form action="../../../database/logOut.php" method="post">
+                                  <input type="submit" class="textConfig" value="Cerrar sesion" name="buttonLogOut">
+                                    
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -596,7 +655,7 @@
                 <h4 class="textBackContent textBackContentAlmacenar">Almacenar informacion medica</h4>
               </div>
 
-              <div class="contentAlmacenar">
+              <form action="../../../database/sendInfoMedica.php" method="post" class="contentAlmacenar">
 
                 <div class="Almacenar">
                   <h5 class="nameList">Informacion Personal</h5>
@@ -607,7 +666,7 @@
                         <i class="fa-solid fa-shield-halved fa-lg"></i>
                       </span>
                       
-                      <input type="text" name="nameComplete" class="nameComplete" placeholder="Nombre Completo">
+                      <input type="text" name="nameComplete" class="nameComplete" placeholder="Nombre Completo" value="<?php if(!empty($nombre_completo)){echo $nombre_completo;}else{echo "";} ?>">
                     </li>
 
                     <li class="itemConfig">
@@ -615,7 +674,7 @@
                         <i class="fa-solid fa-shield-halved fa-lg"></i>
                       </span>
                       <label for="fechaNacimiento">Fecha de nacimiento:</label>
-                      <input type="date" name="fechaNacimiento" class="fechaNacimiento">
+                      <input type="date" name="fechaNacimiento" class="fechaNacimiento" value="<?php if(!empty($fecha_nacimiento)){echo $fecha_nacimiento;}else{echo "";} ?>">
                     </li>
 
                     <li class="itemConfig">
@@ -623,12 +682,40 @@
                         <i class="fa-solid fa-shield-halved fa-lg"></i>
                       </span>
                       
-                      <select class="genero" name="genero" required>
-                        <option value="" disabled selected>Selecciona un género</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
-                        <option value="otro">Otro</option>
-                    </select>
+                      <select class="genero" name="genero">
+                        <?php
+                          if ($genero == "masculino") {
+                            $options = <<<HTML
+                              <option disabled>Selecciona un género</option>
+                              <option value='masculino' selected>Masculino</option>
+                              <option value='femenino'>Femenino</option>
+                              <option value='otro'>Otro</option>
+                      HTML;
+                          } else if ($genero == "femenino") {
+                            $options = <<<HTML
+                              <option disabled>Selecciona un género</option>
+                              <option value='masculino'>Masculino</option>
+                              <option value='femenino' selected>Femenino</option>
+                              <option value='otro'>Otro</option>
+                      HTML;
+                          } else if ($genero == "otro") {
+                            $options = <<<HTML
+                              <option disabled>Selecciona un género</option>
+                              <option value='masculino'>Masculino</option>
+                              <option value='femenino'>Femenino</option>
+                              <option value='otro' selected>Otro</option>
+                      HTML;
+                          } else if (empty($genero)){
+                            $options = <<<HTML
+                              <option disabled selected>Selecciona un género</option>
+                              <option value='masculino'>Masculino</option>
+                              <option value='femenino'>Femenino</option>
+                              <option value='otro'>Otro</option>
+                      HTML;
+                          }
+                          echo $options;
+                        ?>
+                      </select>
 
                     </li>
 
@@ -637,7 +724,7 @@
                         <i class="fa-solid fa-shield-halved fa-lg"></i>
                       </span>
                       
-                      <input type="number" name="telephone" class="telephone" placeholder="Numero de telefono">
+                      <input type="number" name="telephone" class="telephone" placeholder="Numero de telefono" value="<?php if(!empty($telefono)){echo $telefono;}else{echo "";} ?>">
                     </li>
 
                     <li class="itemConfig">
@@ -645,7 +732,7 @@
                         <i class="fa-solid fa-shield-halved fa-lg"></i>
                       </span>
                       
-                      <input type="email" name="email" class="email" placeholder="Correo Electronico">
+                      <input type="email" name="email" class="email" placeholder="Correo Electronico" value='<?php if(!empty($email)){echo $email;}else{echo "";} ?>'>
                     </li>
 
 
@@ -661,7 +748,7 @@
                         <i class="fa-solid fa-shield-halved fa-lg"></i>
                       </span>
                       <label for="fechaDiagnostico">Fecha de diagnostico:</label>
-                      <input type="date" name="fechaDiagnostico" class="fechaDiagnostico">
+                      <input type="date" name="fechaDiagnostico" class="fechaDiagnostico" value="<?php if(!empty($fecha_diagnostico)){echo $fecha_diagnostico;}else{echo "";} ?>">
                     </li>
 
                     <li class="itemConfig">
@@ -669,7 +756,7 @@
                         <i class="fa-solid fa-shield-halved fa-lg"></i>
                       </span>
                       
-                      <input type="text" name="alergias" class="alergias" placeholder="Alergias a medicamentos o alimentos">
+                      <input type="text" name="alergias" class="alergias" placeholder="Alergias a medicamentos o alimentos" value="<?php if(!empty($alergias)){echo $alergias;}else{echo "";} ?>">
                     </li>
 
                   </ul>
@@ -682,14 +769,6 @@
                     <li class="itemConfig">
                       <input type="number" name="listMedicine" class="listMedicine" placeholder="Numero de medicamentos recetados">
                     </li>
-<!-- 
-                    <li class="itemConfigAntecedentes">
-                      <h5 class="textMedicine">
-                        Medicina 1:
-                      </h5>
-                      <input type="text" name="nameMedicine" class="nameMedicine" placeholder="Nombre del medicamento">
-                      <input type="number" name="numberDosis" class="numberDosis" placeholder="Numero de dosis por semana">
-                    </li> -->
 
                   </ul>
                 </div>
@@ -703,13 +782,65 @@
                         <i class="fa-solid fa-shield-halved fa-lg"></i>
                       </span>
                       
-                      <select class="activity" name="activity" required>
+                      <select class="activity" name="activity">
+                      <?php
+                          if ($actividad_fisica == "sedentario") {
+                            $options = <<<HTML
+                        <option value="" disabled>Nivel de actividad física</option>
+                        <option value="sedentario" selected>Sedentario (poco o ningún ejercicio)</option>
+                        <option value="ligero">Ligero (actividad física ligera)</option>
+                        <option value="moderado">Moderado (ejercicio regular)</option>
+                        <option value="intenso">Intenso (actividad física intensa)</option>
+                        <option value="muy-intenso">Muy Intenso (entrenamiento riguroso)</option>
+                      HTML;
+                          } else if ($actividad_fisica == "ligero") {
+                            $options = <<<HTML
+                        <option value="" disabled>Nivel de actividad física</option>
+                        <option value="sedentario" selected>Sedentario (poco o ningún ejercicio)</option>
+                        <option value="ligero">Ligero (actividad física ligera)</option>
+                        <option value="moderado">Moderado (ejercicio regular)</option>
+                        <option value="intenso">Intenso (actividad física intensa)</option>
+                        <option value="muy-intenso">Muy Intenso (entrenamiento riguroso)</option>
+                      HTML;
+                          } else if ($actividad_fisica == "moderado") {
+                            $options = <<<HTML
+                        <option value="" disabled>Nivel de actividad física</option>
+                        <option value="sedentario">Sedentario (poco o ningún ejercicio)</option>
+                        <option value="ligero">Ligero (actividad física ligera)</option>
+                        <option value="moderado" selected>Moderado (ejercicio regular)</option>
+                        <option value="intenso">Intenso (actividad física intensa)</option>
+                        <option value="muy-intenso">Muy Intenso (entrenamiento riguroso)</option>
+                      HTML;
+                          } else if ($actividad_fisica == "intenso") {
+                            $options = <<<HTML
+                        <option value="" disabled>Nivel de actividad física</option>
+                        <option value="sedentario">Sedentario (poco o ningún ejercicio)</option>
+                        <option value="ligero">Ligero (actividad física ligera)</option>
+                        <option value="moderado">Moderado (ejercicio regular)</option>
+                        <option value="intenso" selected>Intenso (actividad física intensa)</option>
+                        <option value="muy-intenso">Muy Intenso (entrenamiento riguroso)</option>
+                      HTML;
+                          } else if ($actividad_fisica == "muy-intenso") {
+                            $options = <<<HTML
+                        <option value="" disabled>Nivel de actividad física</option>
+                        <option value="sedentario">Sedentario (poco o ningún ejercicio)</option>
+                        <option value="ligero">Ligero (actividad física ligera)</option>
+                        <option value="moderado">Moderado (ejercicio regular)</option>
+                        <option value="intenso">Intenso (actividad física intensa)</option>
+                        <option value="muy-intenso" selected>Muy Intenso (entrenamiento riguroso)</option>
+                      HTML;
+                          } else if (empty($actividad_fisica)){
+                            $options = <<<HTML
                         <option value="" disabled selected>Nivel de actividad física</option>
                         <option value="sedentario">Sedentario (poco o ningún ejercicio)</option>
                         <option value="ligero">Ligero (actividad física ligera)</option>
                         <option value="moderado">Moderado (ejercicio regular)</option>
                         <option value="intenso">Intenso (actividad física intensa)</option>
                         <option value="muy-intenso">Muy Intenso (entrenamiento riguroso)</option>
+                      HTML;
+                          }
+                          echo $options;
+                        ?>
                       </select>
                       
                       </li>
@@ -719,7 +850,87 @@
                           <i class="fa-solid fa-shield-halved fa-lg"></i>
                         </span>
                         
-                        <select class="alcohol-tobacco" name="alcohol-tobacco" required>
+                        <select class="alcohol-tobacco" name="alcohol-tobacco">
+                        <?php
+                          if ($consumo_alcohol_tabaco == "no-consumo") {
+                            $options = <<<HTML
+                          <option value="" disabled>Selecciona tu consumo de alcohol y tabaco</option>
+                          <option value="no-consumo" selected>No consumo alcohol ni tabaco</option>
+                          <option value="consumo-alcohol">Consumo alcohol ocasionalmente</option>
+                          <option value="consumo-tabaco">Consumo tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-tabaco">Consumo alcohol y tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-regular">Consumo alcohol regularmente</option>
+                          <option value="consumo-tabaco-regular">Consumo tabaco regularmente</option>
+                          <option value="consumo-alcohol-tabaco-regular">Consumo alcohol y tabaco regularmente</option>
+                      HTML;
+                          } else if ($consumo_alcohol_tabaco == "consumo-alcohol") {
+                            $options = <<<HTML
+                          <option value="" disabled>Selecciona tu consumo de alcohol y tabaco</option>
+                          <option value="no-consumo">No consumo alcohol ni tabaco</option>
+                          <option value="consumo-alcohol" selected>Consumo alcohol ocasionalmente</option>
+                          <option value="consumo-tabaco">Consumo tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-tabaco">Consumo alcohol y tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-regular">Consumo alcohol regularmente</option>
+                          <option value="consumo-tabaco-regular">Consumo tabaco regularmente</option>
+                          <option value="consumo-alcohol-tabaco-regular">Consumo alcohol y tabaco regularmente</option>
+                      HTML;
+                          } else if ($consumo_alcohol_tabaco == "consumo-tabaco") {
+                            $options = <<<HTML
+                          <option value="" disabled>Selecciona tu consumo de alcohol y tabaco</option>
+                          <option value="no-consumo">No consumo alcohol ni tabaco</option>
+                          <option value="consumo-alcohol">Consumo alcohol ocasionalmente</option>
+                          <option value="consumo-tabaco" selected>Consumo tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-tabaco">Consumo alcohol y tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-regular">Consumo alcohol regularmente</option>
+                          <option value="consumo-tabaco-regular">Consumo tabaco regularmente</option>
+                          <option value="consumo-alcohol-tabaco-regular">Consumo alcohol y tabaco regularmente</option>
+                      HTML;
+                          } else if ($consumo_alcohol_tabaco == "consumo-alcohol-tabaco") {
+                            $options = <<<HTML
+                          <option value="" disabled>Selecciona tu consumo de alcohol y tabaco</option>
+                          <option value="no-consumo">No consumo alcohol ni tabaco</option>
+                          <option value="consumo-alcohol">Consumo alcohol ocasionalmente</option>
+                          <option value="consumo-tabaco">Consumo tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-tabaco" selected>Consumo alcohol y tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-regular">Consumo alcohol regularmente</option>
+                          <option value="consumo-tabaco-regular">Consumo tabaco regularmente</option>
+                          <option value="consumo-alcohol-tabaco-regular">Consumo alcohol y tabaco regularmente</option>
+                      HTML;
+                          } else if ($consumo_alcohol_tabaco == "consumo-alcohol-regular") {
+                            $options = <<<HTML
+                          <option value="" disabled>Selecciona tu consumo de alcohol y tabaco</option>
+                          <option value="no-consumo">No consumo alcohol ni tabaco</option>
+                          <option value="consumo-alcohol">Consumo alcohol ocasionalmente</option>
+                          <option value="consumo-tabaco">Consumo tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-tabaco">Consumo alcohol y tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-regular" selected>Consumo alcohol regularmente</option>
+                          <option value="consumo-tabaco-regular">Consumo tabaco regularmente</option>
+                          <option value="consumo-alcohol-tabaco-regular">Consumo alcohol y tabaco regularmente</option>
+                      HTML;
+                          } else if ($consumo_alcohol_tabaco == "consumo-tabaco-regular") {
+                            $options = <<<HTML
+                          <option value="" disabled>Selecciona tu consumo de alcohol y tabaco</option>
+                          <option value="no-consumo">No consumo alcohol ni tabaco</option>
+                          <option value="consumo-alcohol">Consumo alcohol ocasionalmente</option>
+                          <option value="consumo-tabaco">Consumo tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-tabaco">Consumo alcohol y tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-regular">Consumo alcohol regularmente</option>
+                          <option value="consumo-tabaco-regular" selected>Consumo tabaco regularmente</option>
+                          <option value="consumo-alcohol-tabaco-regular">Consumo alcohol y tabaco regularmente</option>
+                      HTML;
+                          } else if ($consumo_alcohol_tabaco == "consumo-alcohol-tabaco-regular") {
+                            $options = <<<HTML
+                          <option value="" disabled>Selecciona tu consumo de alcohol y tabaco</option>
+                          <option value="no-consumo">No consumo alcohol ni tabaco</option>
+                          <option value="consumo-alcohol">Consumo alcohol ocasionalmente</option>
+                          <option value="consumo-tabaco">Consumo tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-tabaco">Consumo alcohol y tabaco ocasionalmente</option>
+                          <option value="consumo-alcohol-regular">Consumo alcohol regularmente</option>
+                          <option value="consumo-tabaco-regular">Consumo tabaco regularmente</option>
+                          <option value="consumo-alcohol-tabaco-regular" selected>Consumo alcohol y tabaco regularmente</option>
+                      HTML;
+                          } else if (empty($consumo_alcohol_tabaco)){
+                            $options = <<<HTML
                           <option value="" disabled selected>Selecciona tu consumo de alcohol y tabaco</option>
                           <option value="no-consumo">No consumo alcohol ni tabaco</option>
                           <option value="consumo-alcohol">Consumo alcohol ocasionalmente</option>
@@ -728,6 +939,10 @@
                           <option value="consumo-alcohol-regular">Consumo alcohol regularmente</option>
                           <option value="consumo-tabaco-regular">Consumo tabaco regularmente</option>
                           <option value="consumo-alcohol-tabaco-regular">Consumo alcohol y tabaco regularmente</option>
+                      HTML;
+                          }
+                          echo $options;
+                        ?>
                         </select>
                         </li>
 
@@ -736,11 +951,39 @@
                             <i class="fa-solid fa-shield-halved fa-lg"></i>
                           </span>
                           
-                          <select class="alimentacion" name="alimentacion" required>
+                          <select class="alimentacion" name="alimentacion">
+                          <?php
+                          if ($habitos_alimenticios == "saludable") {
+                            $options = <<<HTML
+                            <option value="" disabled>Selecciona tus hábitos alimenticios</option>
+                            <option value="saludable" selected>Alimentación saludable</option>
+                            <option value="balanceada">Alimentación balanceada</option>
+                            <option value="poco-saludable">Alimentación poco saludable</option>
+                      HTML;
+                          } else if ($habitos_alimenticios == "balanceada") {
+                            $options = <<<HTML
+                            <option value="" disabled>Selecciona tus hábitos alimenticios</option>
+                            <option value="saludable">Alimentación saludable</option>
+                            <option value="balanceada" selected>Alimentación balanceada</option>
+                            <option value="poco-saludable">Alimentación poco saludable</option>
+                      HTML;
+                          } else if ($habitos_alimenticios == "poco-saludable") {
+                            $options = <<<HTML
+                            <option value="" disabled>Selecciona tus hábitos alimenticios</option>
+                            <option value="saludable">Alimentación saludable</option>
+                            <option value="balanceada">Alimentación balanceada</option>
+                            <option value="poco-saludable" selected>Alimentación poco saludable</option>
+                      HTML;
+                          } else if (empty($habitos_alimenticios)){
+                            $options = <<<HTML
                             <option value="" disabled selected>Selecciona tus hábitos alimenticios</option>
                             <option value="saludable">Alimentación saludable</option>
                             <option value="balanceada">Alimentación balanceada</option>
                             <option value="poco-saludable">Alimentación poco saludable</option>
+                      HTML;
+                          }
+                          echo $options;
+                        ?>
                           </select>
                           </li>
 
@@ -749,11 +992,39 @@
                               <i class="fa-solid fa-shield-halved fa-lg"></i>
                             </span>
                             
-                            <select class="estres" name="estres" required>
+                            <select class="estres" name="estres">
+                            <?php
+                          if ($nivel_estres == "bajo") {
+                            $options = <<<HTML
+                              <option value="" disabled>Selecciona tu nivel de estrés</option>
+                              <option value="bajo" selected>Nivel de estrés bajo</option>
+                              <option value="moderado">Nivel de estrés moderado</option>
+                              <option value="alto">Nivel de estrés alto</option>
+                      HTML;
+                          } else if ($nivel_estres == "moderado") {
+                            $options = <<<HTML
+                              <option value="" disabled>Selecciona tu nivel de estrés</option>
+                              <option value="bajo">Nivel de estrés bajo</option>
+                              <option value="moderado" selected>Nivel de estrés moderado</option>
+                              <option value="alto">Nivel de estrés alto</option>
+                      HTML;
+                          } else if ($nivel_estres == "alto") {
+                            $options = <<<HTML
+                              <option value="" disabled >Selecciona tu nivel de estrés</option>
+                              <option value="bajo">Nivel de estrés bajo</option>
+                              <option value="moderado">Nivel de estrés moderado</option>
+                              <option value="alto" selected>Nivel de estrés alto</option>
+                      HTML;
+                          } else if (empty($nivel_estres)){
+                            $options = <<<HTML
                               <option value="" disabled selected>Selecciona tu nivel de estrés</option>
                               <option value="bajo">Nivel de estrés bajo</option>
                               <option value="moderado">Nivel de estrés moderado</option>
                               <option value="alto">Nivel de estrés alto</option>
+                      HTML;
+                          }
+                          echo $options;
+                        ?>
                             </select>
                             
                             </li>
@@ -771,14 +1042,31 @@
                         <i class="fa-solid fa-shield-halved fa-lg"></i>
                       </span>
                     
-                      <textarea id="notas-personales" name="notas-personales" rows="4" cols="50" placeholder="Información adicional: "></textarea>
+                      <textarea id="notas-personales" name="notas-personales" rows="4" cols="50" placeholder="Información adicional: " style="color:black;">
+                      <?php
+                          if(!empty($info_extra)){
+                            echo $info_extra;
+                          }else{
+                            echo "";
+                          }
+                        ?>
+                      </textarea>
                       
                     </li>
 
                   </ul>
                 </div>
 
-              </div>
+                <div class="Almacenar medicineActuality">
+                  <ul class="listConfig">
+                    <li class="itemConfig">
+                      <input type="submit" name="buttonSendInfoMedica" class="buttonSendInfoMedica">
+                    </li>
+                  </ul>
+                </div>
+
+              </form>
+
             </div>
 
             <!--Spawn almacenar info medica-->
@@ -841,7 +1129,7 @@
                         </h4>
 
                         <h3 class="nameProfile">
-                            Sebastian Garces
+                            <?php echo $username ?>
                         </h3>
                     </div>
                 </div>
