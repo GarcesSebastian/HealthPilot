@@ -774,17 +774,6 @@ if(isset($_SESSION['id'])){
                   </ul>
                 </div>
 
-                <div class="Almacenar medicineActuality">
-                  <h5 class="nameList">Medicamentos Actuales</h5>
-                  <ul class="listConfig">
-
-                    <li class="itemConfig">
-                      <input type="number" name="listMedicine" class="listMedicine" placeholder="Numero de medicamentos recetados">
-                    </li>
-
-                  </ul>
-                </div>
-
                 <div class="Almacenar">
                   <h5 class="nameList">Habitos de estilo de vida</h5>
                   <ul class="listConfig">
@@ -1106,7 +1095,7 @@ if(isset($_SESSION['id'])){
                     </li>
 
                     <li class="itemConfig" style="padding: 0;">
-                      <form action="../../../database/generarJPG.php" method="post" class="formSubmit">
+                      <form action="../../../database/generarDocx.php" method="post" class="formSubmit">
                         <input type="submit" value="Generar por JPG" name="btnGenerarJPG" class="btnSubmit">
                       </form>
                     </li>

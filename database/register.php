@@ -22,7 +22,15 @@ if (isset($_POST['buttonSingUp'])) {
                 if(mysqli_num_rows($resultConfirmEmail)>0){
                     echo "Este correo electrónico ya se encuentra registrado. Inicia sesión o utiliza uno diferente.";
                 }else{
-                    $id = rand(0,9999);
+                    
+                    $id;
+
+                    do{
+                        $id = rand(0,999999);
+                        $verifyID = "SELECT id FROM registros WHERE id = '$id'";
+                        $resultVerifyID = mysqli_query($conex, $verifyID);
+                    }while(mysqli_num_rows($resultVerifyID) > 0);
+
                     $state = false;
     
                     $sendData = "INSERT INTO registros ( id , usuario , contraseña , email ) VALUES ('$id','$username','$password','$email')";
