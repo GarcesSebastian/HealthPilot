@@ -1613,3 +1613,11 @@ document.querySelector(".backContentConsultar").addEventListener("click", ()=>{
 
 
 //Spawn almacenar info medica
+
+//Spawn password and security
+
+document.querySelector(".backPasswordAndSecurity").addEventListener("click", ()=>{
+  document.querySelector(".spawnPasswordAndSecurity").style.left = "-100%";
+});
+
+//Spawn password and security

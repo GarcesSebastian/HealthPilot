@@ -86,6 +86,94 @@ if(isset($_SESSION['id'])){
     <script src="../../../node_modules/push.js/bin/push.js"></script>
     <title>Inicio-Menu</title>
 </head>
+<style>
+  /*Spawn password and security*/
+
+.spawnPasswordAndSecurity{
+  position: absolute;
+  top:0;
+  left:-100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background_1);
+  z-index: 5;
+  border-radius: 10px;
+  transition: .3s ease-in-out;
+}
+
+.contentNavPasswordAndSecurity{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 15px;
+  padding: 6% 5%;
+  color: white;
+}
+
+.contentPasswordAndSecurity{
+  width: 100%;
+  height: 90%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 5;
+  overflow-y: auto;
+  padding: 0% 0 4% 0;
+}
+
+.PasswordAndSecurity{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(108, 122, 227, 0.3);
+  border-bottom: .5px solid rgb(255, 255, 255, .5);
+  gap: 10px;
+  padding: 4% 4% 3% 4%;
+}
+
+.contentPasswordAndSecurity div .nameList{
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+}
+
+.contentPasswordAndSecurity div ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 5px;
+}
+
+.contentPasswordAndSecurity div ul li{
+  width: 100%;
+  height: fit-content;
+  padding: 2.5%;
+  cursor: pointer;
+  transition: .1s ease-in-out;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
+}
+
+.contentPasswordAndSecurity div ul li:hover{
+  background-color: rgb(255, 255, 255, .2);
+}
+
+.contentPasswordAndSecurity div ul li:active{
+  background-color: rgb(255, 255, 255, .17);
+}
+
+/*Spawn password and security*/
+</style>
 <body>
 
     <div class="containerAll">
@@ -528,6 +616,7 @@ if(isset($_SESSION['id'])){
 
               <div class="contentPetBlock">
                 <div class="spawnPopupMessageMotivational">
+
                   <div class="popup-content">
                     <div class="contentClosePopupPet">
                       <span class="closePopupPet">
@@ -535,7 +624,15 @@ if(isset($_SESSION['id'])){
                       </span>
                     </div>
                     <p id="motivationalMessage" class="motivationalMessage"></p>
+                    <span class="triangleIcon">
+                      <i class="fa-solid fa-play fa-lg"></i>
+                    </span>
                   </div>
+
+                  <div class="contentPet">
+                      <img src="../../../img/pet.png" class="imagePet">
+                    </div>
+
                 </div>
 
                 <div class="spawnPopupQuest">
@@ -656,6 +753,51 @@ if(isset($_SESSION['id'])){
             </div>
 
             <!--Spawn config cuenta-->
+
+            <!--Spawn password and security-->
+
+            <div class="spawnPasswordAndSecurity">
+              <div class="contentNavPasswordAndSecurity">
+                <span class="backContent backPasswordAndSecurity">
+                  <i class="fa-solid fa-arrow-left fa-lg"></i>
+                </span>
+                <h4 class="textBackContent textBackPasswordAndSecurity">Cuenta</h4>
+              </div>
+
+              <div class="contentPasswordAndSecurity">
+
+                <div class="PasswordAndSecurity">
+                  <h5 class="nameList">Configuracion de cuenta</h5>
+                  <ul class="listConfig">
+
+                    <li class="itemConfig">
+                      <span class="iconPasswordAndSecurity">
+                        <i class="fa-solid fa-shield-halved fa-lg"></i>
+                      </span>
+                      <h5 class="textPasswordAndSecurity">Contraseña y Seguridad</h5>
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconPasswordAndSecurity">
+                        <i class="fa-regular fa-address-book fa-lg"></i>
+                      </span>
+                      <h5 class="textPasswordAndSecurity">Datos personales</h5>
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconPasswordAndSecurity">
+                        <i class="fa-solid fa-stethoscope fa-lg"></i>
+                      </span>
+                      <h5 class="textPasswordAndSecurity">Datos medicos</h5>
+                    </li>
+
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+            <!--Spawn password and security-->
 
             <!--Spawn almacenar info medica-->
 
@@ -1093,13 +1235,6 @@ if(isset($_SESSION['id'])){
                         <input type="submit" value="Generar por pdf" name="btnGenerarPDF" class="btnSubmit">
                       </form>
                     </li>
-
-                    <li class="itemConfig" style="padding: 0;">
-                      <form action="../../../database/generarDocx.php" method="post" class="formSubmit">
-                        <input type="submit" value="Generar por JPG" name="btnGenerarJPG" class="btnSubmit">
-                      </form>
-                    </li>
-
 
                   </ul>
                 </div>
