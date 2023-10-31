@@ -1121,9 +1121,6 @@ if(isset($_SESSION['id'])){
             <i class="fa-solid fa-plus fa-lg"></i>
           </span>
 
-          <span class="calendary buttonFooter" data-id="3">
-            <i class="fa-solid fa-calendar-days fa-lg"></i>
-          </span>
         </div>
 
 

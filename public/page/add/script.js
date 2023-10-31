@@ -542,8 +542,6 @@ buttonsFooter.forEach((element) => {
       window.location.href = "../home/index.php";
     } else if (element.getAttribute("data-id") == "2") {
       window.location.href = "../add/index.php";
-    } else if (element.getAttribute("data-id") == "3") {
-      window.location.href = "../calendary/index.html";
     }
   });
 });

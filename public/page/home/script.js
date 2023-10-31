@@ -637,8 +637,6 @@ buttonsFooter.forEach((element) => {
       window.location.href = "../home/index.php";
     } else if (element.getAttribute("data-id") == "2") {
       window.location.href = "../add/index.php";
-    } else if (element.getAttribute("data-id") == "3") {
-      window.location.href = "../calendary/index.html";
     }
   });
 });
@@ -1616,8 +1614,53 @@ document.querySelector(".backContentConsultar").addEventListener("click", ()=>{
 
 //Spawn password and security
 
+let itemCuenta2 = document.querySelectorAll(".itemCuentaConfig");
+
+itemCuenta2.forEach(element =>{
+  element.addEventListener("click", () =>{
+    if(element.getAttribute("data-cuenta") == "1"){
+      document.querySelector(".spawnPasswordAndSecurity").style.left = "0%";
+    }else if(element.getAttribute("data-cuenta") == "2"){
+      document.querySelector(".spawnPasswordAndSecurity").style.left = "0%";
+    }else if(element.getAttribute("data-cuenta") == "3"){
+      document.querySelector(".spawnPasswordAndSecurity").style.left = "0%";
+    }
+  });
+});
+
 document.querySelector(".backPasswordAndSecurity").addEventListener("click", ()=>{
   document.querySelector(".spawnPasswordAndSecurity").style.left = "-100%";
 });
+
+let closeSpawnResetPassword = document.querySelector(".closePopupPassword");
+
+closeSpawnResetPassword.addEventListener("click", () =>{
+  document.querySelector(".spawnPopupPassword").style.display = "none";
+  document.querySelector(".contentPasswordBlock").style.display = "none";
+});
+
+let btnResetPassword = document.querySelectorAll(".itemPasswordReset");
+
+btnResetPassword.forEach(element =>{
+
+  element.addEventListener("click", () =>{
+    if(element.getAttribute("data-resetpassword") === "1"){
+      document.querySelector(".spawnPopupPassword").style.display = "flex";
+      document.querySelector(".contentPasswordBlock").style.display = "flex";
+    }
+  });
+
+});
+
+let codeResetPassword = document.querySelector(".codeResetPassword");
+
+codeResetPassword.addEventListener("input", () => {
+  let valueCode = codeResetPassword.value;
+  let lenCode = valueCode.length;
+  if (lenCode > 6) {
+    codeResetPassword.value = valueCode.slice(0, 6);
+  }
+});
+
 
 //Spawn password and security
