@@ -23,6 +23,11 @@ $flagCode = false;
 $flagResetPassword = false;
 $code;
 
+//Data User
+$username;
+$mail;
+
+
 if(isset($_SESSION['id'])){
   $id = $_SESSION['id'];
   
@@ -824,6 +829,137 @@ if(isset($_SESSION['flagResetPassword'])){
 
             <!--Spawn content block passwowrd-->
 
+            <!--Spawn datos personales-->
+
+            <div class="spawnDataPersonal">
+              <div class="contentNavDataPersonal">
+                <span class="backContent backDataPersonal">
+                  <i class="fa-solid fa-arrow-left fa-lg"></i>
+                </span>
+                <h4 class="textBackContent textBackDataPersonal">Informacion Personal</h4>
+              </div>
+
+              <form action="#" method="post" class="contentDataPersonal">
+
+              <div class="DataPersonal">
+                  <h5 class="nameList">Informacion de Cuenta</h5>
+                  <ul class="listConfig">
+
+                  <li class="itemConfig itemDataPersonal">
+                      <span class="iconDataPersonal">
+                      <i class="fa-solid fa-key fa-lg"></i>
+                      </span>
+                      <input type="text" name="username" class="username" placeholder="Usuario" value="<?php if(!empty($username)){echo $username;}else{echo "";} ?>">
+                    </li>
+
+                    <li class="itemConfig itemDataPersonal">
+                      <span class="iconDataPersonal">
+                      <i class="fa-solid fa-key fa-lg"></i>
+                      </span>
+                      <input type="email" name="email" class="email" placeholder="Correo Electronico" value="<?php if(!empty($mail)){echo $mail;}else{echo "";} ?>">
+                    </li>
+
+
+                  </ul>
+                </div>
+
+                <div class="DataPersonal">
+                  <h5 class="nameList">Informacion Medica</h5>
+                  <ul class="listConfig">
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                      <i class="fa-regular fa-address-book fa-lg"></i>
+                      </span>
+                      
+                      <input type="text" name="nameComplete" class="nameComplete" placeholder="Nombre Completo" value="<?php if(!empty($nombre_completo)){echo $nombre_completo;}else{echo "";} ?>">
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                      <i class="fa-regular fa-calendar-days fa-lg"></i>
+                      </span>
+                      <label for="fechaNacimiento">Fecha de nacimiento:</label>
+                      <input type="date" name="fechaNacimiento" class="fechaNacimiento" value="<?php if(!empty($fecha_nacimiento)){echo $fecha_nacimiento;}else{echo "";} ?>">
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                      <i class="fa-solid fa-venus-mars fa-lg"></i>
+                      </span>
+                      
+                      <select class="genero" name="genero">
+                        <?php
+                          if ($genero == "masculino") {
+                            $options = <<<HTML
+                              <option disabled>Selecciona un género</option>
+                              <option value='masculino' selected>Masculino</option>
+                              <option value='femenino'>Femenino</option>
+                              <option value='otro'>Otro</option>
+                      HTML;
+                          } else if ($genero == "femenino") {
+                            $options = <<<HTML
+                              <option disabled>Selecciona un género</option>
+                              <option value='masculino'>Masculino</option>
+                              <option value='femenino' selected>Femenino</option>
+                              <option value='otro'>Otro</option>
+                      HTML;
+                          } else if ($genero == "otro") {
+                            $options = <<<HTML
+                              <option disabled>Selecciona un género</option>
+                              <option value='masculino'>Masculino</option>
+                              <option value='femenino'>Femenino</option>
+                              <option value='otro' selected>Otro</option>
+                      HTML;
+                          } else if (empty($genero)){
+                            $options = <<<HTML
+                              <option disabled selected>Selecciona un género</option>
+                              <option value='masculino'>Masculino</option>
+                              <option value='femenino'>Femenino</option>
+                              <option value='otro'>Otro</option>
+                      HTML;
+                          }
+                          echo $options;
+                        ?>
+                      </select>
+
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                      <i class="fa-solid fa-phone fa-lg"></i>
+                      </span>
+                      
+                      <input type="number" name="telephone" class="telephone" placeholder="Numero de telefono" value="<?php if(!empty($telefono)){echo $telefono;}else{echo "";} ?>">
+                    </li>
+
+                    <li class="itemConfig">
+                      <span class="iconAlmacenar">
+                      <i class="fa-regular fa-envelope fa-lg"></i>
+                      </span>
+                      
+                      <input type="email" name="email" class="email" placeholder="Correo Electronico" value='<?php if(!empty($email)){echo $email;}else{echo "";} ?>'>
+                    </li>
+
+                  </ul>
+                </div>
+
+                <div class="DataPersonal">
+                  <ul class="listConfig">
+
+                  <li class="itemConfig" style="padding: 0;">
+                      <input type="submit" name="buttonSendInfoMedica" class="buttonSendInfoMedica btnSubmit">
+                    </li>
+
+
+                  </ul>
+                </div>
+                
+              </form>
+              
+            </div>
+
+            <!--Spawn datos personales-->
 
             <!--Spawn almacenar info medica-->
 
@@ -1200,7 +1336,6 @@ if(isset($_SESSION['flagResetPassword'])){
 
                   </ul>
                 </div>
-
                 
                 <div class="Almacenar">
                   <h5 class="nameList">Notas Personales</h5>
