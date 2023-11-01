@@ -54,4 +54,55 @@ if(isset($_POST['buttonSendInfoMedica'])){
 
 }
 
+if(isset($_POST['buttonSendInfoPersonal'])){
+
+    if(isset($_SESSION['id'])){
+        $id = $_SESSION['id'];
+
+        //Informacion Personal
+        $nameComplete = $_POST['nameComplete'] or " ";
+        $fecha_nacimiento = $_POST['fechaNacimiento'] or " ";
+        $genero = $_POST['genero'] or " ";
+        $telefono = $_POST['telephone'] or 0;
+        $email = $_POST['email'] or " ";
+
+        //Antecedentes Medicos
+        $fecha_diagnostico = $_POST['fechaDiagnostico'];
+        $alergias = $_POST['alergias'];
+
+        //Informacion Cuenta
+        $username = $_POST['username'] or " ";
+        $emailCuenta = $_POST['emailCuenta'] or " ";
+
+        $sendInfoMedica = "UPDATE informacion_medica 
+        SET nombre_completo = '$nameComplete', fecha_nacimiento = '$fecha_nacimiento', 
+        genero = '$genero', telefono = '$telefono', email = '$email',
+        fecha_diagnostico = '$fecha_diagnostico', alergias = '$alergias'
+        WHERE id = '$id'
+        ";
+
+        $resultSendInfoMedica = mysqli_query($conex, $sendInfoMedica);
+    
+        if($resultSendInfoMedica){
+            $sendInfoCuenta = "UPDATE registros SET usuario = '$username', email = '$emailCuenta' WHERE id = '$id'";
+            $resultSendInfoCuenta = mysqli_query($conex,$sendInfoCuenta);
+    
+            if($resultSendInfoCuenta){
+                echo "Cambios echos correctamente";
+                header("Location: ../public/page/home/index.php");
+            }else{
+                echo "Ocurrio un error al hacer los cambios";
+            }
+
+        }else{
+            echo "Ocurrio un error al hacer los cambios";
+        }
+
+
+    }else{
+        echo "No se encontro un id";
+    }
+
+}
+
 ?>

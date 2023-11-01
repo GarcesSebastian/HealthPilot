@@ -692,13 +692,6 @@ if(isset($_SESSION['flagResetPassword'])){
                       <h5 class="textConfigCuenta">Datos personales</h5>
                     </li>
 
-                    <li class="itemConfig itemCuentaConfig" data-cuenta="3">
-                      <span class="iconConfigCuenta">
-                        <i class="fa-solid fa-stethoscope fa-lg"></i>
-                      </span>
-                      <h5 class="textConfigCuenta">Datos medicos</h5>
-                    </li>
-
                   </ul>
                 </div>
 
@@ -832,6 +825,7 @@ if(isset($_SESSION['flagResetPassword'])){
             <!--Spawn datos personales-->
 
             <div class="spawnDataPersonal">
+
               <div class="contentNavDataPersonal">
                 <span class="backContent backDataPersonal">
                   <i class="fa-solid fa-arrow-left fa-lg"></i>
@@ -839,7 +833,7 @@ if(isset($_SESSION['flagResetPassword'])){
                 <h4 class="textBackContent textBackDataPersonal">Informacion Personal</h4>
               </div>
 
-              <form action="#" method="post" class="contentDataPersonal">
+              <form action="../../../database/sendInfoMedica.php" method="post" class="contentDataPersonal">
 
               <div class="DataPersonal">
                   <h5 class="nameList">Informacion de Cuenta</h5>
@@ -856,7 +850,7 @@ if(isset($_SESSION['flagResetPassword'])){
                       <span class="iconDataPersonal">
                       <i class="fa-solid fa-key fa-lg"></i>
                       </span>
-                      <input type="email" name="email" class="email" placeholder="Correo Electronico" value="<?php if(!empty($mail)){echo $mail;}else{echo "";} ?>">
+                      <input type="email" name="emailCuenta" class="email" placeholder="Correo Electronico" value="<?php if(!empty($mail)){echo $mail;}else{echo "";} ?>">
                     </li>
 
 
@@ -864,10 +858,10 @@ if(isset($_SESSION['flagResetPassword'])){
                 </div>
 
                 <div class="DataPersonal">
-                  <h5 class="nameList">Informacion Medica</h5>
+                  <h5 class="nameList">Informacion Personal</h5>
                   <ul class="listConfig">
 
-                    <li class="itemConfig">
+                    <li class="itemConfig itemDataPersonal">
                       <span class="iconAlmacenar">
                       <i class="fa-regular fa-address-book fa-lg"></i>
                       </span>
@@ -875,7 +869,7 @@ if(isset($_SESSION['flagResetPassword'])){
                       <input type="text" name="nameComplete" class="nameComplete" placeholder="Nombre Completo" value="<?php if(!empty($nombre_completo)){echo $nombre_completo;}else{echo "";} ?>">
                     </li>
 
-                    <li class="itemConfig">
+                    <li class="itemConfig itemDataPersonal">
                       <span class="iconAlmacenar">
                       <i class="fa-regular fa-calendar-days fa-lg"></i>
                       </span>
@@ -883,7 +877,7 @@ if(isset($_SESSION['flagResetPassword'])){
                       <input type="date" name="fechaNacimiento" class="fechaNacimiento" value="<?php if(!empty($fecha_nacimiento)){echo $fecha_nacimiento;}else{echo "";} ?>">
                     </li>
 
-                    <li class="itemConfig">
+                    <li class="itemConfig itemDataPersonal">
                       <span class="iconAlmacenar">
                       <i class="fa-solid fa-venus-mars fa-lg"></i>
                       </span>
@@ -925,7 +919,7 @@ if(isset($_SESSION['flagResetPassword'])){
 
                     </li>
 
-                    <li class="itemConfig">
+                    <li class="itemConfig itemDataPersonal">
                       <span class="iconAlmacenar">
                       <i class="fa-solid fa-phone fa-lg"></i>
                       </span>
@@ -933,7 +927,7 @@ if(isset($_SESSION['flagResetPassword'])){
                       <input type="number" name="telephone" class="telephone" placeholder="Numero de telefono" value="<?php if(!empty($telefono)){echo $telefono;}else{echo "";} ?>">
                     </li>
 
-                    <li class="itemConfig">
+                    <li class="itemConfig itemDataPersonal">
                       <span class="iconAlmacenar">
                       <i class="fa-regular fa-envelope fa-lg"></i>
                       </span>
@@ -945,10 +939,34 @@ if(isset($_SESSION['flagResetPassword'])){
                 </div>
 
                 <div class="DataPersonal">
+                  <h5 class="nameList">Informacion de Medica</h5>
+                  <ul class="listConfig">
+
+                  <li class="itemConfig itemDataPersonal">
+                      <span class="iconAlmacenar">
+                      <i class="fa-regular fa-calendar-days fa-lg"></i>
+                      </span>
+                      <label for="fechaDiagnostico">Fecha de diagnostico:</label>
+                      <input type="date" name="fechaDiagnostico" class="fechaDiagnostico" value="<?php if(!empty($fecha_diagnostico)){echo $fecha_diagnostico;}else{echo "";} ?>">
+                    </li>
+
+                    <li class="itemConfig itemDataPersonal">
+                      <span class="iconAlmacenar">
+                      <i class="fa-solid fa-circle-info fa-lg"></i>
+                      </span>
+                      
+                      <input type="text" name="alergias" class="alergias" placeholder="Alergias a medicamentos o alimentos" value="<?php if(!empty($alergias)){echo $alergias;}else{echo "";} ?>">
+                    </li>
+
+
+                  </ul>
+                </div>
+
+                <div class="DataPersonal">
                   <ul class="listConfig">
 
                   <li class="itemConfig" style="padding: 0;">
-                      <input type="submit" name="buttonSendInfoMedica" class="buttonSendInfoMedica btnSubmit">
+                      <input type="submit" name="buttonSendInfoPersonal" class="buttonSendInfoPersonal">
                     </li>
 
 

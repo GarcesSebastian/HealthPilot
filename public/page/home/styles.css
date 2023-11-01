@@ -2034,5 +2034,98 @@ input:checked + .slider:before {
   color: white;
 }
 
+.itemDataPersonal input[type="text"]::placeholder{
+  color: white;
+}
+
+.itemDataPersonal input[type="date"]{
+  outline: none;
+  text-align: left;
+  padding: 2% 0;
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.itemDataPersonal label{
+  font-size: 13px;
+  width: fit-content;
+  height: fit-content;
+  text-align: left;
+}
+
+.itemDataPersonal input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  color: red;
+}
+
+.itemDataPersonal select{
+  background-color: white;
+  outline: none;
+  width: 90%;
+  height: fit-content;
+  padding: 2%;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.itemDataPersonal input[type="email"]{
+  outline: none;
+  text-align: left;
+  padding: 2% 0;
+  width: 100%;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.itemDataPersonal input[type="email"]::placeholder{
+  color: white;
+}
+
+.itemDataPersonal input[type="number"]{
+  outline: none;
+  text-align: left;
+  padding: 2% 0;
+  width: 100%;
+  height: fit-content;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.itemDataPersonal input[type="number"]::placeholder{
+  color: white;
+}
+
+.buttonSendInfoPersonal{
+  width: 100%;
+  height: fit-content;
+  padding: 2.5%;
+  cursor: pointer;
+  transition: .1s ease-in-out;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: white;
+  border: none;
+  outline: none;
+  background-color: rgb(255, 255, 255, .2);
+  font-size: 14px;
+}
+
+.buttonSendInfoPersonal:active{
+  background-color: rgb(255, 255, 255, .1);
+}
 
 /*Spawn Informacion personal*/

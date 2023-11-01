@@ -1621,9 +1621,7 @@ itemCuenta2.forEach(element =>{
     if(element.getAttribute("data-cuenta") == "1"){
       document.querySelector(".spawnPasswordAndSecurity").style.left = "0%";
     }else if(element.getAttribute("data-cuenta") == "2"){
-      document.querySelector(".spawnPasswordAndSecurity").style.left = "0%";
-    }else if(element.getAttribute("data-cuenta") == "3"){
-      document.querySelector(".spawnPasswordAndSecurity").style.left = "0%";
+      document.querySelector(".spawnDataPersonal").style.left = "0%";
     }
   });
 });
@@ -1664,3 +1662,12 @@ codeResetPassword.addEventListener("input", () => {
 
 
 //Spawn password and security
+
+
+//Spawn informacion personal
+
+let backDataPersonal = document.querySelector(".backDataPersonal");
+
+backDataPersonal.addEventListener("click", () =>{
+  document.querySelector(".spawnDataPersonal").style.right = "-100%";
+});
