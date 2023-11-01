@@ -27,6 +27,9 @@ $code;
 $username;
 $mail;
 
+//state notifcation alert
+$flagStateNotification = false;
+$message;
 
 if(isset($_SESSION['id'])){
   $id = $_SESSION['id'];
@@ -109,6 +112,14 @@ if(isset($_SESSION['flagResetPassword'])){
   $flagResetPassword = $_SESSION['flagResetPassword'];
 }
 
+if(isset($_SESSION['flagStateNotification'])){
+  $flagStateNotification = $_SESSION['flagStateNotification'];
+}
+
+if(isset($_SESSION['message'])){
+  $message = $_SESSION['message'];
+}
+
 ?>
 
 
@@ -135,6 +146,40 @@ if(isset($_SESSION['flagResetPassword'])){
     <div class="containerAll">
 
         <div class="contentView">
+
+            <!--Spawn Notification Alert-->
+
+              <?php
+
+                if($flagStateNotification){
+
+                  $notification = <<<HTML
+                    <div class="spawnNotificationAlert">
+                      <span class="contentMessage">
+                        $message
+                      </span>
+                    </div>
+
+                    <script>
+                      function spawNotificationAlert(){
+                        document.querySelector(".spawnNotificationAlert").style.top = "0%";
+
+                        setTimeout(() => {
+                          document.querySelector(".spawnNotificationAlert").style.top = "-40%";
+                        }, 4000);
+                      }
+
+                      spawNotificationAlert();
+                    </script>
+                    HTML;
+
+                    echo $notification;
+                  }
+
+              ?>
+
+            <!--Spawn Notification Alert-->
+
 
             <!--Spawn Configuracion-->
 
@@ -824,7 +869,7 @@ if(isset($_SESSION['flagResetPassword'])){
 
             <!--Spawn datos personales-->
 
-            <div class="spawnDataPersonal">
+            <div class="spawnDataPersonal" style="display:none;">
 
               <div class="contentNavDataPersonal">
                 <span class="backContent backDataPersonal">
@@ -1549,6 +1594,5 @@ if(isset($_SESSION['flagResetPassword'])){
     </div>
     
     <script type="module" src="script.js"></script>
-
 </body>
 </html>

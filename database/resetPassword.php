@@ -10,6 +10,8 @@ if(isset($_POST['btnCodeResetPassword'])){
         $idCode = $_SESSION['id'];
 
         $flagResetPassword = false;
+        $flagStateNotification = false;
+        $message;
 
         $getCodeUser = "SELECT code FROM code WHERE id = '$idCode'";
         $resultGetCodeUser = mysqli_query($conex, $getCodeUser);
@@ -23,6 +25,10 @@ if(isset($_POST['btnCodeResetPassword'])){
             if($inputCode == $code){
                 $flagResetPassword = true;
                 $_SESSION['flagResetPassword'] = $flagResetPassword;
+                $flagStateNotification = false;
+                $message = "";
+                $_SESSION['flagStateNotification'] = $flagStateNotification;
+                $_SESSION['message'] = $message;
                 echo 
                 "
                 <script>
@@ -30,10 +36,15 @@ if(isset($_POST['btnCodeResetPassword'])){
                 </script>
                 ";
             }else{
+                $flagResetPassword = false;
+                $_SESSION['flagResetPassword'] = $flagResetPassword;
+                $flagStateNotification = true;
+                $message = "Codigo Incorrecto";
+                $_SESSION['flagStateNotification'] = $flagStateNotification;
+                $_SESSION['message'] = $message;
                 echo 
                 "
                 <script>
-                    alert('Codigo incorrecto');
                     window.location.href = '../public/page/home/index.php';
                 </script>
                 ";
@@ -73,7 +84,10 @@ if(isset($_POST['btnResetPassword'])){
                     if($resultChangePassword){
                         $flagResetPassword = false;
                         $_SESSION['flagResetPassword'] = $flagResetPassword;
-        
+                        $flagStateNotification = false;
+                        $message = "";
+                        $_SESSION['flagStateNotification'] = $flagStateNotification;
+                        $_SESSION['message'] = $message;
                         $deleteCode = "DELETE FROM code WHERE id = '$id'";
                         $resultDeleteCode = mysqli_query($conex, $deleteCode);
                         echo 
@@ -89,10 +103,13 @@ if(isset($_POST['btnResetPassword'])){
         
 
                 }else{
+                    $flagStateNotification = true;
+                    $message = "La contraseña debe ser diferente a la anterior";
+                    $_SESSION['flagStateNotification'] = $flagStateNotification;
+                    $_SESSION['message'] = $message;
                     echo 
                     "
                     <script>
-                        alert('La contraseña debe ser diferente al a anterior');
                         window.location.href = '../public/page/home/index.php';
                     </script>
                     ";

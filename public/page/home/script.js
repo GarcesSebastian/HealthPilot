@@ -767,7 +767,7 @@ let map = L.map("map", {
 }).setView([0, 0], 13);
 
 const customZoomControl = L.control.zoom({
-  position: 'bottomright', // Cambiar la posición del control de zoom (también puedes usar 'topleft', 'bottomright', 'bottomleft', etc.)
+  position: 'bottomright',
 });
 
 
@@ -803,8 +803,8 @@ var clientIcon = L.icon({
 });
 
 var transparentIcon = L.divIcon({
-  className: 'transparent-icon', // Clase CSS para el icono
-  iconSize: [0, 0], // Tamaño del icono
+  className: 'transparent-icon',
+  iconSize: [0, 0],
 });
 
 
@@ -989,17 +989,6 @@ function deleteMarkerClinic() {
     });
 }
 
-// let contClicksDeleteMarker = 0;
-// let buttonDeleteMarker = document.querySelector(".buttonDeleteMarker");
-// buttonDeleteMarker.addEventListener("click", () =>{
-//   contClicksDeleteMarker++;
-//   if(contClicksDeleteMarker % 2 != 0){
-//     deleteMarkerPharmacy();
-//   }else{
-//     createMarkerPharmacy();
-//   }
-// });
-
 var marker;
 
 function getLocation() {
@@ -1036,7 +1025,6 @@ function getLocation() {
 
       map.setView([lat, lon], 15);
 
-      // Luego de obtener la ubicación actual, si tienes una coordenada de destino (endPoint), puedes crear la ruta:
       if (endPoint) {
         createRouteToPlace(endPoint);
       }
@@ -1122,20 +1110,12 @@ btnCoords.addEventListener("click", () => {
 let inputSearchLocation = document.querySelector(".srchLocation");
 let contentSearchJSON = document.querySelector(".contentSearchJSON");
 
-// inputSearchLocation.addEventListener("mouseenter", () => {
-//   contentSearchJSON.style.display = "block";
-//   inputSearchLocation.style.borderRadius = "initial";
-//   inputSearchLocation.style.borderTopLeftRadius = "5px"
-//   inputSearchLocation.style.borderTopRightRadius = "5px"
-// });
-
 contentSearchJSON.addEventListener("mouseleave", () => {
   contentSearchJSON.style.display = "none";
   inputSearchLocation.style.borderRadius = "5px";
 });
 
 
-// Función para obtener los datos limitados a 3 elementos
 function fetchData(inputValue) {
 
   inputValue = quitarTildesYEspacios(inputValue).toLowerCase();
@@ -1148,7 +1128,7 @@ function fetchData(inputValue) {
     coordsLon: [],
     id: []
   };
-  let count = 0; // Variable de conteo
+  let count = 0;
 
   return fetch(searchGeoJSON)
     .then((response) => {
@@ -1252,9 +1232,6 @@ inputSearchLocation.addEventListener("input", (event) => {
 
   });
 });
-
-
-
 
 let checkClinic = document.querySelector(".filterClinic");
 let checkPharmacy = document.querySelector(".filterPharmacy");
@@ -1671,3 +1648,11 @@ let backDataPersonal = document.querySelector(".backDataPersonal");
 backDataPersonal.addEventListener("click", () =>{
   document.querySelector(".spawnDataPersonal").style.right = "-100%";
 });
+
+function spawNotificationAlert(){
+  document.querySelector(".spawnNotificationAlert").style.top = "0%";
+
+  setTimeout(() => {
+    document.querySelector(".spawnNotificationAlert").style.top = "-40%";
+  }, 4000);
+}
