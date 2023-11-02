@@ -93,13 +93,12 @@ if(isset($_POST['btnResetPassword'])){
                         echo 
                         "
                         <script>
-                            alert('Contraseña cambiada con exito');
                             window.location.href = '../public/page/home/index.php';
                         </script>
                         ";
                     }else{
                         echo "No se encontro el id";
-                    }
+                    }   
         
 
                 }else{
@@ -117,7 +116,16 @@ if(isset($_POST['btnResetPassword'])){
             }
 
         }else{
-            echo "Las contraseñas deben ser iguales.";
+            $flagStateNotification = true;
+            $message = "Las contraseñas deben ser iguales";
+            $_SESSION['flagStateNotification'] = $flagStateNotification;
+            $_SESSION['message'] = $message;
+            echo 
+            "
+            <script>
+                window.location.href = '../public/page/home/index.php';
+            </script>
+            ";
         }
 
     }

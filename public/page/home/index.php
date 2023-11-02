@@ -120,6 +120,16 @@ if(isset($_SESSION['message'])){
   $message = $_SESSION['message'];
 }
 
+if(isset($_POST['btnCodeResetPassword'])){
+  echo 
+  "
+  <script>
+      alert('Contraseña cambiada con exito');
+      window.location.href = '../public/page/home/index.php';
+  </script>
+  ";
+}
+
 ?>
 
 
@@ -141,6 +151,7 @@ if(isset($_SESSION['message'])){
     <script src="../../../node_modules/push.js/bin/push.js"></script>
     <title>Inicio-Menu</title>
 </head>
+
 <body>
 
     <div class="containerAll">
@@ -869,7 +880,7 @@ if(isset($_SESSION['message'])){
 
             <!--Spawn datos personales-->
 
-            <div class="spawnDataPersonal" style="display:none;">
+            <div class="spawnDataPersonal">
 
               <div class="contentNavDataPersonal">
                 <span class="backContent backDataPersonal">
@@ -1594,5 +1605,13 @@ if(isset($_SESSION['message'])){
     </div>
     
     <script type="module" src="script.js"></script>
-</body>
+    <script>
+      let backDataPersonal = document.querySelector(".backDataPersonal");
+
+backDataPersonal.addEventListener("click", () =>{
+  document.querySelector(".spawnDataPersonal").style.left = "-100%";
+});
+    </script>
+    
+  </body>
 </html>

@@ -1646,7 +1646,7 @@ codeResetPassword.addEventListener("input", () => {
 let backDataPersonal = document.querySelector(".backDataPersonal");
 
 backDataPersonal.addEventListener("click", () =>{
-  document.querySelector(".spawnDataPersonal").style.right = "-100%";
+  document.querySelector(".spawnDataPersonal").style.left = "-100%";
 });
 
 function spawNotificationAlert(){

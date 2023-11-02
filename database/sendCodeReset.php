@@ -41,9 +41,9 @@ if(isset($_POST['btnConfirmResetCode'])){
             $email->Host = 'smtp.gmail.com';
             $email->SMTPAuth = true;
             $email->Username = 'sebastiangarces152@gmail.com';
-            $email->Password = 'uoremustxitqtwsv';
-            $email->SMTPSecure = 'ssl';
-            $email->Port = 465;
+            $email->Password = 'ocxogzwntaaacecg';
+            $email->SMTPSecure = 'tls';
+            $email->Port = 587;
             $email->setFrom('sebastiangarces152@gmail.com');
             $email->addAddress($emailAdd);
             $email->isHTML(true);
