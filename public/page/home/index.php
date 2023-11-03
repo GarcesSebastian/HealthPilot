@@ -151,7 +151,13 @@ if(isset($_POST['btnCodeResetPassword'])){
     <script src="../../../node_modules/push.js/bin/push.js"></script>
     <title>Inicio-Menu</title>
 </head>
-
+<style>
+input[type="color"] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+</style>
 <body>
 
     <div class="containerAll">
@@ -196,118 +202,118 @@ if(isset($_POST['btnCodeResetPassword'])){
 
             <div class="spawnConfiguracion">
 
-                <div class="contentNavConfiguracion">
+            <div class="contentNavConfiguracion">
 
-                    <span class="backContent">
-                        <i class="fa-solid fa-arrow-left fa-lg"></i>
-                    </span>
+                <span class="backContent">
+                    <i class="fa-solid fa-arrow-left fa-lg"></i>
+                </span>
 
-                    <h4 class="textBackContent">
-                        Configuracion
-                    </h4>
+                <h4 class="textBackContent">
+                    Configuracion
+                </h4>
 
+            </div>
+
+            <div class="contentConfiguracion">
+
+                <div class="configNotificacion">
+                    <h5 class="nameList">
+                        Notificaciones
+                    </h5>
+                    <ul class="listConfig">
+                        <li class="itemConfig">
+                            <h5 class="textConfig">
+                                Configurar notificaciones Push
+                            </h5>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="contentConfiguracion">
+                <div class="configGeneral">
+                    <h5 class="nameList">
+                        General
+                    </h5>
+                    <ul class="listConfig">
+                        <li class="itemConfig" data-general="1">
+                            <h5 class="textConfig" style="display: flex; flex-direction:column; justify-content:center; gap:10px;">
+                                Tema
+                                <input type="color" id="colorPicker" class="color-input" value="#3d50e0" style="display: none;">
+                            </h5>
+                        </li>
 
-                    <div class="configNotificacion">
-                        <h5 class="nameList">
-                            Notificaciones
-                        </h5>
-                        <ul class="listConfig">
-                            <li class="itemConfig">
-                                <h5 class="textConfig">
-                                    Configurar notificaciones Push
-                                </h5>
-                            </li>
-                        </ul>
-                    </div>
+                        <li class="itemConfig" data-general="2">
+                            <h5 class="textConfig">
+                                Idioma(not working)
+                            </h5>
+                        </li>
 
-                    <div class="configGeneral">
-                        <h5 class="nameList">
-                            General
-                        </h5>
-                        <ul class="listConfig">
-                            <li class="itemConfig" data-general="1">
-                                <h5 class="textConfig" style="display: flex; flex-direction:column; justify-content:center; gap:10px;">
-                                    Tema
-                                    <input type="color" id="colorPicker" class="color-input" value="#3d50e0" style="display: none;">
-                                </h5>
-                            </li>
+                        <li class="itemConfig" data-general="3">
+                            <h5 class="textConfig">
+                                Cuenta
+                            </h5>
+                        </li>
 
-                            <li class="itemConfig" data-general="2">
-                                <h5 class="textConfig">
-                                    Idioma
-                                </h5>
-                            </li>
-
-                            <li class="itemConfig" data-general="3">
-                                <h5 class="textConfig">
-                                    Cuenta
-                                </h5>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                    <div class="configDatosMedicos">
-                        <h5 class="nameList">
-                            Datos Medicos
-                        </h5>
-                        <ul class="listConfig">
-                            <li class="itemConfig" data-dataMedical="1">
-                                <h5 class="textConfig">
-                                    Almacenar informacion medica
-                                </h5>
-                            </li>
-
-                            <li class="itemConfig" data-dataMedical="2">
-                                <h5 class="textConfig">
-                                    Consultar informacion medica
-                                </h5>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="configOthers">
-                        <h5 class="nameList">
-                            Otras Opciones
-                        </h5>
-                        <ul class="listConfig">
-                            <li class="itemConfig">
-                                <h5 class="textConfig">
-                                    Versión de la aplicación
-                                </h5>
-                            </li>
-
-                            <li class="itemConfig">
-                                <h5 class="textConfig">
-                                    Politica de Privacidad
-                                </h5>
-                            </li>
-
-                            <li class="itemConfig">
-                                <h5 class="textConfig">
-                                    Terminos y Condiciones
-                                </h5>
-                            </li>
-
-                            <li class="itemConfig">
-                                <h5 class="textConfig">
-                                    Soporte Tecnico 
-                                </h5>
-                            </li>
-
-                            <li class="itemConfig" style="padding: 0;">
-                                <form action="../../../database/logOut.php" method="post">
-                                  <input type="submit" class="textConfig btnSubmit" value="Cerrar sesion" name="buttonLogOut">
-                                    
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-
+                    </ul>
                 </div>
+
+                <div class="configDatosMedicos">
+                    <h5 class="nameList">
+                        Datos Medicos
+                    </h5>
+                    <ul class="listConfig">
+                        <li class="itemConfig" data-dataMedical="1">
+                            <h5 class="textConfig">
+                                Almacenar informacion medica
+                            </h5>
+                        </li>
+
+                        <li class="itemConfig" data-dataMedical="2">
+                            <h5 class="textConfig">
+                                Consultar informacion medica
+                            </h5>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="configOthers">
+                    <h5 class="nameList">
+                        Otras Opciones
+                    </h5>
+                    <ul class="listConfig">
+                        <li class="itemConfig">
+                            <h5 class="textConfig">
+                                Versión de la aplicación(not working)
+                            </h5>
+                        </li>
+
+                        <li class="itemConfig">
+                            <h5 class="textConfig">
+                                Politica de Privacidad(not working)
+                            </h5>
+                        </li>
+
+                        <li class="itemConfig">
+                            <h5 class="textConfig">
+                                Terminos y Condiciones(not working)
+                            </h5>
+                        </li>
+
+                        <li class="itemConfig">
+                            <h5 class="textConfig">
+                                Soporte Tecnico(not working)
+                            </h5>
+                        </li>
+
+                        <li class="itemConfig" style="padding: 0;">
+                            <form action="../../../database/logOut.php" method="post">
+                              <input type="submit" class="textConfig btnSubmit" value="Cerrar sesion" name="buttonLogOut">
+                                
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
 
             </div>
 
@@ -358,7 +364,7 @@ if(isset($_POST['btnCodeResetPassword'])){
                       </li>
       
                       <li class="itemNotif" data-notification="3">
-                        <h5 class="textNotif">Spam (Opcional)</h5>
+                        <h5 class="textNotif">Spam</h5>
                         <label class="switch">
                           <input type="checkbox" class="checkNotification spamNotification" checked>
                           <span class="slider round"></span>
@@ -570,7 +576,7 @@ if(isset($_POST['btnCodeResetPassword'])){
                   <i class="fa-solid fa-arrow-left fa-lg"></i>
                 </span>
                 <h5 class="textBackContentPet">
-                  Mascota
+                  Ñihub
                 </h5>
               </div>
 
@@ -1523,7 +1529,7 @@ if(isset($_POST['btnCodeResetPassword'])){
                         </span>
 
                         <h5 class="textItem">
-                            Mascota
+                            Ñihub
                         </h5>
 
                         <span class="itemCircle">

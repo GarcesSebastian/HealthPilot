@@ -134,7 +134,7 @@ if(isset($_SESSION['id'])){
 
                         <li class="itemConfig" data-general="2">
                             <h5 class="textConfig">
-                                Idioma
+                                Idioma(not working)
                             </h5>
                         </li>
 
@@ -173,25 +173,25 @@ if(isset($_SESSION['id'])){
                     <ul class="listConfig">
                         <li class="itemConfig">
                             <h5 class="textConfig">
-                                Versión de la aplicación
+                                Versión de la aplicación(not working)
                             </h5>
                         </li>
 
                         <li class="itemConfig">
                             <h5 class="textConfig">
-                                Politica de Privacidad
+                                Politica de Privacidad(not working)
                             </h5>
                         </li>
 
                         <li class="itemConfig">
                             <h5 class="textConfig">
-                                Terminos y Condiciones
+                                Terminos y Condiciones(not working)
                             </h5>
                         </li>
 
                         <li class="itemConfig">
                             <h5 class="textConfig">
-                                Soporte Tecnico 
+                                Soporte Tecnico(not working)
                             </h5>
                         </li>
 
@@ -254,7 +254,7 @@ if(isset($_SESSION['id'])){
                 </li>
 
                 <li class="itemNotif" data-notification="3">
-                  <h5 class="textNotif">Spam (Opcional)</h5>
+                  <h5 class="textNotif">Spam</h5>
                   <label class="switch">
                     <input type="checkbox" class="checkNotification spamNotification" checked>
                     <span class="slider round"></span>

@@ -1665,3 +1665,15 @@ numbersMedicine.addEventListener("input", (event) =>{
 });
 
 //Spawn almacenar info medica
+
+
+setInterval(()=>{
+  if(document.querySelector(".reminderNotification").checked == false && document.querySelector(".soundNotification").checked == false && document.querySelector(".spamNotification").checked == false){
+    flagGetNotification = false;
+    flagGetNotificationReminder = false;
+    flagGetNotificationSound = false;
+    flagGetNotificationSpam = false;
+    document.querySelector(".stateToggleNotificaciones").textContent =
+      "Desactivado";
+  }
+},100)
