@@ -1,6 +1,6 @@
 # HealthPilot
 
-Aplicación de Recordatorios para Pacientes Crónicos con Hipertensión Arterial (Versión Beta)
+![Logo de la aplicación]()
 
 ## Descripción
 
@@ -15,6 +15,14 @@ Nuestro objetivo es llevar esta versión beta a un nivel superior al convertirla
 
 Mantente atento a futuras actualizaciones y anuncios a medida que avanzamos en esta emocionante transición de prototipo web a aplicación móvil de pleno derecho.
 
+## Tecnologías Utilizadas
+
+- ![PHP](https://img.shields.io/badge/PHP-7.4.3-blue?style=for-the-badge)
+- ![MySQL](https://img.shields.io/badge/MySQL-15.1-blue?style=for-the-badge)
+- ![Apache](https://img.shields.io/badge/Apache-2.4.56-blue?style=for-the-badge)
+- ![CSS](https://img.shields.io/badge/CSS-Styles-blue?style=for-the-badge)
+- ![JavaScript](https://img.shields.io/badge/JavaScript-Frontend-blue?style=for-the-badge)
+
 ## Tabla de Contenidos
 1. [Uso](#uso)
 2. [Configuración](#configuración)
@@ -25,9 +33,9 @@ Mantente atento a futuras actualizaciones y anuncios a medida que avanzamos en e
 ## Uso
 Para utilizar HealthPilot, asegúrate de cumplir con los siguientes requisitos:
 
-- PHP 7.4.3: Puedes descargar PHP desde [el sitio web oficial](https://www.php.net/).
-- MySQL 15.1: Asegúrate de tener MySQL instalado y configurado correctamente en tu servidor.
-- Apache 2.4.56: Asegúrate de tener Apache instalado y configurado correctamente en tu servidor.
+- PHP 7.4.3
+- MySQL 15.1
+- Apache 2.4.56
 - Bibliotecas:
   - Leaflet Routing Machine (v3.2.12)
   - Push.js (v1.0.12)
@@ -75,7 +83,7 @@ La versión beta de HealthPilot ofrece una variedad de características diseñad
 Estas características se combinan para brindar a los pacientes una herramienta integral para el control y manejo de la hipertensión arterial. La aplicación se encuentra en una fase beta, y estamos comprometidos a expandir y mejorar sus características en futuras actualizaciones.
 
 ## Licencia
-Este software se distribuye bajo la Licencia MIT. Consulta el archivo [LICENSE]([LICENSE](https://github.com/GarcesSebastian/DSI.github.io/blob/main/LICENSE.txt)) para obtener más detalles.
+Este software se distribuye bajo la Licencia MIT. Consulta el archivo [LICENSE](https://github.com/GarcesSebastian/DSI.github.io/blob/main/LICENSE.txt) para obtener más detalles.
 
 ## Estado del Proyecto
 Este proyecto se encuentra en una fase beta, lo que significa que todavía está en desarrollo activo y puede contener errores o inestabilidades. Agradecemos cualquier retroalimentación y contribuciones de la comunidad de usuarios.
