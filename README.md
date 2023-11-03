@@ -16,25 +16,11 @@ Nuestro objetivo es llevar esta versión beta a un nivel superior al convertirla
 Mantente atento a futuras actualizaciones y anuncios a medida que avanzamos en esta emocionante transición de prototipo web a aplicación móvil de pleno derecho.
 
 ## Tabla de Contenidos
-1. [Demo/Imágenes](#demoimágenes-si-aplicable)
-2. [Instalación](#instalación)
-3. [Uso](#uso)
-4. [Configuración](#configuración)
-5. [Características](#características)
-6. [Contribución](#contribución)
-7. [Licencia](#licencia)
-8. [Contacto](#contacto)
-9. [Estado del Proyecto](#estado-del-proyecto)
-10. [FAQ (Preguntas Frecuentes)](#faq-preguntas-frecuentes)
-11. [Notas de la Versión](#notas-de-la-versión)
-12. [Planes Futuros](#planes-futuros)
-13. [Agradecimientos](#agradecimientos)
-
-## Demo/Imágenes (si aplicable)
-![Logo de la aplicación]()
-
-## Instalación
-Proporciona instrucciones detalladas sobre cómo instalar la versión beta del software, incluyendo requisitos previos, dependencias y comandos específicos si es necesario.
+1. [Uso](#uso)
+2. [Configuración](#configuración)
+3. [Características](#características)
+4. [Licencia](#licencia)
+5. [Estado del Proyecto](#estado-del-proyecto)
 
 ## Uso
 Para utilizar HealthPilot, asegúrate de cumplir con los siguientes requisitos:
@@ -47,8 +33,6 @@ Para utilizar HealthPilot, asegúrate de cumplir con los siguientes requisitos:
   - Push.js (v1.0.12)
 
 Asegúrate de que estas bibliotecas estén instaladas antes de utilizar la aplicación.
-
-Explica cómo los pacientes pueden utilizar la aplicación para programar recordatorios, realizar seguimiento de su presión arterial y aprovechar las funciones de geolocalización. Puedes incluir ejemplos de uso y capturas de pantalla.
 
 ## Configuración
 En la aplicación HealthPilot, los usuarios pueden personalizar varias configuraciones para adaptar la aplicación a sus necesidades. A continuación, se describen las opciones de configuración disponibles:
@@ -91,7 +75,7 @@ La versión beta de HealthPilot ofrece una variedad de características diseñad
 Estas características se combinan para brindar a los pacientes una herramienta integral para el control y manejo de la hipertensión arterial. La aplicación se encuentra en una fase beta, y estamos comprometidos a expandir y mejorar sus características en futuras actualizaciones.
 
 ## Licencia
-Este software se distribuye bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
+Este software se distribuye bajo la Licencia MIT. Consulta el archivo [LICENSE]([LICENSE](https://github.com/GarcesSebastian/DSI.github.io/blob/main/LICENSE.txt)) para obtener más detalles.
 
 ## Estado del Proyecto
 Este proyecto se encuentra en una fase beta, lo que significa que todavía está en desarrollo activo y puede contener errores o inestabilidades. Agradecemos cualquier retroalimentación y contribuciones de la comunidad de usuarios.
