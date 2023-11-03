@@ -41,7 +41,7 @@ body {
   background: linear-gradient(90deg, var(--background_1), var(--background_2));
 }
 
-.contentView, form {
+.contentView, .form {
   position: absolute;
   top: 10%;
   width: 100%;
@@ -163,16 +163,135 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 5px;
+  gap: 10px;
 }
 
 .contentSendForm h4{
   font-size: var(--font_13px);
   color: rgb(160, 160, 160);
+  cursor: pointer;
 }
 
 .contentSendForm h3{
   font-size: var(--font_13px);
   color: var(--background_1);
   cursor: pointer;
+}
+
+.spawnAlert{
+  position: absolute;
+  bottom:15%;
+  width: fit-content;
+  height: fit-content;
+  z-index: 10;
+  color: tomato;
+  transition: .3s ease-in-out;
+  display: flex;
+  padding:0 5%;
+  font-weight:bolder;
+  font-size:14px;
+}
+
+.contentBlockForgotPassword{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.contentSendForm h4{
+  font-size: var(--font_13px);
+  color: rgb(160, 160, 160);
+  cursor: pointer;
+}
+
+.spawnForgotPassword{
+    position: absolute;
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    background-color: white;
+    border-radius: 3px;
+    padding: 4%;
+    display: none;
+}
+
+.contentNavForgotPassword{
+    position: absolute;
+    top:3%;
+    right: 3%;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.contentNavForgotPassword span{
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+
+.contentNavForgotPassword span:hover{
+    color: tomato;
+}
+
+.contentInput{
+    margin-top: 5%;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contentInput h4{
+    font-weight: lighter;
+    width: 100%;
+}
+
+.contentInput input{
+    width: 100%;
+    height: fit-content;
+    padding: 2% 0;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    color: black;
+    font-size: 15px;
+}
+
+.confirmEmail{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirmEmail input[type="submit"] {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.confirmEmail input[type="submit"]:hover {
+  background-color: #0056b3;
 }

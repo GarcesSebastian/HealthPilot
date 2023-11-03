@@ -660,6 +660,10 @@ buttonsContentPage.forEach((element) => {
       let circle = element.querySelector(".itemCircle");
       circle.querySelector(".fa-circle").classList.remove("fa-regular");
       circle.querySelector(".fa-circle").classList.add("fa-solid");
+
+      document.querySelector(".contentBlockEncuestas").style.display = "flex";
+      document.querySelector(".spawnEncuestas").style.display = "flex";
+
       setTimeout(() => {
         circle.querySelector(".fa-circle").classList.add("fa-regular");
         circle.querySelector(".fa-circle").classList.remove("fa-solid");
@@ -1666,4 +1670,38 @@ setInterval(()=>{
     document.querySelector(".stateToggleNotificaciones").textContent =
       "Desactivado";
   }
-},100)
+},100);
+
+
+//Spawn Encuestas
+
+let itemEncuestas = document.querySelectorAll(".itemEncuestas");
+
+itemEncuestas.forEach(element =>{
+
+  element.addEventListener("click", () =>{
+    if(element.getAttribute("data-encuesta") === "1"){
+      document.querySelector(".contentBlockEncuestas").style.display = "none";
+      document.querySelector(".spawnEncuestas").style.display = "none";    
+      window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScng2HcNn_d0fkuEfVTDQk6KRr3Qd9o_7F-1pD9Kf5sHgwXOQ/viewform?pli=1";
+    }else if(element.getAttribute("data-encuesta") === "2"){
+      document.querySelector(".contentBlockEncuestas").style.display = "none";
+      document.querySelector(".spawnEncuestas").style.display = "none";    
+      window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScyHI0tJTdP9h9E8C6dIspdrI3OpLUHrhK23b-oFHRjZrxNoA/viewform";
+    }else if(element.getAttribute("data-encuesta") === "3"){
+      document.querySelector(".contentBlockEncuestas").style.display = "none";
+      document.querySelector(".spawnEncuestas").style.display = "none";    
+      window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScng2HcNn_d0fkuEfVTDQk6KRr3Qd9o_7F-1pD9Kf5sHgwXOQ/viewform";
+    }
+  });
+
+});
+
+let closeEncuestas = document.querySelector(".closeContentEncuestas");
+
+closeEncuestas.addEventListener("click", ()=>{
+  document.querySelector(".contentBlockEncuestas").style.display = "none";
+  document.querySelector(".spawnEncuestas").style.display = "none";
+});
+
+//Spawn Encuestas

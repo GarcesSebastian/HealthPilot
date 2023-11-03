@@ -129,7 +129,7 @@ if (isset($_POST['buttonSingUp'])) {
             <form action="./index.php" method="post">
             <div class="contentLogin">
                 <span class="logoPage">
-                    <img src="../img/logo2.png" class="imageLogo">
+                    <img src="../img/logo.png" class="imageLogo">
                 </span>
 
                 <div class="contentForm">
@@ -137,35 +137,35 @@ if (isset($_POST['buttonSingUp'])) {
                         <span class="userLogo">
                             <i class="fa-regular fa-user fa-lg"></i>
                         </span>
-                        <input type="text" name="username" id="username" placeholder="Username" required>
+                        <input type="text" name="username" id="username" placeholder="Usuario" required>
                     </div>
 
                     <div class="password">
                         <span class="keyLogo">
                             <i class="fa-solid fa-key fa-lg"></i>
                         </span>
-                        <input type="password" name="password" id="password" placeholder="Password" required>
+                        <input type="password" name="password" id="password" placeholder="Contraseña" required>
                     </div>
 
                     <div class="email">
                         <span class="emailLogo">
                             <i class="fa-regular fa-envelope fa-lg"></i>
                         </span>
-                        <input type="email" name="email" id="email" placeholder="Email" required>
+                        <input type="email" name="email" id="email" placeholder="Correo Electronico" required>
                     </div>
                 </div>
             </div>
 
             <div class="contentSendForm">
-                <input type="submit" value="SING UP" class="buttonSingUp" name="buttonSingUp">
+                <input type="submit" value="UNIRSE" class="buttonSingUp" name="buttonSingUp">
 
                 <div class="contentSingUp">
                     <h4>
-                        If you already have an account
+                        Si ya tienes una cuenta
                     </h4>
     
                     <h3 class="singIn">
-                        Sing In
+                        Iniciar Sesion
                     </h3>
                 </div>
             </div>

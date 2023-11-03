@@ -37,7 +37,7 @@ if(isset($_SESSION['id'])){
 
         <div class="contentView">
             <span class="logoPage">
-                <img src="./img/logo2.png" class="imageLogo">
+                <img src="./img/logo.png" class="imageLogo">
             </span>
 
             <h1 class="namePage">

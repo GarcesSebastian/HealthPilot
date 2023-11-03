@@ -152,11 +152,95 @@ if(isset($_POST['btnCodeResetPassword'])){
     <title>Inicio-Menu</title>
 </head>
 <style>
-input[type="color"] {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+
+.contentBlockEncuestas{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
 }
+
+  .spawnEncuestas{
+  position: absolute;
+  width:94%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  background-color: white;
+  padding: 3%;
+  border-radius: 5px;
+  display: none;
+}
+
+.contentNavEncuestas{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-bottom:3%;
+}
+
+.contentNavEncuestas span{
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.contentNavEncuestas span:hover{
+  color: tomato;
+}
+
+.listEncuestas{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  gap:15px;
+}
+
+.listEncuestas li{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: .0002s ease-in-out;
+  z-index: 5;
+}
+
+.listEncuestas li:hover{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.listEncuestas li:active{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.listEncuestas li h4{
+  font-weight: lighter;
+  color: black;
+}
+
+
 </style>
 <body>
 
@@ -520,7 +604,7 @@ input[type="color"] {
 
                 <div class="search">
                     <div class="contentSearch">
-                        <input type="text" name="srchLocation" class="srchLocation" autocomplete="off">
+                        <input type="text" name="srchLocation" class="srchLocation" autocomplete="off" placeholder="Buscar..">
                         <span class="searchButtonLocation" id="search-button">
                             <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                         </span>
@@ -1485,6 +1569,33 @@ input[type="color"] {
 
             <!--Spawn consultar info medica-->
 
+            <!--Spawn encuestas-->
+
+            <div class="contentBlockEncuestas">
+              <div class="spawnEncuestas">
+                <div class="contentNavEncuestas">
+                 <span class="closeContentEncuestas">
+                 <i class="fa-solid fa-xmark fa-lg"></i>
+                 </span>
+                </div>
+                <ul class="listEncuestas">
+                  <li class="itemEncuestas" data-encuesta="1">
+                    <h4>1# Cuestionario sobre hipertensión arterial</h4>
+                  </li>
+
+                  <li class="itemEncuestas" data-encuesta="2">
+                    <h4>2# Cuestionario sobre hipertensión arterial</h4>
+                  </li>
+
+                  <li class="itemEncuestas" data-encuesta="3">
+                    <h4>3# Cuestionario sobre hipertensión arterial</h4>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!--Spawn encuestas-->
+
             <div class="contentNav">
 
                 <div class="navTop">
@@ -1610,14 +1721,6 @@ input[type="color"] {
         <audio class="audioPlayer" style="display: none;"></audio>
     </div>
     
-    <script type="module" src="script.js"></script>
-    <script>
-      let backDataPersonal = document.querySelector(".backDataPersonal");
-
-backDataPersonal.addEventListener("click", () =>{
-  document.querySelector(".spawnDataPersonal").style.left = "-100%";
-});
-    </script>
-    
+    <script type="module" src="script.js"></script>    
   </body>
 </html>
