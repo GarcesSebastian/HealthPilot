@@ -70,7 +70,25 @@ En la aplicación HealthPilot, los usuarios pueden personalizar varias configura
 Actualmente, algunas opciones, como el idioma, la versión de la aplicación, la política de privacidad, los términos y condiciones, y el soporte técnico, aún no están disponibles en esta versión beta, pero estamos trabajando en su implementación en futuras actualizaciones.
 
 ## Características
-Enumera las características clave de esta versión beta, como los recordatorios, el seguimiento de la presión arterial y la geolocalización.
+La versión beta de HealthPilot ofrece una variedad de características diseñadas para ayudar a los pacientes crónicos con hipertensión arterial a llevar un mejor control de su salud. Estas características incluyen:
+
+- **Recordatorios de Medicación**: Los pacientes pueden programar recordatorios para tomar su medicación en momentos específicos, lo que ayuda a garantizar que sigan su tratamiento de manera constante.
+
+- **Seguimiento de la Presión Arterial**: Los usuarios pueden realizar un seguimiento de sus lecturas de presión arterial y almacenar esta información en la aplicación para su referencia y para compartirla con sus profesionales de la salud.
+
+- **Asistente Motivacional**: La aplicación cuenta con un asistente que proporciona mensajes motivacionales para alentar a los pacientes a mantenerse comprometidos con su salud.
+
+- **Información sobre Hipertensión Arterial**: Los usuarios pueden acceder a información útil sobre la hipertensión arterial y consejos para su manejo.
+
+- **Preguntas Frecuentes (FAQ)**: La aplicación incluye una sección de Preguntas Frecuentes con respuestas a las consultas comunes de pacientes crónicos con hipertensión arterial.
+
+- **Encuestas de Usuarios**: Los usuarios tienen la opción de participar en encuestas que no solicitan datos personales sensibles. Estas encuestas ayudan a recopilar información valiosa sobre los usuarios y pacientes para mejorar la aplicación.
+
+- **Notificaciones Personalizadas**: Aunque actualmente las opciones de filtro no están funcionales, la aplicación muestra notificaciones relacionadas con recordatorios y otros eventos importantes.
+
+- **Geolocalización**: Los usuarios pueden localizar farmacias, hospitales y clínicas en la ciudad de Cartagena de Indias. También pueden trazar rutas desde su ubicación actual hasta estos lugares, lo que facilita la búsqueda de atención médica cercana.
+
+Estas características se combinan para brindar a los pacientes una herramienta integral para el control y manejo de la hipertensión arterial. La aplicación se encuentra en una fase beta, y estamos comprometidos a expandir y mejorar sus características en futuras actualizaciones.
 
 ## Contribución
 Si deseas que otros desarrolladores contribuyan a este proyecto en fase beta, proporciona instrucciones sobre cómo pueden contribuir y colaborar. Incluye normas de estilo de código y cómo enviar solicitudes de extracción (PR).
