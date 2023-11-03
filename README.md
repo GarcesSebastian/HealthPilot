@@ -51,7 +51,15 @@ Asegúrate de que estas bibliotecas estén instaladas antes de utilizar la aplic
 Explica cómo los pacientes pueden utilizar la aplicación para programar recordatorios, realizar seguimiento de su presión arterial y aprovechar las funciones de geolocalización. Puedes incluir ejemplos de uso y capturas de pantalla.
 
 ## Configuración
-Informa a los usuarios sobre cómo configurar su perfil y ajustar las preferencias en la aplicación. Si es necesario, proporciona información sobre variables de entorno, archivos de configuración y otras opciones de personalización.
+En la aplicación HealthPilot, los usuarios pueden personalizar varias configuraciones para adaptar la aplicación a sus necesidades. A continuación, se describen las opciones de configuración disponibles:
+
+- **Configurar notificaciones push**: Los usuarios pueden habilitar o deshabilitar las notificaciones push para recibir recordatorios importantes. También pueden configurar si desean recibir notificaciones push de spam.
+
+- **Configurar sonido de notificaciones**: Los usuarios tienen la opción de personalizar el sonido de las notificaciones. Pueden elegir entre varios sonidos predefinidos para sus notificaciones de recordatorios.
+
+- **Otras configuraciones disponibles**: Los usuarios pueden encontrar otras configuraciones en la aplicación que les permiten ajustar su experiencia. Aunque algunas opciones, como el idioma, la versión de la aplicación, la política de privacidad, los términos y condiciones, y el soporte técnico, aún no están disponibles en esta versión beta, estamos trabajando en su implementación en futuras actualizaciones.
+
+Asegúrate de que los usuarios estén al tanto de las opciones de configuración disponibles y cómo pueden personalizar la aplicación según sus preferencias.
 
 ## Características
 Enumera las características clave de esta versión beta, como los recordatorios, el seguimiento de la presión arterial y la geolocalización.
