@@ -57,7 +57,7 @@ En la aplicación HealthPilot, los usuarios pueden personalizar varias configura
 
 - **Configurar sonido de notificaciones**: Los usuarios tienen la opción de personalizar el sonido de las notificaciones. Pueden elegir entre varios sonidos predefinidos para sus notificaciones de recordatorios.
 
-- **Otras configuraciones disponibles**: Los usuarios pueden encontrar otras configuraciones en la aplicación que les permiten ajustar su experiencia. Aunque algunas opciones, como el idioma, la versión de la aplicación, la política de privacidad, los términos y condiciones, y el soporte técnico, aún no están disponibles en esta versión beta, estamos trabajando en su implementación en futuras actualizaciones.
+Actualmente, algunas opciones, como el idioma, la versión de la aplicación, la política de privacidad, los términos y condiciones, y el soporte técnico, aún no están disponibles en esta versión beta, pero estamos trabajando en su implementación en futuras actualizaciones.
 
 Asegúrate de que los usuarios estén al tanto de las opciones de configuración disponibles y cómo pueden personalizar la aplicación según sus preferencias.
 
