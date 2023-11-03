@@ -16,8 +16,6 @@ Nuestro objetivo es llevar esta versión beta a un nivel superior al convertirla
 Mantente atento a futuras actualizaciones y anuncios a medida que avanzamos en esta emocionante transición de prototipo web a aplicación móvil de pleno derecho.
 
 ## Tabla de Contenidos
-1. [Demo/Imágenes](#demoimágenes-si-aplicable)
-2. [Instalación](#instalación)
 3. [Uso](#uso)
 4. [Configuración](#configuración)
 5. [Características](#características)
@@ -29,14 +27,6 @@ Mantente atento a futuras actualizaciones y anuncios a medida que avanzamos en e
 11. [Notas de la Versión](#notas-de-la-versión)
 12. [Planes Futuros](#planes-futuros)
 13. [Agradecimientos](#agradecimientos)
-
-## Demo/Imágenes (si aplicable)
-![Home](https://github.com/GarcesSebastian/DSI.github.io/blob/main/img/imgReadme/Home.png)
-![Geolocation](https://github.com/GarcesSebastian/DSI.github.io/blob/main/img/imgReadme/Geolocation.png)
-![Reminders](https://github.com/GarcesSebastian/DSI.github.io/blob/main/img/imgReadme/Reminders.png)
-
-## Instalación
-Proporciona instrucciones detalladas sobre cómo instalar la versión beta del software, incluyendo requisitos previos, dependencias y comandos específicos si es necesario.
 
 ## Uso
 Explica cómo los pacientes pueden utilizar la aplicación para programar recordatorios, realizar seguimiento de su presión arterial y aprovechar las funciones de geolocalización. Puedes incluir ejemplos de uso y capturas de pantalla.
