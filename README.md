@@ -90,23 +90,8 @@ La versión beta de HealthPilot ofrece una variedad de características diseñad
 
 Estas características se combinan para brindar a los pacientes una herramienta integral para el control y manejo de la hipertensión arterial. La aplicación se encuentra en una fase beta, y estamos comprometidos a expandir y mejorar sus características en futuras actualizaciones.
 
-## Contribución
-Si deseas que otros desarrolladores contribuyan a este proyecto en fase beta, proporciona instrucciones sobre cómo pueden contribuir y colaborar. Incluye normas de estilo de código y cómo enviar solicitudes de extracción (PR).
-
 ## Licencia
-Información sobre la licencia del software y cómo se puede utilizar.
-
-## Contacto
-Proporciona información de contacto para los usuarios, pacientes y colaboradores que tengan preguntas o comentarios.
+Este software se distribuye bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
 
 ## Estado del Proyecto
 Este proyecto se encuentra en una fase beta, lo que significa que todavía está en desarrollo activo y puede contener errores o inestabilidades. Agradecemos cualquier retroalimentación y contribuciones de la comunidad de usuarios.
-
-## FAQ (Preguntas Frecuentes)
-Preguntas comunes y respuestas que pueden ayudar a los pacientes a utilizar la aplicación de manera efectiva.
-
-## Notas de la Versión
-Registro de cambios específico de esta versión beta, incluyendo las actualizaciones, correcciones de errores y nuevas características.
-
-## Agradecimientos
-Agradecemos a todos los pacientes y profesionales de la salud que han contribuido y apoyado este proyecto.
