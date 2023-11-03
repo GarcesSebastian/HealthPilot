@@ -57,9 +57,17 @@ En la aplicación HealthPilot, los usuarios pueden personalizar varias configura
 
 - **Configurar sonido de notificaciones**: Los usuarios tienen la opción de personalizar el sonido de las notificaciones. Pueden elegir entre varios sonidos predefinidos para sus notificaciones de recordatorios.
 
-Actualmente, algunas opciones, como el idioma, la versión de la aplicación, la política de privacidad, los términos y condiciones, y el soporte técnico, aún no están disponibles en esta versión beta, pero estamos trabajando en su implementación en futuras actualizaciones.
+- **Seleccionar tema de la aplicación**: Los usuarios pueden elegir entre una variedad de temas de colores para personalizar la apariencia de la aplicación.
 
-Asegúrate de que los usuarios estén al tanto de las opciones de configuración disponibles y cómo pueden personalizar la aplicación según sus preferencias.
+- **Gestionar cuenta**: Los usuarios pueden acceder a la configuración de su cuenta para cambiar su contraseña y acceder a su información personal.
+
+- **Almacenar datos médicos**: Los usuarios tienen la opción de completar un formulario para almacenar su información médica personal, lo que les permite llevar un registro de su historial médico.
+
+- **Consultar datos médicos**: Los usuarios pueden generar un archivo PDF que contiene la información médica que han almacenado previamente.
+
+- **Cerrar sesión**: Permite a los usuarios cerrar sesión en la aplicación.
+
+Actualmente, algunas opciones, como el idioma, la versión de la aplicación, la política de privacidad, los términos y condiciones, y el soporte técnico, aún no están disponibles en esta versión beta, pero estamos trabajando en su implementación en futuras actualizaciones.
 
 ## Características
 Enumera las características clave de esta versión beta, como los recordatorios, el seguimiento de la presión arterial y la geolocalización.
