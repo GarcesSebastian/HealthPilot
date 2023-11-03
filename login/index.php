@@ -2,6 +2,17 @@
 session_start();
 include("../database/iniciar.php");
 
+$message;
+
+function showSpawnAlert($message) {
+    $spawn = <<<HTML
+    <div class="spawnAlert" id="spawnAlert">
+        $message
+    </div>
+    HTML;
+    echo $spawn;
+}
+
 if(isset($_SESSION['id'])){
     $id = $_SESSION['id'];
 
@@ -17,6 +28,58 @@ if(isset($_SESSION['id'])){
         }
     }
 }
+
+if (isset($_POST['buttonLogIn'])) {
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
+
+    if (empty($username) || empty($password)) {
+        $message = "Ambos campos son obligatorios.";
+        showSpawnAlert($message);
+        $message = "";
+    } else {
+        $query = "SELECT * FROM registros WHERE usuario = '$username'";
+        $result = mysqli_query($conex, $query);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $storedHash = $row['contraseña'];
+            $id = $row['id'];
+
+
+            if ($password == $storedHash) {
+
+                $state = true;
+                $setState = "UPDATE estados SET estado = '$state' WHERE id = '$id'";
+                $resultSetState = mysqli_query($conex, $setState);
+
+                if ($resultSetState) {
+
+                    session_start();
+                    $_SESSION['id'] = $id;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['username'] = $username;
+
+                    header("Location: ../public/page/home/index.php");
+                }else{
+                    echo "Hubo un error al cambiar el id";
+                }
+            } else {
+                $message = "Contraseña incorrecta.";
+                showSpawnAlert($message);
+                $message = "";
+            }
+        } else {
+            $message = "El nombre de usuario no existe.";
+            showSpawnAlert($message);
+            $message = "";
+        }
+        
+    }
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +93,28 @@ if(isset($_SESSION['id'])){
     <script src="https://kit.fontawesome.com/7a00fb587a.js" crossorigin="anonymous"></script>
     <title>Login</title>
 </head>
+<style>
+    .spawnAlert{
+    position: absolute;
+    bottom:15%;
+    width: fit-content;
+    height: fit-content;
+    z-index: 10;
+    color: tomato;
+    transition: .3s ease-in-out;
+    display: flex;
+    padding:0 5%;
+    font-weight:bolder;
+    font-size:14px;
+}
+</style>
 <body>
 
     <div class="containerAll">
 
         <div class="contentView">
 
-            <form action="../database/iniciar.php" method="post">
+            <form action="./index.php" method="post">
 
             <div class="contentLogin">
                 <span class="logoPage">
@@ -83,5 +161,17 @@ if(isset($_SESSION['id'])){
     
 
     <script src="script.js"></script>
+    <script>
+        function hiddenSpawnAlert() {
+            var spawnAlert = document.querySelector('#spawnAlert');
+            if (spawnAlert) {
+                spawnAlert.style.display = "none";
+            }
+        }
+
+        setTimeout(() => {
+            hiddenSpawnAlert();
+    }, 3000);
+    </script>
 </body>
 </html>

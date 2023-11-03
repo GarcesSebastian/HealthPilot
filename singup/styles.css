@@ -176,3 +176,10 @@ body {
   color: var(--background_1);
   cursor: pointer;
 }
+
+.spawnAlert{
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  z-index: 10;
+}

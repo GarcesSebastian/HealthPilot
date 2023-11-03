@@ -7,20 +7,17 @@ if (isset($_POST['buttonSingUp'])) {
     $email = $_POST['email'];
 
     if (empty($username) || empty($password) || empty($email)) {
-        echo "Por favor, complete todos los campos.";
     } else {
         if (strlen($username) <= 18) {
             $query = "SELECT * FROM registros WHERE usuario = '$username'";
             $result = mysqli_query($conex, $query);
             if (mysqli_num_rows($result) > 0) {
-                echo "El nombre de usuario ya está en uso. Por favor, elige otro.";
             } else {
 
                 $confirmEmail = "SELECT * FROM registros WHERE email = '$email'";
                 $resultConfirmEmail = mysqli_query($conex, $confirmEmail);
                 
                 if(mysqli_num_rows($resultConfirmEmail)>0){
-                    echo "Este correo electrónico ya se encuentra registrado. Inicia sesión o utiliza uno diferente.";
                 }else{
                     
                     $id;
@@ -43,7 +40,6 @@ if (isset($_POST['buttonSingUp'])) {
                     $sqlSendInfoMedica = mysqli_query($conex,$sendInfoMedica);
     
                     if($sql and $sqlSendState and $sqlSendInfoMedica){
-                        echo "Registrado exitosamente";
                         header("Location: ../login/index.php");
                     }else{
                         echo $sql;
@@ -51,8 +47,8 @@ if (isset($_POST['buttonSingUp'])) {
                 }
             }
         } else {
-            echo "El nombre de usuario debe tener 18 caracteres como máximo.";
         }
     }
 }
+
 ?>

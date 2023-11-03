@@ -6,7 +6,6 @@ if (isset($_POST['buttonLogIn'])) {
     $password = md5($_POST['password']);
 
     if (empty($username) || empty($password)) {
-        echo "Ambos campos son obligatorios.";
     } else {
         $query = "SELECT * FROM registros WHERE usuario = '$username'";
         $result = mysqli_query($conex, $query);
@@ -30,16 +29,12 @@ if (isset($_POST['buttonLogIn'])) {
                     $_SESSION['email'] = $email;
                     $_SESSION['username'] = $username;
 
-                    echo "Iniciaste Sesion con exito.";
                     header("Location: ../public/page/home/index.php");
                 }else{
-                    echo "Hubo un error al cambiar el id";
                 }
             } else {
-                echo "Contraseña incorrecta. Por favor, intenta de nuevo.";
             }
         } else {
-            echo "El nombre de usuario no existe. Por favor, regístrate primero.";
         }
         
     }
