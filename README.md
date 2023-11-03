@@ -40,6 +40,8 @@ Proporciona instrucciones detalladas sobre cómo instalar la versión beta del s
 Para utilizar HealthPilot, asegúrate de cumplir con los siguientes requisitos:
 
 - PHP 7.4.3: Puedes descargar PHP desde [el sitio web oficial](https://www.php.net/).
+- MySQL 15.1: Asegúrate de tener MySQL instalado y configurado correctamente en tu servidor.
+- Apache 2.4.56: Asegúrate de tener Apache instalado y configurado correctamente en tu servidor.
 - Bibliotecas:
   - Leaflet Routing Machine (v3.2.12)
   - Push.js (v1.0.12)
