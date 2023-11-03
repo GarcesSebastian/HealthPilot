@@ -31,7 +31,9 @@ Mantente atento a futuras actualizaciones y anuncios a medida que avanzamos en e
 13. [Agradecimientos](#agradecimientos)
 
 ## Demo/Imágenes (si aplicable)
-![Logo de la aplicación]()
+![Home](https://github.com/GarcesSebastian/DSI.github.io/blob/main/img/imgReadme/Home.png)
+![Geolocation](https://github.com/GarcesSebastian/DSI.github.io/blob/main/img/imgReadme/Geolocation.png)
+![Reminders](https://github.com/GarcesSebastian/DSI.github.io/blob/main/img/imgReadme/Reminders.png)
 
 ## Instalación
 Proporciona instrucciones detalladas sobre cómo instalar la versión beta del software, incluyendo requisitos previos, dependencias y comandos específicos si es necesario.
