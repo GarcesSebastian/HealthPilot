@@ -27,8 +27,9 @@ Mantente atento a futuras actualizaciones a medida que avanzamos en esta emocion
 1. [Uso](#uso)
 2. [Configuración](#configuración)
 3. [Características](#características)
-4. [Licencia](#licencia)
-5. [Estado del Proyecto](#estado-del-proyecto)
+4. [Importación de la Base de Datos](#importación-de-la-base-de-datos)
+5. [Licencia](#licencia)
+6. [Estado del Proyecto](#estado-del-proyecto)
 
 ## Uso
 
@@ -85,9 +86,27 @@ La versión beta de HealthPilot ofrece una variedad de características diseñad
 
 Estas características se combinan para brindar a los pacientes una herramienta integral para el control y manejo de la hipertensión arterial. La aplicación se encuentra en una fase beta, y estamos comprometidos a expandir y mejorar sus características en futuras actualizaciones.
 
+## Importación de la Base de Datos
+
+Para utilizar HealthPilot, sigue estos pasos para importar la base de datos:
+
+1. Descarga la base de datos SQL desde nuestro repositorio de GitHub haciendo clic en el siguiente enlace: [Descargar Base de Datos](enlace-a-tu-base-de-datos-en-github).
+
+2. Abre tu sistema de gestión de bases de datos (por ejemplo, PHPMyAdmin).
+
+3. Crea una nueva base de datos con el nombre que desees para HealthPilot.
+
+4. Selecciona la nueva base de datos en tu sistema de gestión de bases de datos.
+
+5. Importa el archivo SQL descargado (paso 1) en la base de datos recién creada.
+
+Con estos sencillos pasos, tendrás la base de datos de HealthPilot lista para funcionar en tu entorno local.
+
+Asegúrate de reemplazar "enlace-a-tu-base-de-datos-en-github" con el enlace real a tu base de datos en GitHub.
+
 ## Licencia
 
-Este software se distribuye bajo la Licencia MIT. Consulta el archivo [LICENSE](https://github.com/GarcesSebastian/DSI.github.io/blob/main/LICENSE.txt) para obtener más detalles.
+Este software se distribuye bajo la Licencia MIT. Consulta el archivo [LICENSE](https://github.com/GarcesSebastian/DSI.github.io/blob/main/HealthPilot.sql) para obtener más detalles.
 
 ## Estado del Proyecto
 
