@@ -1,19 +1,20 @@
 # HealthPilot
 
-![Logo de la aplicación](https://github.com/GarcesSebastian/DSI.github.io/blob/main/img/logo.png)
+![Captura de Pantalla de la Aplicación](link_a_la_imagen.png)
 
 ## Descripción
 
-Esta aplicación es una versión beta de una plataforma de recordatorios diseñada para ayudar a pacientes crónicos con hipertensión arterial a llevar un control más efectivo de su salud. Además de las funciones de recordatorio, la aplicación incluye un sistema de geolocalización que, actualmente, se limita a la ciudad de Cartagena de Indias. Los pacientes pueden programar recordatorios para tomar su medicación, realizar seguimiento de su presión arterial, y acceder a información útil sobre su condición.
+Bienvenido a HealthPilot, una aplicación beta diseñada para ayudar a pacientes crónicos con hipertensión arterial a llevar un control más efectivo de su salud. HealthPilot no solo te ayuda a recordar tus medicamentos, sino que también te proporciona información útil y te ayuda a encontrar atención médica cercana.
 
 ## Planes Futuros
-Nuestro objetivo es llevar esta versión beta a un nivel superior al convertirla en una aplicación móvil completa para que los pacientes crónicos con hipertensión arterial puedan acceder a sus recordatorios y seguimiento de salud de manera aún más accesible. Estamos comprometidos a continuar mejorando y expandiendo HealthPilot. Algunos de nuestros planes futuros incluyen:
 
-- Desarrollo de aplicaciones móviles para dispositivos iOS y Android.
-- Ampliación de la funcionalidad de geolocalización para otras regiones.
-- Integración de más características y herramientas útiles para pacientes y profesionales de la salud.
+Nuestro objetivo es llevar HealthPilot a un nuevo nivel al convertirla en una aplicación móvil completa para una experiencia más accesible. Algunos de nuestros planes futuros incluyen:
 
-Mantente atento a futuras actualizaciones y anuncios a medida que avanzamos en esta emocionante transición de prototipo web a aplicación móvil de pleno derecho.
+- **Desarrollo de aplicaciones móviles** para iOS y Android.
+- **Ampliación de la funcionalidad de geolocalización** para otras regiones.
+- **Integración de más características y herramientas útiles** para pacientes y profesionales de la salud.
+
+Mantente atento a futuras actualizaciones a medida que avanzamos en esta emocionante transición de prototipo web a una aplicación móvil completa.
 
 ## Tecnologías Utilizadas
 
@@ -24,6 +25,7 @@ Mantente atento a futuras actualizaciones y anuncios a medida que avanzamos en e
 - ![JavaScript](https://img.shields.io/badge/JavaScript-Frontend-blue?style=for-the-badge)
 
 ## Tabla de Contenidos
+
 1. [Uso](#uso)
 2. [Configuración](#configuración)
 3. [Características](#características)
@@ -31,18 +33,20 @@ Mantente atento a futuras actualizaciones y anuncios a medida que avanzamos en e
 5. [Estado del Proyecto](#estado-del-proyecto)
 
 ## Uso
-Para utilizar HealthPilot, asegúrate de cumplir con los siguientes requisitos:
 
-- PHP 7.4.3
-- MySQL 15.1
-- Apache 2.4.56
-- Bibliotecas:
+### Requisitos
+
+- **PHP 7.4.3**
+- **MySQL 15.1**
+- **Apache 2.4.56**
+- **Bibliotecas**:
   - Leaflet Routing Machine (v3.2.12)
   - Push.js (v1.0.12)
 
 Asegúrate de que estas bibliotecas estén instaladas antes de utilizar la aplicación.
 
-## Configuración
+### Configuración
+
 En la aplicación HealthPilot, los usuarios pueden personalizar varias configuraciones para adaptar la aplicación a sus necesidades. A continuación, se describen las opciones de configuración disponibles:
 
 - **Configurar notificaciones push**: Los usuarios pueden habilitar o deshabilitar las notificaciones push para recibir recordatorios importantes. También pueden configurar si desean recibir notificaciones push de spam.
@@ -62,6 +66,7 @@ En la aplicación HealthPilot, los usuarios pueden personalizar varias configura
 Actualmente, algunas opciones, como el idioma, la versión de la aplicación, la política de privacidad, los términos y condiciones, y el soporte técnico, aún no están disponibles en esta versión beta, pero estamos trabajando en su implementación en futuras actualizaciones.
 
 ## Características
+
 La versión beta de HealthPilot ofrece una variedad de características diseñadas para ayudar a los pacientes crónicos con hipertensión arterial a llevar un mejor control de su salud. Estas características incluyen:
 
 - **Recordatorios de Medicación**: Los pacientes pueden programar recordatorios para tomar su medicación en momentos específicos, lo que ayuda a garantizar que sigan su tratamiento de manera constante.
@@ -83,7 +88,9 @@ La versión beta de HealthPilot ofrece una variedad de características diseñad
 Estas características se combinan para brindar a los pacientes una herramienta integral para el control y manejo de la hipertensión arterial. La aplicación se encuentra en una fase beta, y estamos comprometidos a expandir y mejorar sus características en futuras actualizaciones.
 
 ## Licencia
+
 Este software se distribuye bajo la Licencia MIT. Consulta el archivo [LICENSE](https://github.com/GarcesSebastian/DSI.github.io/blob/main/LICENSE.txt) para obtener más detalles.
 
 ## Estado del Proyecto
+
 Este proyecto se encuentra en una fase beta, lo que significa que todavía está en desarrollo activo y puede contener errores o inestabilidades. Agradecemos cualquier retroalimentación y contribuciones de la comunidad de usuarios.
