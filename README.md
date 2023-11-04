@@ -1,6 +1,6 @@
 # HealthPilot
 
-![Logo de la aplicación]()
+![Logo de la aplicación](https://github.com/GarcesSebastian/DSI.github.io/blob/main/img/logo.png)
 
 ## Descripción
 
