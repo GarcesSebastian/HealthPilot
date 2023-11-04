@@ -94,15 +94,9 @@ Para utilizar HealthPilot, sigue estos pasos para importar la base de datos:
 
 2. Abre tu sistema de gestión de bases de datos (por ejemplo, PHPMyAdmin).
 
-3. Crea una nueva base de datos con el nombre que desees para HealthPilot.
-
-4. Selecciona la nueva base de datos en tu sistema de gestión de bases de datos.
-
-5. Importa el archivo SQL descargado (paso 1) en la base de datos recién creada.
+3. Importa el archivo SQL descargado en la base de datos recién creada.
 
 Con estos sencillos pasos, tendrás la base de datos de HealthPilot lista para funcionar en tu entorno local.
-
-Asegúrate de reemplazar "enlace-a-tu-base-de-datos-en-github" con el enlace real a tu base de datos en GitHub.
 
 ## Licencia
 
