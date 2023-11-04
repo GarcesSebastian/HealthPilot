@@ -90,7 +90,7 @@ Estas características se combinan para brindar a los pacientes una herramienta 
 
 Para utilizar HealthPilot, sigue estos pasos para importar la base de datos:
 
-1. Descarga la base de datos SQL desde nuestro repositorio de GitHub haciendo clic en el siguiente enlace: [Descargar Base de Datos](enlace-a-tu-base-de-datos-en-github).
+1. Descarga la base de datos SQL desde nuestro repositorio de GitHub haciendo clic en el siguiente enlace: [Descargar Base de Datos](https://github.com/GarcesSebastian/DSI.github.io/blob/main/HealthPilot.sql).
 
 2. Abre tu sistema de gestión de bases de datos (por ejemplo, PHPMyAdmin).
 
@@ -106,7 +106,7 @@ Asegúrate de reemplazar "enlace-a-tu-base-de-datos-en-github" con el enlace rea
 
 ## Licencia
 
-Este software se distribuye bajo la Licencia MIT. Consulta el archivo [LICENSE](https://github.com/GarcesSebastian/DSI.github.io/blob/main/HealthPilot.sql) para obtener más detalles.
+Este software se distribuye bajo la Licencia MIT. Consulta el archivo [LICENSE](https://github.com/GarcesSebastian/DSI.github.io/blob/main/LICENSE.txt) para obtener más detalles.
 
 ## Estado del Proyecto
 
