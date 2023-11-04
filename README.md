@@ -1,7 +1,5 @@
 # HealthPilot
 
-## Descripción
-
 Bienvenido a HealthPilot, una aplicación beta diseñada para ayudar a pacientes crónicos con hipertensión arterial a llevar un control más efectivo de su salud. HealthPilot no solo te ayuda a recordar tus medicamentos, sino que también te proporciona información útil y te ayuda a encontrar atención médica cercana.
 
 ## Planes Futuros
