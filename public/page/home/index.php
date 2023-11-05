@@ -148,100 +148,10 @@ if(isset($_POST['btnCodeResetPassword'])){
     <script src="https://unpkg.com/leaflet-geosearch/dist/geosearch.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"/>
     <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.js"></script>
     <script src="../../../node_modules/push.js/bin/push.js"></script>
     <title>Inicio-Menu</title>
 </head>
-<style>
-
-.contentBlockEncuestas{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 4;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  display: none;
-}
-
-  .spawnEncuestas{
-  position: absolute;
-  width:94%;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-  background-color: white;
-  padding: 3%;
-  border-radius: 5px;
-  display: none;
-}
-
-.contentNavEncuestas{
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  margin-bottom:3%;
-}
-
-.contentNavEncuestas span{
-  cursor: pointer;
-  width: fit-content;
-  height: fit-content;
-  cursor: pointer;
-}
-
-.contentNavEncuestas span:hover{
-  color: tomato;
-}
-
-.listEncuestas{
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: center;
-  gap:15px;
-}
-
-.listEncuestas li{
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2%;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  cursor: pointer;
-  transition: .0002s ease-in-out;
-  z-index: 5;
-}
-
-.listEncuestas li:hover{
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.listEncuestas li:active{
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.listEncuestas li h4{
-  font-weight: lighter;
-  color: black;
-}
-
-
-</style>
 <body>
 
     <div class="containerAll">

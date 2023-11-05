@@ -170,13 +170,28 @@ function separatorURL(URL){
   console.log(URLnone);
 }
 
+function encryptData(data) {
+  const key = "A1B2C3D4";
+  const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(data), key);
+  return encryptedData.toString();
+}
+
+function decryptData(encryptedData) {
+  const key = "A1B2C3D4";
+  const bytes = CryptoJS.AES.decrypt(encryptedData, key);
+  const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  return decryptedData;
+}
+
 function getReminderLocalStorage(){
-  if(localStorage.getItem('reminders') !== null){
-    reminder = JSON.parse(localStorage.getItem('reminders'));
-    timeReminder = reminder.timeReminder;
-    dateReminder = reminder.dateReminder;
-    dateReminderEnd = reminder.dateReminderEnd;
-    contentReminder = reminder.contentReminder;
+  const encryptedData = localStorage.getItem("reminders");
+  if (encryptedData) {
+    const decryptedData = decryptData(encryptedData);
+    reminder = decryptedData;
+    timeReminder = decryptedData.timeReminder;
+    dateReminder = decryptedData.dateReminder;
+    dateReminderEnd = decryptedData.dateReminderEnd;
+    contentReminder = decryptedData.contentReminder;
   }
 
   let indexSoundsFiles = soundFiles.indexOf(contentReminder.sound[0]);
@@ -196,11 +211,12 @@ function getReminderLocalStorage(){
   });
 }
 
-function getNotificationsLocalStorage(){
-  if(localStorage.getItem('notifications') !== null){
-    let getNotifications = JSON.parse(localStorage.getItem("notifications"));
-    notifications = getNotifications;
-    for(let i = 0; i < notifications.type.length; i++){
+function getNotificationsLocalStorage() {
+  const encryptedData = localStorage.getItem("notifications");
+  if (encryptedData) {
+    const decryptedData = decryptData(encryptedData);
+    notifications = decryptedData.notifications;
+    for (let i = 0; i < notifications.type.length; i++) {
       createNotificationAppNew(notifications.name[i], notifications.type[i], notifications.hour[i], notifications.minute[i]);
     }
   }
@@ -279,18 +295,21 @@ window.addEventListener("DOMContentLoaded", () => {
 
 });
 
-function setReminderLocalStorage(){
-  let reminder2 = {
+function setReminderLocalStorage() {
+  const encryptedData = encryptData({
     contentReminder: contentReminder,
     timeReminder: timeReminder,
     dateReminder: dateReminder,
     dateReminderEnd: dateReminderEnd,
-  };
-  localStorage.setItem("reminders", JSON.stringify(reminder2));
+  });
+  localStorage.setItem("reminders", encryptedData);
 }
 
-function setNotificationsLocalStorage(){
-  localStorage.setItem("notifications", JSON.stringify(notifications));
+function setNotificationsLocalStorage() {
+  const encryptedData = encryptData({
+    notifications: notifications
+  });
+  localStorage.setItem("notifications", encryptedData);
 }
 
 let searchGeoJSON = "../../../GeoJson/searchGeo.geojson";

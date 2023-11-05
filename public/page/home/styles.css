@@ -2172,6 +2172,7 @@ input:checked + .slider:before {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 
   .spawnEncuestas{
@@ -2186,6 +2187,7 @@ input:checked + .slider:before {
   background-color: white;
   padding: 3%;
   border-radius: 5px;
+  display: none;
 }
 
 .contentNavEncuestas{

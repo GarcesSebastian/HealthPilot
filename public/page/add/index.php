@@ -17,9 +17,22 @@ $habitos_alimenticios;
 $nivel_estres;
 $info_extra;
 
+//flagCode
+$flagCode = false;
+$flagResetPassword = false;
+$code;
+
+//Data User
+$username;
+$mail;
+
+//state notifcation alert
+$flagStateNotification = false;
+$message;
+
 if(isset($_SESSION['id'])){
   $id = $_SESSION['id'];
-
+  
   $getStateUser = "SELECT estado FROM estados WHERE id = '$id'";
   $resultGetStateUser = mysqli_query($conex, $getStateUser);
 
@@ -31,13 +44,31 @@ if(isset($_SESSION['id'])){
           header("Location: ../../../index.php");
       }
   }
-  
+
   $getDataUser = "SELECT * FROM registros WHERE id = '$id'";
   $resultGetDataUser = mysqli_query($conex, $getDataUser);
 
   if(mysqli_num_rows($resultGetDataUser) > 0){
       $row = mysqli_fetch_assoc($resultGetDataUser);
       $username = $row['usuario'];
+      $mail = $row['email'];
+
+      $emailFormatt = "";
+      $charEmail = str_split($mail);
+      $maxValue = strlen($mail) - 10;
+  
+      for($i = 0; $i < strlen($mail); $i++){
+
+        if($i > 3 and $i < $maxValue - 3){
+          $emailFormatt[$i] = '*';
+        }
+        else{
+          $emailFormatt[$i] = $charEmail[$i];
+        }
+
+      }
+
+
   }
 
   $getDataInfoMedica = "SELECT * FROM informacion_medica WHERE id = '$id'";
@@ -58,12 +89,45 @@ if(isset($_SESSION['id'])){
     $habitos_alimenticios = $row['habitos_alimenticios'];
     $nivel_estres = $row['nivel_estres'];
     $info_extra = $row['extra'];
+
+  }
+
+  $getCodeUser = "SELECT * FROM code WHERE id = '$id'";
+  $resultGetCodeUser = mysqli_query($conex,$getCodeUser);
+
+  if(mysqli_num_rows($resultGetCodeUser) > 0){
+    $rowCode = mysqli_fetch_assoc($resultGetCodeUser);
+    $code = $rowCode['code'];
+    $flagCode = true;
+  }else{
+    $flagCode = false;
   }
 
 }else{
   header("Location: ../../../index.php");
 }
 
+if(isset($_SESSION['flagResetPassword'])){
+  $flagResetPassword = $_SESSION['flagResetPassword'];
+}
+
+if(isset($_SESSION['flagStateNotification'])){
+  $flagStateNotification = $_SESSION['flagStateNotification'];
+}
+
+if(isset($_SESSION['message'])){
+  $message = $_SESSION['message'];
+}
+
+if(isset($_POST['btnCodeResetPassword'])){
+  echo 
+  "
+  <script>
+      alert('Contraseña cambiada con exito');
+      window.location.href = '../public/page/home/index.php';
+  </script>
+  ";
+}
 
 ?>
 
@@ -83,6 +147,7 @@ if(isset($_SESSION['id'])){
       crossorigin="anonymous"
     ></script>
     <script src="../../../node_modules/push.js/bin/push.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.js"></script>
     <title>Inicio-Menu</title>
   </head>
   <body>
@@ -535,25 +600,18 @@ if(isset($_SESSION['id'])){
               <h5 class="nameList">Configuracion de cuenta</h5>
               <ul class="listConfig">
 
-                <li class="itemConfig">
+                <li class="itemConfig itemCuentaConfig" data-cuenta="1">
                   <span class="iconConfigCuenta">
                     <i class="fa-solid fa-shield-halved fa-lg"></i>
                   </span>
                   <h5 class="textConfigCuenta">Contraseña y Seguridad</h5>
                 </li>
 
-                <li class="itemConfig">
+                <li class="itemConfig itemCuentaConfig" data-cuenta="2">
                   <span class="iconConfigCuenta">
                     <i class="fa-regular fa-address-book fa-lg"></i>
                   </span>
                   <h5 class="textConfigCuenta">Datos personales</h5>
-                </li>
-
-                <li class="itemConfig">
-                  <span class="iconConfigCuenta">
-                    <i class="fa-solid fa-stethoscope fa-lg"></i>
-                  </span>
-                  <h5 class="textConfigCuenta">Datos medicos</h5>
                 </li>
 
               </ul>
@@ -563,6 +621,285 @@ if(isset($_SESSION['id'])){
         </div>
 
         <!--Spawn config cuenta-->
+
+        <!--Spawn password and security-->
+
+        <div class="spawnPasswordAndSecurity">
+          <div class="contentNavPasswordAndSecurity">
+            <span class="backContent backPasswordAndSecurity">
+              <i class="fa-solid fa-arrow-left fa-lg"></i>
+            </span>
+            <h4 class="textBackContent textBackPasswordAndSecurity">Contraseña y Seguridad</h4>
+          </div>
+
+          <div class="contentPasswordAndSecurity">
+
+          <div class="PasswordAndSecurity">
+              <h5 class="nameList">Contraseña</h5>
+              <ul class="listConfig">
+
+                <li class="itemConfig itemPasswordReset" data-resetpassword="1">
+                  <span class="iconPasswordAndSecurity">
+                  <i class="fa-solid fa-key fa-lg"></i>
+                  </span>
+                  <h5 class="textPasswordAndSecurity">Cambiar Contraseña</h5>
+                </li>
+
+
+              </ul>
+            </div>
+            
+          </div>
+        </div>
+
+        <!--Spawn password and security-->
+
+        <!--Spawn content block passwowrd-->
+
+          <?php
+            if($flagCode){
+              $code = <<<HTML
+                <div class="contentPasswordBlock" style="display:flex;">
+
+                <div class="spawnPopupPassword" style="display:flex;">
+
+                  <div class="popup-contentPassword">
+                    
+
+                    <h4>Acabamos de enviar un codigo al correo $emailFormatt por favor confirme su codigo aqui:</h4>
+
+                    <form action="../../../database/resetPassword.php" method="post" class="inputCode" style="display:flex;">
+                        <input type="number" class="codeResetPassword" name="codeResetPassword">
+                        <input type="submit" value="Confirmar" class="btnCodeResetPassword" name="btnCodeResetPassword">
+                    </form>
+
+                    
+                  </div>
+
+                </div>
+
+                </div>
+              HTML;
+            }else{
+              $code = <<<HTML
+                <div class="contentPasswordBlock">
+
+                <div class="spawnPopupPassword">
+
+                  <div class="popup-contentPassword">
+                    
+                    <div class="contentClosePassword">
+                      <span class="closePopupPassword">
+                        <i class="fa-solid fa-xmark fa-lg"></i>
+                      </span>
+                    </div>
+                  
+                    <h4>Enviaremos un codigo al correo $emailFormatt por favor acepte para poder enviar el codigo</h4>
+
+                    <form action="../../../database/sendCodeReset.php" method="post" class="spawnConfirm">
+                      <input type="submit" value="Aceptar" class="btnConfirmResetCode" name="btnConfirmResetCode">
+                    </form>
+
+                    <form action="#" method="post" class="inputCode">
+                      <input type="number" class="codeResetPassword" name="codeResetPassword" pattern="[0-9]{1,6}">
+                      <input type="submit" value="Confirmar" class="btnCodeResetPassword" name="btnCodeResetPassword">
+                    </form>
+                    
+                  </div>
+
+                </div>
+
+                </div>
+              HTML;
+            }
+            echo $code;
+
+            if($flagResetPassword){
+              $code = <<<HTML
+                <div class="contentPasswordBlock" style="display:flex;">
+
+                <div class="spawnPopupPassword" style="display:flex;">
+
+                  <div class="popup-contentPassword">
+                    
+                    <h4>Escriba su nueva contraseña, recuerde que no puede ser igual a la anterior.</h4>
+
+                    <form action="../../../database/resetPassword.php" method="post" class="inputCode" style="display:flex; gap:20px;">
+                        <input type="password" class="codeResetPassword" name="codeResetPassword1" placeholder="Nueva contraseña">
+                        <input type="password" class="codeResetPassword" name="codeResetPassword2" placeholder="Nueva contraseña">
+                        <input type="submit" value="Confirmar" class="btnResetPassword" name="btnResetPassword">
+                    </form>
+
+                    
+                  </div>
+
+                </div>
+
+                </div>
+              HTML;
+            }
+
+            echo $code;
+          ?>
+
+        <!--Spawn content block passwowrd-->
+
+        <!--Spawn datos personales-->
+
+        <div class="spawnDataPersonal">
+
+          <div class="contentNavDataPersonal">
+            <span class="backContent backDataPersonal">
+              <i class="fa-solid fa-arrow-left fa-lg"></i>
+            </span>
+            <h4 class="textBackContent textBackDataPersonal">Informacion Personal</h4>
+          </div>
+
+          <form action="../../../database/sendInfoMedica.php" method="post" class="contentDataPersonal">
+
+          <div class="DataPersonal">
+              <h5 class="nameList">Informacion de Cuenta</h5>
+              <ul class="listConfig">
+
+              <li class="itemConfig itemDataPersonal">
+                  <span class="iconDataPersonal">
+                  <i class="fa-solid fa-key fa-lg"></i>
+                  </span>
+                  <input type="text" name="username" class="username" placeholder="Usuario" value="<?php if(!empty($username)){echo $username;}else{echo "";} ?>">
+                </li>
+
+                <li class="itemConfig itemDataPersonal">
+                  <span class="iconDataPersonal">
+                  <i class="fa-solid fa-key fa-lg"></i>
+                  </span>
+                  <input type="email" name="emailCuenta" class="email" placeholder="Correo Electronico" value="<?php if(!empty($mail)){echo $mail;}else{echo "";} ?>">
+                </li>
+
+
+              </ul>
+            </div>
+
+            <div class="DataPersonal">
+              <h5 class="nameList">Informacion Personal</h5>
+              <ul class="listConfig">
+
+                <li class="itemConfig itemDataPersonal">
+                  <span class="iconAlmacenar">
+                  <i class="fa-regular fa-address-book fa-lg"></i>
+                  </span>
+                  
+                  <input type="text" name="nameComplete" class="nameComplete" placeholder="Nombre Completo" value="<?php if(!empty($nombre_completo)){echo $nombre_completo;}else{echo "";} ?>">
+                </li>
+
+                <li class="itemConfig itemDataPersonal">
+                  <span class="iconAlmacenar">
+                  <i class="fa-regular fa-calendar-days fa-lg"></i>
+                  </span>
+                  <label for="fechaNacimiento">Fecha de nacimiento:</label>
+                  <input type="date" name="fechaNacimiento" class="fechaNacimiento" value="<?php if(!empty($fecha_nacimiento)){echo $fecha_nacimiento;}else{echo "";} ?>">
+                </li>
+
+                <li class="itemConfig itemDataPersonal">
+                  <span class="iconAlmacenar">
+                  <i class="fa-solid fa-venus-mars fa-lg"></i>
+                  </span>
+                  
+                  <select class="genero" name="genero">
+                    <?php
+                      if ($genero == "masculino") {
+                        $options = <<<HTML
+                          <option disabled>Selecciona un género</option>
+                          <option value='masculino' selected>Masculino</option>
+                          <option value='femenino'>Femenino</option>
+                          <option value='otro'>Otro</option>
+                  HTML;
+                      } else if ($genero == "femenino") {
+                        $options = <<<HTML
+                          <option disabled>Selecciona un género</option>
+                          <option value='masculino'>Masculino</option>
+                          <option value='femenino' selected>Femenino</option>
+                          <option value='otro'>Otro</option>
+                  HTML;
+                      } else if ($genero == "otro") {
+                        $options = <<<HTML
+                          <option disabled>Selecciona un género</option>
+                          <option value='masculino'>Masculino</option>
+                          <option value='femenino'>Femenino</option>
+                          <option value='otro' selected>Otro</option>
+                  HTML;
+                      } else if (empty($genero)){
+                        $options = <<<HTML
+                          <option disabled selected>Selecciona un género</option>
+                          <option value='masculino'>Masculino</option>
+                          <option value='femenino'>Femenino</option>
+                          <option value='otro'>Otro</option>
+                  HTML;
+                      }
+                      echo $options;
+                    ?>
+                  </select>
+
+                </li>
+
+                <li class="itemConfig itemDataPersonal">
+                  <span class="iconAlmacenar">
+                  <i class="fa-solid fa-phone fa-lg"></i>
+                  </span>
+                  
+                  <input type="number" name="telephone" class="telephone" placeholder="Numero de telefono" value="<?php if(!empty($telefono)){echo $telefono;}else{echo "";} ?>">
+                </li>
+
+                <li class="itemConfig itemDataPersonal">
+                  <span class="iconAlmacenar">
+                  <i class="fa-regular fa-envelope fa-lg"></i>
+                  </span>
+                  
+                  <input type="email" name="email" class="email" placeholder="Correo Electronico" value='<?php if(!empty($email)){echo $email;}else{echo "";} ?>'>
+                </li>
+
+              </ul>
+            </div>
+
+            <div class="DataPersonal">
+              <h5 class="nameList">Informacion de Medica</h5>
+              <ul class="listConfig">
+
+              <li class="itemConfig itemDataPersonal">
+                  <span class="iconAlmacenar">
+                  <i class="fa-regular fa-calendar-days fa-lg"></i>
+                  </span>
+                  <label for="fechaDiagnostico">Fecha de diagnostico:</label>
+                  <input type="date" name="fechaDiagnostico" class="fechaDiagnostico" value="<?php if(!empty($fecha_diagnostico)){echo $fecha_diagnostico;}else{echo "";} ?>">
+                </li>
+
+                <li class="itemConfig itemDataPersonal">
+                  <span class="iconAlmacenar">
+                  <i class="fa-solid fa-circle-info fa-lg"></i>
+                  </span>
+                  
+                  <input type="text" name="alergias" class="alergias" placeholder="Alergias a medicamentos o alimentos" value="<?php if(!empty($alergias)){echo $alergias;}else{echo "";} ?>">
+                </li>
+
+
+              </ul>
+            </div>
+
+            <div class="DataPersonal">
+              <ul class="listConfig">
+
+              <li class="itemConfig" style="padding: 0;">
+                  <input type="submit" name="buttonSendInfoPersonal" class="buttonSendInfoPersonal">
+                </li>
+
+
+              </ul>
+            </div>
+            
+          </form>
+          
+        </div>
+
+        <!--Spawn datos personales-->
 
         <!--Spawn almacenar info medica-->
 

@@ -3,6 +3,7 @@
     "@fullcalendar/core": "^6.1.9",
     "@fullcalendar/daygrid": "^6.1.9",
     "@fullcalendar/interaction": "^6.1.9",
+    "crypto-js": "^4.2.0",
     "fullcalendar": "^6.1.9",
     "leaflet-routing-machine": "^3.2.12",
     "push.js": "^1.0.12"

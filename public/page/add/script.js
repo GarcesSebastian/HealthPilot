@@ -50,13 +50,28 @@ let notifications = {
   minute: []
 };
 
-function getReminderLocalStorage(){
-  if(localStorage.getItem('reminders') !== null){
-    reminder = JSON.parse(localStorage.getItem('reminders'));
-    timeReminder = reminder.timeReminder;
-    dateReminder = reminder.dateReminder;
-    dateReminderEnd = reminder.dateReminderEnd;
-    contentReminder = reminder.contentReminder;
+function encryptData(data) {
+  const key = "A1B2C3D4";
+  const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(data), key);
+  return encryptedData.toString();
+}
+
+function decryptData(encryptedData) {
+  const key = "A1B2C3D4";
+  const bytes = CryptoJS.AES.decrypt(encryptedData, key);
+  const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  return decryptedData;
+}
+
+function getReminderLocalStorage() {
+  const encryptedData = localStorage.getItem("reminders");
+  if (encryptedData) {
+    const decryptedData = decryptData(encryptedData);
+    reminder = decryptedData;
+    timeReminder = decryptedData.timeReminder;
+    dateReminder = decryptedData.dateReminder;
+    dateReminderEnd = decryptedData.dateReminderEnd;
+    contentReminder = decryptedData.contentReminder;
 
     if(document.querySelectorAll(".itemReminder")){
       document.querySelectorAll(".itemReminder").forEach(element =>{
@@ -100,7 +115,9 @@ function getReminderLocalStorage(){
       }
       createReminder(contentReminder.title[i], contentReminder.medicine[i], dateInit, dateEnd, contDataSpan, inputsDateTime, false);
     }
+
   }
+
   if(document.querySelectorAll(".input")){
     document.querySelectorAll(".input").forEach(element =>{
       element.remove();
@@ -122,13 +139,15 @@ function getReminderLocalStorage(){
     }
     
   });
+
 }
 
-function getNotificationsLocalStorage(){
-  if(localStorage.getItem('notifications') !== null){
-    let getNotifications = JSON.parse(localStorage.getItem("notifications"));
-    notifications = getNotifications;
-    for(let i = 0; i < notifications.type.length; i++){
+function getNotificationsLocalStorage() {
+  const encryptedData = localStorage.getItem("notifications");
+  if (encryptedData) {
+    const decryptedData = decryptData(encryptedData);
+    notifications = decryptedData.notifications;
+    for (let i = 0; i < notifications.type.length; i++) {
       createNotificationAppNew(notifications.name[i], notifications.type[i], notifications.hour[i], notifications.minute[i]);
     }
   }
@@ -198,21 +217,22 @@ window.addEventListener("DOMContentLoaded", () => {
 
 });
 
-function setReminderLocalStorage(){
-  let reminder2 = {
+function setReminderLocalStorage() {
+  const encryptedData = encryptData({
     contentReminder: contentReminder,
     timeReminder: timeReminder,
     dateReminder: dateReminder,
     dateReminderEnd: dateReminderEnd,
-  };
-  localStorage.setItem("reminders", JSON.stringify(reminder2));
+  });
+  localStorage.setItem("reminders", encryptedData);
 }
 
-
-function setNotificationsLocalStorage(){
-  localStorage.setItem("notifications", JSON.stringify(notifications));
+function setNotificationsLocalStorage() {
+  const encryptedData = encryptData({
+    notifications: notifications
+  });
+  localStorage.setItem("notifications", encryptedData);
 }
-
 
 function requestNotification() {
   Notification.requestPermission().then((result) => {
@@ -1665,6 +1685,74 @@ numbersMedicine.addEventListener("input", (event) =>{
 });
 
 //Spawn almacenar info medica
+
+//Spawn password and security
+
+let itemCuenta2 = document.querySelectorAll(".itemCuentaConfig");
+
+itemCuenta2.forEach(element =>{
+  element.addEventListener("click", () =>{
+    if(element.getAttribute("data-cuenta") == "1"){
+      document.querySelector(".spawnPasswordAndSecurity").style.left = "0%";
+    }else if(element.getAttribute("data-cuenta") == "2"){
+      document.querySelector(".spawnDataPersonal").style.left = "0%";
+    }
+  });
+});
+
+document.querySelector(".backPasswordAndSecurity").addEventListener("click", ()=>{
+  document.querySelector(".spawnPasswordAndSecurity").style.left = "-100%";
+});
+
+let closeSpawnResetPassword = document.querySelector(".closePopupPassword");
+
+closeSpawnResetPassword.addEventListener("click", () =>{
+  document.querySelector(".spawnPopupPassword").style.display = "none";
+  document.querySelector(".contentPasswordBlock").style.display = "none";
+});
+
+let btnResetPassword = document.querySelectorAll(".itemPasswordReset");
+
+btnResetPassword.forEach(element =>{
+
+  element.addEventListener("click", () =>{
+    if(element.getAttribute("data-resetpassword") === "1"){
+      document.querySelector(".spawnPopupPassword").style.display = "flex";
+      document.querySelector(".contentPasswordBlock").style.display = "flex";
+    }
+  });
+
+});
+
+let codeResetPassword = document.querySelector(".codeResetPassword");
+
+codeResetPassword.addEventListener("input", () => {
+  let valueCode = codeResetPassword.value;
+  let lenCode = valueCode.length;
+  if (lenCode > 6) {
+    codeResetPassword.value = valueCode.slice(0, 6);
+  }
+});
+
+
+//Spawn password and security
+
+
+//Spawn informacion personal
+
+let backDataPersonal = document.querySelector(".backDataPersonal");
+
+backDataPersonal.addEventListener("click", () =>{
+  document.querySelector(".spawnDataPersonal").style.left = "-100%";
+});
+
+function spawNotificationAlert(){
+  document.querySelector(".spawnNotificationAlert").style.top = "0%";
+
+  setTimeout(() => {
+    document.querySelector(".spawnNotificationAlert").style.top = "-40%";
+  }, 4000);
+}
 
 
 setInterval(()=>{
