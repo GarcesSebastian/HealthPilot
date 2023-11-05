@@ -988,12 +988,10 @@ function deleteMarkerClinic() {
   fetch(geoJSONPath)
     .then((response) => response.json())
     .then((data) => {
-      // Filtrar las características que no tengan el nombre "default"
       const filteredData = data.features.filter(
         (feature) => feature.properties.amenity == "pharmacy"
       );
 
-      // Limpiar todas las capas existentes
       map.eachLayer(function (layer) {
         if (layer instanceof L.Marker) {
           map.removeLayer(layer);
@@ -1439,16 +1437,16 @@ sounds.forEach(element => {
       for (let i = 0; i < audioSounds.length; i++) {
         if (audioSounds[i]) {
           const previousIcon = sounds[i].querySelector(".iconPlaySound").getElementsByTagName("i").item(0);
-          previousIcon.className = "fa-regular fa-circle-play fa-lg"; // Cambiar el icono de sonido activo previo
+          previousIcon.className = "fa-regular fa-circle-play fa-lg";
           audioSounds[i].pause();
           audioSounds[i].removeEventListener("ended", endedHandler);
           audioSounds[i] = null;
         }
       }
-      audioSounds[soundNumber - 1] = new Audio(soundFiles[soundNumber - 1]); // Asignar el sonido correcto
+      audioSounds[soundNumber - 1] = new Audio(soundFiles[soundNumber - 1]);
       audioSounds[soundNumber - 1].addEventListener("ended", endedHandler);
       const currentIcon = iconPlaySound.getElementsByTagName("i").item(0);
-      currentIcon.className = "fa-regular fa-circle-pause fa-lg"; // Cambiar el icono
+      currentIcon.className = "fa-regular fa-circle-pause fa-lg";
       audioSounds[soundNumber - 1].play();
     } else {
       const currentIcon = iconPlaySound.getElementsByTagName("i").item(0);

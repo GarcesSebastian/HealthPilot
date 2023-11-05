@@ -1086,7 +1086,6 @@ function createReminder(
     description.appendChild(pTimeDate);
     pTimeDate.appendChild(sTimeDate);
   }
-  // Agregar el nuevo <li> a la lista
   listReminder.appendChild(newli);
 
   showReminder.addEventListener("click", function () {
@@ -1103,10 +1102,9 @@ function createReminder(
   });
 
   editReminder.addEventListener("click", function () {
-    let item = newli; // El elemento "li" que se va a editar
+    let item = newli;
 
     if (item != null) {
-      // Obtener los valores actuales del recordatorio
       const currentNameReminder =
         item.querySelector(".titleReminder").textContent;
       const currentNameMedicine =
@@ -1116,7 +1114,6 @@ function createReminder(
       const currentNumberFrequency =
         item.querySelector(".numberFrequency").textContent;
 
-      // Ventana de edición con campos prellenados
       const editForm = document.querySelector(".spawnEditReminder");
       editForm.querySelector(".inputNameEdit").value = currentNameReminder;
       editForm.querySelector(".inputDescriptionEdit").value =
@@ -1139,7 +1136,6 @@ function createReminder(
           .querySelector(".timeDate").textContent;
       }
 
-      // Manejar la edición y actualización de los datos
       const editSubmitButton = editForm.querySelector(".inputConfirmEdit");
       editSubmitButton.addEventListener("click", function () {
         let nameReminder = document.querySelector(".inputNameEdit").value;
@@ -1253,7 +1249,6 @@ function createReminder(
         }
 
         if (flagContinueAddEditReminder && item != null) {
-          // Obtener los nuevos valores de edición
           const newNameReminder =
             editForm.querySelector(".inputNameEdit").value;
           const newNameMedicine = editForm.querySelector(
@@ -1266,7 +1261,6 @@ function createReminder(
             ".inputNumberFrequencyEdit"
           ).value;
 
-          // Actualizar los valores en el elemento del recordatorio
           item.querySelector(".titleReminder").textContent = newNameReminder;
           item.querySelector(".nameMedicine").textContent = newNameMedicine;
           item.querySelector(".timeInit").textContent = newTimeInit;
@@ -1522,16 +1516,16 @@ sounds.forEach(element => {
       for (let i = 0; i < audioSounds.length; i++) {
         if (audioSounds[i]) {
           const previousIcon = sounds[i].querySelector(".iconPlaySound").getElementsByTagName("i").item(0);
-          previousIcon.className = "fa-regular fa-circle-play fa-lg"; // Cambiar el icono de sonido activo previo
+          previousIcon.className = "fa-regular fa-circle-play fa-lg";
           audioSounds[i].pause();
           audioSounds[i].removeEventListener("ended", endedHandler);
           audioSounds[i] = null;
         }
       }
-      audioSounds[soundNumber - 1] = new Audio(soundFiles[soundNumber - 1]); // Asignar el sonido correcto
+      audioSounds[soundNumber - 1] = new Audio(soundFiles[soundNumber - 1]);
       audioSounds[soundNumber - 1].addEventListener("ended", endedHandler);
       const currentIcon = iconPlaySound.getElementsByTagName("i").item(0);
-      currentIcon.className = "fa-regular fa-circle-pause fa-lg"; // Cambiar el icono
+      currentIcon.className = "fa-regular fa-circle-pause fa-lg";
       audioSounds[soundNumber - 1].play();
     } else {
       const currentIcon = iconPlaySound.getElementsByTagName("i").item(0);
