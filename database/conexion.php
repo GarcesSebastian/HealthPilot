@@ -3,7 +3,7 @@
     $servername = "localhost";
     $password = "";
     $username = "root";
-    $database = "dsi";
+    $database = "healthpilot";
 
     $conex = mysqli_connect($servername, $username, $password, $database);
 
